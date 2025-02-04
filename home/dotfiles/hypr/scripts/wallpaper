@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+
+WALLPAPER="$HOME/.config/hypr/wallpapers/programmer.gif"
+swww-daemon & 
+swww img $WALLPAPER
