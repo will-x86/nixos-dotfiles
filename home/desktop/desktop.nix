@@ -59,7 +59,7 @@ in {
     feh
     playerctl
   ];
-  trace "secrets: ${toString secrets}"
+  trace "secrets: ${toString secrets}";
 
   home.sessionVariables = {
     ANTHROPIC_API_KEY = "${secrets.anthropic.api_key}";
