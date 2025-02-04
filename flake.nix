@@ -20,9 +20,10 @@
     in {
       nixosConfigurations = {
         prodesk = nixpkgs.lib.nixosSystem {
-          inherit system secrets;
+          inherit system;
 
           modules = [
+            secrets
             ./hosts/all.nix
             ./hosts/prodesk/configuration.nix
             home-manager.nixosModules.home-manager
@@ -35,8 +36,9 @@
           ];
         };
         framework = nixpkgs.lib.nixosSystem {
-          inherit system secrets;
+          inherit system;
           modules = [
+            secrets
             ./hosts/all.nix
             ./hosts/framework/configuration.nix
             home-manager.nixosModules.home-manager
@@ -50,8 +52,9 @@
         };
 
         bigDaddy = nixpkgs.lib.nixosSystem {
-          inherit system secrets;
+          inherit system;
           modules = [
+            secrets
             ./hosts/all.nix
             ./hosts/bigDaddy/configuration.nix
             home-manager.nixosModules.home-manager
