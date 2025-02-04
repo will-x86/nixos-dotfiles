@@ -60,6 +60,6 @@ in {
     playerctl
   ];
   home.sessionVariables = {
-    ANTHROPIC_API_KEY = "${secrets.anthropic.api_key}";
+    ANTHROPIC_API_KEY = "${secrets.anthropic}";
   };
 }
