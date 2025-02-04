@@ -23,7 +23,6 @@
           inherit system;
 
           modules = [
-            secrets
             ./hosts/all.nix
             ./hosts/prodesk/configuration.nix
             home-manager.nixosModules.home-manager
@@ -38,7 +37,6 @@
         framework = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            secrets
             ./hosts/all.nix
             ./hosts/framework/configuration.nix
             home-manager.nixosModules.home-manager
@@ -50,12 +48,10 @@
             }
           ];
         };
-trace "secrets: ${toString secrets}"
 
         bigDaddy = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            secrets
             ./hosts/all.nix
             ./hosts/bigDaddy/configuration.nix
             home-manager.nixosModules.home-manager
