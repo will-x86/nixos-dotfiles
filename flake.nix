@@ -23,8 +23,8 @@
           inherit system;
 
           modules = [
-            (import ./hosts/all.nix { inherit secrets; })
-            ./hosts/prodesk/configuration.nix
+            (import ./hosts/all.nix {inherit secrets;})
+            (import ./hosts/prodesk/configuration.nix {inherit secrets;})
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -37,9 +37,9 @@
         framework = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            (import ./hosts/all.nix { inherit secrets; })
+            (import ./hosts/all.nix {inherit secrets;})
 
-            ./hosts/framework/configuration.nix
+            (import ./hosts/framework/configuration.nix {inherit secrets;})
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -53,8 +53,8 @@
         bigDaddy = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            (import ./hosts/all.nix { inherit secrets; })
-            ./hosts/bigDaddy/configuration.nix
+            (import ./hosts/all.nix {inherit secrets;})
+            (import ./hosts/bigDaddy/configuration.nix {inherit secrets;})
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
