@@ -50,6 +50,7 @@
             }
           ];
         };
+trace "secrets: ${toString secrets}"
 
         bigDaddy = nixpkgs.lib.nixosSystem {
           inherit system;
