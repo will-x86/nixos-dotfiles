@@ -132,6 +132,10 @@ cmp.setup({
     mapping = cmp.mapping(cmp_mappings),
 })
 
+cmp.setup.filetype('sql', {
+    enabled = false
+})
+
 lsp.set_preferences({
     suggest_lsp_servers = false,
     sign_icons = {
