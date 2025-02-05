@@ -19,7 +19,6 @@ in {
     pulsemixer
     exfat
     hfsprogs
-    spice-vdagent
     arduino
     llvmPackages_latest.lldb
     clang-tools
