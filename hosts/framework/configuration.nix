@@ -60,6 +60,7 @@
   environment.systemPackages = with pkgs; [
     cifs-utils
     samba
+    qemu-full
   ];
   programs._1password.enable = true;
   programs._1password-gui = {
