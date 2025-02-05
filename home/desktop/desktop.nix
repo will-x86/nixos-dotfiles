@@ -19,6 +19,7 @@ in {
     pulsemixer
     exfat
     hfsprogs
+    dbeaver-ce
     postman
     arduino
     llvmPackages_latest.lldb
