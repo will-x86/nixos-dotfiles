@@ -11,7 +11,7 @@
 
   outputs = inputs:
     with inputs; let
-      secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
+      secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
@@ -21,7 +21,6 @@
       nixosConfigurations = {
         prodesk = nixpkgs.lib.nixosSystem {
           inherit system;
-
           modules = [
             ./hosts/all.nix
             ./hosts/prodesk/configuration.nix
@@ -29,8 +28,11 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {inherit secrets;};
+              home-manager.extraSpecialArgs = { inherit secrets; };
               home-manager.users.will = import ./home/base/base.nix;
+            }
+            {
+              _module.args.secrets = secrets; # Pass secrets explicitly
             }
           ];
         };
@@ -43,12 +45,14 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {inherit secrets;};
+              home-manager.extraSpecialArgs = { inherit secrets; };
               home-manager.users.will = import ./home/desktop/desktop.nix;
+            }
+            {
+              _module.args.secrets = secrets; # Pass secrets explicitly
             }
           ];
         };
-
         bigDaddy = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
@@ -58,8 +62,11 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {inherit secrets;};
+              home-manager.extraSpecialArgs = { inherit secrets; };
               home-manager.users.will = import ./home/desktop/desktop.nix;
+            }
+            {
+              _module.args.secrets = secrets; # Pass secrets explicitly
             }
           ];
         };
