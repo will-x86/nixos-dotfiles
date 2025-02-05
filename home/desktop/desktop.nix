@@ -19,6 +19,7 @@ in {
     pulsemixer
     exfat
     hfsprogs
+    postman
     arduino
     llvmPackages_latest.lldb
     clang-tools
