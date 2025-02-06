@@ -5,7 +5,7 @@
 }: {
   programs.ssh.enable = true;
   programs.ssh.extraConfig = ''
-    Host github.com
+    Host *
       IdentityFile ~/.ssh/ed25519
   '';
 }
