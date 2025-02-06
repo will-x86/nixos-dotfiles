@@ -19,6 +19,7 @@ in {
     pulsemixer
     exfat
     hfsprogs
+    mcomix
     dbeaver-bin
     postman
     arduino
