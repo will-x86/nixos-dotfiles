@@ -19,6 +19,7 @@ in {
     pulsemixer
     exfat
     hfsprogs
+    python3.12-dbus-python
     mcomix
     dbeaver-bin
     postman
