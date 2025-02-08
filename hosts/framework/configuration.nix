@@ -26,6 +26,10 @@
     pkgs.platformio-core.udev
     pkgs.openocd
   ];
+  networking.networkmanager = {
+      enable = true;
+      wifi.backend = "iwd"
+  };
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
@@ -61,6 +65,8 @@
     cifs-utils
     samba
     qemu_full
+  networkmanagerapplet
+  plasma-nm
   ];
   programs._1password.enable = true;
   programs._1password-gui = {
