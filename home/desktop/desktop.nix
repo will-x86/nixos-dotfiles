@@ -22,6 +22,7 @@ in {
     python312Packages.dbus-python
     mcomix
     dbeaver-bin
+    discord
     postman
     arduino
     llvmPackages_latest.lldb
