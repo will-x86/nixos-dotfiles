@@ -26,10 +26,10 @@
     pkgs.platformio-core.udev
     pkgs.openocd
   ];
-  hardware.opengl= {
+  hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
-      rocmPackages.clr.icd
+      #rocmPackages.clr.icd
     ];
   };
   services.desktopManager.plasma6.enable = true;
