@@ -71,6 +71,9 @@
   };
 
   services.gvfs.enable = true;
+
+  # Add user 'will' to dialout group for serial port access
+  users.users.will.extraGroups = [ "dialout" ];
   fileSystems."/mnt/FractalMediaRemote" = {
     device = "//${secrets.tailscale.rootDomain}/Media";
     fsType = "cifs";
