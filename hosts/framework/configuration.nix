@@ -33,7 +33,18 @@
     ];
   };
   services.cloudflared = {
-      enable = true; 
+    enable = true;
+    tunnels = {
+      "sussex" = {
+        credentialsFile = "/home/will/.cloudflared/cert.pem";
+        default = "http_status:404";
+        ingress = {
+          # Configure your ingress rules here
+          # For example:
+          "${secrets.cloudflared.domain}" = "http://localhost:8080";
+        };
+      };
+    };
   };
   services.desktopManager.plasma6.enable = true;
   services.xserver.xkb = {
