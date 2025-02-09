@@ -35,7 +35,7 @@
   services.cloudflared = {
     enable = true;
     tunnels = {
-      "sussex" = {
+      "sus" = {
         credentialsFile = "/home/will/.cloudflared/cert.pem";
         default = "http_status:404";
         ingress = {
