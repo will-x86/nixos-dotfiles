@@ -25,7 +25,8 @@ git commit -m "$gen" || true
 alejandra .
 
 echo "Rebuilding NixOS and applying Home Manager configuration"
-sudo nixos-rebuild switch --flake .#$HOST --show-trace
+sudo nixos-rebuild switch --flake .#$HOST --show-trace # --upgrade
+# nix-collect-garbage -d ( --delete-older-than 10d ) 
 
 echo "NixOS and Home Manager configurations updated successfully!"
 
