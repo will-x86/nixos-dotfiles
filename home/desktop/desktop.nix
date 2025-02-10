@@ -28,7 +28,7 @@ in {
     discord
     postman
     arduino
-    llvmPackages_latest.lldb
+    #llvmPackages_latest.lldb
     clang-tools
     #lldb
     avrdude
