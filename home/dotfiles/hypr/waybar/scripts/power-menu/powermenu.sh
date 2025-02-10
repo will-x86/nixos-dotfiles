@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 dir="/home/will/.config/hypr/waybar/scripts/power-menu/"
-theme='style-1'
+theme='style'
 
 uptime="$(uptime | sed -E 's/.*(up.*), [[:digit:]]+ user.*/\1/')"
 host=$(hostname)

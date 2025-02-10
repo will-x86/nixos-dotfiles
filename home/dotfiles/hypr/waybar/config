@@ -17,7 +17,6 @@
         "disk",
         "pulseaudio",
         "bluetooth",
-        "light",
         "battery",
         "network",
         "clock",
@@ -110,12 +109,6 @@
         "format-plugged": "{capacity}%",
         "format-alt": "{icon} {time}",
         "format-icons": ["", "", "", ""]
-    },
-     "light": {
-        "device": "amdgpu_bl1",
-        "format": "  {percent}%",
-         "on-scroll-up": "brightnessctl set +5%",
-        "on-scroll-down": "brightnessctl set 5%-"
     },
     "bluetooth": {
         "format": "{icon}",
