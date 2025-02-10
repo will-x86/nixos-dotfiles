@@ -49,7 +49,6 @@
       bind -T copy-mode-vi V send-keys -X cancel
 
       unbind -T copy-mode-vi v
-
       bind -T copy-mode-vi v send-keys -X begin-selection
       bind -T copy-mode-vi 'C-v' send-keys -X rectangle-toggle
       bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "#{pkgs.xclip}/bin/xclip -in -selection clipboard"
@@ -80,6 +79,7 @@
       bind -T copy-mode-vi 'C-l' select-pane -R
       bind -T copy-mode-vi 'C-\' select-pane -l
       bind -T copy-mode-vi 'C-Space' select-pane -t:.+
+      bind-key -r f run-shell "tmux neww ~/.tmux-sessioniser"
     '';
     plugins = with pkgs.tmuxPlugins; [
       sensible
