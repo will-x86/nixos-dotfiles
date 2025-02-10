@@ -53,6 +53,24 @@
             }
           ];
         };
+frameworkold = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/all.nix
+            ./hosts/frameworkold/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {inherit secrets;};
+              home-manager.users.will = import ./home/desktop/desktop.nix;
+            }
+            {
+              _module.args.secrets = secrets; # Pass secrets explicitly
+            }
+          ];
+        };
+
         bigDaddy = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
