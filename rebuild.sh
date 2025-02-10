@@ -2,6 +2,16 @@
 set -e
 
 FRAMEWORK_DIR=~/projects/nixos-dotfiles
+UPGRADE=false
+
+# Parse command line arguments
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        --upgrade) UPGRADE=true ;;
+        *) echo "Unknown parameter: $1"; exit 1 ;;
+    esac
+    shift
+done
 
 git_no_pager() {
     GIT_PAGER=cat git "$@"
@@ -25,7 +35,11 @@ git commit -m "$gen" || true
 alejandra .
 
 echo "Rebuilding NixOS and applying Home Manager configuration"
-sudo nixos-rebuild switch --flake .#$HOST --show-trace # --upgrade
+if [ "$UPGRADE" = true ]; then
+    sudo nixos-rebuild switch --flake .#$HOST --show-trace --upgrade
+else
+    sudo nixos-rebuild switch --flake .#$HOST --show-trace
+fi
 # nix-collect-garbage -d ( --delete-older-than 10d ) 
 
 echo "NixOS and Home Manager configurations updated successfully!"

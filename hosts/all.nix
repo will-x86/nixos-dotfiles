@@ -10,7 +10,7 @@
   nix.gc.automatic = true;
   nix.gc.dates = "daily";
   nix.gc.options = "--delete-older-than 10d";
-  nix.settings.auto-optimise-store= true;
+  nix.settings.auto-optimise-store = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   networking.nameservers = ["1.1.1.1" "1.0.0.1"];
   networking.networkmanager.enable = true;
