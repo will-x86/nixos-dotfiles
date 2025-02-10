@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-FRAMEWORK_DIR=~/nixos-dotfiles
+FRAMEWORK_DIR=~/projects/nixos-dotfiles
 
 git_no_pager() {
     GIT_PAGER=cat git "$@"
