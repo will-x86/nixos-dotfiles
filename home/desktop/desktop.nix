@@ -21,6 +21,7 @@ in {
     hfsprogs
     python312Packages.dbus-python
     mcomix
+    swaylock
     dbeaver-bin
     discord
     postman
