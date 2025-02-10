@@ -103,6 +103,7 @@ require("lazy").setup({
         build = 'make', -- Optional, only if you want to use tiktoken_core to calculate tokens count
     },
     'nvim-treesitter/playground',
+    'folke/zen-mode.nvim',
     { 'theprimeagen/harpoon', event = "VeryLazy" },
     {
         'VonHeikemen/lsp-zero.nvim',
