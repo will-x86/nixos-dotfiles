@@ -9,7 +9,6 @@
     "fixed-center": false,
     "modules-left": [
         "hyprland/workspaces",
-        "custom/spotify"
     ],
     "modules-center": [
     ],
@@ -17,6 +16,7 @@
         "memory",
         "disk",
         "pulseaudio",
+        "bluetooth",
         "light",
         "battery",
         "network",
@@ -95,14 +95,6 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/spotify": {
-        "format": "{}",
-        "return-type": "json",
-        "on-click": "playerctl --player=spotify play-pause",
-        "on-scroll-down": "playerctl --player=spotify next",
-        "on-scroll-up": "playerctl --player=spotify previous",
-        "tooltip": false
-    },
     "custom/power-menu": {
         "format": "⏻",
         "on-click": "~/.config/hypr/waybar/scripts/power-menu/powermenu.sh"
@@ -119,10 +111,19 @@
         "format-alt": "{icon} {time}",
         "format-icons": ["", "", "", ""]
     },
-    "light": {
+     "light": {
         "device": "amdgpu_bl1",
-        "format": "  {percent}%",
+        "format": "  {percent}%",
          "on-scroll-up": "brightnessctl set +5%",
         "on-scroll-down": "brightnessctl set 5%-"
+    },
+    "bluetooth": {
+        "format": "{icon}",
+        "format-icons": {
+            "enabled": "󰂯",
+            "disabled": "󰂲"
+        },
+        "tooltip-format": "{status}",
+        "on-click": "~/.config/hypr/scripts/rofi_bluetooth"
     }
 }
