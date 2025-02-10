@@ -19,6 +19,7 @@ in {
     pulsemixer
     exfat
     hfsprogs
+    polkit
     killall
     python312Packages.dbus-python
     mcomix
