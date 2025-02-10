@@ -79,7 +79,7 @@
       bind -T copy-mode-vi 'C-l' select-pane -R
       bind -T copy-mode-vi 'C-\' select-pane -l
       bind -T copy-mode-vi 'C-Space' select-pane -t:.+
-      bind-key -r f run-shell "tmux neww ~/.tmux-sessioniser"
+      bind-key -r f run-shell "tmux neww ~/tmux-sessioniser"
     '';
     plugins = with pkgs.tmuxPlugins; [
       sensible
