@@ -21,7 +21,6 @@ window {
     x-offset:                    0px;
     y-offset:                    0px;
 
-    /* properties for all widgets */
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
