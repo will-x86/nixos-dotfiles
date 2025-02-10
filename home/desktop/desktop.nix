@@ -19,6 +19,7 @@ in {
     pulsemixer
     exfat
     hfsprogs
+    killall
     python312Packages.dbus-python
     mcomix
     swaylock
