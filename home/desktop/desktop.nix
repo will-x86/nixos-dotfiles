@@ -30,7 +30,7 @@ in {
     arduino
     llvmPackages_latest.lldb
     clang-tools
-    lldb
+    #lldb
     avrdude
     ccls
     vscode
