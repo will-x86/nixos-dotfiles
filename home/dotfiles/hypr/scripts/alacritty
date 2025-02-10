@@ -10,6 +10,8 @@ elif [ "$1" == "-F" ]; then
 			  -o window.startup_mode="'Fullscreen'" \
 			  window.padding.x=30 window.padding.y=30 \
 			  window.opacity=0.95 font.size=14
+elif [ "$1" == "-T" ]; then
+    alacritty --config-file "$CONFIG" -e ~/.tmux-sessionizer
 else
 	alacritty --config-file "$CONFIG"
 fi
