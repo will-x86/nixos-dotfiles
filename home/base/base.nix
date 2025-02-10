@@ -56,7 +56,8 @@
 
   home.file = {
     ".p10k.zsh".source = ../dotfiles/.p10k.zsh;
-    ".tmux-sessioniser".source = ../dotfiles/tmux-sessioniser;
+    ".tmux-sessioniser".source = ../dotfiles/.tmux-sessioniser;
+    "tmux-sessioniser".source = ../dotfiles/tmux-sessioniser;
     ".zshrc".source = ../dotfiles/.zshrc;
     ".config/nvim" = {
       source = ../dotfiles/nvim;
