@@ -53,7 +53,7 @@
             }
           ];
         };
-frameworkold = nixpkgs.lib.nixosSystem {
+        frameworkold = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             ./hosts/all.nix

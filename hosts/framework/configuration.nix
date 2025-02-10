@@ -26,7 +26,7 @@
     pkgs.platformio-core.udev
     pkgs.openocd
   ];
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       #rocmPackages.clr.icd
