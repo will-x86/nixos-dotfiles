@@ -104,7 +104,7 @@ return {
             })
 
             -- TypeScript/React Native setup
-            require('lspconfig').tsserver.setup({
+            require('lspconfig').ts_ls.setup({
                 filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact" },
                 root_dir = require('lspconfig.util').root_pattern("package.json", "tsconfig.json", ".git"),
                 settings = {

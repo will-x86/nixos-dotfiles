@@ -19,6 +19,8 @@ in {
     pulsemixer
     exfat
     hfsprogs
+    typescript-language-server
+    deno
     polkit
     killall
     python312Packages.dbus-python
