@@ -20,6 +20,12 @@ return {
 
         -- Initialize lsp-zero
         --lsp_zero.preset({}-
+        lsp_zero.preset({
+            name = 'minimal',
+            set_lsp_keymaps = true,
+            manage_nvim_cmp = true,
+            suggest_lsp_servers = false,
+        })
         local lspconfig_defaults = require('lspconfig').util.default_config
         lspconfig_defaults.capabilities = vim.tbl_deep_extend(
             'force',
@@ -81,8 +87,18 @@ return {
                 require('lspconfig')[server].setup(config)
             end
         end
-
         cmp.setup({
+            snippet = {
+                expand = function(args)
+                    require('luasnip').lsp_expand(args.body)
+                end,
+            },
+            sources = cmp.config.sources({
+                { name = 'nvim_lsp' },
+                { name = 'luasnip' },
+                { name = 'buffer' },
+                { name = 'path' },
+            }),
             mapping = cmp.mapping.preset.insert({
                 ['<CR>'] = cmp.mapping.confirm({ select = false }),
                 ['<C-Space>'] = cmp.mapping.complete(),
@@ -93,6 +109,15 @@ return {
                 ['<C-i>'] = cmp.mapping.confirm({ select = true }),
                 ['<C-u>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-d>'] = cmp.mapping.scroll_docs(4),
+            })
+        })
+
+        -- Set up command line completion
+        cmp.setup.cmdline(':', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources({
+                { name = 'path' },
+                { name = 'cmdline' }
             })
         })
 
