@@ -143,12 +143,12 @@ return {
         })
 
         -- LSP preferences and keymaps
-        lsp.set_preferences({
-            suggest_lsp_servers = false,
-            sign_icons = {
-                error = 'E', warn = 'W', hint = 'H', info = 'I'
-            }
-        })
+        --lsp.set_preferences({
+        --suggest_lsp_servers = false,
+        --sign_icons = {
+        --error = 'E', warn = 'W', hint = 'H', info = 'I'
+        --}
+        --})
 
         local disable_lsp_filetypes = { sql = true, mysql = true }
 
