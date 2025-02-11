@@ -25,6 +25,7 @@
     pkgs.platformio-core
     pkgs.platformio-core.udev
     pkgs.openocd
+    pkgs.android-udev-rules
   ];
   hardware.graphics = {
     enable = true;
