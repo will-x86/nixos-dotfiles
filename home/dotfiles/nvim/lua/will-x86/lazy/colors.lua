@@ -1,10 +1,11 @@
+
+
 function _G.ColorMyPencils()
     vim.o.termguicolors = true
     vim.o.background = "dark"
     vim.cmd.colorscheme("tokyonight")
-    vim.cmd("TransparentEnable")
+    --vim.cmd("TransparentEnable")
 end
-
 --ColorMyPencils()
 
 return {
@@ -25,6 +26,7 @@ return {
                     "NormalFloat"
                 },
             })
+            vim.cmd("TransparentEnable")
         end
     },
 

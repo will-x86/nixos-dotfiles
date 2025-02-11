@@ -16,7 +16,7 @@ return {
     config = function()
         local lsp = require("lsp-zero")
         local cmp = require('cmp')
-        --local nvim_lsp = require('lspconfig')
+        local nvim_lsp = require('lspconfig')
 
         -- Set up mason
         require("mason").setup({ PATH = "append" })
