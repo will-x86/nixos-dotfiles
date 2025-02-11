@@ -60,7 +60,7 @@ return {
         -- LSP servers setup
         local ensure_installed = is_nixos and {} or {
             'denols', 'gopls', 'volar', 'clangd', 'rust_analyzer',
-            'yamlls', 'pyright', 'lua_ls', 'hls', 'tsserver'
+            'yamlls', 'pyright', 'lua_ls', 'hls', 'ts_ls'
         }
 
         require('mason-lspconfig').setup({
