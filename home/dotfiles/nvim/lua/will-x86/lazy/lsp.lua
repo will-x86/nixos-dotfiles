@@ -14,7 +14,7 @@ return {
         "j-hui/fidget.nvim",
         "VonHeikemen/lsp-zero.nvim",
         "MunifTanjim/prettier.nvim",
-        "normen/vim-platformio",
+        "anurag3301/nvim-platformio.lua",
     },
     config = function()
         local lsp = require("lsp-zero")
