@@ -12,7 +12,6 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "VonHeikemen/lsp-zero.nvim",
         "MunifTanjim/prettier.nvim",
-        "normen/vim-platformio",
     },
     config = function()
         local lsp = require("lsp-zero")
