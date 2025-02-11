@@ -14,9 +14,12 @@ return {
         "MunifTanjim/prettier.nvim",
     },
     config = function()
-        local lsp = require("lsp-zero")
+        local lsp_zero = require('lsp-zero')
         local cmp = require('cmp')
         local nvim_lsp = require('lspconfig')
+
+        -- Initialize lsp-zero
+        lsp_zero.preset({})
 
         -- Set up mason
         require("mason").setup({ PATH = "append" })
@@ -58,77 +61,53 @@ return {
 
         require('mason-lspconfig').setup({
             ensure_installed = ensure_installed,
-            handlers = { lsp.default_setup }
+            handlers = {
+                lsp_zero.default_setup,
+            },
         })
 
         -- NixOS specific configurations
         if is_nixos then
-            -- Your NixOS specific LSP configurations here
             local nixos_configs = {
-                clangd = { cmd = { "/etc/profiles/per-user/will/bin/clangd" } },
-                pyright = {},
-                rust_analyzer = {
-                    on_attach = function(client, bufnr)
-                        lsp.default_setup(client, bufnr)
-                        lsp_format_on_save(bufnr)
-                    end
-                },
-                lua_ls = {
-                    settings = {
-                        Lua = {
-                            diagnostics = {
-                                globals = { 'vim' }
-                            }
-                        }
-                    }
-                },
-                hls = {},
-                gopls = {
-                    settings = {
-                        gopls = { gofumpt = true }
-                    }
-                }
+                -- Your NixOS configurations here
             }
-
             for server, config in pairs(nixos_configs) do
                 require('lspconfig')[server].setup(config)
             end
         end
 
         -- Completion setup
-        local cmp_mappings = {
-            ['<CR>'] = cmp.mapping.confirm({ select = false }),
-            ['<C-Space>'] = cmp.mapping.complete(),
-            ['<C-f>'] = lsp.cmp_action().luasnip_jump_forward(),
-            ['<C-b>'] = lsp.cmp_action().luasnip_jump_backward(),
-            ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-            ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-            ['<C-i>'] = cmp.mapping.confirm({ select = true }),
-            ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-            ['<C-d>'] = cmp.mapping.scroll_docs(4),
-        }
-
-        cmp.setup({
-            mapping = cmp.mapping(cmp_mappings),
+        local cmp_config = lsp_zero.defaults.cmp_config({
+            mapping = {
+                ['<CR>'] = cmp.mapping.confirm({ select = false }),
+                ['<C-Space>'] = cmp.mapping.complete(),
+                ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+                ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+                ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+                ['<C-i>'] = cmp.mapping.confirm({ select = true }),
+                ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+                ['<C-d>'] = cmp.mapping.scroll_docs(4),
+            }
         })
+
+        cmp.setup(cmp_config)
 
         -- Disable completion for specific filetypes
         cmp.setup.filetype('sql', { enabled = false })
 
-        -- LSP preferences and keymaps
-        lsp.set_preferences({
-            suggest_lsp_servers = false,
-            sign_icons = {
-                error = 'E',
-                warn = 'W',
-                hint = 'H',
-                info = 'I'
-            }
+        -- Configure sign icons
+        lsp_zero.set_sign_icons({
+            error = 'E',
+            warn = 'W',
+            hint = 'H',
+            info = 'I'
         })
 
         local disable_lsp_filetypes = { sql = true, mysql = true }
 
-        lsp.on_attach(function(client, bufnr)
+        -- LSP attach configuration
+        lsp_zero.on_attach(function(client, bufnr)
             local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
             if disable_lsp_filetypes[filetype] then
                 client.stop()
@@ -152,9 +131,12 @@ return {
             vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
         end)
 
-        lsp.setup()
+        -- Setup LSP
+        lsp_zero.setup()
 
-        vim.diagnostic.config({ virtual_text = true })
+        -- Configure diagnostics
+        vim.diagnostic.config({
+            virtual_text = true,
+        })
     end
 }
-
