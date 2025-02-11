@@ -1,6 +1,7 @@
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
+        "stevearc/conform.nvim",
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "hrsh7th/cmp-nvim-lsp",
@@ -10,124 +11,67 @@ return {
         "hrsh7th/nvim-cmp",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
+        "j-hui/fidget.nvim",
         "VonHeikemen/lsp-zero.nvim",
         "MunifTanjim/prettier.nvim",
+        "normen/vim-platformio",
     },
     config = function()
-        -- Reserve space in the gutter
-        vim.opt.signcolumn = 'yes'
         local lsp = require("lsp-zero")
-
-        -- Add cmp_nvim_lsp capabilities to lspconfig
-        local lspconfig_defaults = require('lspconfig').util.default_config
-        lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-            'force',
-            lspconfig_defaults.capabilities,
-            require('cmp_nvim_lsp').default_capabilities()
-        )
-
-        -- Set up mason
-        require("mason").setup({ PATH = "append" })
-
-        -- NixOS detection
-        local is_nixos = (function()
-            if vim.loop.os_uname().sysname == "Linux" then
-                local file = io.open("/etc/os-release", "r")
-                if file then
-                    local content = file:read("*all")
-                    file:close()
-                    return string.find(content, "ID=nixos") and true or false
-                end
-            end
-            return false
-        end)()
-
-        -- LSP servers setup
-        local ensure_installed = is_nixos and {} or {
-            'denols', 'gopls', 'volar', 'clangd', 'rust_analyzer',
-            'yamlls', 'pyright', 'lua-ls', 'hls'
-        }
-
-        require('mason-lspconfig').setup({
-            ensure_installed = ensure_installed,
-        })
-
-        -- LSP attach configuration
-        vim.api.nvim_create_autocmd('LspAttach', {
-            desc = 'LSP actions',
-            callback = function(event)
-                local opts = { buffer = event.buf }
-
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-                vim.keymap.set("n", "<C-o>", [[<Cmd>lua vim.cmd('normal! <C-O>')<CR>]], opts)
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-                vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-                vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-                vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
-                vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-                vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
-                vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
-                vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-            end,
-        })
-
-        -- Set up completion
         local cmp = require('cmp')
-        cmp.setup({
-            snippet = {
-                expand = function(args)
-                    require('luasnip').lsp_expand(args.body)
-                end,
-            },
-            sources = {
-                { name = 'nvim_lsp' },
-                { name = 'luasnip' },
-                { name = 'buffer' },
-                { name = 'path' },
-            },
-            mapping = cmp.mapping.preset.insert({
-                ['<CR>'] = cmp.mapping.confirm({ select = false }),
-                ['<C-Space>'] = cmp.mapping.complete(),
-                ['<C-f>'] = cmp.mapping.scroll_docs(4),
-                ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-                ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-                ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-                ['<C-i>'] = cmp.mapping.confirm({ select = true }),
-                ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-                ['<C-d>'] = cmp.mapping.scroll_docs(4),
-            })
-        })
+        local cmp_action = lsp.cmp_action()
+        local prettier = require("prettier")
+        local nvim_lsp = require('lspconfig')
 
-        -- Disable completion for specific filetypes
-        cmp.setup.filetype('sql', { enabled = false })
-
-        -- Configure diagnostics
-        vim.diagnostic.config({
-            virtual_text = true,
-        })
+        -- Mason setup
+        require("mason").setup({ PATH = "append" })
 
         -- Format on save setup
         local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
-        local function lsp_format_on_save(bufnr)
+        local lsp_format_on_save = function(bufnr)
             vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
             vim.api.nvim_create_autocmd('BufWritePre', {
                 group = augroup,
                 buffer = bufnr,
                 callback = function()
-                    vim.lsp.buf.format()
+                    vim.lsp.buf.format({
+                        filter = function(client)
+                            return client.name == "null-ls"
+                        end
+                    })
                 end,
             })
         end
 
-        -- Set up individual LSP servers
-        local lspconfig = require('lspconfig')
+        -- NixOS detection
+        local system_name = vim.loop.os_uname().sysname
+        local is_nixos = false
+        if system_name == "Linux" then
+            local file = io.open("/etc/os-release", "r")
+            if file then
+                local content = file:read("*all")
+                file:close()
+                if string.find(content, "ID=nixos") then
+                    is_nixos = true
+                end
+            end
+        end
 
-        -- Configure servers based on OS
+        -- LSP servers setup
+        local ensure_installed = is_nixos and {} or {
+            'denols', 'gopls', 'volar', 'clangd', 'rust_analyzer',
+            'yamlls', 'pyright', 'lua_ls', 'hls'
+        }
+
+        require('mason-lspconfig').setup({
+            ensure_installed = ensure_installed,
+            handlers = {
+                lsp.default_setup,
+            }
+        })
+
+        -- NixOS specific LSP configurations
         if is_nixos then
-            -- NixOS specific configurations
-            -- Add your NixOS-specific server configurations here
-        else
             require 'lspconfig'.clangd.setup {
                 cmd = { "/etc/profiles/per-user/will/bin/clangd" },
             }
@@ -159,6 +103,91 @@ return {
                 }
             })
         end
+
+        -- Prettier setup
+        prettier.setup({
+            bin = 'prettier',
+            filetypes = {
+                "css", "graphql", "html", "javascript", "javascriptreact",
+                "json", "less", "scss", "typescript", "typescriptreact", "yaml",
+            },
+        })
+
+        -- Completion setup
+        local cmp_select = { behavior = cmp.SelectBehavior.Select }
+        local cmp_mappings = {
+            ['<CR>'] = cmp.mapping.confirm({ select = false }),
+            ['<C-Space>'] = cmp.mapping.complete(),
+            ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+            ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+            ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+            ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+            ['<C-i>'] = cmp.mapping.confirm({ select = true }),
+            ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-d>'] = cmp.mapping.scroll_docs(4),
+        }
+
+        cmp.setup({
+            mapping = cmp.mapping(cmp_mappings),
+            snippet = {
+                expand = function(args)
+                    require('luasnip').lsp_expand(args.body)
+                end,
+            },
+            sources = cmp.config.sources({
+                { name = 'nvim_lsp' },
+                { name = 'luasnip' },
+            }, {
+                { name = 'buffer' },
+            })
+        })
+
+        -- LSP preferences and keymaps
+        lsp.set_preferences({
+            suggest_lsp_servers = false,
+            sign_icons = {
+                error = 'E', warn = 'W', hint = 'H', info = 'I'
+            }
+        })
+
+        local disable_lsp_filetypes = { sql = true, mysql = true }
+
+        lsp.on_attach(function(client, bufnr)
+            local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+
+            if disable_lsp_filetypes[filetype] then
+                client.stop()
+                return
+            end
+            local opts = { buffer = bufnr, remap = false }
+            lsp_format_on_save(bufnr)
+            vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+            vim.keymap.set("n", "<C-o>", [[<Cmd>lua vim.cmd('normal! <C-O>')<CR>]], opts)
+            vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+            vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+            vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+            vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+            vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+            vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+            vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+            vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+            vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+        end)
+
+        lsp.setup()
+
+        -- Diagnostic configuration
+        vim.diagnostic.config({
+            virtual_text = true,
+            float = {
+                focusable = false,
+                style = "minimal",
+                border = "rounded",
+                source = "always",
+                header = "",
+                prefix = "",
+            },
+        })
     end
 }
 
