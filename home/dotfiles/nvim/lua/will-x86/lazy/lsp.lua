@@ -20,11 +20,11 @@ return {
 
         -- Initialize lsp-zero
         local lspconfig_defaults = require('lspconfig').util.default_config
-lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-  'force',
-  lspconfig_defaults.capabilities,
-  require('cmp_nvim_lsp').default_capabilities()
-)
+        lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+            'force',
+            lspconfig_defaults.capabilities,
+            require('cmp_nvim_lsp').default_capabilities()
+        )
 
         -- Set up mason
         require("mason").setup({ PATH = "append" })
@@ -82,7 +82,7 @@ lspconfig_defaults.capabilities = vim.tbl_deep_extend(
         end
 
         -- Completion setup
-        local cmp_config = lsp_zero.defaults.cmp_config({
+        cmp.setup({
             mapping = {
                 ['<CR>'] = cmp.mapping.confirm({ select = false }),
                 ['<C-Space>'] = cmp.mapping.complete(),
@@ -95,8 +95,6 @@ lspconfig_defaults.capabilities = vim.tbl_deep_extend(
                 ['<C-d>'] = cmp.mapping.scroll_docs(4),
             }
         })
-
-        cmp.setup(cmp_config)
 
         -- Disable completion for specific filetypes
         cmp.setup.filetype('sql', { enabled = false })
@@ -118,10 +116,8 @@ lspconfig_defaults.capabilities = vim.tbl_deep_extend(
                 client.stop()
                 return
             end
-
             local opts = { buffer = bufnr, remap = false }
             lsp_format_on_save(bufnr)
-
             -- Your keymaps here
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
             vim.keymap.set("n", "<C-o>", [[<Cmd>lua vim.cmd('normal! <C-O>')<CR>]], opts)
