@@ -82,9 +82,8 @@ return {
             end
         end
 
-        -- Completion setup
-        local cmp_config = lsp_zero.defaults.cmp_config({
-            mapping = {
+        cmp.setup({
+            mapping = cmp.mapping.preset.insert({
                 ['<CR>'] = cmp.mapping.confirm({ select = false }),
                 ['<C-Space>'] = cmp.mapping.complete(),
                 ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -94,14 +93,11 @@ return {
                 ['<C-i>'] = cmp.mapping.confirm({ select = true }),
                 ['<C-u>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-d>'] = cmp.mapping.scroll_docs(4),
-            }
+            })
         })
-
-        cmp.setup(cmp_config)
 
         -- Disable completion for specific filetypes
         cmp.setup.filetype('sql', { enabled = false })
-
         -- Configure sign icons
         lsp_zero.set_sign_icons({
             error = 'E',
