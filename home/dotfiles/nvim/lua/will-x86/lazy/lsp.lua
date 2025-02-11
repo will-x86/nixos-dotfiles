@@ -19,10 +19,12 @@ return {
         local nvim_lsp = require('lspconfig')
 
         -- Initialize lsp-zero
+        --lsp_zero.preset({}-
         local lspconfig_defaults = require('lspconfig').util.default_config
         lspconfig_defaults.capabilities = vim.tbl_deep_extend(
             'force',
-            lspconfig_defaults.capabilities
+            lspconfig_defaults.capabilities,
+            require('cmp_nvim_lsp').default_capabilities()
         )
 
         -- Set up mason
@@ -94,8 +96,6 @@ return {
                 ['<C-d>'] = cmp.mapping.scroll_docs(4),
             }
         })
-
-        --  require('cmp_nvim_lsp').default_capabilities()
 
         cmp.setup(cmp_config)
 
