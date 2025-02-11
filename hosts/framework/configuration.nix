@@ -21,7 +21,7 @@
     enable = true;
     xwayland.enable = true;
   };
-    programs.adb.enable = true;
+  programs.adb.enable = true;
   services.udev.packages = [
     pkgs.platformio-core
     pkgs.platformio-core.udev

@@ -60,7 +60,7 @@ return {
         -- LSP servers setup
         local ensure_installed = is_nixos and {} or {
             'denols', 'gopls', 'volar', 'clangd', 'rust_analyzer',
-            'yamlls', 'pyright', 'lua_ls', 'hls'
+            'yamlls', 'pyright', 'lua_ls', 'hls', 'tsserver'
         }
 
         require('mason-lspconfig').setup({
@@ -101,6 +101,36 @@ return {
                         gofumpt = true
                     }
                 }
+            })
+
+            -- TypeScript/React Native setup
+            require('lspconfig').tsserver.setup({
+                filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact" },
+                root_dir = require('lspconfig.util').root_pattern("package.json", "tsconfig.json", ".git"),
+                settings = {
+                    typescript = {
+                        inlayHints = {
+                            includeInlayParameterNameHints = 'all',
+                            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                            includeInlayFunctionParameterTypeHints = true,
+                            includeInlayVariableTypeHints = true,
+                            includeInlayPropertyDeclarationTypeHints = true,
+                            includeInlayFunctionLikeReturnTypeHints = true,
+                            includeInlayEnumMemberValueHints = true,
+                        },
+                    },
+                    javascript = {
+                        inlayHints = {
+                            includeInlayParameterNameHints = 'all',
+                            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                            includeInlayFunctionParameterTypeHints = true,
+                            includeInlayVariableTypeHints = true,
+                            includeInlayPropertyDeclarationTypeHints = true,
+                            includeInlayFunctionLikeReturnTypeHints = true,
+                            includeInlayEnumMemberValueHints = true,
+                        },
+                    },
+                },
             })
         end
 
