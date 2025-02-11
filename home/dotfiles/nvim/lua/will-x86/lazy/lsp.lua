@@ -16,6 +16,7 @@ return {
     config = function()
         -- Reserve space in the gutter
         vim.opt.signcolumn = 'yes'
+        local lsp = require("lsp-zero")
 
         -- Add cmp_nvim_lsp capabilities to lspconfig
         local lspconfig_defaults = require('lspconfig').util.default_config
@@ -127,10 +128,36 @@ return {
             -- NixOS specific configurations
             -- Add your NixOS-specific server configurations here
         else
-            -- Non-NixOS configurations
-            for _, server in ipairs(ensure_installed) do
-                lspconfig[server].setup({})
-            end
+            require 'lspconfig'.clangd.setup {
+                cmd = { "/etc/profiles/per-user/will/bin/clangd" },
+            }
+            require 'lspconfig'.pyright.setup {}
+            --require 'lspconfig'.ccls.setup({ lsp = { use_defaults = true } })
+            require 'lspconfig'.rust_analyzer.setup {
+                on_attach = function(client, bufnr)
+                    lsp.default_setup(client, bufnr)
+                    lsp_format_on_save(bufnr)
+                end
+            }
+            require 'lspconfig'.lua_ls.setup {
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = {
+                                'vim',
+                            },
+                        },
+                    },
+                },
+            }
+            require 'lspconfig'.hls.setup {}
+            require('lspconfig').gopls.setup({
+                settings = {
+                    gopls = {
+                        gofumpt = true
+                    }
+                }
+            })
         end
     end
 }
