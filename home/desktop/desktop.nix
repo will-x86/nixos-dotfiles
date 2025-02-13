@@ -20,7 +20,8 @@ in {
     exfat
     hfsprogs
     typescript-language-server
-    jellyfin-media-player
+#    jellyfin-media-player
+    feishin
     deno
     polkit
     killall
