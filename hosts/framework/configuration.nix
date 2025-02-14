@@ -92,7 +92,7 @@
     ];
   };
 
-  fileSystems."/mnt/FractalMediaRemote" = {
+  fileSystems."/mnt/FractalVault" = {
     device = "//${secrets.tailscale.rootDomain}/Vault";
     fsType = "cifs";
     options = [
