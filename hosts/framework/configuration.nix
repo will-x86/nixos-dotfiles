@@ -92,5 +92,21 @@
     ];
   };
 
+  fileSystems."/mnt/FractalMediaRemote" = {
+    device = "//${secrets.tailscale.rootDomain}/Vault";
+    fsType = "cifs";
+    options = [
+      "username=will"
+      "password=${secrets.samba.frac}"
+      "x-systemd.automount"
+      "x-systemd.mount-timeout=3"
+      "uid=1000"
+      "gid=100"
+      "dir_mode=0777"
+      "file_mode=0666"
+      "nofail"
+    ];
+  };
+
   system.stateVersion = "24.05"; # Did you read the comment?
 }
