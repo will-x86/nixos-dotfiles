@@ -19,6 +19,7 @@
     immich-go
     go-blueprint
     lsof
+    nnn
     tailscale
     git-crypt
     samba
