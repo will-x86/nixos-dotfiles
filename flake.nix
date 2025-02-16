@@ -1,6 +1,5 @@
 {
   description = "Will's NixOS configuration";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
@@ -8,7 +7,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
   outputs = inputs:
     with inputs; let
       secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
@@ -18,6 +16,13 @@
         config.allowUnfree = true;
       };
     in {
+      templates = {
+        go = {
+          path = ./templates/go;
+          description = "Basic Go development environment";
+        };
+      };
+
       nixosConfigurations = {
         prodesk = nixpkgs.lib.nixosSystem {
           inherit system;
@@ -32,7 +37,7 @@
               home-manager.users.will = import ./home/base/base.nix;
             }
             {
-              _module.args.secrets = secrets; # Pass secrets explicitly
+              _module.args.secrets = secrets;
             }
           ];
         };
@@ -49,7 +54,7 @@
               home-manager.users.will = import ./home/desktop/desktop.nix;
             }
             {
-              _module.args.secrets = secrets; # Pass secrets explicitly
+              _module.args.secrets = secrets;
             }
           ];
         };
@@ -66,11 +71,10 @@
               home-manager.users.will = import ./home/desktop/desktop.nix;
             }
             {
-              _module.args.secrets = secrets; # Pass secrets explicitly
+              _module.args.secrets = secrets;
             }
           ];
         };
-
         bigDaddy = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
@@ -84,16 +88,10 @@
               home-manager.users.will = import ./home/desktop/desktop.nix;
             }
             {
-              _module.args.secrets = secrets; # Pass secrets explicitly
+              _module.args.secrets = secrets;
             }
           ];
         };
-    templates = {
-      go = {
-        path = ./templates/go;
-        description = "Basic Go development environment";
-      };
-    };
       };
     };
 }
