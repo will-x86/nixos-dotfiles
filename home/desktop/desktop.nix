@@ -19,6 +19,7 @@ in {
     pulsemixer
     exfat
     hfsprogs
+    brave
     typescript-language-server
     #    jellyfin-media-player
     feishin
