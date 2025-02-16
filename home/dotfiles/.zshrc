@@ -7,6 +7,7 @@ export PATH=$PATH:/usr/local/go/bin
 
 export PATH=$PATH:/home/will/.cargo/bin
 alias gst='git status'
+alias vi='nvim'
 alias gc='git commit'
 alias co='git checkout'
 alias gaa='git add -A'
