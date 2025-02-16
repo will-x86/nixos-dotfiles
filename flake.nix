@@ -19,7 +19,11 @@
       templates = {
         go = {
           path = ./templates/go;
-          description = "Basic Go development environment";
+          description = "Go dev env";
+        };
+        rust = {
+          path = ./templates/rust;
+          description = "Rust dev env";
         };
       };
 

@@ -1,4 +1,4 @@
-# Go Dev Environment Template
+# Go dev env Template
 
 A basic Go dev env with common tools including:
 - go
