@@ -21,12 +21,14 @@
     enable = true;
     xwayland.enable = true;
   };
+    hardware.keyboard.qmk.enable = true;
   programs.adb.enable = true;
   services.udev.packages = [
     pkgs.platformio-core
     pkgs.platformio-core.udev
     pkgs.openocd
     pkgs.android-udev-rules
+    pkgs.via
   ];
   hardware.graphics = {
     enable = true;
@@ -65,6 +67,7 @@
     qemu_full
     networkmanagerapplet
     plasma-nm
+    via
   ];
   programs._1password.enable = true;
   programs._1password-gui = {
