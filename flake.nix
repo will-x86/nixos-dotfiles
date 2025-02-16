@@ -88,6 +88,12 @@
             }
           ];
         };
+    templates = {
+      go = {
+        path = ./templates/go;
+        description = "Basic Go development environment";
+      };
+    };
       };
     };
 }
