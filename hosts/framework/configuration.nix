@@ -21,7 +21,7 @@
     enable = true;
     xwayland.enable = true;
   };
-    hardware.keyboard.qmk.enable = true;
+  hardware.keyboard.qmk.enable = true;
   programs.adb.enable = true;
   services.udev.packages = [
     pkgs.platformio-core

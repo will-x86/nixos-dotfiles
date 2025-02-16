@@ -40,6 +40,7 @@ in {
     vscode
     ffmpeg-full
     vulkan-tools
+    qmk
     grim
     kicad
     libnotify
