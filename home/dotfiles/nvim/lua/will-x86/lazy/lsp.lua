@@ -21,12 +21,14 @@ return {
         local cmp = require('cmp')
         local cmp_action = lsp.cmp_action()
         local prettier = require("prettier")
-        local nvim_lsp = require('lspconfig')
+        --local nvim_lsp = require('lspconfig')
 
         -- Mason setup
         require("mason").setup({ PATH = "append" })
-
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
         -- Format on save setup
+
         local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
         local lsp_format_on_save = function(bufnr)
             vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
@@ -96,13 +98,29 @@ return {
             }
             require 'lspconfig'.hls.setup {}
             require('lspconfig').gopls.setup({
-                settings = {
-                    gopls = {
+                  capabilities = capabilities,
+  init_options = {
+    usePlaceholders = true,
+  },
+  settings = {
+    gopls = {
+      allExperiments = true,
+      usePlaceholders = true,
                         gofumpt = true,
-                        usePlaceholders = true
-
-                    }
-                }
+      analyses = {
+        nilness = true,
+        unusedparams = true,
+        shadow = true,
+     },
+     staticcheck = true,
+    },
+  },
+  flags = {
+    debounce_text_changes = 150,
+  },
+  cmd = { "gopls" },
+  filetypes = {"go", "gomod", "gotmpl"},
+  single_file_support = true,
             })
 
             -- TypeScript/React Native setup
@@ -223,16 +241,7 @@ return {
             vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
             vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
         end)
-        local cmp_lsp = require("cmp_nvim_lsp")
 
-        local capabilities = vim.tbl_deep_extend(
-    "force",
-    {},
-    vim.lsp.protocol.make_client_capabilities(),
-    cmp_lsp.default_capabilities())
-        lsp.set_server_config({
-    capabilities = capabilities
-})
         lsp.setup()
 
         -- Diagnostic configuration
