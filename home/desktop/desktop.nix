@@ -20,7 +20,6 @@ in {
     exfat
     hfsprogs
     syncthingtray
-    syncthing
     brave
     typescript-language-server
     #    jellyfin-media-player
