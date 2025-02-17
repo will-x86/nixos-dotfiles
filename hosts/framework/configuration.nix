@@ -16,18 +16,16 @@
   services.tailscale.enable = true;
   services.xserver.enable = true;
   services.xserver.videoDrivers = ["amdgpu"];
-  services = {
-    syncthing = {
-      enable = true;
-      #group = "mygroupname";
-      user = "will";
-      dataDir = "/home/will/Documents"; # Default folder for new synced folders
-      configDir = "/home/will/Documents/.config/syncthing"; # Folder for Syncthing's settings and keys
-    };
-    settings.gui = {
+  services.syncthing = {
+    enable = true;
+    #group = "mygroupname";
     user = "will";
-    password = "${secrets.syncthing.pass}";
-}
+    dataDir = "/home/will/Documents"; 
+    configDir = "/home/will/Documents/.config/syncthing"; 
+    settings.gui = {
+      user = "will";
+      password = "${secrets.syncthing.pass}";
+    };
   };
 
   programs.hyprland = {
