@@ -25,8 +25,7 @@ return {
 
         -- Mason setup
         require("mason").setup({ PATH = "append" })
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+        -- Remove this section as we're setting capabilities in the mason-lspconfig setup
         -- Format on save setup
 
         local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
@@ -65,10 +64,21 @@ return {
             'yamlls', 'pyright', 'lua_ls', 'hls', 'ts_ls'
         }
 
+        -- Set up default capabilities for all LSP servers
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
         require('mason-lspconfig').setup({
             ensure_installed = ensure_installed,
             handlers = {
-                lsp.default_setup,
+                function(server_name)
+                    require('lspconfig')[server_name].setup({
+                        capabilities = capabilities,
+                        on_attach = function(client, bufnr)
+                            lsp.default_setup(client, bufnr)
+                            lsp_format_on_save(bufnr)
+                        end
+                    })
+                end
             }
         })
 
