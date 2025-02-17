@@ -98,7 +98,7 @@ return {
             require('lspconfig').gopls.setup({
                 settings = {
                     gopls = {
-                        --gofumpt = true
+                        gofumpt = true,
                         usePlaceholders = true,
                     }
                 }
