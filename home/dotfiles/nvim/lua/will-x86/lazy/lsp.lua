@@ -190,9 +190,6 @@ return {
             }, {
                 { name = 'buffer' },
             }),
-            completion = {
-                completeopt = 'menu,menuone,noinsert'
-            }
         })
 
         -- LSP preferences and keymaps
