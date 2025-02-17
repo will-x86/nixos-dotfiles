@@ -100,6 +100,8 @@ return {
                     gopls = {
                         gofumpt = true,
                         usePlaceholders = true,
+                        completionSnippets = true
+
                     }
                 }
             })
@@ -188,7 +190,10 @@ return {
                 { name = 'luasnip' },
             }, {
                 { name = 'buffer' },
-            })
+            }),
+            completion = {
+                completeopt = 'menu,menuone,noinsert'
+            }
         })
 
         -- LSP preferences and keymaps
