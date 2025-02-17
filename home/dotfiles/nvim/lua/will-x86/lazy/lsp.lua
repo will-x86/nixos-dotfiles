@@ -26,7 +26,7 @@ return {
         -- Mason setup
         require("mason").setup({ PATH = "append" })
         local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+        capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
         -- Format on save setup
 
         local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
