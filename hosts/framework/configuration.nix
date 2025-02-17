@@ -18,13 +18,17 @@
   services.xserver.videoDrivers = ["amdgpu"];
   services = {
     syncthing = {
-        enable = true;
-        #group = "mygroupname";
-        user = "will";
-        dataDir = "/home/will/Documents";    # Default folder for new synced folders
-        configDir = "/home/will/Documents/.config/syncthing";   # Folder for Syncthing's settings and keys
+      enable = true;
+      #group = "mygroupname";
+      user = "will";
+      dataDir = "/home/will/Documents"; # Default folder for new synced folders
+      configDir = "/home/will/Documents/.config/syncthing"; # Folder for Syncthing's settings and keys
     };
-};
+    settings.gui = {
+    user = "will";
+    password = "${secrets.syncthing.pass}";
+}
+  };
 
   programs.hyprland = {
     enable = true;
@@ -87,6 +91,8 @@
   services.gvfs.enable = true;
 
   # Add user 'will' to dialout group for serial port access
+     networking.firewall.allowedTCPPorts = [ 8384 22000 ];
+   networking.firewall.allowedUDPPorts = [ 22000 21027 ];
   users.users.will.extraGroups = ["dialout"];
   fileSystems."/mnt/FractalMediaRemote" = {
     device = "//${secrets.tailscale.rootDomain}/Media";
