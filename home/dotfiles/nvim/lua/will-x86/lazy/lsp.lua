@@ -99,8 +99,7 @@ return {
                 settings = {
                     gopls = {
                         gofumpt = true,
-                        usePlaceholders = true,
-                        completionSnippets = true
+                        usePlaceholders = true
 
                     }
                 }
