@@ -30,19 +30,15 @@ return {
 
         local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
         local lsp_format_on_save = function(bufnr)
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd('BufWritePre', {
-                group = augroup,
-                buffer = bufnr,
-                callback = function()
-                    vim.lsp.buf.format({
-                        filter = function(client)
-                            return client.name == "null-ls"
-                        end
-                    })
-                end,
-            })
-        end
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd('BufWritePre', {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+            vim.lsp.buf.format()
+        end,
+    })
+end
 
         -- NixOS detection
         local system_name = vim.loop.os_uname().sysname
