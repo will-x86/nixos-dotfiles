@@ -20,8 +20,8 @@
     enable = true;
     #group = "mygroupname";
     user = "will";
-    dataDir = "/home/will/Documents"; 
-    configDir = "/home/will/Documents/.config/syncthing"; 
+    dataDir = "/home/will/Documents";
+    configDir = "/home/will/Documents/.config/syncthing";
     settings.gui = {
       user = "will";
       password = "${secrets.syncthing.pass}";
@@ -89,8 +89,8 @@
   services.gvfs.enable = true;
 
   # Add user 'will' to dialout group for serial port access
-     networking.firewall.allowedTCPPorts = [ 8384 22000 ];
-   networking.firewall.allowedUDPPorts = [ 22000 21027 ];
+  networking.firewall.allowedTCPPorts = [8384 22000];
+  networking.firewall.allowedUDPPorts = [22000 21027];
   users.users.will.extraGroups = ["dialout"];
   fileSystems."/mnt/FractalMediaRemote" = {
     device = "//${secrets.tailscale.rootDomain}/Media";
