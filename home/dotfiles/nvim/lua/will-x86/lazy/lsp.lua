@@ -30,15 +30,15 @@ return {
 
         local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
         local lsp_format_on_save = function(bufnr)
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    vim.api.nvim_create_autocmd('BufWritePre', {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-            vim.lsp.buf.format()
-        end,
-    })
-end
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd('BufWritePre', {
+                group = augroup,
+                buffer = bufnr,
+                callback = function()
+                    vim.lsp.buf.format()
+                end,
+            })
+        end
 
         -- NixOS detection
         local system_name = vim.loop.os_uname().sysname
@@ -104,29 +104,29 @@ end
             }
             require 'lspconfig'.hls.setup {}
             require('lspconfig').gopls.setup({
-                  capabilities = capabilities,
-  init_options = {
-    usePlaceholders = true,
-  },
-  settings = {
-    gopls = {
-      allExperiments = true,
-      usePlaceholders = true,
+                capabilities = capabilities,
+                init_options = {
+                    usePlaceholders = true,
+                },
+                settings = {
+                    gopls = {
+                        allExperiments = true,
+                        usePlaceholders = true,
                         gofumpt = true,
-      analyses = {
-        nilness = true,
-        unusedparams = true,
-        shadow = true,
-     },
-     staticcheck = true,
-    },
-  },
-  flags = {
-    debounce_text_changes = 150,
-  },
-  cmd = { "gopls" },
-  filetypes = {"go", "gomod", "gotmpl"},
-  single_file_support = true,
+                        analyses = {
+                            nilness = true,
+                            unusedparams = true,
+                            shadow = true,
+                        },
+                        staticcheck = true,
+                    },
+                },
+                flags = {
+                    debounce_text_changes = 150,
+                },
+                cmd = { "gopls" },
+                filetypes = { "go", "gomod", "gotmpl" },
+                single_file_support = true,
             })
 
             -- TypeScript/React Native setup
@@ -264,4 +264,3 @@ end
         })
     end
 }
-
