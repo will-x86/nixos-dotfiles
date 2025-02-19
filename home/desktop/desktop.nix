@@ -19,6 +19,7 @@ in {
     pulsemixer
     exfat
     hfsprogs
+    orca-slicer
     syncthingtray
     brave
     typescript-language-server
