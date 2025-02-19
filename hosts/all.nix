@@ -13,11 +13,12 @@
   nix.settings.auto-optimise-store = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   #networking.nameservers = ["1.1.1.1" "1.0.0.1"];
-    networking.networkmanager = {
+  networking.networkmanager = {
     enable = true;
     wifi.backend = "wpa_supplicant";
   };
-  /*networking.wireless = {
+  /*
+    networking.wireless = {
     enable = true; # Enables wireless support via wpa_supplicant
     userControlled.enable = true;
     networks = {
@@ -82,14 +83,13 @@
   };
 
   environment.systemPackages = with pkgs; [
-      networkmanager
+    networkmanager
     wpa_supplicant
     python3
-    python3Packages.dbus-python  # Required for NetworkManager integration
+    python312Packages.dbus-python
     openssl
-
   ];
-      services.dbus.enable = true;
+  services.dbus.enable = true;
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
