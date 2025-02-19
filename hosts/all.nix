@@ -14,7 +14,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   networking.nameservers = ["1.1.1.1" "1.0.0.1"];
   networking.networkmanager.enable = true;
-  networking.wireless.iwd.settings = {
+  /*networking.wireless.iwd.settings = {
     IPv6 = {
       Enabled = true;
     };
@@ -22,7 +22,7 @@
       AutoConnect = true;
     };
   };
-  networking.networkmanager.wifi.backend = "iwd";
+  networking.networkmanager.wifi.backend = "iwd";*/
   time.timeZone = "Europe/London";
 
   i18n.defaultLocale = "en_GB.UTF-8";
