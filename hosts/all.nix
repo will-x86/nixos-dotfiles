@@ -12,9 +12,13 @@
   nix.gc.options = "--delete-older-than 10d";
   nix.settings.auto-optimise-store = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  networking.nameservers = ["1.1.1.1" "1.0.0.1"];
-networking.wireless = {
-    enable = true;  # Enables wireless support via wpa_supplicant
+  #networking.nameservers = ["1.1.1.1" "1.0.0.1"];
+    networking.networkmanager = {
+    enable = true;
+    wifi.backend = "wpa_supplicant";
+  };
+  /*networking.wireless = {
+    enable = true; # Enables wireless support via wpa_supplicant
     userControlled.enable = true;
     networks = {
       "eduroam" = {
@@ -28,6 +32,7 @@ networking.wireless = {
       };
     };
   };
+  */
   #networking.networkmanager.enable = true;
   /*
     networking.wireless.iwd.settings = {
@@ -78,14 +83,13 @@ networking.wireless = {
 
   environment.systemPackages = with pkgs; [
       networkmanager
-    networkmanagerapplet
     wpa_supplicant
-  ];
-    networking.networkmanager = {
-    enable = true;
-    wifi.backend = "wpa_supplicant";
-  };
+    python3
+    python3Packages.dbus-python  # Required for NetworkManager integration
+    openssl
 
+  ];
+      services.dbus.enable = true;
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
