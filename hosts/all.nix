@@ -13,8 +13,24 @@
   nix.settings.auto-optimise-store = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   networking.nameservers = ["1.1.1.1" "1.0.0.1"];
-  networking.networkmanager.enable = true;
-  /*networking.wireless.iwd.settings = {
+networking.wireless = {
+    enable = true;  # Enables wireless support via wpa_supplicant
+    userControlled.enable = true;
+    networks = {
+      "eduroam" = {
+        auth = ''
+          key_mgmt=WPA-EAP
+          eap=PEAP
+          identity="${secrets.eduroam.email}"
+          password="${secrets.eduroam.pass}"
+          phase2="auth=MSCHAPV2"
+        '';
+      };
+    };
+  };
+  #networking.networkmanager.enable = true;
+  /*
+    networking.wireless.iwd.settings = {
     IPv6 = {
       Enabled = true;
     };
@@ -22,7 +38,8 @@
       AutoConnect = true;
     };
   };
-  networking.networkmanager.wifi.backend = "iwd";*/
+  networking.networkmanager.wifi.backend = "iwd";
+  */
   time.timeZone = "Europe/London";
 
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -60,7 +77,15 @@
   };
 
   environment.systemPackages = with pkgs; [
+      networkmanager
+    networkmanagerapplet
+    wpa_supplicant
   ];
+    networking.networkmanager = {
+    enable = true;
+    wifi.backend = "wpa_supplicant";
+  };
+
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
