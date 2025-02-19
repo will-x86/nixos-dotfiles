@@ -2,12 +2,12 @@
   description = "Will's NixOS configuration";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  #nix run 'github:mayniklas/eduroam-flake'#install-eduroam-bonn
   outputs = inputs:
     with inputs; let
       secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);

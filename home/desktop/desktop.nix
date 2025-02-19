@@ -1,6 +1,8 @@
 {
   config,
+  inputs,
   pkgs,
+  system,
   secrets,
   ...
 }: let
@@ -19,6 +21,7 @@ in {
     pulsemixer
     exfat
     hfsprogs
+    inputs.zen-browser.packages."${system}".specific
     syncthingtray
     iwd
     brave
