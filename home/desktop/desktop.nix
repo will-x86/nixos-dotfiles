@@ -1,6 +1,6 @@
 {
   config,
-  inputs? {},
+  inputs ? {},
   pkgs,
   system ? pkgs.system,
   secrets,
