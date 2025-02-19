@@ -1,8 +1,8 @@
 {
   config,
-  inputs ? {},
+  inputs,
   pkgs,
-  system ? pkgs.system,
+  system,
   secrets,
   ...
 }: let
