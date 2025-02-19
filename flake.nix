@@ -38,7 +38,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {inherit secrets;};
+              home-manager.extraSpecialArgs = {inherit secrets inputs system;};
               home-manager.users.will = import ./home/base/base.nix;
             }
             {
