@@ -19,6 +19,7 @@
     immich-go
     go-blueprint
     lsof
+    awscli2
     nnn
     tailscale
     git-crypt
