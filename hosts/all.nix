@@ -14,6 +14,14 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   networking.nameservers = ["1.1.1.1" "1.0.0.1"];
   networking.networkmanager.enable = true;
+  networking.wireless.iwd.settings = {
+    IPv6 = {
+      Enabled = true;
+    };
+    Settings = {
+      AutoConnect = true;
+    };
+  };
   networking.networkmanager.wifi.backend = "iwd";
   time.timeZone = "Europe/London";
 
