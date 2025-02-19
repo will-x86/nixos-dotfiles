@@ -7,6 +7,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+#nix run 'github:mayniklas/eduroam-flake'#install-eduroam-bonn
   outputs = inputs:
     with inputs; let
       secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);

@@ -16,6 +16,7 @@
   services.tailscale.enable = true;
   services.xserver.enable = true;
   services.xserver.videoDrivers = ["amdgpu"];
+  networking.networkmanager.enable = true;
   services.syncthing = {
     enable = true;
     #group = "mygroupname";

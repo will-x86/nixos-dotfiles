@@ -19,8 +19,8 @@ in {
     pulsemixer
     exfat
     hfsprogs
-    orca-slicer
     syncthingtray
+    iwd
     brave
     typescript-language-server
     #    jellyfin-media-player
