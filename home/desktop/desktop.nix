@@ -24,7 +24,6 @@ in {
     inputs.zen-browser.packages.${system}.default
     syncthingtray
     iwd
-    brave
     typescript-language-server
     #    jellyfin-media-player
     feishin
