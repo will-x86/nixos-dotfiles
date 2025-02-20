@@ -19,6 +19,7 @@ in {
   };
   home.packages = with pkgs; [
     pulsemixer
+    prusa-slicer
     exfat
     hfsprogs
     inputs.zen-browser.packages.${system}.default
