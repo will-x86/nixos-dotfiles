@@ -99,16 +99,12 @@
       "username=will"
       "password=${secrets.samba.frac}"
       "x-systemd.automount"
-      "x-systemd.requires=network-online.target"
-      "x-systemd.after=network-online.target tailscaled.service.d"
-      "x-systemd.mount-timeout=30"
+      "x-systemd.mount-timeout=3"
       "uid=1000"
       "gid=100"
       "dir_mode=0777"
       "file_mode=0666"
       "nofail"
-      "vers=3.0"
-      "_netdev"
     ];
   };
 
@@ -119,16 +115,12 @@
       "username=will"
       "password=${secrets.samba.frac}"
       "x-systemd.automount"
-      "x-systemd.requires=network-online.target"
-      "x-systemd.after=network-online.target tailscaled.service.d"
-      "x-systemd.mount-timeout=30"
+      "x-systemd.mount-timeout=3"
       "uid=1000"
       "gid=100"
       "dir_mode=0777"
       "file_mode=0666"
       "nofail"
-      "vers=3.0"
-      "_netdev"
     ];
   };
 
