@@ -21,6 +21,8 @@ in {
     pulsemixer
     prusa-slicer
     orca-slicer
+    gtk3
+    gtk4
     exfat
     hfsprogs
     inputs.zen-browser.packages.${system}.default
