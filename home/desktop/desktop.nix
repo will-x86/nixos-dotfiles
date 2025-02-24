@@ -22,6 +22,7 @@ in {
     prusa-slicer
     orca-slicer
     gtk3
+    xdg-utils # orca-slicer for uh wayland?
     exfat
     hfsprogs
     inputs.zen-browser.packages.${system}.default
