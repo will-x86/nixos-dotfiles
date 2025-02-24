@@ -22,13 +22,6 @@ in {
     prusa-slicer
     orca-slicer
     exfat
-## start
-        webkitgtk
-    gtk3
-    wrapGAppsHook
-    glib
-    gsettings-desktop-schemas
-## end
     hfsprogs
     inputs.zen-browser.packages.${system}.default
     syncthingtray
