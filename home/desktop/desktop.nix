@@ -1,9 +1,10 @@
-{ config,
-inputs ? {}
-, pkgs
-, system ? pkgs.system
-, secrets
-, ...
+{
+  config,
+  inputs,
+  pkgs,
+  system ? pkgs.system,
+  secrets,
+  ...
 }: let
   pkgs-stable = import inputs.nixpkgs-stable {
     inherit system;
