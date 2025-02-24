@@ -1,15 +1,14 @@
-{
-  config,
-  inputs ?{},
-  pkgs,
-  system ? pkgs.system,
-  secrets,
-  ...
+{ config,
+inputs ? {}
+, pkgs
+, system ? pkgs.system
+, secrets
+, ...
 }: let
-    pkgs-stable = import inputs.nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-    };
+  pkgs-stable = import inputs.nixpkgs-stable {
+    inherit system;
+    config.allowUnfree = true;
+  };
   base = import ../base/base.nix {inherit config pkgs;};
 in {
   imports = [
