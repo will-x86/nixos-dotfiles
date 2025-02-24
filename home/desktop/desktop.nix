@@ -21,9 +21,14 @@ in {
     pulsemixer
     prusa-slicer
     orca-slicer
-    gtk3
-    xdg-utils # orca-slicer for uh wayland?
     exfat
+## start
+        webkitgtk
+    gtk3
+    wrapGAppsHook
+    glib
+    gsettings-desktop-schemas
+## end
     hfsprogs
     inputs.zen-browser.packages.${system}.default
     syncthingtray
