@@ -1,11 +1,15 @@
 {
   config,
-  inputs,
+  inputs ?{},
   pkgs,
-  system,
+  system ? pkgs.system,
   secrets,
   ...
 }: let
+    pkgs-stable = import inputs.nixpkgs-stable {
+        inherit system;
+        config.allowUnfree = true;
+    };
   base = import ../base/base.nix {inherit config pkgs;};
 in {
   imports = [
@@ -20,7 +24,7 @@ in {
   home.packages = with pkgs; [
     pulsemixer
     prusa-slicer
-    orca-slicer
+    pkgs-stable.orca-slicer
     gtk3
     gtk4
     exfat
