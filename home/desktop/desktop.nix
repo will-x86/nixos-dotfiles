@@ -25,6 +25,7 @@ in {
     gtk4
     exfat
     hfsprogs
+    webkitgtk
     inputs.zen-browser.packages.${system}.default
     syncthingtray
     iwd
