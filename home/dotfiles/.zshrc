@@ -14,7 +14,7 @@ alias gaa='git add -A'
 alias gd='git diff'
 alias gdc='git diff --cached'
 
-alias gh="cd ~/go/src/github.com/will-x86/"
+alias gw="cd ~/go/src/github.com/will-x86/"
 alias nd="nix develop -c $SHELL"
 alias ls='ls --color'
 alias vim='nvim'
