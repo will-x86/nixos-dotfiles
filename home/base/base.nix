@@ -20,6 +20,7 @@
     go-blueprint
     lsof
     awscli2
+    gh
     nnn
     tailscale
     git-crypt
