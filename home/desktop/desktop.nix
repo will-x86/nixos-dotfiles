@@ -57,7 +57,6 @@ in {
     libnotify
     dolphin
     davinci-resolve
-    platformio
     brightnessctl
     greetd.tuigreet
     typescript-language-server
