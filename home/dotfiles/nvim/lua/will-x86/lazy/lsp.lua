@@ -80,7 +80,7 @@ return {
 
         -- NixOS specific LSP configurations
         if is_nixos then
-            require 'lspconfig'.clangd.setup {
+            --[[require 'lspconfig'.clangd.setup {
                 cmd = { "/etc/profiles/per-user/will/bin/clangd" },
                 root_dir = require("lspconfig.util").root_pattern(".git", "platformio.ini"),
                 capabilities = capabilities,
@@ -97,8 +97,28 @@ return {
                     }
                 }
             }
+            ]] --
             require 'lspconfig'.pyright.setup {}
-            --require 'lspconfig'.ccls.setup({ lsp = { use_defaults = true } })
+            require 'lspconfig'.ccls.setup({
+                capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    lsp.default_setup(client, bufnr)
+                    lsp_format_on_save(bufnr)
+                end,
+                init_options = {
+                    cache = {
+                        directory = ".ccls-cache",
+                    },
+                    clang = {
+                        extraArgs = { "-std=c++17" },
+                        excludeArgs = { "-frounding-math" },
+                    },
+                    formatting = {
+                        command = { "clang-format" },
+                    },
+                },
+                filetypes = { "c", "cpp", "objc", "objcpp" },
+            })
             require 'lspconfig'.rust_analyzer.setup {
                 on_attach = function(client, bufnr)
                     lsp.default_setup(client, bufnr)
