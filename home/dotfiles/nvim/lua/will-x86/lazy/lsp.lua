@@ -84,10 +84,6 @@ return {
                 cmd = {
                     "/etc/profiles/per-user/will/bin/clangd",
                     "--background-index",
-                    "--clang-tidy",
-                    "--header-insertion=iwyu",
-                    "--completion-style=detailed",
-                    "--function-arg-placeholders"
                 },
 
                 filetypes = { "c", "cpp", "objc", "objcpp" },
