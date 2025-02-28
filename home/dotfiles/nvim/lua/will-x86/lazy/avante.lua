@@ -1,3 +1,5 @@
+return {
+}
 -- Shit makes me stupid
 --[[return {
     'yetone/avante.nvim',
