@@ -20,6 +20,7 @@ in {
   home.packages = with pkgs; [
     pulsemixer
     prusa-slicer
+    platformio-core
     orca-slicer
     gtk3
     gtk4
