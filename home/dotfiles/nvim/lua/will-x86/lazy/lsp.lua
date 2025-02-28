@@ -80,7 +80,7 @@ return {
 
         -- NixOS specific LSP configurations
         if is_nixos then
-            --[[require 'lspconfig'.clangd.setup {
+            require 'lspconfig'.clangd.setup {
                 cmd = { "/etc/profiles/per-user/will/bin/clangd" },
                 root_dir = require("lspconfig.util").root_pattern(".git", "platformio.ini"),
                 capabilities = capabilities,
@@ -88,18 +88,9 @@ return {
                     lsp.default_setup(client, bufnr)
                     lsp_format_on_save(bufnr)
                 end,
-                init_options = {
-                    compilationDatabasePath = ".",
-                    fallbackFlags = {
-                        "-std=c++17",
-                        "-I${workspaceFolder}/include",
-                        "-I${workspaceFolder}/src"
-                    }
-                }
             }
-            ]] --
             require 'lspconfig'.pyright.setup {}
-            require 'lspconfig'.ccls.setup({
+            --[[require 'lspconfig'.ccls.setup({
                 capabilities = capabilities,
                 on_attach = function(client, bufnr)
                     lsp.default_setup(client, bufnr)
@@ -119,6 +110,7 @@ return {
                 },
                 filetypes = { "c", "cpp", "objc", "objcpp" },
             })
+            ]] --
             require 'lspconfig'.rust_analyzer.setup {
                 on_attach = function(client, bufnr)
                     lsp.default_setup(client, bufnr)
