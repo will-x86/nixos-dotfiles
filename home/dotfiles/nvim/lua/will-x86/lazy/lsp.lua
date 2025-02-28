@@ -82,6 +82,20 @@ return {
         if is_nixos then
             require 'lspconfig'.clangd.setup {
                 cmd = { "/etc/profiles/per-user/will/bin/clangd" },
+                root_dir = require("lspconfig.util").root_pattern(".git", "platformio.ini"),
+                capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    lsp.default_setup(client, bufnr)
+                    lsp_format_on_save(bufnr)
+                end,
+                init_options = {
+                    compilationDatabasePath = ".",
+                    fallbackFlags = {
+                        "-std=c++17",
+                        "-I${workspaceFolder}/include",
+                        "-I${workspaceFolder}/src"
+                    }
+                }
             }
             require 'lspconfig'.pyright.setup {}
             --require 'lspconfig'.ccls.setup({ lsp = { use_defaults = true } })
