@@ -81,7 +81,16 @@ return {
         -- NixOS specific LSP configurations
         if is_nixos then
             require 'lspconfig'.clangd.setup {
-                cmd = { "/etc/profiles/per-user/will/bin/clangd" },
+                cmd = {
+                    "/etc/profiles/per-user/will/bin/clangd",
+                    "--background-index",
+                    "--clang-tidy",
+                    "--header-insertion=iwyu",
+                    "--completion-style=detailed",
+                    "--function-arg-placeholders"
+                },
+
+                filetypes = { "c", "cpp", "objc", "objcpp" },
                 root_dir = require("lspconfig.util").root_pattern(".git", "platformio.ini"),
                 capabilities = capabilities,
                 on_attach = function(client, bufnr)
