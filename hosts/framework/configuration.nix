@@ -36,6 +36,7 @@
   hardware.keyboard.qmk.enable = true;
   programs.adb.enable = true;
   services.udev.packages = [
+    pkgs.platformio-core
     pkgs.platformio-core.udev
     pkgs.openocd
     pkgs.android-udev-rules
