@@ -19,6 +19,7 @@ in {
   };
   home.packages = with pkgs; [
     pulsemixer
+    jdk17
     signal-desktop
     openjdk
     prusa-slicer
