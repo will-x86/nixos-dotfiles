@@ -21,7 +21,7 @@ in {
     pulsemixer
     jdk17
     signal-desktop
-    openjdk
+    #openjdk
     prusa-slicer
     platformio
     orca-slicer
