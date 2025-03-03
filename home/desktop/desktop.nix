@@ -33,7 +33,6 @@ in {
     syncthingtray
     iwd
     typescript-language-server
-    #    jellyfin-media-player
     feishin
     deno
     polkit
@@ -56,6 +55,7 @@ in {
     qmk
     grim
     kicad
+    jdt-language-server
     libnotify
     dolphin
     davinci-resolve
