@@ -19,6 +19,7 @@ in {
   };
   home.packages = with pkgs; [
     pulsemixer
+    signal-desktop
     prusa-slicer
     platformio
     orca-slicer
