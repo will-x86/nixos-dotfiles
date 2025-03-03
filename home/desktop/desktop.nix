@@ -20,6 +20,7 @@ in {
   home.packages = with pkgs; [
     pulsemixer
     signal-desktop
+    openjdk
     prusa-slicer
     platformio
     orca-slicer
