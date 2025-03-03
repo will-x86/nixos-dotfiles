@@ -77,8 +77,9 @@ return {
                 end
             }
         })
-
+        require('java').setup()
         -- NixOS specific LSP configurations
+
         if is_nixos then
             require 'lspconfig'.clangd.setup {
                 cmd = {
@@ -116,7 +117,8 @@ return {
                 filetypes = { "c", "cpp", "objc", "objcpp" },
             })
             ]] --
-            require 'lspconfig'.jtdls.setup {
+            require('lspconfig').jdtls.setup {
+                --require 'lspconfig'.jtdls.setup {
                 on_attach = function(client, bufnr)
                     lsp.default_setup(client, bufnr)
                     lsp_format_on_save(bufnr)
