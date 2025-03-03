@@ -116,6 +116,12 @@ return {
                 filetypes = { "c", "cpp", "objc", "objcpp" },
             })
             ]] --
+            require 'lspconfig'.jtdls.setup {
+                on_attach = function(client, bufnr)
+                    lsp.default_setup(client, bufnr)
+                    lsp_format_on_save(bufnr)
+                end
+            }
             require 'lspconfig'.rust_analyzer.setup {
                 on_attach = function(client, bufnr)
                     lsp.default_setup(client, bufnr)
