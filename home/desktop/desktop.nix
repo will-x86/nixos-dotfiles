@@ -22,6 +22,7 @@ in {
     jdk17
     signal-desktop
     #openjdk
+    maven
     prusa-slicer
     platformio
     orca-slicer
