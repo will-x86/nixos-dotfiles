@@ -19,6 +19,7 @@ in {
   };
   home.packages = with pkgs; [
     pulsemixer
+    zoom-us
     jdk17
     signal-desktop
     #openjdk
