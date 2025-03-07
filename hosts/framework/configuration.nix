@@ -52,9 +52,9 @@
     enable32Bit = true;
   };
   hardware.amdgpu.amdvlk = {
-        enable = true;
-        support32Bit.enable = true;
-    };
+    enable = true;
+    support32Bit.enable = true;
+  };
   services.desktopManager.plasma6.enable = true;
   services.xserver.xkb = {
     layout = "us";
