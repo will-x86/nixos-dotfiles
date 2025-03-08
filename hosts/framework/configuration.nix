@@ -17,6 +17,10 @@
   services.xserver.enable = true;
   services.xserver.videoDrivers = ["amdgpu"];
   services.flatpak.enable = true;
+  services.mysql = {
+      enable = true;
+      package = pkgs.mysql;
+  };
   services.syncthing = {
     enable = true;
     #group = "mygroupname";
