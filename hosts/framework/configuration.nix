@@ -18,8 +18,8 @@
   services.xserver.videoDrivers = ["amdgpu"];
   services.flatpak.enable = true;
   services.mysql = {
-      enable = true;
-      package = pkgs.mysql;
+    enable = true;
+    package = pkgs.mariadb;
   };
   services.syncthing = {
     enable = true;
