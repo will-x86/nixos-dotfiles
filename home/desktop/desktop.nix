@@ -20,6 +20,7 @@ in {
   home.packages = with pkgs; [
     pulsemixer
     quickemu
+    mysql84
     zoom-us
     jdk17
     signal-desktop
