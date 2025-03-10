@@ -62,6 +62,7 @@
   };
 
   fonts.packages = with pkgs; [
+    monaspace
     nerd-fonts.jetbrains-mono
     font-awesome
     apl386
@@ -72,7 +73,8 @@
     powerline-symbols
     material-design-icons
   ];
-  fonts.fontconfig.defaultFonts.monospace = ["JetBrainsMono Nerd Font"];
+  #fonts.fontconfig.defaultFonts.monospace = ["JetBrainsMono Nerd Font"];
+  fonts.fontconfig.defaultFonts.monospace = ["Monaspace Neon"];
 
   security.rtkit.enable = true;
   services.pipewire = {
