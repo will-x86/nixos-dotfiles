@@ -56,8 +56,7 @@
     support32Bit.enable = true;
   };
   hardware.opengl = {
-       enable = true;
-    driSupport = true;
+    enable = true;
     driSupport32Bit = true;
     extraPackages = with pkgs; [
       rocmPackages_5.clr.icd
