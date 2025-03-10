@@ -12,8 +12,8 @@
       };
       font = {
         normal = {
-          family = "Monaspace";
-          style = "Neon";
+          family = "Monaspace Neon";
+          style = "monospace";
         };
         size = 12.0;
       };
