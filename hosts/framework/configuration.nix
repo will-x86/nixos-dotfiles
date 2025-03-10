@@ -95,7 +95,7 @@
     samba
     qemu_full
     networkmanagerapplet
-    plasma-nm
+    kdePackages.plasma-nm
     via
   ];
   programs._1password.enable = true;
