@@ -15,6 +15,7 @@ return {
         "VonHeikemen/lsp-zero.nvim",
         --"MunifTanjim/prettier.nvim",
         "anurag3301/nvim-platformio.lua",
+        "MunifTanjim/eslint.nvim",
     },
     config = function()
         local lsp = require("lsp-zero")
@@ -37,6 +38,25 @@ return {
             format_on_save = {
                 timeout_ms = 500,
                 lsp_fallback = true,
+            },
+        })
+        eslint.setup({
+            bin = 'eslint_d', -- or `eslint_d`
+            code_actions = {
+                enable = true,
+                apply_on_save = {
+                    enable = true,
+                    types = { "directive", "problem", "suggestion", "layout" },
+                },
+                disable_rule_comment = {
+                    enable = true,
+                    location = "separate_line", -- or `same_line`
+                },
+            },
+            diagnostics = {
+                enable = true,
+                report_unused_disable_directives = false,
+                run_on = "type", -- or `save`
             },
         })
         --local nvim_lsp = require('lspconfig')
