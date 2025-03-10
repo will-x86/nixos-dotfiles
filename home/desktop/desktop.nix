@@ -62,7 +62,7 @@ in {
     kicad
     jdt-language-server
     libnotify
-    dolphin
+    kdePackages.dolphin 
     davinci-resolve
     brightnessctl
     greetd.tuigreet
