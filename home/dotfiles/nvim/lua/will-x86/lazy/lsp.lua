@@ -25,16 +25,28 @@ return {
 
         require("conform").setup({
             formatters_by_ft = {
-                javascript = { "prettier" },
-                typescript = { "prettier" },
-                javascriptreact = { "prettier" },
-                typescriptreact = { "prettier" },
-                css = { "prettier" },
-                html = { "prettier" },
-                json = { "prettier" },
-                yaml = { "prettier" },
-                markdown = { "prettier" },
-                graphql = { "prettier" },
+                require("conform").setup({
+                    formatters_by_ft = {
+                        javascript = { "prettier", "eslint" },
+                        typescript = { "prettier", "eslint" },
+                        javascriptreact = { "prettier", "eslint" },
+                        typescriptreact = { "prettier", "eslint" },
+                        jsx = { "prettier", "eslint" },
+                        tsx = { "prettier", "eslint" },
+                        css = { "prettier" },
+                        scss = { "prettier" },
+                        html = { "prettier" },
+                        json = { "prettier" },
+                        yaml = { "prettier" },
+                        markdown = { "prettier" },
+                        graphql = { "prettier" },
+                        -- Keep your existing formats
+                    },
+                    format_on_save = {
+                        timeout_ms = 500,
+                        lsp_fallback = true,
+                    },
+                })
             },
             format_on_save = {
                 timeout_ms = 500,
@@ -210,6 +222,37 @@ return {
 
             -- TypeScript/React Native setup
             require('lspconfig').ts_ls.setup({
+                root_dir = function(...)
+                    return require("lspconfig.util").root_pattern(".git")(...)
+                end,
+                single_file_support = false,
+                settings = {
+                    typescript = {
+                        inlayHints = {
+                            includeInlayParameterNameHints = "literal",
+                            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                            includeInlayFunctionParameterTypeHints = true,
+                            includeInlayVariableTypeHints = false,
+                            includeInlayPropertyDeclarationTypeHints = true,
+                            includeInlayFunctionLikeReturnTypeHints = true,
+                            includeInlayEnumMemberValueHints = true,
+                        },
+                    },
+                    javascript = {
+                        inlayHints = {
+                            includeInlayParameterNameHints = "all",
+                            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                            includeInlayFunctionParameterTypeHints = true,
+                            includeInlayVariableTypeHints = true,
+                            includeInlayPropertyDeclarationTypeHints = true,
+                            includeInlayFunctionLikeReturnTypeHints = true,
+                            includeInlayEnumMemberValueHints = true,
+                        },
+                    },
+                },
+            })
+            --[[
+            require('lspconfig').ts_ls.setup({
                 filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact" },
                 root_dir = require('lspconfig.util').root_pattern("package.json", "tsconfig.json", ".git"),
                 settings = {
@@ -236,7 +279,7 @@ return {
                         },
                     },
                 },
-            })
+            })]] --
         end
 
         -- Prettier setup

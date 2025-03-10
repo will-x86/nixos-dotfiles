@@ -12,19 +12,19 @@
   boot.loader.systemd-boot.configurationLimit = 20;
   boot.initrd.luks.devices."luks-a26d1b6a-644e-425e-89d3-a7619fcf22ea".device = "/dev/disk/by-uuid/a26d1b6a-644e-425e-89d3-a7619fcf22ea";
   boot.kernelParams = [
-        "quiet"
-      "splash"
-      "btusb.enable_autosuspend=0"
-      "usbcore.autosuspend=-1"
-      "nvme.noacpi=1"
-      "amd_pstate=active"
-      "mem_sleep_default=s2idle"
-      "amdgpu.sg_display=0"
-      "amdgpu.abmlevel=3"
-      "amdgpu.dcdebugmask=0x10"
+    "quiet"
+    "splash"
+    "btusb.enable_autosuspend=0"
+    "usbcore.autosuspend=-1"
+    "nvme.noacpi=1"
+    "amd_pstate=active"
+    "mem_sleep_default=s2idle"
+    "amdgpu.sg_display=0"
+    "amdgpu.abmlevel=3"
+    "amdgpu.dcdebugmask=0x10"
   ];
   networking.hostName = "framework"; # Define your hostname.
-    powerManagement.powertop.enable = true;
+  powerManagement.powertop.enable = true;
 
   services.tailscale.enable = true;
   services.xserver.enable = true;
