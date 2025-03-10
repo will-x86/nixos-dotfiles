@@ -13,14 +13,32 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
         "VonHeikemen/lsp-zero.nvim",
-        "MunifTanjim/prettier.nvim",
+        --"MunifTanjim/prettier.nvim",
         "anurag3301/nvim-platformio.lua",
     },
     config = function()
         local lsp = require("lsp-zero")
         local cmp = require('cmp')
         local cmp_action = lsp.cmp_action()
-        local prettier = require("prettier")
+        --local prettier = require("prettier")
+        require("conform").setup({
+            formatters_by_ft = {
+                javascript = { "prettier" },
+                typescript = { "prettier" },
+                javascriptreact = { "prettier" },
+                typescriptreact = { "prettier" },
+                css = { "prettier" },
+                html = { "prettier" },
+                json = { "prettier" },
+                yaml = { "prettier" },
+                markdown = { "prettier" },
+                graphql = { "prettier" },
+            },
+            format_on_save = {
+                timeout_ms = 500,
+                lsp_fallback = true,
+            },
+        })
         --local nvim_lsp = require('lspconfig')
 
         -- Mason setup
@@ -35,7 +53,7 @@ return {
                 group = augroup,
                 buffer = bufnr,
                 callback = function()
-                    vim.lsp.buf.format()
+                    require("conform").format({ bufnr = bufnr })
                 end,
             })
         end
@@ -200,7 +218,7 @@ return {
         end
 
         -- Prettier setup
-        prettier.setup({
+        --[[prettier.setup({
             bin = 'prettier',
             filetypes = {
                 "css", "graphql", "html", "javascript", "javascriptreact",
@@ -224,7 +242,7 @@ return {
                 trailing_comma = "es5",
                 use_tabs = false,
             },
-        })
+        })]] --
 
         -- Completion setup
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
