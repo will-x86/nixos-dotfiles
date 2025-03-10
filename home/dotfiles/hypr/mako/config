@@ -6,7 +6,7 @@ on-button-right=dismiss-all
 on-touch=dismiss
 
 # STYLE OPTIONS
-font=JetBrains Mono 10
+font=Monaspace Neon 10
 width=300
 height=100
 margin=10
