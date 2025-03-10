@@ -21,7 +21,8 @@ return {
         local lsp = require("lsp-zero")
         local cmp = require('cmp')
         local cmp_action = lsp.cmp_action()
-        --local prettier = require("prettier")
+        local eslint = require('eslint')
+
         require("conform").setup({
             formatters_by_ft = {
                 javascript = { "prettier" },
@@ -40,8 +41,9 @@ return {
                 lsp_fallback = true,
             },
         })
+
         eslint.setup({
-            bin = 'eslint_d', -- or `eslint_d`
+            bin = 'eslint_d',
             code_actions = {
                 enable = true,
                 apply_on_save = {
@@ -50,13 +52,13 @@ return {
                 },
                 disable_rule_comment = {
                     enable = true,
-                    location = "separate_line", -- or `same_line`
+                    location = "separate_line",
                 },
             },
             diagnostics = {
                 enable = true,
                 report_unused_disable_directives = false,
-                run_on = "type", -- or `save`
+                run_on = "type",
             },
         })
         --local nvim_lsp = require('lspconfig')
