@@ -43,7 +43,7 @@ return {
         })
 
         eslint.setup({
-            bin = 'eslint_d',
+            bin = 'eslint',
             code_actions = {
                 enable = true,
                 apply_on_save = {
