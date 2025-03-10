@@ -50,13 +50,6 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-  };
-  hardware.amdgpu.amdvlk = {
-    enable = true;
-    support32Bit.enable = true;
-  };
-  hardware.opengl = {
-    enable = true;
     driSupport32Bit = true;
     extraPackages = with pkgs; [
       rocmPackages_5.clr.icd
@@ -64,6 +57,10 @@
       rocmPackages_5.rocminfo
       rocmPackages_5.rocm-runtime
     ];
+  };
+  hardware.amdgpu.amdvlk = {
+    enable = true;
+    support32Bit.enable = true;
   };
   services.desktopManager.plasma6.enable = true;
   services.xserver.xkb = {
