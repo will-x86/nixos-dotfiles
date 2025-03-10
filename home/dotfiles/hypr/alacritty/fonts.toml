@@ -4,7 +4,7 @@ size = 18
 builtin_box_drawing = true
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
+family = "MonaSpace Neon"
 
 
 [font.offset]

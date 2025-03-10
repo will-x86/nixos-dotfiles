@@ -21,7 +21,7 @@ swaylock -f \
 	\
 	`# Appearance` \
 	--color ${bg}E6 \
-	--font 'JetBrainsMono Nerd Font' --font-size 18 \
+	--font 'Monaspace Neon' --font-size 18 \
 	\
 	`# Backspace Key` \
 	--key-hl-color ${green} \
