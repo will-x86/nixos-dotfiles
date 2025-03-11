@@ -6,8 +6,6 @@ return {
             ensure_installed = {
                 "javascript",
                 "typescript",
-                "tsx", -- Add this
-                "jsx", -- Add this
                 "c",
                 "lua",
                 "vim"
