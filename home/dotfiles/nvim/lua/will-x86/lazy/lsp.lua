@@ -14,7 +14,6 @@ return {
         "j-hui/fidget.nvim",
         "VonHeikemen/lsp-zero.nvim",
         "anurag3301/nvim-platformio.lua",
-        "MunifTanjim/eslint.nvim",
         "windwp/nvim-ts-autotag",
 
     },
@@ -22,7 +21,6 @@ return {
         local lsp = require("lsp-zero")
         local cmp = require('cmp')
         local cmp_action = lsp.cmp_action()
-        local eslint = require("eslint");
 
 
         require("mason").setup({
@@ -88,25 +86,6 @@ return {
             }
         })
 
-        eslint.setup({
-            bin = 'eslint_d',
-            code_actions = {
-                enable = true,
-                apply_on_save = {
-                    enable = true,
-                    types = { "directive", "problem", "suggestion", "layout" },
-                },
-                disable_rule_comment = {
-                    enable = true,
-                    location = "separate_line", -- or `same_line`
-                },
-            },
-            diagnostics = {
-                enable = true,
-                report_unused_disable_directives = false,
-                run_on = "type",
-            },
-        })
         require('java').setup()
 
         if is_nixos then
