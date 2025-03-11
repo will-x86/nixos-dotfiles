@@ -13,72 +13,31 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
         "VonHeikemen/lsp-zero.nvim",
-        --"MunifTanjim/prettier.nvim",
         "anurag3301/nvim-platformio.lua",
         "MunifTanjim/eslint.nvim",
+        "windwp/nvim-ts-autotag",
+
     },
     config = function()
         local lsp = require("lsp-zero")
         local cmp = require('cmp')
         local cmp_action = lsp.cmp_action()
-        local eslint = require('eslint')
 
-        require("conform").setup({
-            formatters_by_ft = {
-                require("conform").setup({
-                    formatters_by_ft = {
-                        javascript = { "prettier", "eslint" },
-                        typescript = { "prettier", "eslint" },
-                        javascriptreact = { "prettier", "eslint" },
-                        typescriptreact = { "prettier", "eslint" },
-                        jsx = { "prettier", "eslint" },
-                        tsx = { "prettier", "eslint" },
-                        css = { "prettier" },
-                        scss = { "prettier" },
-                        html = { "prettier" },
-                        json = { "prettier" },
-                        yaml = { "prettier" },
-                        markdown = { "prettier" },
-                        graphql = { "prettier" },
-                        -- Keep your existing formats
-                    },
-                    format_on_save = {
-                        timeout_ms = 500,
-                        lsp_fallback = true,
-                    },
-                })
-            },
-            format_on_save = {
-                timeout_ms = 500,
-                lsp_fallback = true,
-            },
+
+        require("mason").setup({
+            PATH = "append",
+            ensure_installed = {
+                -- Add React/Next.js related tools
+                "eslint_d",
+                "prettierd",
+                "tailwindcss-language-server",
+                "ts_ls", -- TypeScript/JavaScript server
+                "css-lsp",
+                "html-lsp",
+                "emmet-ls",
+            }
         })
-
-        eslint.setup({
-            bin = 'eslint',
-            code_actions = {
-                enable = true,
-                apply_on_save = {
-                    enable = true,
-                    types = { "directive", "problem", "suggestion", "layout" },
-                },
-                disable_rule_comment = {
-                    enable = true,
-                    location = "separate_line",
-                },
-            },
-            diagnostics = {
-                enable = true,
-                report_unused_disable_directives = false,
-                run_on = "type",
-            },
-        })
-        --local nvim_lsp = require('lspconfig')
-
-        -- Mason setup
-        require("mason").setup({ PATH = "append" })
-        -- Remove this section as we're setting capabilities in the mason-lspconfig setup
-        -- Format on save setup
+        require('nvim-ts-autotag').setup()
 
         local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
         local lsp_format_on_save = function(bufnr)
@@ -92,7 +51,6 @@ return {
             })
         end
 
-        -- NixOS detection
         local system_name = vim.loop.os_uname().sysname
         local is_nixos = false
         if system_name == "Linux" then
@@ -106,15 +64,14 @@ return {
             end
         end
 
-        -- LSP servers setup
         local ensure_installed = is_nixos and {} or {
             'gopls', 'volar', 'clangd', 'rust_analyzer',
-            'yamlls', 'pyright', 'lua_ls', 'hls', 'ts_ls'
+            'yamlls', 'pyright', 'lua_ls', 'hls', 'ts_ls',
+            'tailwindcss', 'eslint', 'cssls', 'html',
+            'emmet_ls'
         }
 
-        -- Set up default capabilities for all LSP servers
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
         require('mason-lspconfig').setup({
             ensure_installed = ensure_installed,
             handlers = {
@@ -130,7 +87,6 @@ return {
             }
         })
         require('java').setup()
-        -- NixOS specific LSP configurations
 
         if is_nixos then
             require 'lspconfig'.clangd.setup {
@@ -148,29 +104,7 @@ return {
                 end,
             }
             require 'lspconfig'.pyright.setup {}
-            --[[require 'lspconfig'.ccls.setup({
-                capabilities = capabilities,
-                on_attach = function(client, bufnr)
-                    lsp.default_setup(client, bufnr)
-                    lsp_format_on_save(bufnr)
-                end,
-                init_options = {
-                    cache = {
-                        directory = ".ccls-cache",
-                    },
-                    clang = {
-                        extraArgs = { "-std=c++17" },
-                        excludeArgs = { "-frounding-math" },
-                    },
-                    formatting = {
-                        command = { "clang-format" },
-                    },
-                },
-                filetypes = { "c", "cpp", "objc", "objcpp" },
-            })
-            ]] --
             require('lspconfig').jdtls.setup {
-                --require 'lspconfig'.jtdls.setup {
                 on_attach = function(client, bufnr)
                     lsp.default_setup(client, bufnr)
                     lsp_format_on_save(bufnr)
@@ -219,97 +153,41 @@ return {
                 filetypes = { "go", "gomod", "gotmpl" },
                 single_file_support = true,
             })
-
-            -- TypeScript/React Native setup
-            require('lspconfig').ts_ls.setup({
-                root_dir = function(...)
-                    return require("lspconfig.util").root_pattern(".git")(...)
+            require 'lspconfig'.ts_ls.setup {
+                capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    lsp.default_setup(client, bufnr)
+                    lsp_format_on_save(bufnr)
                 end,
-                single_file_support = false,
-                settings = {
-                    typescript = {
-                        inlayHints = {
-                            includeInlayParameterNameHints = "literal",
-                            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                            includeInlayFunctionParameterTypeHints = true,
-                            includeInlayVariableTypeHints = false,
-                            includeInlayPropertyDeclarationTypeHints = true,
-                            includeInlayFunctionLikeReturnTypeHints = true,
-                            includeInlayEnumMemberValueHints = true,
-                        },
-                    },
-                    javascript = {
-                        inlayHints = {
-                            includeInlayParameterNameHints = "all",
-                            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                            includeInlayFunctionParameterTypeHints = true,
-                            includeInlayVariableTypeHints = true,
-                            includeInlayPropertyDeclarationTypeHints = true,
-                            includeInlayFunctionLikeReturnTypeHints = true,
-                            includeInlayEnumMemberValueHints = true,
-                        },
-                    },
-                },
-            })
-            --[[
-            require('lspconfig').ts_ls.setup({
-                filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact" },
-                root_dir = require('lspconfig.util').root_pattern("package.json", "tsconfig.json", ".git"),
-                settings = {
-                    typescript = {
-                        inlayHints = {
-                            includeInlayParameterNameHints = 'all',
-                            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                            includeInlayFunctionParameterTypeHints = true,
-                            includeInlayVariableTypeHints = true,
-                            includeInlayPropertyDeclarationTypeHints = true,
-                            includeInlayFunctionLikeReturnTypeHints = true,
-                            includeInlayEnumMemberValueHints = true,
-                        },
-                    },
-                    javascript = {
-                        inlayHints = {
-                            includeInlayParameterNameHints = 'all',
-                            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                            includeInlayFunctionParameterTypeHints = true,
-                            includeInlayVariableTypeHints = true,
-                            includeInlayPropertyDeclarationTypeHints = true,
-                            includeInlayFunctionLikeReturnTypeHints = true,
-                            includeInlayEnumMemberValueHints = true,
-                        },
-                    },
-                },
-            })]] --
+                filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
+                root_dir = require("lspconfig.util").root_pattern("package.json", "tsconfig.json", ".git"),
+            }
+
+            require 'lspconfig'.tailwindcss.setup {
+                capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    lsp.default_setup(client, bufnr)
+                    lsp_format_on_save(bufnr)
+                end,
+            }
+
+            require 'lspconfig'.eslint.setup {
+                capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    lsp.default_setup(client, bufnr)
+                    lsp_format_on_save(bufnr)
+                end,
+            }
+
+            require 'lspconfig'.cssls.setup {
+                capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    lsp.default_setup(client, bufnr)
+                    lsp_format_on_save(bufnr)
+                end,
+            }
         end
 
-        -- Prettier setup
-        --[[prettier.setup({
-            bin = 'prettier',
-            filetypes = {
-                "css", "graphql", "html", "javascript", "javascriptreact",
-                "json", "less", "scss", "typescript", "typescriptreact", "yaml",
-            },
-            cli_options = {
-                arrow_parens = "always",
-                bracket_spacing = true,
-                bracket_same_line = false,
-                embedded_language_formatting = "auto",
-                end_of_line = "lf",
-                html_whitespace_sensitivity = "css",
-                jsx_bracket_same_line = false,
-                jsx_single_quote = false,
-                print_width = 80,
-                prose_wrap = "preserve",
-                quote_props = "as-needed",
-                semi = true,
-                single_quote = false,
-                tab_width = 2,
-                trailing_comma = "es5",
-                use_tabs = false,
-            },
-        })]] --
-
-        -- Completion setup
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
         local cmp_mappings = {
             ['<CR>'] = cmp.mapping.confirm({ select = false }),
@@ -338,16 +216,7 @@ return {
             }),
         })
 
-        -- LSP preferences and keymaps
-        --lsp.set_preferences({
-        --suggest_lsp_servers = false,
-        --sign_icons = {
-        --error = 'E', warn = 'W', hint = 'H', info = 'I'
-        --}
-        --})
-
         local disable_lsp_filetypes = { sql = true, mysql = true }
-
         lsp.on_attach(function(client, bufnr)
             local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
 
@@ -372,7 +241,6 @@ return {
 
         lsp.setup()
 
-        -- Diagnostic configuration
         vim.diagnostic.config({
             virtual_text = true,
             float = {
