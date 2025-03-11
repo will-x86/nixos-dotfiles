@@ -186,6 +186,7 @@ return {
 
             require 'lspconfig'.tailwindcss.setup {
                 capabilities = capabilities,
+                cmd = "/etc/profiles/per-user/will/bin/tailwindcss-language-server",
                 on_attach = function(client, bufnr)
                     lsp.default_setup(client, bufnr)
                     lsp_format_on_save(bufnr)
@@ -202,6 +203,7 @@ return {
 
             require 'lspconfig'.cssls.setup {
                 capabilities = capabilities,
+                cmd = "/etc/profiles/per-user/will/bin/vscode-css-language-server",
                 on_attach = function(client, bufnr)
                     lsp.default_setup(client, bufnr)
                     lsp_format_on_save(bufnr)
