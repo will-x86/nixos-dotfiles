@@ -19,6 +19,8 @@ in {
   };
   home.packages = with pkgs; [
     pulsemixer
+    tailwindcss-language-server
+    vscode-langservers-extracted
     quickemu
     mysql84
     zoom-us
