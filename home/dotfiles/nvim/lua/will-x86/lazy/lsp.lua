@@ -23,7 +23,36 @@ return {
         local cmp = require('cmp')
         local cmp_action = lsp.cmp_action()
         local eslint = require("eslint");
-
+                require("conform").setup({
+            formatters_by_ft = {
+                require("conform").setup({
+                    formatters_by_ft = {
+                        javascript = { "prettier", "eslint" },
+                        typescript = { "prettier", "eslint" },
+                        javascriptreact = { "prettier", "eslint" },
+                        typescriptreact = { "prettier", "eslint" },
+                        jsx = { "prettier", "eslint" },
+                        tsx = { "prettier", "eslint" },
+                        css = { "prettier" },
+                        scss = { "prettier" },
+                        html = { "prettier" },
+                        json = { "prettier" },
+                        yaml = { "prettier" },
+                        markdown = { "prettier" },
+                        graphql = { "prettier" },
+                        -- Keep your existing formats
+                    },
+                    format_on_save = {
+                        timeout_ms = 500,
+                        lsp_fallback = true,
+                    },
+                })
+            },
+            format_on_save = {
+                timeout_ms = 500,
+                lsp_fallback = true,
+            },
+        })
 
         require("mason").setup({
             PATH = "append",
