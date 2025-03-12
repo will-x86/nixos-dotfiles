@@ -19,6 +19,7 @@ in {
   };
   home.packages = with pkgs; [
     pulsemixer
+    bambu-studio
     tailwindcss-language-server
     vscode-langservers-extracted
     quickemu
