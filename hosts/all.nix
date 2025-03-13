@@ -126,7 +126,7 @@
   };
 
   fileSystems."/mnt/FractalMedia" = {
-    device = "//${secrets.samba.fracLocal}/Media";
+    device = "//${secrets.samba.fracRemote}/Media";
     fsType = "cifs";
     options = [
       "username=will"
