@@ -141,8 +141,6 @@
     ];
   };
 
-
-
   fileSystems."/mnt/Fractal" = {
     device = "//${secrets.samba.fracLocal}/Vault";
     fsType = "cifs";
