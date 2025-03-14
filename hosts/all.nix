@@ -141,21 +141,7 @@
     ];
   };
 
-  fileSystems."/mnt/SynImmich" = {
-    device = "//${secrets.samba.synLocal}/Immich";
-    fsType = "cifs";
-    options = [
-      "username=will"
-      "password=${secrets.samba.syn}"
-      "x-systemd.automount"
-      "x-systemd.mount-timeout=3"
-      "uid=1000"
-      "gid=100"
-      "dir_mode=0777"
-      "file_mode=0666"
-      "nofail"
-    ];
-  };
+
 
   fileSystems."/mnt/Fractal" = {
     device = "//${secrets.samba.fracLocal}/Vault";
