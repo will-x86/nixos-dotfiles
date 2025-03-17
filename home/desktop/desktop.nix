@@ -42,7 +42,7 @@ in {
     gettext
     cabextract
     samba4Full
-    spacenavd
+    #spacenavd
     bc
     mokutil
     gawk

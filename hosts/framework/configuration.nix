@@ -27,6 +27,7 @@
   ];
   networking.hostName = "framework"; # Define your hostname.
   powerManagement.powertop.enable = true;
+  hardware.spacenavd.enable = true;
 
   services.tailscale.enable = true;
   services.xserver.enable = true;
