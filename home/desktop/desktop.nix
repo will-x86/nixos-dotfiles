@@ -50,7 +50,7 @@ in {
     curl
     #mesa-utils
     polkit
-    xdg_utils
+    xdg-utils
     xrandr
     #Autodesk end
     tailwindcss-language-server
