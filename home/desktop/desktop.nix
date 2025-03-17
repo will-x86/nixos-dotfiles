@@ -24,7 +24,6 @@ in {
     /*
       wineWowPackages.waylandFull
     winetricks
-    mokutil
     lsb-release
     wget
     p7zip
@@ -45,6 +44,7 @@ in {
     samba4Full
     spacenavd
     bc
+    mokutil
     gawk
     coreutils
     curl
