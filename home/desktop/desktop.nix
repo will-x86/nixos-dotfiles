@@ -22,6 +22,7 @@ in {
     bambu-studio
     wineWowPackages.waylandFull
     winetricks
+    mokutil
     tailwindcss-language-server
     vscode-langservers-extracted
     quickemu
