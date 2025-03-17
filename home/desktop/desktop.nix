@@ -51,7 +51,6 @@ in {
     #mesa-utils
     polkit
     xdg-utils
-    xrandr
     #Autodesk end
     tailwindcss-language-server
     vscode-langservers-extracted
