@@ -50,7 +50,6 @@ in {
     curl
     #mesa-utils
     polkit
-    winbind
     xdg_utils
     xrandr
     #Autodesk end
