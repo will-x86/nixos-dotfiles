@@ -21,7 +21,8 @@ in {
     pulsemixer
     bambu-studio
     #Autodesk start
-   /* wineWowPackages.waylandFull
+    /*
+      wineWowPackages.waylandFull
     winetricks
     mokutil
     lsb-release
@@ -34,24 +35,24 @@ in {
     bc
     */
     wineWowPackages.waylandFull
-winetricks
-mokutil
-lsb-release
-wget
-p7zip
-gettext
-cabextract
-samba4Full
-spacenavd
-bc
-gawk
-coreutils
-curl
-mesa-utils
-polkit
-winbind
-xdg_utils
-xrandr
+    winetricks
+    mokutil
+    lsb-release
+    wget
+    p7zip
+    gettext
+    cabextract
+    samba4Full
+    spacenavd
+    bc
+    gawk
+    coreutils
+    curl
+    #mesa-utils
+    polkit
+    winbind
+    xdg_utils
+    xrandr
     #Autodesk end
     tailwindcss-language-server
     vscode-langservers-extracted
