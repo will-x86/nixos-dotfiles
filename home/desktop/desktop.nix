@@ -21,6 +21,7 @@ in {
     pulsemixer
     bambu-studio
     wineWowPackages.waylandFull
+        wineWowPackages.stable
     tailwindcss-language-server
     vscode-langservers-extracted
     quickemu
