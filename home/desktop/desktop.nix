@@ -20,6 +20,7 @@ in {
   home.packages = with pkgs; [
     pulsemixer
     bambu-studio
+    wineWowPackages.waylandFull
     tailwindcss-language-server
     vscode-langservers-extracted
     quickemu
