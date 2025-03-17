@@ -20,9 +20,19 @@ in {
   home.packages = with pkgs; [
     pulsemixer
     bambu-studio
+#Autodesk start
     wineWowPackages.waylandFull
     winetricks
     mokutil
+    lsp-release
+    wget
+    p7zip
+    gettext
+    cabextract
+    samba4Full
+    spacenavd
+    bc
+#Autodesk end 
     tailwindcss-language-server
     vscode-langservers-extracted
     quickemu
