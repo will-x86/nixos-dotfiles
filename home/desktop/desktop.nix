@@ -42,6 +42,7 @@ in {
     gettext
     cabextract
     samba4Full
+    glxinfo
     #spacenavd
     bc
     mokutil
