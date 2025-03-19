@@ -33,7 +33,7 @@ return {
                         typescriptreact = { "prettier", "eslint" },
                         jsx = { "prettier", "eslint" },
                         tsx = { "prettier", "eslint" },
-                        vue = { "eslint" },
+                        vue = { "prettier" },
                         css = { "prettier" },
                         scss = { "prettier" },
                         html = { "prettier" },
@@ -140,14 +140,48 @@ return {
         require('java').setup()
 
         if is_nixos then
-            require 'lspconfig'.volar.setup {
-                capabilities = capabilities,
+            require('lspconfig').volar.setup({
+                filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+                init_options = {
+                    languageFeatures = {
+                        implementation = true,
+                        references = true,
+                        definition = true,
+                        typeDefinition = true,
+                        callHierarchy = true,
+                        hover = true,
+                        rename = true,
+                        renameFileRefactoring = true,
+                        signatureHelp = true,
+                        codeAction = true,
+                        workspaceSymbol = true,
+                        completion = {
+                            defaultTagNameCase = 'both',
+                            defaultAttrNameCase = 'kebabCase',
+                            getDocumentNameCasesRequest = false,
+                            getDocumentSelectionRequest = false,
+                        },
+                    },
+                    documentFeatures = {
+                        selectionRange = true,
+                        foldingRange = true,
+                        linkedEditingRange = true,
+                        documentSymbol = true,
+                        documentColor = true,
+                        documentFormatting = {
+                            defaultPrintWidth = 100,
+                        },
+                    },
+                },
                 on_attach = function(client, bufnr)
+                    -- Disable formatting by Volar since we're using Prettier
+                    client.server_capabilities.documentFormattingProvider = false
+                    client.server_capabilities.documentRangeFormattingProvider = false
+                    -- Your existing on_attach logic
                     lsp.default_setup(client, bufnr)
                     lsp_format_on_save(bufnr)
                 end,
-                filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
-            }
+            })
             require 'lspconfig'.clangd.setup {
                 cmd = {
                     "/etc/profiles/per-user/will/bin/clangd",
