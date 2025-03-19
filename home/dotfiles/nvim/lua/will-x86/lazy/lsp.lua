@@ -33,7 +33,7 @@ return {
                         typescriptreact = { "prettier", "eslint" },
                         jsx = { "prettier", "eslint" },
                         tsx = { "prettier", "eslint" },
-                        vue = { "prettier", "eslint" },
+                        vue = { "eslint" },
                         css = { "prettier" },
                         scss = { "prettier" },
                         html = { "prettier" },

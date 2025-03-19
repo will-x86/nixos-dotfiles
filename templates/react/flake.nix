@@ -6,18 +6,22 @@
     playwright.url = "github:pietdevries94/playwright-web-flake/1.51.0";
   };
 
-  outputs = { self, nixpkgs, flake-utils ,playwright}:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-             overlay = final: prev: {
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+    playwright,
+  }:
+    flake-utils.lib.eachDefaultSystem (
+      system: let
+        overlay = final: prev: {
           inherit (playwright.packages.${system}) playwright-test playwright-driver;
         };
-         pkgs = import nixpkgs {
+        pkgs = import nixpkgs {
           inherit system;
-          overlays = [ overlay ];
+          overlays = [overlay];
         };
-      in
-      {
+      in {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             nodejs
