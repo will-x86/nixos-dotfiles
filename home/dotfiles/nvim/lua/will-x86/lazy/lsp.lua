@@ -23,7 +23,7 @@ return {
         local cmp = require('cmp')
         local cmp_action = lsp.cmp_action()
         local eslint = require("eslint");
-                require("conform").setup({
+        require("conform").setup({
             formatters_by_ft = {
                 require("conform").setup({
                     formatters_by_ft = {
@@ -33,6 +33,7 @@ return {
                         typescriptreact = { "prettier", "eslint" },
                         jsx = { "prettier", "eslint" },
                         tsx = { "prettier", "eslint" },
+                        vue = { "prettier", "eslint" },
                         css = { "prettier" },
                         scss = { "prettier" },
                         html = { "prettier" },
@@ -139,6 +140,14 @@ return {
         require('java').setup()
 
         if is_nixos then
+            require 'lspconfig'.volar.setup {
+                capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    lsp.default_setup(client, bufnr)
+                    lsp_format_on_save(bufnr)
+                end,
+                filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+            }
             require 'lspconfig'.clangd.setup {
                 cmd = {
                     "/etc/profiles/per-user/will/bin/clangd",
