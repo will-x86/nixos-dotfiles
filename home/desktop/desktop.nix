@@ -39,6 +39,7 @@ in {
     lsb-release
     wget
     p7zip
+    mediawriter
     gettext
     cabextract
     samba4Full
