@@ -39,6 +39,7 @@ in {
     lsb-release
     wget
     p7zip
+    trezor-suite
     mediawriter
     gettext
     cabextract
