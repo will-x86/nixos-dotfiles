@@ -40,6 +40,7 @@ in {
     wget
     p7zip
     trezor-suite
+    trezor-agent
     mediawriter
     gettext
     cabextract
