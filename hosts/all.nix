@@ -103,7 +103,7 @@
     isNormalUser = true;
     description = "will";
     shell = pkgs.zsh;
-    extraGroups = ["networkmanager" "wheel" "docker"];
+    extraGroups = ["networkmanager" "wheel" "docker" "containerd"];
     packages = with pkgs; [
     ];
   };
