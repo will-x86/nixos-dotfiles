@@ -120,6 +120,7 @@
   home-manager.backupFileExtension = null;
 
   virtualisation.docker.enable = true;
+  virtualisation.containerd.enable = true;
   virtualisation.docker.rootless = {
     enable = true;
     setSocketVariable = true;
