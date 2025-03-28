@@ -41,6 +41,8 @@ return {
                         yaml = { "prettier" },
                         markdown = { "prettier" },
                         graphql = { "prettier" },
+                        rust = { "rustfmt" },
+
                         -- Keep your existing formats
                     },
                     format_on_save = {
@@ -99,7 +101,7 @@ return {
             'gopls', 'volar', 'clangd', 'rust_analyzer',
             'yamlls', 'pyright', 'lua_ls', 'hls', 'ts_ls',
             'tailwindcss', 'eslint', 'cssls', 'html',
-            'emmet_ls'
+            'emmet_ls', 'rustfmt'
         }
 
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -204,6 +206,7 @@ return {
                 end
             }
             require 'lspconfig'.rust_analyzer.setup {
+                capabilities = capabilities,
                 on_attach = function(client, bufnr)
                     lsp.default_setup(client, bufnr)
                     lsp_format_on_save(bufnr)
