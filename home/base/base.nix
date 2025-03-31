@@ -20,6 +20,7 @@
     go-blueprint
     lsof
     awscli2
+    dig
     libcgroup
     gh
     nnn
