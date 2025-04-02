@@ -27,6 +27,14 @@
           path = ./templates/rust;
           description = "Rust dev env";
         };
+        expo= {
+          path = ./templates/expo;
+          description = "Expo dev env";
+        };
+        react = {
+          path = ./templates/react;
+          description = "React dev env";
+        };
       };
 
       nixosConfigurations = {
