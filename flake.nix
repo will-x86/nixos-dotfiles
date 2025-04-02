@@ -27,7 +27,7 @@
           path = ./templates/rust;
           description = "Rust dev env";
         };
-        expo= {
+        expo = {
           path = ./templates/expo;
           description = "Expo dev env";
         };
