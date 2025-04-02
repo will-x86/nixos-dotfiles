@@ -20,6 +20,7 @@ in {
   home.packages = with pkgs; [
     pulsemixer
     bambu-studio
+    google-chrome
     #Autodesk start
     /*
       wineWowPackages.waylandFull
