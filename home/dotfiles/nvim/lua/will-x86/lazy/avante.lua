@@ -1,7 +1,4 @@
 return {
-}
--- Shit makes me stupid
---[[return {
     'yetone/avante.nvim',
     dependencies = {
         'nvim-tree/nvim-web-devicons',
@@ -18,18 +15,17 @@ return {
     },
     config = function()
         require('avante').setup({
-            provider = "claude",
-            claude = {
-                endpoint = "https://api.anthropic.com",
-                model = "claude-3-5-sonnet-latest",
-                temperature = 0,
-                max_tokens = 8192,
+            provider = "ollama",
+            ollama = {
+                endpoint = "http://100.74.103.8:11434",
+                model = "deepseek-coder-v2:16b",
+                temperature = 1,
+                max_tokens = 1000000,
             },
             windows = {
                 width = 40,
             },
         })
     end,
-    build = 'make',     -- Optional, only if you want to use tiktoken_core to calculate tokens count
+    build = 'make', -- Optional, only if you want to use tiktoken_core to calculate tokens count
 }
-]] --
