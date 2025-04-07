@@ -143,7 +143,7 @@ return {
 
         if is_nixos then
             require('lspconfig').volar.setup({
-                filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+                filetypes = { 'typescript', 'javascript', 'vue', 'json' },
                 init_options = {
                     languageFeatures = {
                         implementation = true,
