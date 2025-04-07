@@ -40,6 +40,7 @@ in {
     lsb-release
     wget
     p7zip
+    obs-studio
     trezor-suite
     trezor-agent
     mediawriter
