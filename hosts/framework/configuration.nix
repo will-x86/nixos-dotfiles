@@ -118,12 +118,12 @@
     networkmanagerapplet
     kdePackages.plasma-nm
     via
-    ((import (fetchFromGitHub {
-        owner = "NixOS";
-        repo = "nixpkgs";
-        rev = "028048884dc9517e548703beb24a11408cc51402";
-        sha256 = "HukcSGUZc/YzO6DMkA6noUrav44lIo1MwQaVog5kVT0=";
-        }) { system = "x86_64-linux"; }).neovim
+    (import (builtins.fetchGit {
+    name = "my-old-revision";
+    url = "https://github.com/NixOS/nixpkgs/";
+    ref = "refs/heads/nixos-unstable";
+    rev = "028048884dc9517e548703beb24a11408cc51402";
+}) { system = "x86_64-linux"; }).neovim
   ];
   programs._1password.enable = true;
   programs._1password-gui = {
