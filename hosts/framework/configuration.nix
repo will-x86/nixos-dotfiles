@@ -118,6 +118,9 @@
     networkmanagerapplet
     kdePackages.plasma-nm
     via
+    (import (fetchTarball {
+      url = "https://github.com/NixOS/nixpkgs/archive/028048884dc9517e548703beb24a11408cc51402.tar.gz";
+    }) {}).neovim
   ];
   programs._1password.enable = true;
   programs._1password-gui = {

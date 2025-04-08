@@ -53,13 +53,6 @@
     home-manager.enable = true;
     git.enable = true;
     zsh.enable = true;
-    neovim = {
-  enable = true;
-  package = pkgs.neovim.override {
-    version = "0.10.3";
-    rev = "21808d22b1cda1898b71cf1a1beb524a97add2c4";
-  };
-};
     firefox.enable = true;
     direnv.enable = true;
   };
