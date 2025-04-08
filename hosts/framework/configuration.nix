@@ -122,6 +122,7 @@
       owner = "NixOS";
       repo = "nixpkgs";
       rev = "028048884dc9517e548703beb24a11408cc51402";
+      sha256 = "sha256-HukcSGUZc/YzO6DMkA6noUrav44lIo1MwQaVog5kVT0="; 
     }) {}).neovim)
   ];
   programs._1password.enable = true;
