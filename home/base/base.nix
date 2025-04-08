@@ -55,15 +55,9 @@
   zsh.enable = true;
   neovim = {
     enable = true;
-    package = pkgs.neovim-unwrapped.overrideAttrs (old: {
+    package = pkgs.neovim.override {
       version = "0.10.4";
-      src = pkgs.fetchFromGitHub {
-        owner = "neovim";
-        repo = "neovim";
-        rev = "5eeeafe5160f880da38cc00385e1ea3fdfe5667e";
-        hash = "sha256-TAuoa5GD50XB4OCHkSwP1oXfedzVrCBRutNxBp/zGLY=";
-      };
-    });
+    };
   };
   firefox.enable = true;
   direnv.enable = true;
