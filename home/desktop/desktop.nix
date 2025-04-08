@@ -20,6 +20,7 @@ in {
   home.packages = with pkgs; [
     pulsemixer
     bambu-studio
+    cloudflared
     google-chrome
     #Autodesk start
     /*
