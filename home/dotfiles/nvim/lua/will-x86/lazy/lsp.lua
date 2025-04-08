@@ -22,6 +22,30 @@ return {
         local lsp = require("lsp-zero")
         local cmp = require('cmp')
         local cmp_action = lsp.cmp_action()
+        lsp.preset("recommended")
+
+        local cmp_select = { behavior = cmp.SelectBehavior.Select }
+        local cmp_mappings = lsp.defaults.cmp_mappings({
+            ['<CR>'] = cmp.mapping.confirm({ select = false }),
+            ['<C-Space>'] = cmp.mapping.complete(),
+            ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+            ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+            ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+            ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+            ['<C-i>'] = cmp.mapping.confirm({ select = true }),
+            ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-d>'] = cmp.mapping.scroll_docs(4),
+        })
+
+        lsp.setup_nvim_cmp({
+            mapping = cmp_mappings,
+            sources = {
+                { name = 'path' },
+                { name = 'nvim_lsp' },
+                { name = 'buffer',  keyword_length = 3 },
+                { name = 'luasnip', keyword_length = 2 },
+            }
+        })
         local eslint = require("eslint");
         require("conform").setup({
             formatters_by_ft = {
@@ -284,7 +308,7 @@ return {
             }
         end
 
-        local cmp_select = { behavior = cmp.SelectBehavior.Select }
+        --[[local cmp_select = { behavior = cmp.SelectBehavior.Select }
         local cmp_mappings = {
             ['<CR>'] = cmp.mapping.confirm({ select = false }),
             ['<C-Space>'] = cmp.mapping.complete(),
@@ -311,6 +335,7 @@ return {
                 { name = 'buffer' },
             }),
         })
+        ]] --
 
         local disable_lsp_filetypes = { sql = true, mysql = true }
         lsp.on_attach(function(client, bufnr)
