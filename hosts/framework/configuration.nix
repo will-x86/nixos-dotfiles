@@ -36,19 +36,17 @@
   services.mullvad-vpn.enable = true;
   services.trezord.enable = true;
   services.cloudflared = {
-enable = true;
-tunnels = {
-    "${secrets.cloudflared.james_id}" = {
+    enable = true;
+    tunnels = {
+      "${secrets.cloudflared.james_id}" = {
         credentialsFile = "${secrets.cloudflared.james_path}";
-          ingress = {
+        ingress = {
           "james.kimbell.uk" = "http://localhost:3000";
           # You can add more domains/rules
         };
         default = "http_status:404";
-
+      };
     };
-
-};
   };
   services.syncthing = {
     enable = true;
