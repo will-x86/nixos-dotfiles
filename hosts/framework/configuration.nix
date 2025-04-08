@@ -35,6 +35,7 @@
   services.flatpak.enable = true;
   services.mullvad-vpn.enable = true;
   services.trezord.enable = true;
+  services.cloudflared.enable = true;
   services.syncthing = {
     enable = true;
     #group = "mygroupname";
