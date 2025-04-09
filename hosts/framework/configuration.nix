@@ -71,9 +71,9 @@
   };
   hardware.keyboard.qmk.enable = true;
   programs.adb.enable = true;
-  programs.stream-deck-ui = {
-      enable = true;
-      autoStart = true;
+  programs.streamdeck-ui = {
+    enable = true;
+    autoStart = true;
   };
   services.udev.packages = [
     pkgs.platformio-core
