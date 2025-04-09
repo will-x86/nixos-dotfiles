@@ -18,7 +18,6 @@
   services.tailscale.enable = true;
   boot.initrd.luks.devices."luks-14f78eb6-ba40-4c72-96c5-2924fca0f147".device = "/dev/disk/by-uuid/14f78eb6-ba40-4c72-96c5-2924fca0f147";
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "bigDaddy";
   boot.loader.systemd-boot.extraEntries = {
