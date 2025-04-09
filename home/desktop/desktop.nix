@@ -7,7 +7,7 @@
   ...
 }: let
   base = import ../base/base.nix {inherit config pkgs;};
-    pkgs-stable = import inputs.nixpkgs-stable {
+  pkgs-stable = import inputs.nixpkgs-stable {
     system = pkgs.system;
     config.allowUnfree = true;
   };
