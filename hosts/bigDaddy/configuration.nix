@@ -30,6 +30,9 @@
   i18n.defaultLocale = "en_GB.UTF-8";
   # Set your time zone.
   time.timeZone = "Europe/London";
+  services.ollama = {
+  enable = true;
+};
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_GB.UTF-8";
@@ -92,7 +95,6 @@
       rev = "028048884dc9517e548703beb24a11408cc51402";
     }) {system = "x86_64-linux";})
     .neovim
-
   ];
 
   system.stateVersion = "24.11";
