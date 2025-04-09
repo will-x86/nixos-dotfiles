@@ -2,6 +2,8 @@
   description = "Will's NixOS configuration";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+      nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";  
+
     #nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     home-manager = {
@@ -17,6 +19,10 @@
         inherit system;
         config.allowUnfree = true;
       };
+        pkgs-stable = import nixpkgs-stable {  
+    inherit system;
+    config.allowUnfree = true;
+  };
     in {
       templates = {
         go = {

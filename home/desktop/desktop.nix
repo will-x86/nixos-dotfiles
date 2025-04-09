@@ -7,6 +7,10 @@
   ...
 }: let
   base = import ../base/base.nix {inherit config pkgs;};
+    pkgs-stable = import inputs.nixpkgs-stable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
 in {
   imports = [
     base
@@ -19,7 +23,7 @@ in {
   };
   home.packages = with pkgs; [
     pulsemixer
-    bambu-studio
+    pkgs-stable.bambu-studio
     cloudflared
     google-chrome
     #Autodesk start
