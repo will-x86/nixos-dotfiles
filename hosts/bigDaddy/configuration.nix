@@ -102,11 +102,6 @@
     }) {system = "x86_64-linux";})
     .neovim
   ];
-  networking.firewall = {
-  enable = true;
-  allowedTCPPorts = [ 80 443 11434 11343 ];
-};
-
 
   system.stateVersion = "24.11";
 }
