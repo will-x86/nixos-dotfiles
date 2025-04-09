@@ -32,6 +32,7 @@
   time.timeZone = "Europe/London";
   services.ollama = {
     enable = true;
+        acceleration = "rocm";
   };
 
   i18n.extraLocaleSettings = {
