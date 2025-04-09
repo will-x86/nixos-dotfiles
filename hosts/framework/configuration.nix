@@ -71,6 +71,10 @@
   };
   hardware.keyboard.qmk.enable = true;
   programs.adb.enable = true;
+  programs.stream-deck-ui = {
+      enable = true;
+      autoStart = true;
+  };
   services.udev.packages = [
     pkgs.platformio-core
     pkgs.platformio-core.udev
@@ -119,11 +123,12 @@
     kdePackages.plasma-nm
     via
     (import (builtins.fetchGit {
-    name = "my-old-revision";
-    url = "https://github.com/NixOS/nixpkgs/";
-    ref = "refs/heads/nixos-unstable";
-    rev = "028048884dc9517e548703beb24a11408cc51402";
-}) { system = "x86_64-linux"; }).neovim
+      name = "my-old-revision";
+      url = "https://github.com/NixOS/nixpkgs/";
+      ref = "refs/heads/nixos-unstable";
+      rev = "028048884dc9517e548703beb24a11408cc51402";
+    }) {system = "x86_64-linux";})
+    .neovim
   ];
   programs._1password.enable = true;
   programs._1password-gui = {
