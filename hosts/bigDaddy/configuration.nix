@@ -31,8 +31,8 @@
   # Set your time zone.
   time.timeZone = "Europe/London";
   services.ollama = {
-  enable = true;
-};
+    enable = true;
+  };
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_GB.UTF-8";
@@ -50,8 +50,8 @@
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "will";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "will";
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -77,7 +77,7 @@
   services.printing.enable = true;
   nixpkgs.config.allowUnfree = true;
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   programs._1password.enable = true;
   programs._1password-gui = {
