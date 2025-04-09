@@ -32,8 +32,12 @@
   time.timeZone = "Europe/London";
   services.ollama = {
     enable = true;
-        acceleration = "rocm";
+    acceleration = "rocm";
   };
+  hardware.graphics = {
+  enable = true;
+  enable32Bit = true;
+};
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_GB.UTF-8";
