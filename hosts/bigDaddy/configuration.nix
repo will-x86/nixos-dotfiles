@@ -26,9 +26,9 @@
       efi /EFI/Microsoft/Boot/bootmgfw.efi
     '';
   };
-# Select internationalisation properties.
+  # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
- # Set your time zone.
+  # Set your time zone.
   time.timeZone = "Europe/London";
 
   i18n.extraLocaleSettings = {
@@ -66,7 +66,7 @@
   };
   */
 
- services.xserver.xkb = {
+  services.xserver.xkb = {
     layout = "us";
     variant = "";
   };

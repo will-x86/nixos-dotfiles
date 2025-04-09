@@ -117,7 +117,7 @@
     '';
   };
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  home-manager.backupFileExtension = null;
+  home-manager.backupFileExtension = "backup";
 
   virtualisation.docker.enable = true;
   virtualisation.containerd.enable = true;
