@@ -14,11 +14,14 @@
     useOSProber = true; # This enables Windows detection
     configurationLimit = 20; # Limits the number of configurations to keep, stops boot being full
   };
+
   services.tailscale.enable = true;
-  boot.initrd.luks.devices."luks-9d66bf13-c491-40fc-94df-ced4fa14f219".device = "/dev/disk/by-uuid/9d66bf13-c491-40fc-94df-ced4fa14f219";
+  boot.initrd.luks.devices."luks-14f78eb6-ba40-4c72-96c5-2924fca0f147".device = "/dev/disk/by-uuid/14f78eb6-ba40-4c72-96c5-2924fca0f147";
+
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.efi.canTouchEfiVariables = true;
-  networking.hostName = "bigDaddy"; # Define your hostname.
+  networking.hostName = "bigDaddy"; 
   boot.loader.systemd-boot.extraEntries = {
     "windows.conf" = ''
       title Windows
@@ -31,14 +34,13 @@
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
+  services.xserver.displayManager.autoLogin.enable = true;
+  services.xserver.displayManager.autoLogin.user = "will";
   services.xserver.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   services.xserver.videoDrivers = ["amdgpu"];
-  services.xserver.displayManager.gdm.enable = true;
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
   /*
     services.ollama = {
     enable = true;
@@ -58,6 +60,7 @@
   };
 
   services.printing.enable = true;
+  nixpkgs.config.allowUnfree = true;
 
   hardware.pulseaudio.enable = false;
 
@@ -72,5 +75,5 @@
     samba
   ];
 
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; 
 }
