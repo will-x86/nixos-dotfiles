@@ -35,9 +35,9 @@
     acceleration = "rocm";
   };
   hardware.graphics = {
-  enable = true;
-  enable32Bit = true;
-};
+    enable = true;
+    enable32Bit = true;
+  };
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_GB.UTF-8";
