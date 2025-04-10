@@ -23,9 +23,9 @@ in {
   };
   home.packages = with pkgs; [
     pulsemixer
-    pkgs-stable.bambu-studio
+    bambu-studio
     cloudflared
-    google-chrome
+    pkgs-stable.google-chrome
     #Autodesk start
     /*
       wineWowPackages.waylandFull
