@@ -25,6 +25,9 @@
     */
     "amdgpu.dcdebugmask=0x10"
   ];
+
+  services.fwupd.enable = true;
+  services.power-profiles-daemon.enable = true;
   networking.hostName = "framework"; # Define your hostname.
   powerManagement.powertop.enable = true;
   hardware.spacenavd.enable = true;
