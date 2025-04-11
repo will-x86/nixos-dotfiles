@@ -26,6 +26,19 @@
     "amdgpu.dcdebugmask=0x10"
   ];
 
+  nixpkgs.overlays = [
+    (self: super: {
+      bambu-studio = super.bambu-studio.overrideAttrs (oldAttrs: {
+        version = "02.00.01.50";
+        src = self.fetchFromGitHub {
+          owner = "bambulab";
+          repo = "BambuStudio";
+          rev = "0163f3859882c8684117d7ddc9b84e90746ca13f";
+          hash = "sha256-0000000000000000000000000000000000000000000000000000";
+        };
+      });
+    })
+  ];
   services.fwupd.enable = true;
   services.power-profiles-daemon.enable = true;
   networking.hostName = "framework"; # Define your hostname.
