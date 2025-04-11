@@ -17,35 +17,6 @@
     enable = true;
     wifi.backend = "wpa_supplicant";
   };
-  /*
-    networking.wireless = {
-    enable = true; # Enables wireless support via wpa_supplicant
-    userControlled.enable = true;
-    networks = {
-      "eduroam" = {
-        auth = ''
-          key_mgmt=WPA-EAP
-          eap=PEAP
-          identity="${secrets.eduroam.email}"
-          password="${secrets.eduroam.pass}"
-          phase2="auth=MSCHAPV2"
-        '';
-      };
-    };
-  };
-  */
-  #networking.networkmanager.enable = true;
-  /*
-    networking.wireless.iwd.settings = {
-    IPv6 = {
-      Enabled = true;
-    };
-    Settings = {
-      AutoConnect = true;
-    };
-  };
-  networking.networkmanager.wifi.backend = "iwd";
-  */
   time.timeZone = "Europe/London";
 
   i18n.defaultLocale = "en_GB.UTF-8";

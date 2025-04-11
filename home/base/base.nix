@@ -20,10 +20,23 @@
     go-blueprint
     lsof
     awscli2
+    cloudflared
     dig
     libcgroup
+    wget
+    p7zip
+    curl
     gh
+    tailwindcss-language-server
+    vscode-langservers-extracted
     nnn
+    exfat
+    deno
+    typescript-language-server
+    killall
+    ffmpeg-full
+    clang-tools
+    hfsprogs
     tailscale
     git-crypt
     samba

@@ -37,14 +37,11 @@ in {
     pulsemixer
     custom-bambu-studio
     ventoy-full
-    cloudflared
     pkgs-stable.google-chrome
     wineWowPackages.waylandFull
     winetricks
     mokutil
     lsb-release
-    wget
-    p7zip
     obs-studio
     trezor-suite
     trezor-agent
@@ -58,11 +55,8 @@ in {
     mokutil
     gawk
     coreutils
-    curl
-    #mesa-utils
     polkit
     xdg-utils
-    #Autodesk end
     tailwindcss-language-server
     vscode-langservers-extracted
     quickemu
@@ -77,17 +71,12 @@ in {
     orca-slicer
     gtk3
     gtk4
-    exfat
-    hfsprogs
     webkitgtk_6_0
     inputs.zen-browser.packages.${system}.default
     syncthingtray
     iwd
-    typescript-language-server
     feishin
-    deno
     polkit
-    killall
     python312Packages.dbus-python
     mcomix
     swaylock
@@ -96,12 +85,10 @@ in {
     postman
     arduino
     #llvmPackages_latest.lldb
-    clang-tools
     #lldb
     avrdude
     ccls
     vscode
-    ffmpeg-full
     vulkan-tools
     qmk
     grim
@@ -112,7 +99,6 @@ in {
     davinci-resolve
     brightnessctl
     greetd.tuigreet
-    typescript-language-server
     obsidian
     gocr
     #nfs-utils
