@@ -35,7 +35,7 @@ in {
 
   home.packages = with pkgs; [
     pulsemixer
- #   custom-bambu-studio
+    custom-bambu-studio
     ventoy-full
     cloudflared
     pkgs-stable.google-chrome
