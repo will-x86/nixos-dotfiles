@@ -35,13 +35,13 @@ alejandra .
 echo "Rebuilding NixOS and applying Home Manager configuration"
 if [ "$UPGRADE" = true ]; then
     if [ "$BUILDER" = true ]; then
-        sudo -E nixos-rebuild --builders 'ssh://root@10.0.0.77?ssh-key=/home/will/.ssh/ed25519' switch --flake .#$HOST --show-trace --upgrade
+        sudo -E nixos-rebuild --builders 'ssh://root@nixos-vm?ssh-key=/home/will/.ssh/ed25519' switch --flake .#$HOST --show-trace --upgrade
     else
         sudo nixos-rebuild switch --flake .#$HOST --show-trace --upgrade
     fi
 else
     if [ "$BUILDER" = true ]; then
-        sudo nixos-rebuild --builders 'ssh://root@10.0.0.77' switch --flake .#$HOST --show-trace
+        sudo nixos-rebuild --builders 'ssh://root@nixos-vm' switch --flake .#$HOST --show-trace
     else
         sudo nixos-rebuild switch --flake .#$HOST --show-trace
     fi
