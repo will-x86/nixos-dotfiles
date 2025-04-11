@@ -23,16 +23,14 @@
   services.tailscale.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-     nix.trustedUsers = ["root" "will"];
-services = {
-        openssh = {
-        enable = true;
-permitRootLogin = "yes";
-passwordAuthentication = true;
-};
-};
-
-
+  nix.trustedUsers = ["root" "will"];
+  services = {
+    openssh = {
+      enable = true;
+      permitRootLogin = "yes";
+      passwordAuthentication = true;
+    };
+  };
 
   programs._1password.enable = true;
 

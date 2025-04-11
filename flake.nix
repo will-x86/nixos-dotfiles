@@ -79,7 +79,7 @@
             }
           ];
         };
-        nixos-vm= nixpkgs.lib.nixosSystem {
+        nixos-vm = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             ./hosts/all.nix
