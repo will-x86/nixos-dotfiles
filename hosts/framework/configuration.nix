@@ -30,7 +30,7 @@
   networking.hostName = "framework"; # Define your hostname.
   powerManagement.powertop.enable = true;
   hardware.spacenavd.enable = true;
-
+  nix.settings.trusted-users = ["root" "will"];
   services.tailscale.enable = true;
   services.xserver.enable = true;
   services.xserver.videoDrivers = ["amdgpu"];
