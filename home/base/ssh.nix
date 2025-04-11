@@ -5,11 +5,12 @@
   ...
 }: {
   programs.ssh.enable = true;
+  
+    #Host *
+    #  IdentityFile ~/.ssh/id_ecdsa_sk
   programs.ssh.extraConfig = ''
-    Host github.com
-      IdentityFile ~/.ssh/ed25519
     Host *
-      IdentityFile ~/.ssh/id_ecdsa_sk
+      IdentityFile ~/.ssh/ed25519
     Host localhost
         UserKnownHostsFile /dev/null
     Host ${secrets.b.a}
