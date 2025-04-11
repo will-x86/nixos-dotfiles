@@ -13,12 +13,12 @@
   };
   outputs = inputs:
     with inputs; let
-    #  secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
-    secretsPath = ./secrets/secrets.json;
-    secrets = 
-    if builtins.pathExists secretsPath
-    then builtins.fromJSON (builtins.readFile secretsPath)
-    else {};
+      #  secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
+      secretsPath = ./secrets/secrets.json;
+      secrets =
+        if builtins.pathExists secretsPath
+        then builtins.fromJSON (builtins.readFile secretsPath)
+        else {};
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
