@@ -38,19 +38,6 @@
   services.flatpak.enable = true;
   services.mullvad-vpn.enable = true;
   services.trezord.enable = true;
-  services.cloudflared = {
-    enable = true;
-    tunnels = {
-      "${secrets.cloudflared.james_id}" = {
-        credentialsFile = "${secrets.cloudflared.james_path}";
-        ingress = {
-          "james.kimbell.uk" = "http://localhost:3000";
-          # You can add more domains/rules
-        };
-        default = "http_status:404";
-      };
-    };
-  };
   services.syncthing = {
     enable = true;
     #group = "mygroupname";
@@ -64,9 +51,7 @@
   };
   programs.steam = {
     enable = true;
-    #remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    #dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    localNetworkGameTransfers.openFirewall = true; 
   };
   programs.hyprland = {
     enable = true;
@@ -89,10 +74,10 @@
     enable = true;
     enable32Bit = true;
   };
-  #hardware.amdgpu.amdvlk = {
-  #enable = true;
-  #support32Bit.enable = true;
-  #};
+  hardware.amdgpu.amdvlk = {
+  enable = true;
+  support32Bit.enable = true;
+  };
   services.desktopManager.plasma6.enable = true;
   services.xserver.xkb = {
     layout = "us";

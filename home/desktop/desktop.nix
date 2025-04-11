@@ -1,4 +1,4 @@
-    {
+{
   config,
   inputs,
   pkgs,
@@ -11,7 +11,7 @@
     system = pkgs.system;
     config.allowUnfree = true;
   };
-  
+
   custom-bambu-studio = pkgs.bambu-studio.overrideAttrs (oldAttrs: {
     version = "01.00.01.50";
     src = pkgs.fetchFromGitHub {
@@ -21,38 +21,24 @@
       hash = "sha256-7mkrPl2CQSfc1lRjl1ilwxdYcK5iRU//QGKmdCicK30=";
     };
   });
-
 in {
   imports = [
     base
   ];
-  
+
   home.file = {
     ".config/hypr" = {
       source = ../dotfiles/hypr;
       recursive = true;
     };
   };
-  
+
   home.packages = with pkgs; [
     pulsemixer
-    custom-bambu-studio  # Use the custom package defined above
+    custom-bambu-studio 
     ventoy-full
     cloudflared
     pkgs-stable.google-chrome
-    #Autodesk start
-    /*
-      wineWowPackages.waylandFull
-    winetricks
-    lsb-release
-    wget
-    p7zip
-    gettext
-    cabextract
-    samba4Full
-    spacenavd
-    bc
-    */
     wineWowPackages.waylandFull
     winetricks
     mokutil
