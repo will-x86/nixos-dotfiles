@@ -35,6 +35,7 @@
   services.tailscale.enable = true;
   services.xserver.enable = true;
   services.xserver.videoDrivers = ["amdgpu"];
+  boot.initrd.kernelModules = ["amdgpu" ];
   services.flatpak.enable = true;
   services.mullvad-vpn.enable = true;
   services.trezord.enable = true;
@@ -85,10 +86,9 @@
     pkgs.android-udev-rules
     pkgs.via
   ];
-  hardware.opengl= {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
   #hardware.amdgpu.amdvlk = {
   #enable = true;
