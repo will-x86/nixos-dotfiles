@@ -1,0 +1,8 @@
+keys:
+  - &framework age1x6u2rrqyfh9m8w9xuycwqqswcchxdt5zu658qw85vcns5tkh3fjqnfaf8z
+
+creation_rules:
+  - path_regex: secrets/.*
+    key_groups:
+      - age:
+          - *framework
