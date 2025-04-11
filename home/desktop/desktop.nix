@@ -23,7 +23,7 @@ in {
   };
   home.packages = with pkgs; [
     pulsemixer
-    pkgs-stable.bambu-studio
+    bambu-studio
     ventoy-full
     cloudflared
     pkgs-stable.google-chrome
