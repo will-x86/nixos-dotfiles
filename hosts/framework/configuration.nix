@@ -85,13 +85,14 @@
     pkgs.android-udev-rules
     pkgs.via
   ];
-  hardware.graphics = {
+  hardware.opengl= {
     enable = true;
-    enable32Bit = true;
+    driSupport = true;
+    driSupport32Bit = true;
   };
   #hardware.amdgpu.amdvlk = {
-    #enable = true;
-    #support32Bit.enable = true;
+  #enable = true;
+  #support32Bit.enable = true;
   #};
   services.desktopManager.plasma6.enable = true;
   services.xserver.xkb = {
