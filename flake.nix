@@ -79,6 +79,24 @@
             }
           ];
         };
+        nixos-vm= nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/all.nix
+            ./hosts/nixos-vm/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {inherit secrets inputs system;};
+              home-manager.users.will = import ./home/base/base.nix;
+            }
+            {
+              _module.args.secrets = secrets;
+            }
+          ];
+        };
+
         bigDaddy = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
