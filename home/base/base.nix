@@ -19,7 +19,6 @@
     immich-go
     go-blueprint
     lsof
-    sops
     awscli2
     dig
     libcgroup
