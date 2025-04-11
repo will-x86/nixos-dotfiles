@@ -23,7 +23,15 @@ in {
   };
   home.packages = with pkgs; [
     pulsemixer
-    bambu-studio
+    bambu-studio = prev.bambu-studio.overrideAttrs (oldAttrs: {
+version = “01.00.01.50”;
+src = prev.fetchFromGitHub {
+owner = “bambulab”;
+repo = “BambuStudio”;
+rev = “v01.00.01.50”;
+hash = “sha256-7mkrPl2CQSfc1lRjl1ilwxdYcK5iRU//QGKmdCicK30=”;
+};
+});
     ventoy-full
     cloudflared
     pkgs-stable.google-chrome
