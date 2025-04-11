@@ -26,19 +26,18 @@
     "amdgpu.dcdebugmask=0x10"
   ];
 
-  nixpkgs.overlays = [
-    (self: super: {
-      bambu-studio = super.bambu-studio.overrideAttrs (oldAttrs: {
-        version = "02.00.01.50";
-        src = self.fetchFromGitHub {
-          owner = "bambulab";
-          repo = "BambuStudio";
-          rev = "0163f3859882c8684117d7ddc9b84e90746ca13f";
-          hash = "sha256-0000000000000000000000000000000000000000000000000000";
-        };
-      });
-    })
-  ];
+nixpkgs.overlays = [
+  (self: super: {
+    bambu-studio = super.appimageTools.wrapType2 {
+      name = "bambu-studio";
+      version = "02.00.01.50";
+      src = pkgs.fetchurl {
+        url = "https://github.com/bambulab/BambuStudio/releases/download/v02.00.01.50/BambuStudio_linux_ubuntu_v02.00.01.50.AppImage";
+        sha256 = ""; # You'll need to get this hash from the first failed build
+      };
+    };
+  })
+];
   services.fwupd.enable = true;
   services.power-profiles-daemon.enable = true;
   networking.hostName = "framework"; # Define your hostname.
