@@ -97,7 +97,6 @@
     setSocketVariable = true;
   };
 
-
   networking.firewall = {
     enable = false;
     allowPing = true;

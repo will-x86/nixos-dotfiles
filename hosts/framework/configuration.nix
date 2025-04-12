@@ -131,7 +131,6 @@
   networking.firewall.allowedUDPPorts = [22000 21027];
   users.users.will.extraGroups = ["dialout"];
 
-
   fileSystems."/mnt/FractalMedia" = {
     device = "//${secrets.samba.fracRemote}/Media";
     fsType = "cifs";
