@@ -39,6 +39,7 @@ in {
     ventoy-full
     pkgs-stable.google-chrome
     wineWowPackages.waylandFull
+    beekeeper-studio
     winetricks
     mokutil
     lsb-release
