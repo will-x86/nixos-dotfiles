@@ -103,6 +103,39 @@
     }) {system = "x86_64-linux";})
     .neovim
   ];
+  fileSystems."/mnt/FractalMedia" = {
+    device = "//${secrets.samba.fracRemote}/Media";
+    fsType = "cifs";
+    options = [
+      "username=will"
+      "password=${secrets.samba.frac}"
+      "x-systemd.automount"
+      "x-systemd.mount-timeout=3"
+      "uid=1000"
+      "gid=100"
+      "dir_mode=0777"
+      "file_mode=0666"
+      "nofail"
+    ];
+  };
+
+  fileSystems."/mnt/Fractal" = {
+    device = "//${secrets.samba.fracRemote}/Vault";
+    fsType = "cifs";
+    options = [
+      "username=will"
+      "password=${secrets.samba.frac}"
+      "x-systemd.automount"
+      "x-systemd.mount-timeout=3"
+      "uid=1000"
+      "gid=100"
+      "dir_mode=0777"
+      "file_mode=0666"
+      "nofail"
+    ];
+  };
+
+
 
   system.stateVersion = "24.11";
 }

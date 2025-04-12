@@ -130,8 +130,10 @@
   networking.firewall.allowedTCPPorts = [8384 22000];
   networking.firewall.allowedUDPPorts = [22000 21027];
   users.users.will.extraGroups = ["dialout"];
-  fileSystems."/mnt/FractalMediaRemote" = {
-    device = "//${secrets.tailscale.rootDomain}/Media";
+
+
+  fileSystems."/mnt/FractalMedia" = {
+    device = "//${secrets.samba.fracRemote}/Media";
     fsType = "cifs";
     options = [
       "username=will"
@@ -146,8 +148,8 @@
     ];
   };
 
-  fileSystems."/mnt/FractalVault" = {
-    device = "//${secrets.tailscale.rootDomain}/Vault";
+  fileSystems."/mnt/Fractal" = {
+    device = "//${secrets.samba.fracRemote}/Vault";
     fsType = "cifs";
     options = [
       "username=will"
