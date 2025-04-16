@@ -75,8 +75,6 @@
     enable = true;
     enable32Bit = true;
   };
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport = true;
   hardware.amdgpu.amdvlk = {
     enable = true;
     support32Bit.enable = true;
