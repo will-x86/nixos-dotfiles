@@ -29,7 +29,7 @@
   services.fwupd.enable = true;
   services.power-profiles-daemon.enable = true;
   powerManagement.powertop.enable = true;
-  networking.hostName = "framework"; 
+  networking.hostName = "framework";
   hardware.spacenavd.enable = true;
   nix.settings.trusted-users = ["root" "will"];
   services.tailscale.enable = true;

@@ -26,11 +26,11 @@ fi
 cd "$FRAMEWORK_DIR"
 pwd
 
+alejandra .
 gen=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | grep current)
 git_no_pager diff
 git add .
 git commit -m "$gen" || true
-alejandra .
 
 echo "Rebuilding NixOS and applying Home Manager configuration"
 if [ "$UPGRADE" = true ]; then
