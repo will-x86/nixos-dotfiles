@@ -19,6 +19,7 @@
     immich-go
     go-blueprint
     lsof
+    zls
     awscli2
     cloudflared
     dig
