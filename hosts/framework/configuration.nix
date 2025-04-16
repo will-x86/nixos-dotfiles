@@ -28,8 +28,8 @@
   programs.kdeconnect.enable = true;
   services.fwupd.enable = true;
   services.power-profiles-daemon.enable = true;
-  networking.hostName = "framework"; # Define your hostname.
   powerManagement.powertop.enable = true;
+  networking.hostName = "framework"; 
   hardware.spacenavd.enable = true;
   nix.settings.trusted-users = ["root" "will"];
   services.tailscale.enable = true;
@@ -41,7 +41,6 @@
   services.trezord.enable = true;
   services.syncthing = {
     enable = true;
-    #group = "mygroupname";
     user = "will";
     dataDir = "/home/will/Documents";
     configDir = "/home/will/Documents/.config/syncthing";
