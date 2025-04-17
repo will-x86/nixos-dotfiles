@@ -11,14 +11,16 @@
         "hyprland/workspaces",
     ],
     "modules-center": [
+    "cpu",
+    "memory",
+    "network"
     ],
     "modules-right": [
-        "memory",
         "disk",
         "pulseaudio",
         "bluetooth",
         "battery",
-        "network",
+        "network_det",
         "clock",
         "tray",
         "custom/power-menu"
@@ -59,9 +61,24 @@
         }
     },
     "memory": {
-        "interval": 30,
+        "interval": 2,
         "format": " {used:0.1f}G / {total:0.1f}G",
         "on-click": "alacritty --config-file ~/.config/hypr/alacritty/alacritty.toml -e btop",
+        "tooltip": false
+    },
+        "cpu": {
+        "format": "cpu {usage}%",
+        "interval": 2,
+
+        "states": {
+            "critical": 90
+        }
+    },
+        "network": {
+        "format-wifi" : "wifi {bandwidthDownBits}",
+        "format-ethernet": "enth {bandwidthDownBits}",
+        "format-disconnected" : "no network",
+        "interval": 5,
         "tooltip": false
     },
     "disk": {
@@ -70,7 +87,7 @@
         "interval": 5,
         "path": "/"
     },
-    "network": {
+    "network_det": {
         "format-wifi": "󰖩 {signalStrength}%",
         "format-ethernet": "󰈀 {cidr}",
         "tooltip-format": "{ifname} via {gwaddr}",
