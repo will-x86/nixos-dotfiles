@@ -18,6 +18,8 @@
     unzip
     immich-go
     go-blueprint
+    jellyfin-web
+    kodiPackages.jellyfin
     lsof
     zls
     awscli2

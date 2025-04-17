@@ -40,8 +40,6 @@ in {
     pkgs-stable.google-chrome
     wineWowPackages.waylandFull
     pkgs-stable.beekeeper-studio
-    jellyfin-web
-    kodiPackages.jellyfin
     winetricks
     mokutil
     lsb-release
