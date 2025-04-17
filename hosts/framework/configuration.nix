@@ -108,6 +108,8 @@
     samba
     qemu_full
     networkmanagerapplet
+    kodiPackages.jellyfin
+    jellyfin-web
     kdePackages.plasma-nm
     via
     (import (builtins.fetchGit {
