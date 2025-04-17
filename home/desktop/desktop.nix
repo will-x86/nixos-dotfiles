@@ -43,6 +43,7 @@ in {
     winetricks
     mokutil
     lsb-release
+    jellyfin-web
     obs-studio
     trezor-suite
     trezor-agent
