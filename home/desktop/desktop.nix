@@ -41,6 +41,7 @@ in {
     wineWowPackages.waylandFull
     pkgs-stable.beekeeper-studio
     jellyfin-web
+    kodi-jellyfin
     winetricks
     mokutil
     lsb-release
