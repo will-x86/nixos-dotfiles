@@ -39,6 +39,7 @@ in {
     ventoy-full
     pkgs-stable.google-chrome
     wineWowPackages.waylandFull
+    jellyfin-media-player
     pkgs-stable.beekeeper-studio
     winetricks
     mokutil
