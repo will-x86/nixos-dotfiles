@@ -19,6 +19,7 @@
     immich-go
     go-blueprint
     lsof
+    ntfsprogs
     zls
     awscli2
     cloudflared
