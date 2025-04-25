@@ -20,6 +20,7 @@
     go-blueprint
     lsof
     virt-viewer
+    moonlight-qt
     ntfsprogs
     zls
     awscli2
