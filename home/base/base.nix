@@ -19,6 +19,7 @@
     immich-go
     go-blueprint
     lsof
+    virt-viewer
     ntfsprogs
     zls
     awscli2
