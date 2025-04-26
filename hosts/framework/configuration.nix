@@ -59,6 +59,7 @@
     xwayland.enable = true;
   };
   hardware.keyboard.qmk.enable = true;
+
   programs.adb.enable = true;
   programs.streamdeck-ui = {
     enable = true;
