@@ -106,6 +106,7 @@
 
   environment.systemPackages = with pkgs; [
     cifs-utils
+    android-studio
     samba
     qemu_full
     networkmanagerapplet
