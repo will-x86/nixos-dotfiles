@@ -52,7 +52,7 @@
       nerd-fonts.jetbrains-mono
       font-awesome
       apl386
-      noto-fonts
+      #noto-fonts
       noto-fonts-emoji
       dejavu_fonts
       fira-code-symbols
