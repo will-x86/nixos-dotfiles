@@ -178,9 +178,13 @@
 
             bind = SUPER,       Return, exec, $kitty -T
             bind = SUPER, e, exec, $kitty -e lf
+<<<<<<< HEAD
             bind = SUPER_SHIFT, Return, exec, [float; size 45% 50%; centerwindow] $kitty -T
 
             bind = SUPER_SHIFT, w, exec,  $kitty -W
+=======
+            bind = SUPER_SHIFT, Return, exec, $kitty -f
+>>>>>>> 4a0f6a2 (   7   2025-04-24 16:02:08   (current))
             bind = SUPER,       T,      exec, $kitty
             bind = SUPER_SHIFT, F, exec, XDG_CURRENT_DESKTOP=kde dolphin
             bindr = SUPER, SUPER_L, exec, $rofi_launcher
@@ -190,8 +194,11 @@
             #windowrule = float, ^(Rofi)$
             #windowrule = float, ^(Fusion360)$
             bind = SUPER_SHIFT, V, exec, ~/.config/rofi/assets/clipManager.sh
+<<<<<<< HEAD
 
             bind  = SUPER, O,exec, firefox -P "j" --new-instance
+=======
+>>>>>>> 4a0f6a2 (   7   2025-04-24 16:02:08   (current))
             bind  = SUPER, X,       exec, $wlogout
             bind  = SUPER, A,       exec, hyprshot -m region
 
