@@ -74,6 +74,7 @@
     firefox.enable = true;
     direnv.enable = true;
     starship.enable = true;
+    kitty.enable = true;
   };
 
   home.file = {
@@ -82,6 +83,10 @@
     ".tmux-sessioniser".source = ../dotfiles/.tmux-sessioniser;
     "tmux-sessioniser".source = ../dotfiles/tmux-sessioniser;
     ".zshrc".source = ../dotfiles/.zshrc;
+    ".config/kitty" = {
+      source = ../dotfiles/kitty;
+      recursive = true;
+    };
     ".config/nvim" = {
       source = ../dotfiles/nvim;
       recursive = true;
