@@ -69,7 +69,16 @@
     };
     enableDefaultPackages = true;
   };
+  stylix = {
+    enable = true;
 
+    fonts = {
+      emoji = {
+        package = pkgs.noto-fonts-emoji;
+        name = "Noto Color Emoji";
+      };
+    };
+  };
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
