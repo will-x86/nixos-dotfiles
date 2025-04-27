@@ -138,7 +138,7 @@
             $notifycmd = notify-send -h string:x-canonical-private-synchronous:hypr-cfg -u low
 
 
-            windowrulev2 = float,class:^(alacritty-float)$
+            windowrulev2 = float,class:^(kitty-float)$
 
             windowrulev2 = float,class:^(yad)$
             windowrulev2 = float,class:^(nm-connection-editor)$
@@ -154,7 +154,7 @@
             windowrulev2 = float,class:^(Gimp)$
             windowrulev2 = float,class:^(MPlayer)$
 
-            $alacritty   = ~/.config/hypr/scripts/alacritty
+            $kitty= ~/.config/hypr/scripts/kitty
             $volume      = ~/.config/hypr/scripts/volume
             $backlight   = ~/.config/hypr/scripts/brightness
             $wlogout     = ~/.config/hypr/scripts/wlogout
@@ -164,10 +164,10 @@
             $wlogout= wlogout -b 4 -m 260px
 
 
-            bind = SUPER,       Return, exec, $alacritty -T
-            bind = SUPER, e, exec, $alacritty -e lf
-            bind = SUPER_SHIFT, Return, exec, $alacritty -f
-            bind = SUPER,       T,      exec, $alacritty
+            bind = SUPER,       Return, exec, $kitty -T
+            bind = SUPER, e, exec, $kitty -e lf
+            bind = SUPER_SHIFT, Return, exec, $kitty -f
+            bind = SUPER,       T,      exec, $kitty
             bind = SUPER_SHIFT, F, exec, XDG_CURRENT_DESKTOP=kde dolphin
             bindr = SUPER, SUPER_L, exec, $rofi_launcher
 
@@ -234,7 +234,7 @@
             bind = SUPER, 9, workspace, 9
             bind = SUPER, 0, workspace, 0
 
-            exec-once=[workspace 1 silent] $alacritty -T
+            exec-once=[workspace 1 silent] $kitty -T
             exec-once=[workspace 2 silent] firefox
             exec-once=[workspace 3 silent] obsidian
             exec-once=[workspace 5 silent] feishin

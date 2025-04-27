@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [ "$1" == "-T" ]; then
+    kitty -e ~/tmux-sessioniser
+elif [ "$1" == "-e" ]; then
+    shift  # Remove the -e argument
+    kitty -e "$@"  # Pass all remaining arguments
+else
+    kitty
+fi

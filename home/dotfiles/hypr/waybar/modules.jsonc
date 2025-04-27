@@ -51,7 +51,6 @@
         "format-disconnected": "󰖪 ",
         "on-click": "~/.config/rofi/assets/wifimenu --rofi -s",
         "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({bandwidthDownBytes})</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>"
-        //alacritty --class 'alacritty-fullscreen,alacritty-float' --config-file ~/.config/hypr/alacritty/alacritty.toml -e nmtui
     },
     "bluetooth": {
         "format": "󰂯    {status}",
@@ -60,7 +59,7 @@
         "tooltip-format": "{device_alias}",
         "tooltip-format-connected": " {device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}",
-        "on-click": "alacritty --config-file ~/.config/hypr/alacritty/alacritty.toml -e bluetui"
+        "on-click": "kitty -e bluetui"
     },
     "group/custom-group": {
         "orientation": "inherit",
