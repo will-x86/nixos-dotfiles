@@ -48,6 +48,15 @@
   fonts = {
     packages = with pkgs; [
       nerd-fonts.departure-mono
+      monaspace
+      nerd-fonts.jetbrains-mono
+      font-awesome
+      apl386
+      noto-fonts
+      dejavu_fonts
+      fira-code-symbols
+      powerline-symbols
+      material-design-icons
     ];
     fontconfig = {
       defaultFonts = {
