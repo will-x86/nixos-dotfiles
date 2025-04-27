@@ -24,18 +24,24 @@ layer=overlay
 anchor=top-right
 
 # Colors
-background-color=#07122E
-text-color=#f1fcf9
-border-color=#2a323b
-progress-color=over #b4a1db
+background-color=#1A1B26
+text-color=#C0CAF5
+border-color=#36384D
+progress-color=over #BB9BF7
 
 # Timeouts
 default-timeout=5000
 
 [urgency=low]
 default-timeout=2000
+border-color=#74DBCB
+text-color=#74DBCB
+
+[urgency=normal]
+border-color=#7BA2F7
+text-color=#C0CAF5
 
 [urgency=high]
-border-color=#db86ba
-text-color=#db86ba
+border-color=#F77890
+text-color=#F98EA0
 default-timeout=0

@@ -9,19 +9,15 @@ for _prs in "${_ps[@]}"; do
 	fi
 done
 
-# Polkit agent
-if [[ ! `pidof xfce-polkit` ]]; then
-	/usr/lib/xfce-polkit/xfce-polkit &
-fi
-
-# Set wallpaper
-~/.config/hypr/scripts/wallpaper &
 
 
-# Lauch notification daemon (mako)
+
 ~/.config/hypr/scripts/notifications &
+swww-daemon & 
+swww img ~/.config/hypr/wallpapers/monochrome.jpg & 
+wal -i ~/.config/hypr/wallpapers/monochrome.jpg -q -n -e -s -c &
+pywalfox update &
 
-# Lauch statusbar (waybar)
 ~/.config/hypr/scripts/statusbar &
 
 # Start network manager applet

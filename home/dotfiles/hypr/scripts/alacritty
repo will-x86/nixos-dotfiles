@@ -1,17 +1,11 @@
 #!/usr/bin/env bash
-
-
 CONFIG="$HOME/.config/hypr/alacritty/alacritty.toml"
 
-if [ "$1" == "-f" ]; then
-	alacritty --class 'alacritty-float,alacritty-float' --config-file "$CONFIG"
-elif [ "$1" == "-F" ]; then
-	alacritty --class 'alacritty-fullscreen,alacritty-fullscreen' --config-file "$CONFIG" \
-			  -o window.startup_mode="'Fullscreen'" \
-			  window.padding.x=30 window.padding.y=30 \
-			  window.opacity=0.95 font.size=14
-elif [ "$1" == "-T" ]; then
+if [ "$1" == "-T" ]; then
     alacritty --config-file "$CONFIG" -e ~/tmux-sessioniser
+elif [ "$1" == "-e" ]; then
+    shift  # Remove the -e argument
+    alacritty --config-file "$CONFIG" -e "$@"  # Pass all remaining arguments
 else
-	alacritty --config-file "$CONFIG"
+    alacritty --config-file "$CONFIG"
 fi

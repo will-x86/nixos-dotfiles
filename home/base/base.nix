@@ -65,6 +65,7 @@
     fzf
     zoxide
     ripgrep
+    file
   ];
   programs = {
     home-manager.enable = true;
@@ -72,10 +73,12 @@
     zsh.enable = true;
     firefox.enable = true;
     direnv.enable = true;
+    starship.enable = true;
   };
 
   home.file = {
-    ".p10k.zsh".source = ../dotfiles/.p10k.zsh;
+    #".p10k.zsh".source = ../dotfiles/.p10k.zsh;
+    ".config/starship.toml".source = ../dotfiles/starship.toml;
     ".tmux-sessioniser".source = ../dotfiles/.tmux-sessioniser;
     "tmux-sessioniser".source = ../dotfiles/tmux-sessioniser;
     ".zshrc".source = ../dotfiles/.zshrc;

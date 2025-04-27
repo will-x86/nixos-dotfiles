@@ -1,25 +1,18 @@
-
-
-function _G.ColorMyPencils()
-    vim.o.termguicolors = true
-    vim.o.background = "dark"
-    vim.cmd.colorscheme("tokyonight")
-    --vim.cmd("TransparentEnable")
-end
---ColorMyPencils()
-
 return {
-
     {
-        "folke/tokyonight.nvim",
+        "zenbones-theme/zenbones.nvim",
+        dependencies = "rktjmp/lush.nvim",
         lazy = false,
-        opts = {},
+        priority = 1000,
         config = function()
-            ColorMyPencils()
+            vim.o.termguicolors = true
+            vim.opt.background = "dark"
+            vim.cmd("colorscheme tokyobones")
         end
     },
     {
         'xiyaowong/transparent.nvim',
+        dependencies = "zenbones-theme/zenbones.nvim",
         config = function()
             require("transparent").setup({
                 extra_groups = {
@@ -29,5 +22,4 @@ return {
             vim.cmd("TransparentEnable")
         end
     },
-
 }

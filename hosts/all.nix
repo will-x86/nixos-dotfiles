@@ -31,21 +31,32 @@
     LC_TELEPHONE = "en_GB.UTF-8";
     LC_TIME = "en_GB.UTF-8";
   };
+  #fonts.packages = with pkgs; [
+  #  #departure-mono
+  #  nerd-fonts.departure-mono
+  #  monaspace
+  #  nerd-fonts.jetbrains-mono
+  #  font-awesome
+  #  apl386
+  #  noto-fonts
+  #  dejavu_fonts
+  #  fira-code-symbols
+  #  powerline-symbols
+  #  material-design-icons
+  #];
 
-  fonts.packages = with pkgs; [
-    monaspace
-    nerd-fonts.jetbrains-mono
-    font-awesome
-    apl386
-    noto-fonts
-    dejavu_fonts
-    font-awesome
-    fira-code-symbols
-    powerline-symbols
-    material-design-icons
-  ];
-  #fonts.fontconfig.defaultFonts.monospace = ["JetBrainsMono Nerd Font"];
-  fonts.fontconfig.defaultFonts.monospace = ["Monaspace Neon"];
+  fonts = {
+    packages = with pkgs; [
+      nerd-fonts.departure-mono
+    ];
+    fontconfig = {
+      defaultFonts = {
+        monospace = ["DepartureMono Nerd Font Mono"];
+        sansSerif = ["DepartureMono Nerd Font"];
+        serif = ["DepartureMono Nerd Font"];
+      };
+    };
+  };
 
   security.rtkit.enable = true;
   services.pipewire = {

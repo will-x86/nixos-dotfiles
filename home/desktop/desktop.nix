@@ -7,6 +7,7 @@
   ...
 }: let
   base = import ../base/base.nix {inherit config pkgs;};
+  hyprland = import ./hyprland.nix {inherit config pkgs;};
   pkgs-stable = import inputs.nixpkgs-stable {
     system = pkgs.system;
     config.allowUnfree = true;
@@ -24,6 +25,7 @@
 in {
   imports = [
     base
+    hyprland
   ];
 
   home.file = {
@@ -32,30 +34,55 @@ in {
       recursive = true;
     };
   };
+  home.file = {
+    ".config/lf" = {
+      source = ../dotfiles/lf;
+      recursive = true;
+    };
+  };
+
+  home.file = {
+    ".config/rofi" = {
+      source = ../dotfiles/rofi;
+      recursive = true;
+    };
+  };
+
+  home.file = {
+    ".config/wlogout" = {
+      source = ../dotfiles/wlogout;
+      recursive = true;
+    };
+  };
 
   home.packages = with pkgs; [
     pulsemixer
     custom-bambu-studio
     ventoy-full
-    pkgs-stable.google-chrome
-    wineWowPackages.waylandFull
+    lf
+    pywal
+    wlogout
+    bluetui
+    #pkgs-stable.google-chrome
+    #wineWowPackages.waylandFull
     jellyfin-media-player
     pkgs-stable.beekeeper-studio
-    winetricks
+    # winetricks
     mokutil
-    lsb-release
+    #lsb-release
     jellyfin-web
     obs-studio
-    trezor-suite
-    trezor-agent
+    # trezor-suite
+    # trezor-agent
+    pywalfox-native
     mediawriter
-    gettext
-    cabextract
+    #gettext
+    #cabextract
+    ctpv
     samba4Full
     glxinfo
     #spacenavd
     bc
-    mokutil
     gawk
     coreutils
     polkit
@@ -67,7 +94,6 @@ in {
     zoom-us
     jdk17
     signal-desktop
-    #openjdk
     maven
     prusa-slicer
     platformio
@@ -82,7 +108,7 @@ in {
     polkit
     python312Packages.dbus-python
     mcomix
-    swaylock
+    #swaylock
     dbeaver-bin
     discord
     postman
@@ -99,7 +125,7 @@ in {
     jdt-language-server
     libnotify
     kdePackages.dolphin
-    davinci-resolve
+    #davinci-resolve
     brightnessctl
     greetd.tuigreet
     obsidian
@@ -107,23 +133,39 @@ in {
     #nfs-utils
     python311Packages.pip
     upx
+    cliphist
     wl-clipboard
-    ryujinx
+    udiskie
+    #ryujinx
     waybar
-    viewnior
+    #viewnior
     wofi
+    hyprshot
     mako
     foot
     swww
-    rofi
     mpv
     mpc-cli
     mpd
-    slurp
+    #slurp
     imagemagick
     feh
     playerctl
+    (pkgs.callPackage ({stdenv}:
+      stdenv.mkDerivation {
+        name = "nothing-fonts";
+        src = ./fonts;
+        installPhase = ''
+          mkdir -p $out/share/fonts/{opentype,truetype}
+          cp *.otf $out/share/fonts/opentype/
+          cp *.ttf $out/share/fonts/truetype/
+        '';
+      }) {})
   ];
+  programs.rofi = {
+    enable = true;
+    plugins = [pkgs.rofi-emoji];
+  };
 
   home.sessionVariables = {
     ANTHROPIC_API_KEY = "${secrets.anthropic.api_key}";
