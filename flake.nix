@@ -4,6 +4,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    stylix.url = "github:danth/stylix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,6 +52,7 @@
           modules = [
             ./hosts/all.nix
             ./hosts/framework/configuration.nix
+            stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -68,6 +70,7 @@
           modules = [
             ./hosts/all.nix
             ./hosts/nixos-vm/configuration.nix
+            stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -86,6 +89,7 @@
           modules = [
             ./hosts/all.nix
             ./hosts/bigDaddy/configuration.nix
+            stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
