@@ -2,7 +2,6 @@
   config,
   pkgs,
   secrets,
-  stylix,
   ...
 }: {
   system.autoUpgrade.enable = true;
@@ -69,16 +68,6 @@
       };
     };
     enableDefaultPackages = true;
-  };
-  stylix = {
-    enable = true;
-
-    fonts = {
-      emoji = {
-        package = pkgs.noto-fonts-emoji;
-        name = "Noto Color Emoji";
-      };
-    };
   };
   security.rtkit.enable = true;
   services.pipewire = {
