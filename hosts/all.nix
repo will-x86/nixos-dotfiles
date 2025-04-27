@@ -67,6 +67,7 @@
         emoji = ["Noto Color Emoji"];
       };
     };
+    enableDefaultFonts = true;
   };
 
   security.rtkit.enable = true;
