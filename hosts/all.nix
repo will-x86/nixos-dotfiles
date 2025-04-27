@@ -2,6 +2,7 @@
   config,
   pkgs,
   secrets,
+  stylix,
   ...
 }: {
   system.autoUpgrade.enable = true;
