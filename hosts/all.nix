@@ -62,8 +62,8 @@
     fontconfig = {
       defaultFonts = {
         monospace = ["DepartureMono Nerd Font Mono"];
-        sansSerif = ["DepartureMono Nerd Font"];
-        serif = ["DepartureMono Nerd Font"];
+        #sansSerif = ["DepartureMono Nerd Font"];
+        #serif = ["DepartureMono Nerd Font"];
         emoji = ["Noto Color Emoji"];
       };
     };
