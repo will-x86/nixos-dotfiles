@@ -178,7 +178,7 @@
 
             bind = SUPER,       Return, exec, $kitty -T
             bind = SUPER, e, exec, $kitty -e lf
-            bind = SUPER_SHIFT, Return, exec, $kitty -f
+            bind = SUPER_SHIFT, Return, exec, [float; size 45% 50%; centerwindow] $kitty
             bind = SUPER,       T,      exec, $kitty
             bind = SUPER_SHIFT, F, exec, XDG_CURRENT_DESKTOP=kde dolphin
             bindr = SUPER, SUPER_L, exec, $rofi_launcher
@@ -251,6 +251,7 @@
             exec-once=[workspace 3 silent] obsidian
             exec-once=[workspace 5 silent] feishin
             exec-once=[workspace 8 silent] 1password
+            exec-once=[workspace 2 silent] firefox -P "James-Tourney" --new-instance
 
             # Send to Workspaces
             bind = SUPER_SHIFT, 1, movetoworkspace, 1
