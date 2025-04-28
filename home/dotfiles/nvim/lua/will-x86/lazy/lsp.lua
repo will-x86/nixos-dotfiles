@@ -25,31 +25,21 @@ return {
         local eslint = require("eslint");
         require("conform").setup({
             formatters_by_ft = {
-                require("conform").setup({
-                    formatters_by_ft = {
-                        javascript = { "prettier", "eslint" },
-                        typescript = { "prettier", "eslint" },
-                        javascriptreact = { "prettier", "eslint" },
-                        typescriptreact = { "prettier", "eslint" },
-                        jsx = { "prettier", "eslint" },
-                        tsx = { "prettier", "eslint" },
-                        vue = { "prettier" },
-                        css = { "prettier" },
-                        scss = { "prettier" },
-                        html = { "prettier" },
-                        json = { "prettier" },
-                        yaml = { "prettier" },
-                        markdown = { "prettier" },
-                        graphql = { "prettier" },
-                        rust = { "rustfmt" },
-
-                        -- Keep your existing formats
-                    },
-                    format_on_save = {
-                        timeout_ms = 500,
-                        lsp_fallback = true,
-                    },
-                })
+                javascript = { "prettier", "eslint" },
+                typescript = { "prettier", "eslint" },
+                javascriptreact = { "prettier", "eslint" },
+                typescriptreact = { "prettier", "eslint" },
+                jsx = { "prettier", "eslint" },
+                tsx = { "prettier", "eslint" },
+                vue = { "prettier" },
+                css = { "prettier" },
+                scss = { "prettier" },
+                html = { "prettier" },
+                json = { "prettier" },
+                yaml = { "prettier" },
+                markdown = { "prettier" },
+                graphql = { "prettier" },
+                rust = { "rustfmt" },
             },
             format_on_save = {
                 timeout_ms = 500,
