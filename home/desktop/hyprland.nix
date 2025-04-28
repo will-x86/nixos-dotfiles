@@ -189,7 +189,7 @@
             #windowrule = float, ^(Fusion360)$
             bind = SUPER_SHIFT, V, exec, ~/.config/rofi/assets/clipManager.sh
 
-            bind  = SUPER, X,exec, firefox -P "James-Tourney" --new-instance
+            bind  = SUPER, O,exec, firefox -P "James-Tourney" --new-instance
             bind  = SUPER, X,       exec, $wlogout
             bind  = SUPER, A,       exec, hyprshot -m region
 
