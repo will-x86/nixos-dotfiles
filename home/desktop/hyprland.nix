@@ -180,7 +180,7 @@
             bind = SUPER, e, exec, $kitty -e lf
             bind = SUPER_SHIFT, Return, exec, [float; size 45% 50%; centerwindow] $kitty -T
 
-            bind = SUPER_SHIFT, w, exec, [float; size 45% 50%; centerwindow] $kitty -W
+            bind = SUPER_SHIFT, w, exec,  $kitty -W
             bind = SUPER,       T,      exec, $kitty
             bind = SUPER_SHIFT, F, exec, XDG_CURRENT_DESKTOP=kde dolphin
             bindr = SUPER, SUPER_L, exec, $rofi_launcher
