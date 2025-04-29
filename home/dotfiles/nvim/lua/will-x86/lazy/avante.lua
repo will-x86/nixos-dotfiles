@@ -24,13 +24,6 @@ return {
                 temperature = 0,
                 max_tokens = 8192,
             },
-            ollama = {
-                endpoint = "http://100.74.103.8:11434",
-                model = "deepseek-coder-v2:16b",
-
-                temperature = 1,
-                max_tokens = 1000000,
-            },
             windows = {
                 width = 40,
             },
