@@ -27,8 +27,6 @@ return {
             ollama = {
                 endpoint = "http://100.74.103.8:11434",
                 model = "deepseek-coder-v2:16b",
-                                endpoint = "https://api.anthropic.com",
-                model = "claude-3-5-sonnet-latest",
 
                 temperature = 1,
                 max_tokens = 1000000,
