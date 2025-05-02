@@ -14,6 +14,7 @@ return {
             require("zen-mode").toggle()
             vim.wo.wrap = false
         --    ColorMyPencils()
+            vim.cmd("TransparentEnable")
         end)
     end
 }
