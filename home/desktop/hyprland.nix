@@ -8,10 +8,10 @@
     extraConfig = ''
                   bindm = SUPER, mouse:272, movewindow
                   general {
-                  	border_size = 0
+                  	border_size = 1
                   	no_border_on_floating = false
-                  	gaps_in = 0
-                  	gaps_out = 0
+                  	gaps_in = 2
+                  	gaps_out = 5
                   	gaps_workspaces = -10
                       col.active_border = rgba(808080ee) rgba(808080ee) 45deg
                   	col.inactive_border = 0xFF2a323b 0xFF353f4a 45deg
