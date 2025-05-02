@@ -35,6 +35,13 @@ in {
     };
   };
   home.file = {
+    ".config/btop" = {
+      source = ../dotfiles/btop;
+      recursive = true;
+    };
+  };
+
+  home.file = {
     ".config/lf" = {
       source = ../dotfiles/lf;
       recursive = true;
