@@ -26,10 +26,12 @@
         config.allowUnfree = true;
       };
       commonSpecialArgs = {inherit inputs secrets system;};
+
+      localPkgsDefinition = import ./pkgs;
+
+      systemPackages = localPkgsDefinition.perSystem {inherit pkgs system;};
     in {
-      overlays.default = final: prev: {
-        willPkgs = import ./pkgs {pkgs = final;};
-      };
+      packages.${system} = systemPackages.packages;
 
       templates = {
         go = {
