@@ -83,9 +83,9 @@
 
     '';
     plugins = with pkgs.tmuxPlugins; [
-      #sensible
-      #nord
-      #yank
+      nord
+      sensible
+      yank
     ];
   };
 }
