@@ -191,7 +191,7 @@
             #windowrule = float, ^(Fusion360)$
             bind = SUPER_SHIFT, V, exec, ~/.config/rofi/assets/clipManager.sh
 
-            bind  = SUPER, O,exec, firefox -P "James-Tourney" --new-instance
+            bind  = SUPER, O,exec, firefox -P "j" --new-instance
             bind  = SUPER, X,       exec, $wlogout
             bind  = SUPER, A,       exec, hyprshot -m region
 
@@ -252,7 +252,7 @@
 
             exec-once=[workspace 1 silent] $kitty -T
             exec-once=[workspace 2 silent] firefox
-            exec-once=[workspace 3 silent] obsidian
+            #exec-once=[workspace 3 silent] obsidian
             exec-once=[workspace 5 silent] feishin
             exec-once=[workspace 8 silent] 1password
             exec-once=[workspace 2 silent] firefox -P "James-Tourney" --new-instance

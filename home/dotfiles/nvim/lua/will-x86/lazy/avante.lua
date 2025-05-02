@@ -30,4 +30,4 @@ return {
         })
     end,
     build = 'make', -- Optional, only if you want to use tiktoken_core to calculate tokens count
-r
+}
