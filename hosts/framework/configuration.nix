@@ -106,7 +106,6 @@
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
-
   services.gvfs.enable = true;
 
   # Add user 'will' to dialout group for serial port access
