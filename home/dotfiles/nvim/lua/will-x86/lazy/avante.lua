@@ -24,6 +24,7 @@ return {
                 temperature = 0,
                 max_tokens = 8192,
             },
+            hints = { enabled = false },
             windows = {
                 width = 40,
             },
