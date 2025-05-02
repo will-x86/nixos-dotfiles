@@ -12,7 +12,6 @@
   outputs = inputs:
     with inputs; let
       secretsPath = ./secrets/secrets.json;
-      imports = [./pkgs];
       secrets =
         if builtins.pathExists secretsPath
         then builtins.fromJSON (builtins.readFile secretsPath)
@@ -26,7 +25,12 @@
         inherit system;
         config.allowUnfree = true;
       };
+      commonSpecialArgs = {inherit inputs secrets system;};
     in {
+      overlays.default = final: prev: {
+        willPkgs = import ./pkgs {pkgs = final;};
+      };
+
       templates = {
         go = {
           path = ./templates/go;
@@ -45,10 +49,10 @@
           description = "React dev env";
         };
       };
-
       nixosConfigurations = {
         framework = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = commonSpecialArgs;
           modules = [
             ./hosts/all.nix
             ./hosts/framework/configuration.nix
@@ -56,16 +60,14 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {inherit secrets inputs system;};
+              home-manager.extraSpecialArgs = commonSpecialArgs;
               home-manager.users.will = import ./home/desktop/desktop.nix;
-            }
-            {
-              _module.args.secrets = secrets;
             }
           ];
         };
         nixos-vm = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = commonSpecialArgs;
           modules = [
             ./hosts/all.nix
             ./hosts/nixos-vm/configuration.nix
@@ -73,16 +75,14 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {inherit secrets inputs system;};
+              home-manager.extraSpecialArgs = commonSpecialArgs;
               home-manager.users.will = import ./home/base/base.nix;
-            }
-            {
-              _module.args.secrets = secrets;
             }
           ];
         };
         wsl-nix = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = commonSpecialArgs;
           modules = [
             nixos-wsl.nixosModules.default
             ./hosts/all.nix
@@ -91,17 +91,14 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {inherit secrets inputs system;};
+              home-manager.extraSpecialArgs = commonSpecialArgs;
               home-manager.users.will = import ./home/base/base.nix;
-            }
-            {
-              _module.args.secrets = secrets;
             }
           ];
         };
-
         bigDaddy = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = commonSpecialArgs;
           modules = [
             ./hosts/all.nix
             ./hosts/bigDaddy/configuration.nix
@@ -109,11 +106,8 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {inherit secrets inputs system;};
+              home-manager.extraSpecialArgs = commonSpecialArgs;
               home-manager.users.will = import ./home/desktop/desktop.nix;
-            }
-            {
-              _module.args.secrets = secrets;
             }
           ];
         };
