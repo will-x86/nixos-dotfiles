@@ -118,17 +118,19 @@ return {
             })
         })
 
-        vim.diagnostic.config({
+        --[[vim.diagnostic.config({
+            virtual_text = true,
             -- update_in_insert = true,
             float = {
                 focusable = false,
                 style = "minimal",
                 border = "rounded",
                 source = "always",
-             --   header = "",
-            --    prefix = "",
+                header = "",
+                prefix = "",
             },
         })
+        ]]--
     end
 }
 
