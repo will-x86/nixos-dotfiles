@@ -19,6 +19,7 @@
     immich-go
     go-blueprint
     lsof
+    lua-language-server
     virt-viewer
     moonlight-qt
     ntfsprogs
@@ -79,7 +80,6 @@
   };
 
   home.file = {
-    #".p10k.zsh".source = ../dotfiles/.p10k.zsh;
     ".config/starship.toml".source = ../dotfiles/starship.toml;
     ".tmux-sessioniser".source = ../dotfiles/.tmux-sessioniser;
     "tmux-sessioniser".source = ../dotfiles/tmux-sessioniser;
