@@ -262,7 +262,7 @@
             #exec-once=[workspace 3 silent] obsidian
             exec-once=[workspace 5 silent] feishin
             exec-once=[workspace 8 silent] 1password
-            exec-once=[workspace 2 silent] firefox -P "James-Tourney" --new-instance
+            exec-once=[workspace 2 silent] firefox -P "j" --new-instance
 
             # Send to Workspaces
             bind = SUPER_SHIFT, 1, movetoworkspace, 1
