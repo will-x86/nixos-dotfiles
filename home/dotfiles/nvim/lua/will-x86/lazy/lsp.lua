@@ -111,7 +111,6 @@ return {
                 ['<C-d>'] = cmp.mapping.scroll_docs(4),
             }),
             sources = cmp.config.sources({
-                { name = "copilot", group_index = 2 },
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' }, -- For luasnip users.
             }, {
@@ -126,8 +125,8 @@ return {
                 style = "minimal",
                 border = "rounded",
                 source = "always",
-                header = "",
-                prefix = "",
+             --   header = "",
+            --    prefix = "",
             },
         })
     end
