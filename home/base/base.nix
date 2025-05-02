@@ -11,7 +11,7 @@
   home.username = "will";
   home.homeDirectory = "/home/will";
   home.stateVersion = "24.11";
-
+  programs.neovim.enable = true;
   home.packages = with pkgs; [
     nodejs_23
     alacritty
