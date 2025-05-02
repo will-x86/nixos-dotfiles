@@ -8,6 +8,7 @@
     ./hardware-configuration.nix
     ./smb.nix
     ./user.nix
+    ./packages.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -105,24 +106,6 @@
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    cifs-utils
-    android-studio
-    samba
-    qemu_full
-    networkmanagerapplet
-    kodiPackages.jellyfin
-    jellyfin-web
-    kdePackages.plasma-nm
-    via
-    (import (builtins.fetchGit {
-      name = "my-old-revision";
-      url = "https://github.com/NixOS/nixpkgs/";
-      ref = "refs/heads/nixos-unstable";
-      rev = "028048884dc9517e548703beb24a11408cc51402";
-    }) {system = "x86_64-linux";})
-    .neovim
-  ];
 
   services.gvfs.enable = true;
 
