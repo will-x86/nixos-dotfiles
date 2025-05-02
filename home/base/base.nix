@@ -75,6 +75,7 @@
     direnv.enable = true;
     starship.enable = true;
     kitty.enable = true;
+    foot.enable = true;
   };
 
   home.file = {
