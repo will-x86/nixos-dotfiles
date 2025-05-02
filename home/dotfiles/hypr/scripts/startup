@@ -14,8 +14,8 @@ done
 
 ~/.config/hypr/scripts/notifications &
 swww-daemon & 
-swww img ~/.config/hypr/wallpapers/monochrome.jpg & 
-wal -i ~/.config/hypr/wallpapers/monochrome.jpg -q -n -e -s -c &
+swww img ~/.config/hypr/wallpapers/wallpaper2.png & 
+wal -i ~/.config/hypr/wallpapers/wallpaper2.png -q -n -e -s -c &
 pywalfox update &
 
 ~/.config/hypr/scripts/statusbar &

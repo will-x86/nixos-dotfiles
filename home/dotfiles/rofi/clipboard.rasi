@@ -40,7 +40,7 @@ inputbar {
     spacing:                     0px;
     padding:                     150px 64px;
     orientation:                 horizontal;
-    background-image:            url("~/.config/hypr/wallpapers/monochrome.jpg", width);
+    background-image:            url("~/.config/hypr/wallpapers/wallpaper2.png", width);
 }
 
 dummy {
