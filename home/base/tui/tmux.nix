@@ -79,9 +79,7 @@
       bind -T copy-mode-vi 'C-l' select-pane -R
       bind -T copy-mode-vi 'C-\' select-pane -l
       bind -T copy-mode-vi 'C-Space' select-pane -t:.+
-      set -g @plugin "arcticicestudio/nord-tmux"
       bind-key -r f run-shell "tmux neww ~/tmux-sessioniser"
-      run '~/.tmux/plugins/tpm/tpm'
 
     '';
     plugins = with pkgs.tmuxPlugins; [
