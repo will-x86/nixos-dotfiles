@@ -9,110 +9,107 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs:
-    with inputs; let
+  outputs = inputs: let
+    inherit (inputs) nixpkgs nixpkgs-stable home-manager nixos-wsl;
+    system = "x86_64-linux";
+
+    # Helper function to load secrets
+    loadSecrets = let
       secretsPath = ./secrets/secrets.json;
-      secrets =
-        if builtins.pathExists secretsPath
-        then builtins.fromJSON (builtins.readFile secretsPath)
-        else {};
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
+    in
+      if builtins.pathExists secretsPath
+      then builtins.fromJSON (builtins.readFile secretsPath)
+      else {};
+
+    # Common pkgs configuration
+    mkPkgs = pkgs: {
+      inherit system;
+      config.allowUnfree = true;
+    };
+
+    pkgs = import nixpkgs (mkPkgs nixpkgs);
+    pkgs-stable = import nixpkgs-stable (mkPkgs nixpkgs-stable);
+
+    # Common special arguments for all configurations
+    commonSpecialArgs = {
+      inherit inputs system;
+      secrets = loadSecrets;
+    };
+
+    # Common home-manager configuration
+    mkHomeManagerConfig = homeConfig: {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.extraSpecialArgs = commonSpecialArgs;
+      home-manager.users.will = import homeConfig;
+    };
+
+    # Helper function to create NixOS configurations
+    mkHost = {
+      hostName,
+      extraModules ? [],
+      homeConfig ? ./home/base/base.nix,
+    }:
+      nixpkgs.lib.nixosSystem {
         inherit system;
-        config.allowUnfree = true;
+        specialArgs = commonSpecialArgs;
+        modules =
+          [
+            ./hosts/all.nix
+            ./hosts/${hostName}/configuration.nix
+            home-manager.nixosModules.home-manager
+            (mkHomeManagerConfig homeConfig)
+          ]
+          ++ extraModules;
       };
-      pkgs-stable = import nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
+
+    # Load local packages
+    localPkgsDefinition = import ./pkgs;
+    systemPackages = localPkgsDefinition.perSystem {inherit pkgs system;};
+  in {
+    packages.${system} = systemPackages.packages;
+
+    templates = {
+      go = {
+        path = ./templates/go;
+        description = "Go dev env";
       };
-      commonSpecialArgs = {inherit inputs secrets system;};
-
-      localPkgsDefinition = import ./pkgs;
-
-      systemPackages = localPkgsDefinition.perSystem {inherit pkgs system;};
-    in {
-      packages.${system} = systemPackages.packages;
-
-      templates = {
-        go = {
-          path = ./templates/go;
-          description = "Go dev env";
-        };
-        rust = {
-          path = ./templates/rust;
-          description = "Rust dev env";
-        };
-        expo = {
-          path = ./templates/expo;
-          description = "Expo dev env";
-        };
-        react = {
-          path = ./templates/react;
-          description = "React dev env";
-        };
+      rust = {
+        path = ./templates/rust;
+        description = "Rust dev env";
       };
-      nixosConfigurations = {
-        framework = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = commonSpecialArgs;
-          modules = [
-            ./hosts/all.nix
-            ./hosts/framework/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = commonSpecialArgs;
-              home-manager.users.will = import ./home/desktop/desktop.nix;
-            }
-          ];
-        };
-        nixos-vm = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = commonSpecialArgs;
-          modules = [
-            ./hosts/all.nix
-            ./hosts/nixos-vm/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = commonSpecialArgs;
-              home-manager.users.will = import ./home/base/base.nix;
-            }
-          ];
-        };
-        wsl-nix = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = commonSpecialArgs;
-          modules = [
-            nixos-wsl.nixosModules.default
-            ./hosts/all.nix
-            ./hosts/wsl-nix/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = commonSpecialArgs;
-              home-manager.users.will = import ./home/base/base.nix;
-            }
-          ];
-        };
-        bigDaddy = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = commonSpecialArgs;
-          modules = [
-            ./hosts/all.nix
-            ./hosts/bigDaddy/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = commonSpecialArgs;
-              home-manager.users.will = import ./home/desktop/desktop.nix;
-            }
-          ];
-        };
+      expo = {
+        path = ./templates/expo;
+        description = "Expo dev env";
+      };
+      react = {
+        path = ./templates/react;
+        description = "React dev env";
       };
     };
+
+    nixosConfigurations = {
+      # Desktop configurations
+      framework = mkHost {
+        hostName = "framework";
+        homeConfig = ./home/desktop/desktop.nix;
+      };
+
+      bigDaddy = mkHost {
+        hostName = "bigDaddy";
+        homeConfig = ./home/desktop/desktop.nix;
+      };
+
+      # VM configuration
+      nixos-vm = mkHost {
+        hostName = "nixos-vm";
+      };
+
+      # WSL configuration
+      wsl-nix = mkHost {
+        hostName = "wsl-nix";
+        extraModules = [nixos-wsl.nixosModules.default];
+      };
+    };
+  };
 }
