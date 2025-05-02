@@ -15,7 +15,7 @@
         #    family = "DepartureMono Nerd Font Mono";
         #    style = "Regular";
         #  };
-        family_fallback = ["Iosevka Nerd Font"];
+        #family_fallback = ["Iosevka Nerd Font"];
         size = 12.0;
       };
       colors = {
