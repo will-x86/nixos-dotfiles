@@ -1,5 +1,5 @@
 {
-  config,
+  #config,
   pkgs,
   secrets,
   ...
@@ -28,29 +28,58 @@
     */
     "amdgpu.dcdebugmask=0x10"
   ];
-  services.fwupd.enable = true;
-  services.jellyfin.enable = true;
-  services.power-profiles-daemon.enable = true;
+  services = {
+    fwupd.enable = true;
+    jellyfin.enable = true;
+    power-profiles-daemon.enable = true;
+    tailscale.enable = true;
+    xserver.enable = true;
+    xserver.videoDrivers = ["amdgpu"];
+    flatpak.enable = true;
+    mullvad-vpn.enable = true;
+    trezord.enable = true;
+    syncthing = {
+      enable = true;
+      user = "will";
+      dataDir = "/home/will/Documents";
+      configDir = "/home/will/Documents/.config/syncthing";
+      settings.gui = {
+        user = "will";
+        password = "${secrets.syncthing.pass}";
+      };
+    };
+    udev.packages = [
+      pkgs.platformio-core
+      pkgs.platformio-core.udev
+      pkgs.openocd
+      pkgs.android-udev-rules
+      pkgs.via
+    ];
+    blueman.enable = true;
+    desktopManager.plasma6.enable = true;
+    xserver.xkb = {
+      layout = "us";
+      variant = "";
+    };
+    printing.enable = true;
+    greetd = {
+      enable = true;
+      vt = 3;
+      settings = {
+        default_session = {
+          user = "will";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+        };
+      };
+    };
+    pulseaudio.enable = false;
+    gvfs.enable = true;
+  };
+
   powerManagement.powertop.enable = true;
   networking.hostName = "framework";
   hardware.spacenavd.enable = true;
-  services.tailscale.enable = true;
-  services.xserver.enable = true;
-  services.xserver.videoDrivers = ["amdgpu"];
   boot.initrd.kernelModules = ["amdgpu"];
-  services.flatpak.enable = true;
-  services.mullvad-vpn.enable = true;
-  services.trezord.enable = true;
-  services.syncthing = {
-    enable = true;
-    user = "will";
-    dataDir = "/home/will/Documents";
-    configDir = "/home/will/Documents/.config/syncthing";
-    settings.gui = {
-      user = "will";
-      password = "${secrets.syncthing.pass}";
-    };
-  };
   programs.steam = {
     enable = true;
     localNetworkGameTransfers.openFirewall = true;
@@ -66,13 +95,6 @@
     enable = true;
     autoStart = true;
   };
-  services.udev.packages = [
-    pkgs.platformio-core
-    pkgs.platformio-core.udev
-    pkgs.openocd
-    pkgs.android-udev-rules
-    pkgs.via
-  ];
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -81,32 +103,8 @@
     enable = true;
     support32Bit.enable = true;
   };
-  services.desktopManager.plasma6.enable = true;
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  services.printing.enable = true;
-  services = {
-    greetd = {
-      enable = true;
-      vt = 3;
-      settings = {
-        default_session = {
-          user = "will";
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
-        };
-      };
-    };
-  };
-
-  services.pulseaudio.enable = false;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-  services.blueman.enable = true;
-
-  services.gvfs.enable = true;
 
   # Add user 'will' to dialout group for serial port access
   networking.firewall.allowedTCPPorts = [8384 22000];
