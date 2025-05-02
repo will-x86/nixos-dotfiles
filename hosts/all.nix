@@ -41,8 +41,8 @@
       noto-fonts-cjk-sans
       noto-fonts-emoji
 
-      inputs.self.packages.${pkgs.system}.SF-Pro
-      inputs.self.packages.${pkgs.system}.SF-Pro-mono
+      inputs.self.willpkgs.${pkgs.system}.SF-Pro
+      inputs.self.willpkgs.${pkgs.system}.SF-Pro-mono
 
       # nerdfonts
       nerd-fonts.symbols-only
