@@ -106,7 +106,6 @@ in {
     #inputs.zen-browser.packages.${system}.default
     syncthingtray
     iwd
-    feishin
     polkit
     python312Packages.dbus-python
     mcomix
