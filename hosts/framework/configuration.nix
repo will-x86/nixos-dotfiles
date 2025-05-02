@@ -6,6 +6,8 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./smb.nix
+    ./user.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -31,7 +33,6 @@
   powerManagement.powertop.enable = true;
   networking.hostName = "framework";
   hardware.spacenavd.enable = true;
-  nix.settings.trusted-users = ["root" "will"];
   services.tailscale.enable = true;
   services.xserver.enable = true;
   services.xserver.videoDrivers = ["amdgpu"];
@@ -122,50 +123,12 @@
     }) {system = "x86_64-linux";})
     .neovim
   ];
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = ["will"];
-  };
 
   services.gvfs.enable = true;
 
   # Add user 'will' to dialout group for serial port access
   networking.firewall.allowedTCPPorts = [8384 22000];
   networking.firewall.allowedUDPPorts = [22000 21027];
-  users.users.will.extraGroups = ["dialout"];
-
-  fileSystems."/mnt/FractalMedia" = {
-    device = "//${secrets.samba.fracRemote}/Media";
-    fsType = "cifs";
-    options = [
-      "username=will"
-      "password=${secrets.samba.frac}"
-      "x-systemd.automount"
-      "x-systemd.mount-timeout=3"
-      "uid=1000"
-      "gid=100"
-      "dir_mode=0777"
-      "file_mode=0666"
-      "nofail"
-    ];
-  };
-
-  fileSystems."/mnt/Fractal" = {
-    device = "//${secrets.samba.fracRemote}/Vault";
-    fsType = "cifs";
-    options = [
-      "username=will"
-      "password=${secrets.samba.frac}"
-      "x-systemd.automount"
-      "x-systemd.mount-timeout=3"
-      "uid=1000"
-      "gid=100"
-      "dir_mode=0777"
-      "file_mode=0666"
-      "nofail"
-    ];
-  };
 
   system.stateVersion = "24.05"; # Did you read the comment?
 }
