@@ -69,24 +69,27 @@
   in {
     packages.${system} = systemPackages.packages;
 
-    templates = {
-      go = {
-        path = ./templates/go;
-        description = "Go dev env";
+    # Automatically generate templates from the templates directory
+    templates = let
+      # Get all subdirectories in templates folder
+      templateDirs = let
+        templatesPath = ./templates;
+        dirContent = builtins.readDir templatesPath;
+        subdirs = nixpkgs.lib.filterAttrs (name: type: type == "directory") dirContent;
+      in
+        builtins.attrNames subdirs;
+
+      # Generate template configurations
+      mkTemplate = name: {
+        path = ./templates + "/${name}";
+        description = "${baseNameOf dir} dev env";
       };
-      rust = {
-        path = ./templates/rust;
-        description = "Rust dev env";
-      };
-      expo = {
-        path = ./templates/expo;
-        description = "Expo dev env";
-      };
-      react = {
-        path = ./templates/react;
-        description = "React dev env";
-      };
-    };
+    in
+      builtins.listToAttrs (map (name: {
+          inherit name;
+          value = mkTemplate name;
+        })
+        templateDirs);
 
     nixosConfigurations = {
       # Desktop configurations
