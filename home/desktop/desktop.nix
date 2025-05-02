@@ -111,7 +111,7 @@ in {
     gtk4
     webkitgtk_6_0
     #inputs.zen-browser.packages.${system}.default
-    syncthingtray
+    #syncthingtray
     iwd
     polkit
     python312Packages.dbus-python
