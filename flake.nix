@@ -4,7 +4,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,6 +12,7 @@
   outputs = inputs:
     with inputs; let
       secretsPath = ./secrets/secrets.json;
+      imports = [./pkgs];
       secrets =
         if builtins.pathExists secretsPath
         then builtins.fromJSON (builtins.readFile secretsPath)

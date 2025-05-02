@@ -101,7 +101,7 @@ in {
     gtk3
     gtk4
     webkitgtk_6_0
-    inputs.zen-browser.packages.${system}.default
+    #inputs.zen-browser.packages.${system}.default
     syncthingtray
     iwd
     feishin

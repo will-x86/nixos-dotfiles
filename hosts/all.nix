@@ -62,7 +62,7 @@
       in
         addAll {
           serif = ["Noto Sans Serif"];
-          sansSerif = ["Noto Sans Serif"];
+          sansSerif = ["SF Pro Display"];
           monospace = ["Departure Mono"];
           emoji = ["Noto Color Emoji"];
         };
