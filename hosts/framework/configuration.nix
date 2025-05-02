@@ -25,7 +25,6 @@
     */
     "amdgpu.dcdebugmask=0x10"
   ];
-  programs.kdeconnect.enable = true;
   services.fwupd.enable = true;
   services.jellyfin.enable = true;
   services.power-profiles-daemon.enable = true;
