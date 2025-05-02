@@ -60,7 +60,7 @@
             animations {
             	enabled = true
             	first_launch_animation = true
-            	animation = windowsIn,1,5,default,gnomed 0%
+            	animation = windowsIn,1,5,default,slide 0%
             	animation = windowsOut,1,5,default,popin
             	animation = windowsMove,1,5,default,slide
             	animation = fadeIn,1,8,default
