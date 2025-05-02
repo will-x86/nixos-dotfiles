@@ -7,7 +7,7 @@ elif [ "$1" == "-e" ]; then
     kitty -e "$@"  # Pass all remaining arguments
 elif [ "$1" == "-W" ]; then # work
     shift 
-    kitty -o "background=#300a24" -o "foreground=#ffffff" -e ssh will@wsl-nix
+    kitty -o "background=#300a24" -o "foreground=#ffffff" 
 else
     kitty
 fi
