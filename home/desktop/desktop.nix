@@ -139,7 +139,6 @@ in {
     #ryujinx
     waybar
     #viewnior
-    wofi
     hyprshot
     mako
     foot

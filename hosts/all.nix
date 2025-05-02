@@ -31,41 +31,41 @@
     LC_TELEPHONE = "en_GB.UTF-8";
     LC_TIME = "en_GB.UTF-8";
   };
-  #fonts.packages = with pkgs; [
-  #  #departure-mono
-  #  nerd-fonts.departure-mono
-  #  monaspace
-  #  nerd-fonts.jetbrains-mono
-  #  font-awesome
-  #  apl386
-  #  noto-fonts
-  #  dejavu_fonts
-  #  fira-code-symbols
-  #  powerline-symbols
-  #  material-design-icons
-  #];
-
   fonts = {
     packages = with pkgs; [
-      nerd-fonts.departure-mono
-      monaspace
-      nerd-fonts.jetbrains-mono
-      font-awesome
-      apl386
-      #noto-fonts
+      material-symbols
+
+      # normal fonts
+      noto-fonts
+      noto-fonts-cjk-sans
       noto-fonts-emoji
-      dejavu_fonts
-      fira-code-symbols
-      powerline-symbols
-      material-design-icons
+
+      # nerdfonts
+      nerd-fonts.symbols-only
+      nerd-fonts.departure-mono
+      departure-mono
     ];
     fontconfig = {
-      defaultFonts = {
-        monospace = ["DepartureMono Nerd Font Mono"];
-        #sansSerif = ["DepartureMono Nerd Font"];
-        #serif = ["DepartureMono Nerd Font"];
-        emoji = ["Noto Color Emoji"];
+      enable = true;
+      antialias = true;
+      hinting = {
+        enable = true;
+        autohint = false;
+        style = "full";
       };
+      subpixel = {
+        lcdfilter = "default";
+        rgba = "rgb";
+      };
+      defaultFonts = let
+        addAll = builtins.mapAttrs (_: v: ["Symbols Nerd Font"] ++ v ++ ["Noto Color Emoji"]);
+      in
+        addAll {
+          serif = ["Noto Sans Serif"];
+          sansSerif = ["Noto Sans Serif"];
+          monospace = ["Departure Mono"];
+          emoji = ["Noto Color Emoji"];
+        };
     };
     enableDefaultPackages = true;
   };
