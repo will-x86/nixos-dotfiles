@@ -82,7 +82,7 @@
       # Generate template configurations
       mkTemplate = name: {
         path = ./templates + "/${name}";
-        description = "${baseNameOf dir} dev env";
+        description = "${name} dev env";
       };
     in
       builtins.listToAttrs (map (name: {
