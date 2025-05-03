@@ -74,7 +74,7 @@ return {
 		-- Volar (Vue)
 		lspconfig.volar.setup({
 			capabilities = capabilities,
-			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+			filetypes = { "typescript", "javascript", "vue" },
 		})
 		-- Go
 		lspconfig.gopls.setup({

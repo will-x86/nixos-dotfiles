@@ -20,6 +20,7 @@
     gotools
     rustfmt
     nodePackages.prettier
+    vue-language-server
     zig
 
     ### End neovim
