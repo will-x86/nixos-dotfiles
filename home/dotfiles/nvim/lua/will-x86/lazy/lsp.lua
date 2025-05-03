@@ -43,12 +43,33 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "gopls",
+                "ts_la",
+                'lua_ls',
             },
             handlers = {
                 function(server_name) -- default handler (optional)
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
+                end,
+
+                ["ts_ls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.tsserver.setup({
+                        capabilities = capabilities,
+                        init_options = { hostInfo = 'neovim' },
+                        cmd = { 'typescript-language-server', '--stdio' },
+                        filetypes = {
+                            'javascript',
+                            'javascriptreact',
+                            'javascript.jsx',
+                            'typescript',
+                            'typescriptreact',
+                            'typescript.tsx',
+                        },
+                        root_dir = lspconfig.util.root_pattern('tsconfig.json', 'jsconfig.json', 'package.json', '.git'),
+                        single_file_support = true,
+                    })
                 end,
 
                 ["gopls"] = function()
