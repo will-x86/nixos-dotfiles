@@ -39,12 +39,109 @@ return {
             cmp_lsp.default_capabilities())
 
         require("fidget").setup({})
-        require("mason").setup()
+                        local lspconfig = require("lspconfig")
+        
+        -- TypeScript
+        lspconfig.tsserver.setup({
+            capabilities = capabilities,
+            init_options = { hostInfo = 'neovim' },
+            cmd = { 'typescript-language-server', '--stdio' },
+            filetypes = {
+                'javascript',
+                'javascriptreact',
+                'javascript.jsx',
+                'typescript',
+                'typescriptreact',
+                'typescript.tsx',
+            },
+            root_dir = lspconfig.util.root_pattern('tsconfig.json', 'jsconfig.json', 'package.json', '.git'),
+            single_file_support = true,
+        })
+        
+        -- Go
+        lspconfig.gopls.setup({
+            capabilities = capabilities,
+            settings = {
+                gopls = {
+                    usePlaceholders = true,  -- enables parameter completion
+                    completeUnimported = true,
+                    analyses = {
+                        unusedparams = true,
+                    },
+                },
+            },
+        })
+        
+        -- Zig
+        lspconfig.zls.setup({
+            capabilities = capabilities,
+            root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
+            settings = {
+                zls = {
+                    enable_inlay_hints = true,
+                    enable_snippets = true,
+                    warn_style = true,
+                },
+            },
+        })
+        vim.g.zig_fmt_parse_errors = 0
+        vim.g.zig_fmt_autosave = 0
+        
+        -- Lua
+        lspconfig.lua_ls.setup({
+            capabilities = capabilities,
+            settings = {
+                Lua = {
+                    format = {
+                        enable = true,
+                        defaultConfig = {
+                            indent_style = "space",
+                            indent_size = "2",
+                        }
+                    },
+                }
+            }
+        })
+
+        local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
+        cmp.setup({
+            snippet = {
+                expand = function(args)
+                    require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                end,
+            },
+            mapping = cmp.mapping.preset.insert({
+                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+                ['<C-Space>'] = cmp.mapping.confirm({ select = true }),
+            }),
+            sources = cmp.config.sources({
+                { name = 'nvim_lsp' },
+                { name = 'luasnip' }, -- For luasnip users.
+            }, {
+                { name = 'buffer' },
+            })
+        })
+
+        vim.diagnostic.config({
+            virtual_text = true,
+            -- update_in_insert = true,
+            float = {
+                focusable = false,
+                style = "minimal",
+                border = "rounded",
+                source = "always",
+                header = "",
+                prefix = "",
+            },
+        })
+    end
+}
+
+--[[require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
-                "gopls",
-                "ts_la",
-                'lua_ls',
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -124,55 +221,5 @@ return {
                 end,
             }
         })
-
-        local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
-        cmp.setup({
-            snippet = {
-                expand = function(args)
-                    require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-                end,
-            },
-            mapping = cmp.mapping.preset.insert({
-                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<C-Space>'] = cmp.mapping.confirm({ select = true }),
-                --[[['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-                ["<C-Space>"] = cmp.mapping.complete(),]] --
-
-                --[[['<C-Space>'] = cmp.mapping.complete(),
-                --    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-                ['<CR>'] = cmp.mapping.confirm({ select = false }),
-                --   ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<C-i>'] = cmp.mapping.confirm({ select = true }),
-                ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-                ['<C-d>'] = cmp.mapping.scroll_docs(4),
-                ]]--
-            }),
-            sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                { name = 'luasnip' }, -- For luasnip users.
-            }, {
-                { name = 'buffer' },
-            })
-        })
-
-        vim.diagnostic.config({
-            virtual_text = true,
-            -- update_in_insert = true,
-            float = {
-                focusable = false,
-                style = "minimal",
-                border = "rounded",
-                source = "always",
-                header = "",
-                prefix = "",
-            },
-        })
-    end
-}
+        ]]--
 
