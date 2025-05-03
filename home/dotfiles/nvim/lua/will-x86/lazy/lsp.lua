@@ -44,10 +44,19 @@ return {
 
 		require("fidget").setup({})
 		local lspconfig = require("lspconfig")
-		-- TypeScript
+		-- TypeScript + Vue
 		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
-			init_options = { hostInfo = "neovim" },
+			init_options = {
+				hostInfo = "neovim",
+				plugins = {
+					{
+						name = "@vue/typescript-plugin",
+						location = "", -- Empty string since Nix manages the plugin
+						languages = { "javascript", "typescript", "vue" },
+					},
+				},
+			},
 			cmd = { "typescript-language-server", "--stdio" },
 			filetypes = {
 				"javascript",
@@ -60,6 +69,12 @@ return {
 			},
 			root_dir = lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git"),
 			single_file_support = true,
+		})
+
+		-- Volar (Vue)
+		lspconfig.volar.setup({
+			capabilities = capabilities,
+			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 		})
 		-- Go
 		lspconfig.gopls.setup({
