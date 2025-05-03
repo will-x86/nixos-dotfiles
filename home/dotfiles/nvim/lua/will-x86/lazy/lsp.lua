@@ -26,22 +26,11 @@ return {
 				rust = { "rustfmt", lsp_format = "fallback" },
 				zig = { "zigfmt" },
 
-				javascript = { "prettier", "eslint_d" },
-				javascriptreact = { "prettier", "eslint_d" },
-				typescript = { "prettier", "eslint_d" },
-				typescriptreact = { "prettier", "eslint_d" },
-				vue = { "prettier", "eslint_d" },
-			},
-			formatters = {
-				eslint_d = {
-					timeout = 10000, -- Increase timeout to 10 seconds
-					condition = function(ctx)
-						return vim.fs.find(
-							{ ".eslintrc.js", ".eslintrc.json", ".eslintrc" },
-							{ path = ctx.filename, upward = true }
-						)[1]
-					end,
-				},
+				javascript = { "eslint_d", "prettier" },
+				javascriptreact = { "eslint_d", "prettier" },
+				typescript = { "eslint_d", "prettier" },
+				typescriptreact = { "eslint_d", "prettier" },
+				vue = { "eslint_d", "prettier" },
 			},
 		})
 		vim.api.nvim_create_autocmd("BufWritePre", {
@@ -129,18 +118,6 @@ return {
 				".eslintrc.cjs",
 				".eslintrc.json"
 			),
-			settings = {
-				workingDirectory = { mode = "auto" },
-				format = { enable = true },
-				quiet = true,
-				experimental = { useFlatConfig = false },
-			},
-		})
-
-		-- Vue
-		lspconfig.volar.setup({
-			capabilities = capabilities,
-			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
 		})
 		lspconfig.html.setup({ capabilities = capabilities })
 		lspconfig.cssls.setup({ capabilities = capabilities })
