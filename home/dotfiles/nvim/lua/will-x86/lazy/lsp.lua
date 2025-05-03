@@ -96,19 +96,27 @@ return {
                 end,
             },
             mapping = cmp.mapping.preset.insert({
+                            mapping = cmp.mapping.preset.insert({
+                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+                ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+                ["<C-Space>"] = cmp.mapping.complete(),
+            }),
                 --[[['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
                 ['<C-y>'] = cmp.mapping.confirm({ select = true }),
                 ["<C-Space>"] = cmp.mapping.complete(),]] --
-                ['<C-i>'] = cmp.mapping.confirm({ select = true }),
-                ['<C-Space>'] = cmp.mapping.complete(),
+
+                --[[['<C-Space>'] = cmp.mapping.complete(),
                 --    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+                ['<CR>'] = cmp.mapping.confirm({ select = false }),
                 --   ['<C-b>'] = cmp_action.luasnip_jump_backward(),
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<CR>'] = cmp.mapping.confirm({ select = false}),
+                ['<C-i>'] = cmp.mapping.confirm({ select = true }),
                 ['<C-u>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-d>'] = cmp.mapping.scroll_docs(4),
+                ]]--
             }),
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
