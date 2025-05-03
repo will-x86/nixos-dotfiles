@@ -15,8 +15,6 @@
   home.packages = with pkgs; [
     ### Neovim
     lua-language-server
-    "@vue/typescript-plugin"
-
     stylua
     # gofmt  is in go
     gotools

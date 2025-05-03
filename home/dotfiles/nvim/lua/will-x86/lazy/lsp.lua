@@ -58,8 +58,7 @@ return {
 				plugins = {
 					{
 						name = "@vue/typescript-plugin",
-						location = vim.fn.stdpath("data")
-							.. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+						location = "/nix/store/0j0canzzy3d6x6nj06xjxk6kdfiw3gdc-vue-language-server-2.2.8/lib/node_modules/@vue/language-server",
 						languages = { "vue" },
 					},
 				},
@@ -72,6 +71,7 @@ return {
 				"typescript",
 				"typescriptreact",
 				"typescript.tsx",
+				"vue",
 			},
 			root_dir = lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git"),
 			single_file_support = true,
