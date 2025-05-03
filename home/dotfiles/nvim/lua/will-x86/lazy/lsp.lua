@@ -30,6 +30,12 @@ return {
             formatters_by_ft = {
             }
         })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function(args)
+    require("conform").format({ bufnr = args.buf })
+  end,
+})
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
@@ -40,7 +46,6 @@ return {
 
         require("fidget").setup({})
         local lspconfig = require("lspconfig")
-        
         -- TypeScript
         lspconfig.ts_ls.setup({
             capabilities = capabilities,
@@ -57,7 +62,6 @@ return {
             root_dir = lspconfig.util.root_pattern('tsconfig.json', 'jsconfig.json', 'package.json', '.git'),
             single_file_support = true,
         })
-        
         -- Go
         lspconfig.gopls.setup({
             capabilities = capabilities,
@@ -71,7 +75,6 @@ return {
                 },
             },
         })
-        
         -- Zig
         lspconfig.zls.setup({
             capabilities = capabilities,
