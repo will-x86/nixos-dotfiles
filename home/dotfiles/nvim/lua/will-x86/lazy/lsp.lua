@@ -51,7 +51,7 @@ return {
 		require("fidget").setup({})
 		local lspconfig = require("lspconfig")
 		-- TypeScript
-		lspconfig.tsserver.setup({
+		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
 			init_options = {
 				plugins = {
@@ -62,6 +62,7 @@ return {
 					},
 				},
 			},
+			cmd = { "typescript-language-server", "--stdio" },
 			filetypes = {
 				"javascript",
 				"javascriptreact",
@@ -73,11 +74,6 @@ return {
 			},
 			root_dir = lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git"),
 			single_file_support = true,
-		})
-		-- Also setup volar for Vue
-		lspconfig.volar.setup({
-			capabilities = capabilities,
-			filetypes = { "vue" },
 		})
 		-- Go
 		lspconfig.gopls.setup({
