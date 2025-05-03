@@ -71,7 +71,7 @@
       bind -n 'C-l' if-shell "$is_vim" 'send-keys C-l' 'select-pane -R'
 
       bind -n 'C-\' if-shell "$is_vim" 'send-keys C-\\' 'select-pane -l'
-      bind -n 'C-Space' if-shell "$is_vim" 'send-keys C-Space' 'select-pane -t:.+'
+      #bind -n 'C-Space' if-shell "$is_vim" 'send-keys C-Space' 'select-pane -t:.+'
       # Enable switching panes while in copy-mode-vi
       bind -T copy-mode-vi 'C-h' select-pane -L
       bind -T copy-mode-vi 'C-j' select-pane -D
