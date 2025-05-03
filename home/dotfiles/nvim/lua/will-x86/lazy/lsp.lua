@@ -25,7 +25,6 @@ return {
 				markdown = { "prettier" },
 				rust = { "rustfmt", lsp_format = "fallback" },
 				zig = { "zigfmt" },
-
 				javascript = { "eslint_d", "prettier" },
 				javascriptreact = { "eslint_d", "prettier" },
 				typescript = { "eslint_d", "prettier" },
