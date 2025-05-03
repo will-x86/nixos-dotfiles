@@ -14,7 +14,6 @@
       "nofail"
     ];
   };
-
   fileSystems."/mnt/Fractal" = {
     device = "//${secrets.samba.fracRemote}/Vault";
     fsType = "cifs";
