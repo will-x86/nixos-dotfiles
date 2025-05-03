@@ -25,6 +25,12 @@ return {
 				markdown = { "prettier" },
 				rust = { "rustfmt", lsp_format = "fallback" },
 				zig = { "zigfmt" },
+
+				javascript = { "eslint_d", "prettier" },
+				javascriptreact = { "eslint_d", "prettier" },
+				typescript = { "eslint_d", "prettier" },
+				typescriptreact = { "eslint_d", "prettier" },
+				vue = { "eslint_d", "prettier" },
 			},
 		})
 		vim.api.nvim_create_autocmd("BufWritePre", {
@@ -103,6 +109,30 @@ return {
 				},
 			},
 		})
+		lspconfig.volar.setup({
+			capabilities = capabilities,
+			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+			root_dir = lspconfig.util.root_pattern(
+				"package.json",
+				"tsconfig.json",
+				"jsconfig.json",
+				"vue.config.js",
+				".git"
+			),
+		})
+		lspconfig.eslint.setup({
+			capabilities = capabilities,
+			root_dir = lspconfig.util.root_pattern(
+				"package.json",
+				".git",
+				".eslintrc.js",
+				".eslintrc.cjs",
+				".eslintrc.json"
+			),
+		})
+		lspconfig.html.setup({ capabilities = capabilities })
+		lspconfig.cssls.setup({ capabilities = capabilities })
+		lspconfig.jsonls.setup({ capabilities = capabilities })
 
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 

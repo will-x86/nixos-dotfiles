@@ -20,7 +20,10 @@
     gotools
     rustfmt
     nodePackages.prettier
+    typescript
+    eslint_d
     vue-language-server
+    vscode-langservers-extracted
     zig
 
     ### End neovim
@@ -43,7 +46,6 @@
     curl
     gh
     tailwindcss-language-server
-    vscode-langservers-extracted
     nnn
     exfat
     deno
