@@ -53,15 +53,7 @@ return {
 		-- TypeScript
 		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
-			init_options = {
-				plugins = {
-					{
-						name = "@vue/typescript-plugin",
-						location = "/nix/store/0j0canzzy3d6x6nj06xjxk6kdfiw3gdc-vue-language-server-2.2.8/lib/node_modules/@vue/language-server",
-						languages = { "vue" },
-					},
-				},
-			},
+			init_options = { hostInfo = "neovim" },
 			cmd = { "typescript-language-server", "--stdio" },
 			filetypes = {
 				"javascript",
@@ -70,7 +62,6 @@ return {
 				"typescript",
 				"typescriptreact",
 				"typescript.tsx",
-				"vue",
 			},
 			root_dir = lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git"),
 			single_file_support = true,
