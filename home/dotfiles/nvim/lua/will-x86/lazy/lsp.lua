@@ -39,10 +39,10 @@ return {
             cmp_lsp.default_capabilities())
 
         require("fidget").setup({})
-                        local lspconfig = require("lspconfig")
+        local lspconfig = require("lspconfig")
         
         -- TypeScript
-        lspconfig.tsserver.setup({
+        lspconfig.ts_ls.setup({
             capabilities = capabilities,
             init_options = { hostInfo = 'neovim' },
             cmd = { 'typescript-language-server', '--stdio' },
