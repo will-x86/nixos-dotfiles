@@ -53,7 +53,17 @@ return {
 		-- TypeScript
 		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
-			init_options = { hostInfo = "neovim" },
+			init_options = {
+				hostInfo = "neovim",
+				plugins = {
+					{
+						name = "@vue/typescript-plugin",
+						location = vim.fn.stdpath("data")
+							.. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+						languages = { "vue" },
+					},
+				},
+			},
 			cmd = { "typescript-language-server", "--stdio" },
 			filetypes = {
 				"javascript",
@@ -108,17 +118,6 @@ return {
 					},
 				},
 			},
-		})
-		lspconfig.volar.setup({
-			capabilities = capabilities,
-			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
-			root_dir = lspconfig.util.root_pattern(
-				"package.json",
-				"tsconfig.json",
-				"jsconfig.json",
-				"vue.config.js",
-				".git"
-			),
 		})
 		lspconfig.eslint.setup({
 			capabilities = capabilities,
