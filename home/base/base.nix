@@ -13,13 +13,21 @@
   home.stateVersion = "24.11";
   programs.neovim.enable = true;
   home.packages = with pkgs; [
+    ### Neovim
+    lua-language-server
+    stylua
+    # gofmt  is in go
+    gotools
+    rustfmt
+    nodePackages.prettier
+
+    ### End neovim
     nodejs_23
     alacritty
     unzip
     immich-go
     go-blueprint
     lsof
-    lua-language-server
     virt-viewer
     moonlight-qt
     ntfsprogs
