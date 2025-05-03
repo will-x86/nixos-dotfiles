@@ -56,6 +56,7 @@ return {
 				"typescript",
 				"typescriptreact",
 				"typescript.tsx",
+				"vue",
 			},
 			root_dir = lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git"),
 			single_file_support = true,
@@ -93,10 +94,6 @@ return {
 			capabilities = capabilities,
 			settings = {
 				Lua = {
-					diagnostic = {
-						globals = { "vim" },
-					},
-
 					format = {
 						enable = true,
 						defaultConfig = {
