@@ -79,8 +79,8 @@
     enable = true;
     xwayland.enable = true;
   };
+  programs.hyprlock.enable = true;
   hardware.keyboard.qmk.enable = true;
-
   programs.adb.enable = true;
   programs.streamdeck-ui = {
     enable = true;

@@ -261,6 +261,7 @@
       bind = SUPER_SHIFT, 8, movetoworkspace, 8
       bind = SUPER_SHIFT, 9, movetoworkspace, 9
       bind = SUPER_SHIFT, 0, movetoworkspace, 0
+      bind = SUPER, escape, exec, hyprlock
 
 
       #-- Startup ----------------------------------------------------
