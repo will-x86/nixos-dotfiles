@@ -3,8 +3,8 @@ size = 18
 
 builtin_box_drawing = true
 
-#[font.normal]
-#family = "DepartureMono Nerd Font"
+[font.normal]
+family = "Noto Sans Serif"
 
 
 [font.offset]
