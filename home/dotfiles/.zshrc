@@ -46,6 +46,7 @@ zinit wait lucid for \
            bindkey '^n' history-search-forward; \
            bindkey '^[w' kill-region; \
            bindkey '^b' backward-word" \
+           bindkey '^i'\
     zdharma-continuum/null
 
 #bindkey '^f' autosuggest-accept
