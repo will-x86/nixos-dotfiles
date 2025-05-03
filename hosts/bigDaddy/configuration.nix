@@ -14,7 +14,6 @@
     useOSProber = true; # This enables Windows detection
     configurationLimit = 20; # Limits the number of configurations to keep, stops boot being full
   };
-
   services.tailscale.enable = true;
   boot.initrd.luks.devices."luks-14f78eb6-ba40-4c72-96c5-2924fca0f147".device = "/dev/disk/by-uuid/14f78eb6-ba40-4c72-96c5-2924fca0f147";
 
