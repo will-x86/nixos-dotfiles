@@ -20,6 +20,7 @@
     gotools
     rustfmt
     nodePackages.prettier
+    zig
 
     ### End neovim
     nodejs_23
