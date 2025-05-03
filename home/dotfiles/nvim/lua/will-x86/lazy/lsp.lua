@@ -42,12 +42,29 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
+                "gopls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
+                end,
+
+                ["gopls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.gopls.setup({
+                        capabilities = capabilities,
+                        settings = {
+                            gopls = {
+                                usePlaceholders = true,  -- enables parameter completion
+                                completeUnimported = true,
+                                analyses = {
+                                    unusedparams = true,
+                                },
+                            },
+                        },
+                    })
                 end,
 
                 zls = function()
