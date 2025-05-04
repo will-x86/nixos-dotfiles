@@ -66,7 +66,7 @@ in {
   };
   home.packages = with pkgs; [
     pulsemixer
-    google-cloud-sdk
+    #google-cloud-sdk
     custom-bambu-studio
     ventoy-full
     lf
