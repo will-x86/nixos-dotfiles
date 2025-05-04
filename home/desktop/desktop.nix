@@ -66,6 +66,7 @@ in {
   };
   home.packages = with pkgs; [
     pulsemixer
+    gsutil
     custom-bambu-studio
     ventoy-full
     lf
