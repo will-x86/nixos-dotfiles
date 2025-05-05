@@ -35,7 +35,7 @@ return {
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			pattern = "*",
 			callback = function(args)
-				require("conform").format({ bufnr = args.buf, async = true })
+				require("conform").format({ bufnr = args.buf, async = false})
 			end,
 		})
 		local cmp = require("cmp")
@@ -51,7 +51,6 @@ return {
 
 		local lspconfig = require("lspconfig")
 		local on_attach = function(client, bufnr)
-
 			-- Define keymap options
 			local opts = { buffer = bufnr, remap = false }
 
@@ -97,7 +96,7 @@ return {
 		--
 		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
-            on_attach = on_attach,
+			on_attach = on_attach,
 			init_options = { hostInfo = "neovim" },
 			cmd = { "typescript-language-server", "--stdio" },
 			filetypes = {
@@ -114,7 +113,7 @@ return {
 		-- Go
 		lspconfig.gopls.setup({
 			capabilities = capabilities,
-            on_attach = on_attach,
+			on_attach = on_attach,
 			settings = {
 				gopls = {
 					usePlaceholders = true, -- enables parameter completion
@@ -128,7 +127,7 @@ return {
 		-- Zig
 		lspconfig.zls.setup({
 			capabilities = capabilities,
-            on_attach = on_attach,
+			on_attach = on_attach,
 			root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
 			settings = {
 				zls = {
@@ -144,7 +143,7 @@ return {
 		-- Lua
 		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
-            on_attach = on_attach,
+			on_attach = on_attach,
 			settings = {
 				Lua = {
 					format = {
@@ -159,7 +158,7 @@ return {
 		})
 		lspconfig.eslint.setup({
 			capabilities = capabilities,
-            on_attach = on_attach,
+			on_attach = on_attach,
 			root_dir = lspconfig.util.root_pattern(
 				"package.json",
 				".git",
@@ -168,9 +167,9 @@ return {
 				".eslintrc.json"
 			),
 		})
-		lspconfig.html.setup({ capabilities = capabilities ,on_attach = on_attach })
-		lspconfig.cssls.setup({ capabilities = capabilities , on_attach = on_attach})
-		lspconfig.jsonls.setup({ capabilities = capabilities , on_attach = on_attach})
+		lspconfig.html.setup({ capabilities = capabilities, on_attach = on_attach })
+		lspconfig.cssls.setup({ capabilities = capabilities, on_attach = on_attach })
+		lspconfig.jsonls.setup({ capabilities = capabilities, on_attach = on_attach })
 
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
