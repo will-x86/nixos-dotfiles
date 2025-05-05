@@ -51,12 +51,6 @@ return {
 
 		local lspconfig = require("lspconfig")
 		local on_attach = function(client, bufnr)
-			-- Disable LSP for specified filetypes
-			local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
-			if disable_lsp_filetypes[filetype] then
-				client.stop()
-				return
-			end
 
 			-- Define keymap options
 			local opts = { buffer = bufnr, remap = false }
