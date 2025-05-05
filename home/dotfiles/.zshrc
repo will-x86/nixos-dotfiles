@@ -11,7 +11,7 @@ alias gdc='git diff --cached'
 
 alias gw="cd ~/go/src/github.com/will-x86/"
 alias nd="nix develop -c $SHELL"
-alias ls='ls --color'
+#alias ls='ls --color'
 alias vim='nvim'
 alias vi='nvim'
 alias c='clear'
