@@ -38,32 +38,6 @@ return {
 				require("conform").format({ bufnr = args.buf, async = true })
 			end,
 		})
-		-- Define disabled filetypes
-		local disable_lsp_filetypes = {}
-
-		-- LSP Keybindings and on_attach function
-		local on_attach = function(client, bufnr)
-			local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
-
-			if disable_lsp_filetypes[filetype] then
-				client.stop()
-				return
-			end
-			
-			local opts = { buffer = bufnr, remap = false }
-			vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-			vim.keymap.set("n", "<C-o>", [[<Cmd>lua vim.cmd('normal! <C-O>')<CR>]], opts)
-			vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-			vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-			vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-			vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-			vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-			vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-			vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-			vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-			vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-		end
-
 		local cmp = require("cmp")
 		local cmp_lsp = require("cmp_nvim_lsp")
 		local capabilities = vim.tbl_deep_extend(
@@ -74,11 +48,62 @@ return {
 		)
 
 		require("fidget").setup({})
+
 		local lspconfig = require("lspconfig")
+		local on_attach = function(client, bufnr)
+			-- Disable LSP for specified filetypes
+			local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+			if disable_lsp_filetypes[filetype] then
+				client.stop()
+				return
+			end
+
+			-- Define keymap options
+			local opts = { buffer = bufnr, remap = false }
+
+			-- Set your keymaps (exactly as provided)
+			vim.keymap.set("n", "gd", function()
+				vim.lsp.buf.definition()
+			end, opts)
+			vim.keymap.set("n", "<C-o>", [[<Cmd>lua vim.cmd('normal! <C-O>')<CR>]], opts) -- Keep original mapping exactly
+			vim.keymap.set("n", "K", function()
+				vim.lsp.buf.hover()
+			end, opts)
+			vim.keymap.set("n", "<leader>vws", function()
+				vim.lsp.buf.workspace_symbol()
+			end, opts)
+			vim.keymap.set("n", "<leader>vd", function()
+				vim.diagnostic.open_float()
+			end, opts)
+			-- NOTE: Your original mappings for [d and ]d were swapped compared to common usage.
+			-- Keeping them exactly as you provided:
+			vim.keymap.set("n", "[d", function()
+				vim.diagnostic.goto_next()
+			end, opts) -- Usually previous
+			vim.keymap.set("n", "]d", function()
+				vim.diagnostic.goto_prev()
+			end, opts) -- Usually next
+			vim.keymap.set("n", "<leader>vca", function()
+				vim.lsp.buf.code_action()
+			end, opts)
+			vim.keymap.set("n", "<leader>vrr", function()
+				vim.lsp.buf.references()
+			end, opts)
+			vim.keymap.set("n", "<leader>vrn", function()
+				vim.lsp.buf.rename()
+			end, opts)
+			vim.keymap.set("i", "<C-h>", function()
+				vim.lsp.buf.signature_help()
+			end, opts)
+
+			-- Note: lsp_format_on_save(bufnr) was removed as it's not defined
+			-- and formatting is handled by the conform autocmd above.
+		end
 		-- TypeScript
+		--
 		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
-			on_attach = on_attach,
+            on_attach = on_attach,
 			init_options = { hostInfo = "neovim" },
 			cmd = { "typescript-language-server", "--stdio" },
 			filetypes = {
@@ -95,7 +120,7 @@ return {
 		-- Go
 		lspconfig.gopls.setup({
 			capabilities = capabilities,
-			on_attach = on_attach,
+            on_attach = on_attach,
 			settings = {
 				gopls = {
 					usePlaceholders = true, -- enables parameter completion
@@ -109,6 +134,7 @@ return {
 		-- Zig
 		lspconfig.zls.setup({
 			capabilities = capabilities,
+            on_attach = on_attach,
 			root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
 			settings = {
 				zls = {
@@ -124,6 +150,7 @@ return {
 		-- Lua
 		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
+            on_attach = on_attach,
 			settings = {
 				Lua = {
 					format = {
@@ -138,6 +165,7 @@ return {
 		})
 		lspconfig.eslint.setup({
 			capabilities = capabilities,
+            on_attach = on_attach,
 			root_dir = lspconfig.util.root_pattern(
 				"package.json",
 				".git",
@@ -146,9 +174,9 @@ return {
 				".eslintrc.json"
 			),
 		})
-		lspconfig.html.setup({ capabilities = capabilities })
-		lspconfig.cssls.setup({ capabilities = capabilities })
-		lspconfig.jsonls.setup({ capabilities = capabilities })
+		lspconfig.html.setup({ capabilities = capabilities ,on_attach = on_attach })
+		lspconfig.cssls.setup({ capabilities = capabilities , on_attach = on_attach})
+		lspconfig.jsonls.setup({ capabilities = capabilities , on_attach = on_attach})
 
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
