@@ -178,8 +178,7 @@
 
       bind = SUPER,       Return, exec, $kitty -T
       bind = SUPER_SHIFT, w, exec,  $kitty -W
-      #bind = SUPER_SHIFT, Return, exec, $kitty -f
-      bind = SUPER_SHIFT, Return, exec, kitty -f && hyprctl dispatch togglefloating && hyprctl dispatch resizeactive exact 50% 50%
+      bind = SUPER_SHIFT, Return, exec, $kitty -f
       bind = SUPER,       T,      exec, $kitty
       bind = SUPER_SHIFT, F, exec, XDG_CURRENT_DESKTOP=kde dolphin
       bindr = SUPER, SUPER_L, exec, $rofi_launcher
