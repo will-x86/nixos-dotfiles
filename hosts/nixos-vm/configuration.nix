@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
   ];
@@ -23,7 +24,10 @@
   services.tailscale.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  nix.settings.trusted-users = ["root" "will"];
+  nix.settings.trusted-users = [
+    "root"
+    "will"
+  ];
   services = {
     openssh = {
       enable = true;
@@ -44,8 +48,7 @@
       url = "https://github.com/NixOS/nixpkgs/";
       ref = "refs/heads/nixos-unstable";
       rev = "028048884dc9517e548703beb24a11408cc51402";
-    }) {system = "x86_64-linux";})
-    .neovim
+    }) { system = "x86_64-linux"; }).neovim
   ];
 
   system.stateVersion = "24.11";

@@ -3,7 +3,8 @@
   secrets,
   pkgs,
   ...
-}: {
+}:
+{
   programs.ssh.enable = true;
 
   #Host *

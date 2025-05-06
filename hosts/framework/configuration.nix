@@ -3,7 +3,8 @@
   pkgs,
   secrets,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ./smb.nix
@@ -13,7 +14,8 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 20;
-  boot.initrd.luks.devices."luks-a26d1b6a-644e-425e-89d3-a7619fcf22ea".device = "/dev/disk/by-uuid/a26d1b6a-644e-425e-89d3-a7619fcf22ea";
+  boot.initrd.luks.devices."luks-a26d1b6a-644e-425e-89d3-a7619fcf22ea".device =
+    "/dev/disk/by-uuid/a26d1b6a-644e-425e-89d3-a7619fcf22ea";
   boot.kernelParams = [
     "amdgpu.dcdebugmask=0x10"
   ];
@@ -23,7 +25,7 @@
     power-profiles-daemon.enable = true;
     tailscale.enable = true;
     xserver.enable = true;
-    xserver.videoDrivers = ["amdgpu"];
+    xserver.videoDrivers = [ "amdgpu" ];
     flatpak.enable = true;
     mullvad-vpn.enable = true;
     trezord.enable = true;
@@ -68,7 +70,7 @@
   powerManagement.powertop.enable = true;
   networking.hostName = "framework";
   hardware.spacenavd.enable = true;
-  boot.initrd.kernelModules = ["amdgpu"];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   programs.steam = {
     enable = true;
     localNetworkGameTransfers.openFirewall = true;
@@ -95,8 +97,14 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  networking.firewall.allowedTCPPorts = [8384 22000];
-  networking.firewall.allowedUDPPorts = [22000 21027];
+  networking.firewall.allowedTCPPorts = [
+    8384
+    22000
+  ];
+  networking.firewall.allowedUDPPorts = [
+    22000
+    21027
+  ];
 
   system.stateVersion = "24.05"; # Did you read the comment?
 }

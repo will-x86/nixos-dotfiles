@@ -2,7 +2,8 @@
   pkgs,
   secrets,
   ...
-}: {
+}:
+{
   programs.git = {
     enable = true;
     userName = "${secrets.git.username}";

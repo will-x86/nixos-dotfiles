@@ -4,7 +4,8 @@
   inputs,
   secrets,
   ...
-}: {
+}:
+{
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = false;
   system.autoUpgrade.dates = "weekly";
@@ -61,14 +62,15 @@
         lcdfilter = "default";
         rgba = "rgb";
       };
-      defaultFonts = let
-        addAll = builtins.mapAttrs (_: v: ["Symbols Nerd Font"] ++ v ++ ["Noto Color Emoji"]);
-      in
+      defaultFonts =
+        let
+          addAll = builtins.mapAttrs (_: v: [ "Symbols Nerd Font" ] ++ v ++ [ "Noto Color Emoji" ]);
+        in
         addAll {
-          serif = ["Noto Sans Serif"];
-          sansSerif = ["SF Pro Display"];
-          monospace = ["Departure Mono"];
-          emoji = ["Noto Color Emoji"];
+          serif = [ "Noto Sans Serif" ];
+          sansSerif = [ "SF Pro Display" ];
+          monospace = [ "Departure Mono" ];
+          emoji = [ "Noto Color Emoji" ];
         };
     };
     enableDefaultPackages = true;
@@ -100,7 +102,14 @@
     isNormalUser = true;
     description = "will";
     shell = pkgs.zsh;
-    extraGroups = ["networkmanager" "wheel" "docker" "containerd" "kvm" "adbusers"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "containerd"
+      "kvm"
+      "adbusers"
+    ];
     packages = with pkgs; [
     ];
   };
@@ -113,7 +122,10 @@
       experimental-features = nix-command flakes
     '';
   };
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   home-manager.backupFileExtension = "backup";
 
   virtualisation.docker.enable = true;
@@ -126,7 +138,10 @@
   networking.firewall = {
     enable = false;
     allowPing = true;
-    allowedTCPPorts = [80 443];
+    allowedTCPPorts = [
+      80
+      443
+    ];
     allowedUDPPortRanges = [
       {
         from = 4000;

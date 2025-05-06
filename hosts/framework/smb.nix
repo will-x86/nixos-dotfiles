@@ -1,4 +1,5 @@
-{secrets, ...}: {
+{ secrets, ... }:
+{
   fileSystems."/mnt/FractalMedia" = {
     device = "//${secrets.samba.fracRemote}/Media";
     fsType = "cifs";

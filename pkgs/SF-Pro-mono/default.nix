@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-AYjKrVLISsJWXN6Cj74wXmbJtREkFDYOCRw1t2nVH2w=";
   };
 
-  nativeBuildInputs = [unzip];
+  nativeBuildInputs = [ unzip ];
 
   installPhase = ''
     mkdir -p $out/share/fonts/opentype
@@ -26,6 +26,6 @@ stdenv.mkDerivation rec {
     description = "Patched SF Mono fonts for programming";
     homepage = "https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized";
     license = licenses.mit;
-    maintainers = [maintainers.IPconfig];
+    maintainers = [ maintainers.IPconfig ];
   };
 }

@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
   ];
@@ -15,7 +16,8 @@
     configurationLimit = 20; # Limits the number of configurations to keep, stops boot being full
   };
   services.tailscale.enable = true;
-  boot.initrd.luks.devices."luks-14f78eb6-ba40-4c72-96c5-2924fca0f147".device = "/dev/disk/by-uuid/14f78eb6-ba40-4c72-96c5-2924fca0f147";
+  boot.initrd.luks.devices."luks-14f78eb6-ba40-4c72-96c5-2924fca0f147".device =
+    "/dev/disk/by-uuid/14f78eb6-ba40-4c72-96c5-2924fca0f147";
 
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "bigDaddy";
@@ -62,17 +64,17 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
-  services.xserver.videoDrivers = ["amdgpu"];
+  services.xserver.videoDrivers = [ "amdgpu" ];
   /*
-    services.ollama = {
-    enable = true;
-    package = pkgs.nixos-unstable.ollama;
-    acceleration = "rocm";
-    environmentVariables = {
-      HCC_AMDGPU_TARGET = "gfx1103"; # used to be necessary, but doesn't seem to anymore
+      services.ollama = {
+      enable = true;
+      package = pkgs.nixos-unstable.ollama;
+      acceleration = "rocm";
+      environmentVariables = {
+        HCC_AMDGPU_TARGET = "gfx1103"; # used to be necessary, but doesn't seem to anymore
+      };
+      rocmOverrideGfx = "10.3.1";
     };
-    rocmOverrideGfx = "10.3.1";
-  };
   */
 
   services.xserver.xkb = {
@@ -88,7 +90,7 @@
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
-    polkitPolicyOwners = ["will"];
+    polkitPolicyOwners = [ "will" ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -99,8 +101,7 @@
       url = "https://github.com/NixOS/nixpkgs/";
       ref = "refs/heads/nixos-unstable";
       rev = "028048884dc9517e548703beb24a11408cc51402";
-    }) {system = "x86_64-linux";})
-    .neovim
+    }) { system = "x86_64-linux"; }).neovim
   ];
   fileSystems."/mnt/FractalMedia" = {
     device = "//${secrets.samba.fracRemote}/Media";
