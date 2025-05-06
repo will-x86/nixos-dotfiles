@@ -39,6 +39,7 @@ return {
 				require("conform").format({ bufnr = args.buf, async = false })
 			end,
 		})
+		require("mason").setup()
 		local cmp = require("cmp")
 		local cmp_lsp = require("cmp_nvim_lsp")
 		local capabilities = vim.tbl_deep_extend(
