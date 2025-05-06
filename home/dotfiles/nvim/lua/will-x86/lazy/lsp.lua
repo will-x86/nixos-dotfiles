@@ -112,6 +112,12 @@ return {
 			root_dir = lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git"),
 			single_file_support = true,
 		})
+		-- nix
+		lspconfig.nil_ls.setup({
+
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
 		-- Go
 		lspconfig.gopls.setup({
 			capabilities = capabilities,

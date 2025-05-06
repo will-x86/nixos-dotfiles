@@ -19,6 +19,7 @@
     # gofmt  is in go
     gotools
     rustfmt
+    nil
     nodePackages.prettier
     typescript
     eslint_d
