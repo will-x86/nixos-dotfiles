@@ -19,6 +19,7 @@
     stylua
     # gofmt  is in go
     gotools
+    yamlfix
     rustfmt
     nil # nix
     nixfmt-rfc-style

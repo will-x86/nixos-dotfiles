@@ -32,6 +32,7 @@ return {
 				typescriptreact = { "eslint_d", "prettier" },
 				vue = { "eslint_d", "prettier" },
 				nix = { "nixfmt" },
+				yaml = { "yamlfix" },
 			},
 		})
 		vim.api.nvim_create_autocmd("BufWritePre", {
