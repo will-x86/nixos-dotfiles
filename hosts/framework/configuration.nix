@@ -27,8 +27,7 @@
     flatpak.enable = true;
     mullvad-vpn.enable = true;
     trezord.enable = true;
-    /*
-      syncthing = {
+    syncthing = {
       enable = true;
       user = "will";
       dataDir = "/home/will/Documents";
@@ -38,7 +37,6 @@
         password = "${secrets.syncthing.pass}";
       };
     };
-    */
     udev.packages = [
       pkgs.platformio-core
       pkgs.platformio-core.udev
