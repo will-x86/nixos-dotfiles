@@ -19,6 +19,7 @@
     stylua
     # gofmt  is in go
     gotools
+    yaml-language-server
     yamlfix
     rustfmt
     nil # nix

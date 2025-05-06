@@ -114,6 +114,12 @@ return {
 			root_dir = lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git"),
 			single_file_support = true,
 		})
+		--yaml
+		lspconfig.yamlls.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
 		-- nix
 		lspconfig.nil_ls.setup({
 			capabilities = capabilities,
