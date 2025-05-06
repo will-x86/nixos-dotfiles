@@ -12,6 +12,7 @@ return {
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 		"j-hui/fidget.nvim",
+		"williamboman/mason.nvim", -- ONLY used for finding lsp servers
 	},
 
 	config = function()
@@ -35,7 +36,7 @@ return {
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			pattern = "*",
 			callback = function(args)
-				require("conform").format({ bufnr = args.buf, async = false})
+				require("conform").format({ bufnr = args.buf, async = false })
 			end,
 		})
 		local cmp = require("cmp")
