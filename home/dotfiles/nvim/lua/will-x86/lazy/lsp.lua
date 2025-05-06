@@ -114,9 +114,15 @@ return {
 		})
 		-- nix
 		lspconfig.nil_ls.setup({
-
 			capabilities = capabilities,
 			on_attach = on_attach,
+			settings = {
+				["nil"] = {
+					formatting = {
+						command = { "nixfmt" },
+					},
+				},
+			},
 		})
 		-- Go
 		lspconfig.gopls.setup({

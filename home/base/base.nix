@@ -19,7 +19,8 @@
     # gofmt  is in go
     gotools
     rustfmt
-    nil
+    nil # nix
+    nixfmt-rfc-style
     nodePackages.prettier
     typescript
     eslint_d
