@@ -79,6 +79,7 @@ in {
     pkgs-stable.beekeeper-studio
     # winetricks
     mokutil
+    finamp
     #lsb-release
     jellyfin-web
     obs-studio
