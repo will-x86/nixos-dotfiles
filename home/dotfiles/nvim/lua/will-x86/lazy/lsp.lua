@@ -138,6 +138,7 @@ return {
 			on_attach = on_attach,
 			settings = {
 				gopls = {
+					gofumpt = true,
 					usePlaceholders = true, -- enables parameter completion
 					completeUnimported = true,
 					analyses = {
