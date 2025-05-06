@@ -21,6 +21,7 @@
     gotools
     yaml-language-server
     yamlfix
+    gofumpt
     rustfmt
     nil # nix
     nixfmt-rfc-style
