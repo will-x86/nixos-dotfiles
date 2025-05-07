@@ -33,7 +33,7 @@
     zig
 
     ### End neovim
-    nodejs_23
+    nodejs
     alacritty
     unzip
     immich-go
