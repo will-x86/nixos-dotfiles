@@ -162,6 +162,7 @@ in
     imagemagick
     feh
     playerctl
+    google-chrome
     (pkgs.callPackage (
       { stdenv }:
       stdenv.mkDerivation {
