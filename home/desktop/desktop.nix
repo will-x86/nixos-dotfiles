@@ -99,6 +99,7 @@ in
     gawk
     coreutils
     polkit
+    bruno
     xdg-utils
     tailwindcss-language-server
     vscode-langservers-extracted
