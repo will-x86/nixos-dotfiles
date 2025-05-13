@@ -6,6 +6,7 @@ let
   ];
 in
 {
+  # Literally hate bambu studio
   system.userActivationScripts.flatpakManagement = {
     text = ''
       # 2. Ensure the Flathub repo is added
