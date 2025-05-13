@@ -1,5 +1,5 @@
 {
-  #config,
+  config,
   pkgs,
   secrets,
   pkgs-stable,
@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
     ./smb.nix
     ./user.nix
-    ./packages.nix
+    (import ./packages.nix { inherit config pkgs pkgs-stable; })
     ./flatpack.nix
   ];
 
