@@ -73,7 +73,7 @@ in
     #google-cloud-sdk
     #custom-bambu-studio
     bambu-studio
-    ventoy-full
+    #ventoy-full
     lf
     pywal
     wlogout
