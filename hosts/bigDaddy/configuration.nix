@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-stable,
   ...
 }:
 {
@@ -93,16 +94,20 @@
     polkitPolicyOwners = [ "will" ];
   };
 
-  environment.systemPackages = with pkgs; [
-    cifs-utils
-    samba
-    (import (builtins.fetchGit {
-      name = "my-old-revision";
-      url = "https://github.com/NixOS/nixpkgs/";
-      ref = "refs/heads/nixos-unstable";
-      rev = "028048884dc9517e548703beb24a11408cc51402";
-    }) { system = "x86_64-linux"; }).neovim
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [
+      cifs-utils
+      (import (builtins.fetchGit {
+        name = "my-old-revision";
+        url = "https://github.com/NixOS/nixpkgs/";
+        ref = "refs/heads/nixos-unstable";
+        rev = "028048884dc9517e548703beb24a11408cc51402";
+      }) { system = "x86_64-linux"; }).neovim
+    ]
+    ++ (with pkgs-stable; [
+      samba
+    ]);
   fileSystems."/mnt/FractalMedia" = {
     device = "//${secrets.samba.fracRemote}/Media";
     fsType = "cifs";
