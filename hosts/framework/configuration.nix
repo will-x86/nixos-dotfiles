@@ -1,8 +1,8 @@
 {
   #config,
   pkgs,
-  pkgs-stable,
   secrets,
+  pkgs-stable,
   ...
 }:
 {
