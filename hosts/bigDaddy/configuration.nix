@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  secrets,
   pkgs-stable,
   ...
 }:
