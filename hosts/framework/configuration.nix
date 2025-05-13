@@ -10,6 +10,7 @@
     ./smb.nix
     ./user.nix
     ./packages.nix
+    ./flatpack.nix
   ];
 
   boot.loader.systemd-boot.enable = true;

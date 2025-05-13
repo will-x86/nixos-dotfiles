@@ -72,7 +72,7 @@ in
     pulsemixer
     #google-cloud-sdk
     #custom-bambu-studio
-    bambu-studio
+    #bambu-studio
     #ventoy-full
     lf
     pywal
