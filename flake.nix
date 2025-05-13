@@ -38,7 +38,7 @@
 
       # Common special arguments for all configurations
       commonSpecialArgs = {
-        inherit inputs system;
+        inherit inputs system pkgs-stable;
         secrets = loadSecrets;
       };
 
