@@ -14,15 +14,17 @@ let
     config.allowUnfree = true;
   };
 
-  custom-bambu-studio = pkgs.bambu-studio.overrideAttrs (oldAttrs: {
-    version = "01.00.01.50";
-    src = pkgs.fetchFromGitHub {
-      owner = "bambulab";
-      repo = "BambuStudio";
-      rev = "v01.00.01.50";
-      hash = "sha256-7mkrPl2CQSfc1lRjl1ilwxdYcK5iRU//QGKmdCicK30=";
-    };
-  });
+  /*
+    custom-bambu-studio = pkgs.bambu-studio.overrideAttrs (oldAttrs: {
+      version = "01.00.01.50";
+      src = pkgs.fetchFromGitHub {
+        owner = "bambulab";
+        repo = "BambuStudio";
+        rev = "v01.00.01.50";
+        hash = "sha256-7mkrPl2CQSfc1lRjl1ilwxdYcK5iRU//QGKmdCicK30=";
+      };
+    });
+  */
 in
 {
   imports = [
@@ -69,7 +71,8 @@ in
   home.packages = with pkgs; [
     pulsemixer
     #google-cloud-sdk
-    custom-bambu-studio
+    #custom-bambu-studio
+    bambu-studio
     ventoy-full
     lf
     pywal
