@@ -149,6 +149,7 @@ in
     #nfs-utils
     python311Packages.pip
     upx
+    pavucontrol
     cliphist
     wl-clipboard
     udiskie
