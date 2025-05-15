@@ -27,6 +27,7 @@ return {
 				rust = { "rustfmt", lsp_format = "fallback" },
 				zig = { "zigfmt" },
 				javascript = { "eslint_d", "prettier" },
+				cpp = { "clang_format" },
 				javascriptreact = { "eslint_d", "prettier" },
 				typescript = { "eslint_d", "prettier" },
 				typescriptreact = { "eslint_d", "prettier" },
