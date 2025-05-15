@@ -103,6 +103,11 @@ return {
 		lspconfig.clangd.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			cmd = {
+				"clangd",
+				"--background-index",
+				"-j=12",
+			},
 		})
 		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
