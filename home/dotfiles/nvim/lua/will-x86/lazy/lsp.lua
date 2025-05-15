@@ -98,6 +98,11 @@ return {
 		end
 		-- TypeScript
 		--
+
+		lspconfig.clangd.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
 		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
