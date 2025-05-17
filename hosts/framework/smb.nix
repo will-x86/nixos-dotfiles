@@ -31,7 +31,7 @@
     ];
   };
   fileSystems."/mnt/NFractalMedia" = {
-    device = "${secrets.samba.fracRemote}:/Media";
+    device = "${secrets.samba.fracRemote}:/mnt/Vault/Media";
     fsType = "nfs";
     options = [
       "x-systemd.automount"
@@ -45,7 +45,7 @@
   };
 
   fileSystems."/mnt/NFractal" = {
-    device = "${secrets.samba.fracRemote}:/Vault";
+    device = "${secrets.samba.fracRemote}:/mnt/Vault/Vault";
     fsType = "nfs";
     options = [
       "x-systemd.automount"
