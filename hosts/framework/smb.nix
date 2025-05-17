@@ -30,4 +30,31 @@
       "nofail"
     ];
   };
+  fileSystems."/mnt/NFractalMedia" = {
+    device = "${secrets.samba.fracRemote}:/Media";
+    fsType = "nfs";
+    options = [
+      "x-systemd.automount"
+      "noatime"
+      "rw"
+      "soft"
+      "nfsvers=4.2"
+      "async"
+      "nofail"
+    ];
+  };
+
+  fileSystems."/mnt/NFractal" = {
+    device = "${secrets.samba.fracRemote}:/Vault";
+    fsType = "nfs";
+    options = [
+      "x-systemd.automount"
+      "noatime"
+      "rw"
+      "soft"
+      "nfsvers=4.2"
+      "async"
+      "nofail"
+    ];
+  };
 }
