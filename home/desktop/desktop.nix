@@ -154,6 +154,7 @@ in
     wl-clipboard
     udiskie
     #ryujinx
+    qutebrowser-qt5
     waybar
     #viewnior
     hyprshot
