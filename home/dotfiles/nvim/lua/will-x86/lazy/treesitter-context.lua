@@ -4,10 +4,10 @@ return {
 		require("treesitter-context").setup({
 			enable = true,
 			multiwindow = false,
-			max_lines = 3,
+			max_lines = 3, -- def 0
 			min_window_height = 0,
 			line_numbers = true,
-			multiline_threshold = 3, -- Maximum number of lines to show for a single context
+			multiline_threshold = 3, -- def (20) Maximum number of lines to show for a single context
 			trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
 			mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
 			-- Separator between context and content. Should be a single character string, like '-'.
