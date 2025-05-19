@@ -92,6 +92,7 @@ in
     # trezor-agent
     pywalfox-native
     slurp # color picker
+    eslint
     mediawriter
     #gettext
     #cabextract
