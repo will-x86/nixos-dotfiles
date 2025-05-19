@@ -24,7 +24,8 @@ return {
 			vim.cmd.colorscheme("night-owl")
 		end,
 	},]]
-	-{
+	--
+	{
 		"xiyaowong/transparent.nvim",
 		config = function()
 			require("transparent").setup({
