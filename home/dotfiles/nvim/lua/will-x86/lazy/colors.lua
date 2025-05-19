@@ -1,17 +1,17 @@
 return {
-	--[[{
-        --"zenbones-theme/zenbones.nvim",
-        "arcticicestudio/nord-vim",
-        dependencies = "rktjmp/lush.nvim",
-        lazy = false,
-        priority = 1000,
-        config = function()
-            vim.o.termguicolors = true
-            vim.opt.background = "dark"
-            vim.cmd("colorscheme nord")
-        end
-    },]]
-	--
+	{
+		--"zenbones-theme/zenbones.nvim",
+		"arcticicestudio/nord-vim",
+		dependencies = "rktjmp/lush.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.o.termguicolors = true
+			vim.opt.background = "dark"
+			vim.cmd("colorscheme nord")
+		end,
+	},
+	--[[
 	{
 		"oxfist/night-owl.nvim",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -23,8 +23,8 @@ return {
 			vim.opt.background = "dark"
 			vim.cmd.colorscheme("night-owl")
 		end,
-	},
-	{
+	},]]
+	-{
 		"xiyaowong/transparent.nvim",
 		config = function()
 			require("transparent").setup({
