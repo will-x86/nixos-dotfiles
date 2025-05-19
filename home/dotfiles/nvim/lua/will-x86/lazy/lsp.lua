@@ -27,11 +27,11 @@ return {
 				rust = { "rustfmt", lsp_format = "fallback" },
 				zig = { "zigfmt" },
 				cpp = { "clang_format" },
-				javascript = { "eslint", "prettier" },
-				javascriptreact = { "eslint", "prettier" },
-				typescript = { "eslint", "prettier" },
-				typescriptreact = { "eslint", "prettier" },
-				vue = { "eslint", "prettier" },
+				javascript = { "eslint_d", "prettier" },
+				javascriptreact = { "eslint_d", "prettier" },
+				typescript = { "eslint_d", "prettier" },
+				typescriptreact = { "eslint_d", "prettier" },
+				vue = { "eslint_d", "prettier" },
 				--vue = { "prettier" },
 				--				javascript = { "prettier" },
 				--				javascriptreact = { "prettier" },
@@ -203,8 +203,8 @@ return {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			root_dir = lspconfig.util.root_pattern(
-				"package.json",
-				".git",
+				--"package.json", -- removed as uhhh
+				--".git",
 				".eslintrc.js",
 				".eslintrc.cjs",
 				".eslintrc.json"
