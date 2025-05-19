@@ -196,7 +196,7 @@ return {
 		})
 		lspconfig.eslint.setup({
 			capabilities = capabilities,
-			on_attach = on_attach,
+			--on_attach = on_attach,
 			root_dir = lspconfig.util.root_pattern(
 				"package.json",
 				".git",
