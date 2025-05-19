@@ -91,6 +91,7 @@ in
     # trezor-suite
     # trezor-agent
     pywalfox-native
+    slurp # color picker
     mediawriter
     #gettext
     #cabextract
