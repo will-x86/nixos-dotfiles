@@ -12,17 +12,7 @@ return {
 			"MeanderingProgrammer/render-markdown.nvim",
 			opts = {
 				file_types = { "markdown", "Avante" },
-				patterns = {
-					-- Highlight patterns to disable for filetypes, i.e. lines concealed around code blocks
-
-					markdown = {
-						disable = true,
-						directives = {
-							{ id = 17, name = "conceal_lines" },
-							{ id = 18, name = "conceal_lines" },
-						},
-					},
-				},
+				code = { sign = false },
 			},
 			ft = { "markdown", "Avante" },
 		},
