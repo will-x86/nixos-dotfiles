@@ -98,6 +98,7 @@ in
     #cabextract
     ctpv
     samba4Full
+    devend
     glxinfo
     #spacenavd
     bc
