@@ -39,6 +39,7 @@
     unzip
     immich-go
     go-blueprint
+    flutter
     lsof
     virt-viewer
     moonlight-qt
