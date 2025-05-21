@@ -16,6 +16,7 @@
   home.packages = with pkgs; [
     ### Neovim
     lua-language-server
+    kotlin-language-server
     stylua
     # gofmt  is in go
     gotools

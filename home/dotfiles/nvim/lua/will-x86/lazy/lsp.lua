@@ -114,6 +114,11 @@ return {
 				"-j=12",
 			},
 		})
+		lspconfig.kotlin_language_server.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			filetypes = { "kotlin", "kt", "kts" },
+		})
 		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
