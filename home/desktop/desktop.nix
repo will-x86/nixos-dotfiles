@@ -98,7 +98,7 @@ in
     #cabextract
     ctpv
     samba4Full
-    devend
+    devenv
     glxinfo
     #spacenavd
     bc
