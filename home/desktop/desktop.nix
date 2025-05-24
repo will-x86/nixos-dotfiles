@@ -186,6 +186,10 @@ in
     ) { })
   ];
   programs.zoxide.enable = true;
+  programs.zoxide.options = [
+    "--cmd cd"
+  ];
+
   programs.rofi = {
     enable = true;
     plugins = [ pkgs.rofi-emoji ];
