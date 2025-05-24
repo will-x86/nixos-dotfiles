@@ -69,7 +69,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # Deferred loading of shell integrations
 eval "$(direnv hook zsh)"  # Uncomment if you use direnv
 eval "$(starship init zsh)"
-{
   eval "$(fzf --zsh)"
-  eval "$(zoxide init --cmd cd zsh)"
+  eval "$(zoxide init --cmd z zsh)"
+{
 } &!
