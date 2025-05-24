@@ -185,6 +185,7 @@ in
       }
     ) { })
   ];
+  programs.zoxide.enable = true;
   programs.rofi = {
     enable = true;
     plugins = [ pkgs.rofi-emoji ];
