@@ -70,6 +70,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 eval "$(direnv hook zsh)"  # Uncomment if you use direnv
 eval "$(starship init zsh)"
   eval "$(fzf --zsh)"
-  eval "$(zoxide init --cmd z zsh)"
+  eval "$(zoxide init --cmd cd zsh)"
 {
 } &!
