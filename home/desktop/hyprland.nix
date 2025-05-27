@@ -177,11 +177,9 @@
             bind = SUPER, e, exec, $kitty -e lf
 
       ### Warp 
-      bind SUPER_SHIFT, x, exec warpd --hint
-      bind SUPER_SHIFT, c exec warpd --normal
-      bind SUPER_SHIFT, g exec warpd --grid
-
-
+      bind = SUPER_SHIFT, x, exec,  warpd --hint
+      bind = SUPER_SHIFT, c, exec, warpd --normal
+      bind = SUPER_SHIFT, g, exec, warpd --grid
 
       ### 
             bind = SUPER,       Return, exec, $kitty -T
