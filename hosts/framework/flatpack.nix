@@ -3,6 +3,7 @@ let
   grep = pkgs.gnugrep;
   desiredFlatpaks = [
     "com.bambulab.BambuStudio "
+    "com.valvesoftware.SteamLink "
   ];
 in
 {

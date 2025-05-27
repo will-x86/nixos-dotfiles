@@ -170,7 +170,6 @@ in
     #slurp
     imagemagick
     feh
-    warpd
     playerctl
     google-chrome
     (pkgs.callPackage (
