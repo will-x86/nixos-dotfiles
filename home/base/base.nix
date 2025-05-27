@@ -84,9 +84,9 @@
     alejandra
     tmux
     fzf
-    zoxide
     ripgrep
     file
+    zoxide
   ];
   programs = {
     home-manager.enable = true;
@@ -94,6 +94,13 @@
     zsh.enable = true;
     firefox.enable = true;
     direnv.enable = true;
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+      options = [
+        "--cmd cd"
+      ];
+    };
     starship.enable = true;
     kitty.enable = true;
     foot.enable = true;
