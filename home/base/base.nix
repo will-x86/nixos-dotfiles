@@ -14,6 +14,21 @@
   home.stateVersion = "24.11";
   programs.neovim.enable = true;
   home.packages = with pkgs; [
+    ### Espressif
+    flex
+    bison
+    gperf
+    python3
+    python3Packages.pip
+    python3Packages.venv
+    cmake
+    ninja
+    ccache
+    libffi
+    openssl
+    dfu-util
+    libusb1
+    ### End espressif
     ### Neovim
     lua-language-server
     kotlin-language-server
