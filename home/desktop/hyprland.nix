@@ -246,6 +246,8 @@
       exec-once=[workspace 1 silent] $kitty -T
       exec-once=[workspace 2 silent] firefox
       exec-once=[workspace 3 silent] obsidian
+      exec-once=[workspace 4 silent] bruno
+      exec-once=[workspace 5 silent] beekeeper-studio
       exec-once=[workspace 8 silent] 1password
       exec-once=[workspace 9 silent] firefox -P "j" --new-instance
 
