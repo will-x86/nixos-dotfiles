@@ -105,29 +105,12 @@ return {
 		-- TypeScript
 		--
 
-		--		lspconfig.clangd.setup({
-		--			capabilities = capabilities,
-		--			on_attach = on_attach,
-		--			cmd = {
-		--				"clangd",
-		--			},
-		--		})
-		lspconfig.ccls.setup({
+		lspconfig.clangd.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			init_options = {
-				cache = {
-					directory = ".ccls-cache",
-				},
-				highlight = {
-					lsRanges = true,
-				},
-				completion = {
-					duplicateOptional = false,
-				},
+			cmd = {
+				"clangd",
 			},
-			-- Optional: specify root patterns for project detection
-			root_dir = lspconfig.util.root_pattern("compile_commands.json", ".ccls", ".git", "Makefile"),
 		})
 		lspconfig.kotlin_language_server.setup({
 			capabilities = capabilities,
