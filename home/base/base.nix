@@ -20,7 +20,7 @@
     gperf
     python3
     python3Packages.pip
-    python3Packages.venv
+    python3Packages.virtualenv
     cmake
     ninja
     ccache
