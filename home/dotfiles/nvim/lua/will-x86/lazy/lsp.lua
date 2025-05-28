@@ -110,8 +110,6 @@ return {
 			on_attach = on_attach,
 			cmd = {
 				"clangd",
-				"--background-index",
-				"-j=12",
 			},
 		})
 		lspconfig.kotlin_language_server.setup({
