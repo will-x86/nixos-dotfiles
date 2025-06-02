@@ -173,6 +173,7 @@ in
     playerctl
     google-chrome
     nixos-shell # vm's
+    nixos-generators
     (pkgs.callPackage (
       { stdenv }:
       stdenv.mkDerivation {
