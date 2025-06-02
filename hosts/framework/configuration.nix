@@ -23,14 +23,14 @@
   ];
   services = {
     fwupd.enable = true;
-    jellyfin.enable = true;
+    #jellyfin.enable = true;
     power-profiles-daemon.enable = true;
     tailscale.enable = true;
     xserver.enable = true;
     xserver.videoDrivers = [ "amdgpu" ];
     flatpak.enable = true;
     mullvad-vpn.enable = true;
-    trezord.enable = true;
+    #trezord.enable = true;
     syncthing = {
       enable = true;
       user = "will";

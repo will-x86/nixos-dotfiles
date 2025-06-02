@@ -172,6 +172,7 @@ in
     feh
     playerctl
     google-chrome
+    nixos-shell # vm's
     (pkgs.callPackage (
       { stdenv }:
       stdenv.mkDerivation {
