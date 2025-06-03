@@ -174,8 +174,10 @@ in
     google-chrome
     nixos-shell # vm's
     nixos-generators
+    ryujinx
     (pkgs.callPackage (
       { stdenv }:
+
       stdenv.mkDerivation {
         name = "nothing-fonts";
         src = ./fonts;
