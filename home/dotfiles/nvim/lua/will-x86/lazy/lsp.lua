@@ -44,7 +44,7 @@ return {
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			pattern = "*",
 			callback = function(args)
-				require("conform").format({ bufnr = args.buf, async = false })
+				require("conform").format({ bufnr = args.buf, async = true })
 			end,
 		})
 		require("mason").setup()
