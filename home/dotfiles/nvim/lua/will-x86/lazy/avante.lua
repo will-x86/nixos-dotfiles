@@ -1,7 +1,6 @@
---[[return {
-}]]
---
 return {
+}
+--[[return {
 	"yetone/avante.nvim",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
@@ -35,4 +34,4 @@ return {
 		})
 	end,
 	build = "make", -- Optional, only if you want to use tiktoken_core to calculate tokens count
-}
+}]]--
