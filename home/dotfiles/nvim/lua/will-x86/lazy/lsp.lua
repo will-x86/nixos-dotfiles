@@ -68,7 +68,7 @@ return {
 			vim.keymap.set("n", "gd", function()
 				vim.lsp.buf.definition()
 			end, opts)
-			vim.keymap.set("n", "<C-o>", [[<Cmd>lua vim.cmd('normal! <C-O>')<CR>]], opts) -- Keep original mapping exactly
+			--vim.keymap.set("n", "<C-o>", [[<Cmd>lua vim.cmd('normal! <C-O>')<CR>]], opts) -- Keep original mapping exactly
 			vim.keymap.set("n", "K", function()
 				vim.lsp.buf.hover()
 			end, opts)
