@@ -3,15 +3,6 @@
   pkgs,
   ...
 }:
-let
-  arduino-nvim = pkgs.fetchFromGitHub {
-    owner = "yuukiflow";
-    repo = "arduino-nvim";
-    rev = "main";
-    sha256 = "sha256-WTFbo5swtyAjLBOk9UciQCiBKOjkbwLStZMO/0uaZYg=";
-  };
-in
-
 {
   imports = [
     ./git.nix
@@ -141,10 +132,6 @@ in
     };
     ".config/nvim" = {
       source = ../dotfiles/nvim;
-      recursive = true;
-    };
-    ".config/nvim/lua/Arduino-Nvim" = {
-      source = arduino-nvim;
       recursive = true;
     };
   };

@@ -112,7 +112,7 @@ return {
 				"clangd",
 			},
 		})
-		lspconfig.arduino_language_server.setup({
+		--[[lspconfig.arduino_language_server.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			cmd = {
@@ -124,7 +124,7 @@ return {
 				"-cli-config",
 				vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
 			},
-		})
+		})]]--
 		lspconfig.kotlin_language_server.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
