@@ -8,7 +8,7 @@ let
     owner = "yuukiflow";
     repo = "arduino-nvim";
     rev = "main";
-    sha256 = "ss";
+    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
   };
 in
 
