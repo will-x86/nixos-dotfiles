@@ -3,6 +3,14 @@
   pkgs,
   ...
 }:
+ let arduino-nvim = pkgs.fetchFromGitHub {
+    owner = "glebzlat";
+    repo = "arduino-nvim";
+    rev = "main"; 
+    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; 
+  };
+in
+
 {
   imports = [
     ./git.nix
@@ -119,14 +127,7 @@
     foot.enable = true;
   };
 
-  let arduino-nvim = pkgs.fetchFromGitHub {
-    owner = "glebzlat";
-    repo = "arduino-nvim";
-    rev = "main"; 
-    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; 
-  };
-in
-{home.file = {
+ home.file = {
     ".config/starship.toml".source = ../dotfiles/starship.toml;
     ".tmux-sessioniser".source = ../dotfiles/.tmux-sessioniser;
     "tmux-sessioniser".source = ../dotfiles/tmux-sessioniser;
@@ -144,5 +145,4 @@ in
       recursive = true;
     };
   };
-}
 }
