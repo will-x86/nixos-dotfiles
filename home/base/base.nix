@@ -141,7 +141,7 @@ in
       source = ../dotfiles/nvim;
       recursive = true;
     };
-    ".config/nvim/lua/arduino-nvim" = {
+    ".config/nvim/lua/Arduino-Nvim" = {
       source = arduino-nvim;
       recursive = true;
     };

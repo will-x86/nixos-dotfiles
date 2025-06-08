@@ -2,12 +2,12 @@ vim.g.mapleader = " "
 
 require("will-x86")
 
-require("arduino-nvim.lsp").setup()
+require("Arduino-Nvim.lsp").setup()
 
 -- Set up Arduino file type detection
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "arduino",
     callback = function()
-        require("arduino-nvim")
+        require("Arduino-Nvim")
     end
 })
