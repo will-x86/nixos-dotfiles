@@ -7,7 +7,7 @@
     owner = "glebzlat";
     repo = "arduino-nvim";
     rev = "main"; 
-    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; 
+    sha256 = "sha256-yiroS9+TyMpX8EIz5RoXl3Q4KQJc5r2Aj2O8oH3SMyI="; 
   };
 in
 
