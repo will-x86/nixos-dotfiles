@@ -3,11 +3,12 @@
   pkgs,
   ...
 }:
- let arduino-nvim = pkgs.fetchFromGitHub {
+let
+  arduino-nvim = pkgs.fetchFromGitHub {
     owner = "glebzlat";
     repo = "arduino-nvim";
-    rev = "main"; 
-    sha256 = "sha256-yiroS9+TyMpX8EIz5RoXl3Q4KQJc5r2Aj2O8oH3SMyI="; 
+    rev = "main";
+    sha256 = "sha256-yiroS9+TyMpX8EIz5RoXl3Q4KQJc5r2Aj2O8oH3SMyI=";
   };
 in
 
@@ -127,7 +128,7 @@ in
     foot.enable = true;
   };
 
- home.file = {
+  home.file = {
     ".config/starship.toml".source = ../dotfiles/starship.toml;
     ".tmux-sessioniser".source = ../dotfiles/.tmux-sessioniser;
     "tmux-sessioniser".source = ../dotfiles/tmux-sessioniser;
