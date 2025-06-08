@@ -53,7 +53,9 @@ in
     eslint_d
     vue-language-server
     vscode-langservers-extracted
+    arduino-language-server
     zig
+    arduino-cli
 
     ### End neovim
     nodejs
