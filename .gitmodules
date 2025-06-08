@@ -1,0 +1,3 @@
+[submodule "home/dotfiles/nvim/lua/will-x86/home/dotfiles/nvim/lua/Arduino-Nvim"]
+	path = home/dotfiles/nvim/lua/will-x86/home/dotfiles/nvim/lua/Arduino-Nvim
+	url = https://github.com/yuukiflow/Arduino-Nvim
