@@ -119,7 +119,14 @@
     foot.enable = true;
   };
 
-  home.file = {
+  let arduino-nvim = pkgs.fetchFromGitHub {
+    owner = "glebzlat";
+    repo = "arduino-nvim";
+    rev = "main"; 
+    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; 
+  };
+in
+{home.file = {
     ".config/starship.toml".source = ../dotfiles/starship.toml;
     ".tmux-sessioniser".source = ../dotfiles/.tmux-sessioniser;
     "tmux-sessioniser".source = ../dotfiles/tmux-sessioniser;
@@ -132,5 +139,10 @@
       source = ../dotfiles/nvim;
       recursive = true;
     };
+    ".config/nvim/lua/arduino-nvim" = {
+      source = arduino-nvim;
+      recursive = true;
+    };
   };
+}
 }
