@@ -1,21 +1,12 @@
 return {
 	{
-		"Aietes/esp32.nvim",
-		dependencies = {
-			"folke/snacks.nvim", -- esp32.nvim depends on this
-		},
-		opts = {
-			build_dir = "build.clang",
-		},
-	},
-	{
 		"neovim/nvim-lspconfig",
-         opts = function(_, opts)
-      local esp32 = require("esp32")
-      opts.servers = opts.servers or {}
-      opts.servers.clangd = esp32.lsp_config()
-      return opts
-    end,
+		opts = function(_, opts)
+			local esp32 = require("esp32")
+			opts.servers = opts.servers or {}
+			opts.servers.clangd = esp32.lsp_config()
+			return opts
+		end,
 		dependencies = {
 			"stevearc/conform.nvim",
 			"Aietes/esp32.nvim",
@@ -120,13 +111,13 @@ return {
 			-- Note: lsp_format_on_save(bufnr) was removed as it's not defined
 			-- and formatting is handled by the conform autocmd above.
 		end
-		local esp32 = require("esp32")
+		--[[local esp32 = require("esp32")
 		local clangd_base_config = esp32.lsp_config()
 		local clangd_final_config = vim.tbl_deep_extend("force", clangd_base_config, {
 			capabilities = capabilities,
 			on_attach = on_attach,
-		})
-		lspconfig.clangd.setup(clangd_final_config)
+		})]]--
+		--lspconfig.clangd.setup(clangd_final_config)
 		-- TypeScript
 		--
 
