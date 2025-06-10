@@ -1,18 +1,27 @@
 return {
-	"neovim/nvim-lspconfig",
-	dependencies = {
-		"stevearc/conform.nvim",
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-cmdline",
-		"hrsh7th/nvim-cmp",
-		"L3MON4D3/LuaSnip",
-		"saadparwaiz1/cmp_luasnip",
-		"j-hui/fidget.nvim",
-		"williamboman/mason.nvim", -- ONLY used for finding lsp servers
+	{
+		"Aietes/esp32.nvim",
+		dependencies = {
+			"folke/snacks.nvim", -- esp32.nvim depends on this
+		},
+	},
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"stevearc/conform.nvim",
+			"Aietes/esp32.nvim",
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/nvim-cmp",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+			"j-hui/fidget.nvim",
+			"williamboman/mason.nvim", -- ONLY used for finding lsp servers
+		},
 	},
 
 	config = function()
@@ -102,22 +111,24 @@ return {
 			-- Note: lsp_format_on_save(bufnr) was removed as it's not defined
 			-- and formatting is handled by the conform autocmd above.
 		end
+		local esp32 = require("esp32")
+		local clangd_base_config = esp32.lsp_config()
+		local clangd_final_config = vim.tbl_deep_extend("force", clangd_base_config, {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+              lspconfig.clangd.setup(clangd_final_config)
 		-- TypeScript
 		--
 
-		lspconfig.clangd.setup({
+		--[[lspconfig.clangd.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			cmd = {
 				"clangd",
 			},
-			root_dir = lspconfig.util.root_pattern(
-				"idf.py", 
-				"sdkconfig", 
-				"build/compile_commands.json", 
-				".git" 
-			),
-		})
+			root_dir = lspconfig.util.root_pattern("idf.py", "sdkconfig", "build/compile_commands.json", ".git"),
+		})]]--
 		--[[lspconfig.arduino_language_server.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
