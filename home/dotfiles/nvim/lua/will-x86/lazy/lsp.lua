@@ -107,12 +107,13 @@ return {
 			--lspconfig.clangd.setup(clangd_config)
                 --root_dir = util.root_pattern('.clangd', 'sdkconfig', '.git'),
             local esp_idf_path = os.getenv("IDF_PATH")
+            local clangd_nix = os.getenv("CLANGD_IDF_PATH")
 if esp_idf_path then
   -- for esp-idf
   require'lspconfig'.clangd.setup{
     -- handlers = handlers,
     capabilities = capabilities;
-    cmd = { "/nix/store/gzj29jlk721ch5rnn5q8wmnlqcf29qck-esp-clang-esp-idf-v5.4.1/bin/clangd", "--background-index", "--query-driver=**", },
+    cmd = { clangd_nix, "--background-index", "--query-driver=**", },
     root_dir = function()
         -- leave empty to stop nvim from cd'ing into ~/ due to global .clangd file
     end
