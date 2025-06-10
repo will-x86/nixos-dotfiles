@@ -4,7 +4,7 @@ return {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"stevearc/conform.nvim",
-			"Aietes/esp32.nvim",
+			--"Aietes/esp32.nvim",
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"hrsh7th/cmp-nvim-lsp",
@@ -16,12 +16,12 @@ return {
 			"saadparwaiz1/cmp_luasnip",
 			"j-hui/fidget.nvim",
 		},
-		opts = function(_, opts)
+		--[[opts = function(_, opts)
 			local esp32 = require("esp32")
 			opts.servers = opts.servers or {}
 			opts.servers.clangd = esp32.lsp_config()
 			return opts
-		end,
+		end,]]--
 		config = function()
 			require("conform").setup({
 				formatters_by_ft = {

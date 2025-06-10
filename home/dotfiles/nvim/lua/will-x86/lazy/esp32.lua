@@ -1,5 +1,5 @@
 -- esp32.lua
-return {
+--[[return {
 	{
 		"Aietes/esp32.nvim",
 		lazy = false, -- Load immediately to ensure it's available for LSP config
@@ -68,4 +68,4 @@ return {
 			{ "<leader>Ri", ":ESPInfo<CR>", desc = "ESP32: Project Info" },
 		},
 	},
-}
+}]]--
