@@ -109,6 +109,8 @@ return {
 			lspconfig.clangd.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
+                root_dir = util.root_pattern('.clangd', 'sdkconfig', '.git'),
+
 			})
 			-- Other LSP servers
 			lspconfig.kotlin_language_server.setup({
