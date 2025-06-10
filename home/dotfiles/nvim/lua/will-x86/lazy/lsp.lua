@@ -106,6 +106,15 @@ return {
 			--clangd_config.on_attach = on_attach
 			--lspconfig.clangd.setup(clangd_config)
 
+			lspconfig.clangd.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+                cmd = {
+  clangd_executable,
+  "--compile-commands-dir=build", 
+  "--query-driver=/nix/store/xxwmbfi42f9zln7zlgn97wbrc8idpsdb-riscv32-esp-elf-esp-idf-v5.4.1/bin/riscv32-esp-elf-gcc",
+},
+			})
 			-- Other LSP servers
 			lspconfig.kotlin_language_server.setup({
 				capabilities = capabilities,
