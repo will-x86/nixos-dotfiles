@@ -4,6 +4,9 @@ return {
 		dependencies = {
 			"folke/snacks.nvim", -- esp32.nvim depends on this
 		},
+		opts = {
+			build_dir = "build.clang",
+		},
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -117,7 +120,7 @@ return {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
-              lspconfig.clangd.setup(clangd_final_config)
+		lspconfig.clangd.setup(clangd_final_config)
 		-- TypeScript
 		--
 
@@ -128,7 +131,8 @@ return {
 				"clangd",
 			},
 			root_dir = lspconfig.util.root_pattern("idf.py", "sdkconfig", "build/compile_commands.json", ".git"),
-		})]]--
+		})]]
+		--
 		--[[lspconfig.arduino_language_server.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
