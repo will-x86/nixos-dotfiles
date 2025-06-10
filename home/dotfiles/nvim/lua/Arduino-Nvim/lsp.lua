@@ -77,7 +77,7 @@ local function setup_arduino_lsp()
 		    vim.fn.exepath("clangd"),
             "-fqbn", board,
         },
-        filetypes = { "arduino", "cpp" },
+        filetypes = { "arduino"},
         root_dir = function(fname)
             return vim.loop.cwd()
         end,
