@@ -105,12 +105,29 @@ return {
 			--clangd_config.capabilities = capabilities
 			--clangd_config.on_attach = on_attach
 			--lspconfig.clangd.setup(clangd_config)
-            local util = require('lspconfig.util')
-			lspconfig.clangd.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-                root_dir = util.root_pattern('.clangd', 'sdkconfig', '.git'),
-			})
+                --root_dir = util.root_pattern('.clangd', 'sdkconfig', '.git'),
+            local esp_idf_path = os.getenv("IDF_PATH")
+if esp_idf_path then
+  -- for esp-idf
+  require'lspconfig'.clangd.setup{
+    -- handlers = handlers,
+    capabilities = capabilities;
+    cmd = { "/nix/store/gzj29jlk721ch5rnn5q8wmnlqcf29qck-esp-clang-esp-idf-v5.4.1/bin/clangd", "--background-index", "--query-driver=**", },
+    root_dir = function()
+        -- leave empty to stop nvim from cd'ing into ~/ due to global .clangd file
+    end
+  }
+
+else
+  -- clangd config
+  require'lspconfig'.clangd.setup{
+    -- cmd = { 'clangd', "--background-index", "--clang-tidy"},
+    handlers = {
+    ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      disable = { "cpp copyright" }
+    })}
+  }
+end
 			-- Other LSP servers
 			lspconfig.kotlin_language_server.setup({
 				capabilities = capabilities,
