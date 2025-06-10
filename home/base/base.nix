@@ -93,7 +93,7 @@
     gopls
     lua-language-server
     btop
-    gcc
+    #gcc
     tree
     rust-analyzer
     alejandra
