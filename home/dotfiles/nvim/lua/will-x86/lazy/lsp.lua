@@ -111,6 +111,12 @@ return {
 			cmd = {
 				"clangd",
 			},
+			root_dir = lspconfig.util.root_pattern(
+				"idf.py", 
+				"sdkconfig", 
+				"build/compile_commands.json", 
+				".git" 
+			),
 		})
 		--[[lspconfig.arduino_language_server.setup({
 			capabilities = capabilities,
@@ -124,7 +130,8 @@ return {
 				"-cli-config",
 				vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
 			},
-		})]]--
+		})]]
+		--
 		lspconfig.kotlin_language_server.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
