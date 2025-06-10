@@ -43,14 +43,14 @@ return {
 					yaml = { "yamlfix" },
 				},
 			})
-			
+
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				pattern = "*",
 				callback = function(args)
 					require("conform").format({ bufnr = args.buf, async = true })
 				end,
 			})
-			
+
 			require("mason").setup()
 			local cmp = require("cmp")
 			local cmp_lsp = require("cmp_nvim_lsp")
@@ -112,7 +112,7 @@ return {
 				on_attach = on_attach,
 				filetypes = { "kotlin", "kt", "kts" },
 			})
-			
+
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
@@ -129,12 +129,12 @@ return {
 				root_dir = lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git"),
 				single_file_support = true,
 			})
-			
+
 			lspconfig.yamlls.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
-			
+
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
@@ -151,7 +151,7 @@ return {
 					},
 				},
 			})
-			
+
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
@@ -166,7 +166,7 @@ return {
 					},
 				},
 			})
-			
+
 			lspconfig.zls.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
@@ -179,7 +179,7 @@ return {
 					},
 				},
 			})
-			
+
 			vim.g.zig_fmt_parse_errors = 0
 			vim.g.zig_fmt_autosave = 0
 
@@ -198,17 +198,13 @@ return {
 					},
 				},
 			})
-			
+
 			lspconfig.eslint.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
-				root_dir = lspconfig.util.root_pattern(
-					".eslintrc.js",
-					".eslintrc.cjs",
-					".eslintrc.json"
-				),
+				root_dir = lspconfig.util.root_pattern(".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json"),
 			})
-			
+
 			lspconfig.html.setup({ capabilities = capabilities, on_attach = on_attach })
 			lspconfig.cssls.setup({ capabilities = capabilities, on_attach = on_attach })
 			lspconfig.jsonls.setup({ capabilities = capabilities, on_attach = on_attach })
