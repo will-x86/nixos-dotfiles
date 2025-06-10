@@ -100,11 +100,11 @@ return {
 			end
 
 			-- ESP32 clangd setup
-			local esp32 = require("esp32")
-			local clangd_config = esp32.lsp_config()
-			clangd_config.capabilities = capabilities
-			clangd_config.on_attach = on_attach
-			lspconfig.clangd.setup(clangd_config)
+			--local esp32 = require("esp32")
+			--local clangd_config = esp32.lsp_config()
+			--clangd_config.capabilities = capabilities
+			--clangd_config.on_attach = on_attach
+			--lspconfig.clangd.setup(clangd_config)
 
 			-- Other LSP servers
 			lspconfig.kotlin_language_server.setup({
