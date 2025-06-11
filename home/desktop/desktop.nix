@@ -157,6 +157,7 @@ in
     wl-clipboard
     udiskie
     #ryujinx
+    anydesk
     qutebrowser-qt5
     waybar
     #viewnior
