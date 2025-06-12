@@ -6,6 +6,7 @@
     options = [
       "username=will"
       "password=${secrets.samba.frac}"
+      "noauto"
       "x-systemd.automount"
       "x-systemd.mount-timeout=3"
       "uid=1000"
@@ -20,6 +21,7 @@
     fsType = "cifs";
     options = [
       "username=will"
+      "noauto"
       "password=${secrets.samba.frac}"
       "x-systemd.automount"
       "x-systemd.mount-timeout=3"
@@ -35,6 +37,7 @@
     fsType = "cifs";
     options = [
       "username=will"
+      "noauto"
       "password=${secrets.samba.frac}"
       "x-systemd.automount"
       "x-systemd.mount-timeout=3"
