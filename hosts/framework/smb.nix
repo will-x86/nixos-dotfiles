@@ -45,6 +45,22 @@
       "nofail"
     ];
   };
+
+  fileSystems."/mnt/NImmich" = {
+    device = "${secrets.samba.fracRemote}:/mnt/Vault/Immich";
+    fsType = "nfs";
+    options = [
+      "x-systemd.automount"
+      "noauto" # Will mount first time accessed
+      "x-systemd.idle-timeout=600" # diss after 600s
+      "noatime"
+      "rw"
+      "soft"
+      "nfsvers=4.2"
+      "async"
+      "nofail"
+    ];
+  };
   fileSystems."/mnt/NFractalMedia" = {
     device = "${secrets.samba.fracRemote}:/mnt/Vault/Media";
     fsType = "nfs";
