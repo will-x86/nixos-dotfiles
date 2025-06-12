@@ -30,6 +30,21 @@
       "nofail"
     ];
   };
+  fileSystems."/mnt/Immich" = {
+    device = "//${secrets.samba.fracRemote}/Immich";
+    fsType = "cifs";
+    options = [
+      "username=will"
+      "password=${secrets.samba.frac}"
+      "x-systemd.automount"
+      "x-systemd.mount-timeout=3"
+      "uid=1000"
+      "gid=100"
+      "dir_mode=0777"
+      "file_mode=0666"
+      "nofail"
+    ];
+  };
   fileSystems."/mnt/NFractalMedia" = {
     device = "${secrets.samba.fracRemote}:/mnt/Vault/Media";
     fsType = "nfs";
