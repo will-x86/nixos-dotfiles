@@ -1,5 +1,6 @@
 {
   config,
+  secrets,
   pkgs,
   ...
 }:
@@ -186,7 +187,8 @@
 
 
       bind = SUPER_SHIFT, V, exec, ~/.config/rofi/assets/clipManager.sh
-      bind  = SUPER, O,exec, firefox -P "j" --new-instance
+      #bind  = SUPER, O,exec, firefox -P "j" --new-instance
+      bind = SUPER, O, exec, firefox --new-tab "${secrets.newtaburl}"
       bind  = SUPER, X,       exec, $wlogout
       bind  = SUPER, A,       exec, hyprshot -m region
 
