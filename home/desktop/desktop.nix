@@ -71,7 +71,6 @@ in
   home.packages = with pkgs; [
     pulsemixer
     (writeShellScriptBin "kabam" ''
-#!/bin/sh
 FRP_SERVER_ADDR="${secrets.tunnelDomain}" 
 FRP_SERVER_PORT="7000"
 
@@ -97,7 +96,7 @@ localPort = $LOCAL_PORT
 customDomains = ["${secrets.tunnelDomain}"]
 EOF
 
-echo "--- ✅ Tunneling localhost:$\{LOCAL_PORT} to https://${secrets.tunnelDomain} ---"
+echo "--- ✅ Tunneling localhost:\${LOCAL_PORT} to https://${secrets.tunnelDomain} ---"
 echo "Press Ctrl+C to stop."
 
 frpc -c "$CONFIG_FILE"
