@@ -183,7 +183,7 @@ log_debug "OP_SESSION_ARGS is '$OP_SESSION_ARGS'"
 log_debug "Searching for item by URL: $URL_HOSTNAME"
 ITEM_ID=$(op item list $OP_SESSION_ARGS --format json | \
           jq --arg url_hostname "$URL_HOSTNAME" -r \
-          '(.[] | select(.urls[].href | strings | test("(?i)" + $url_hostname))) | .id | first // empty')
+          '(.[] | select(.urls[].href | strings | test("(?i)" + $url_hostname))) | .id | first')
 log_debug "ITEM_ID after URL search: '$ITEM_ID'"
 
 if [ -z "$ITEM_ID" ]; then
@@ -212,12 +212,12 @@ if [ -z "$ITEM_ID" ]; then
 
         ITEM_ID=$(echo "$OP_LIST_JSON_FOR_ID_BY_TITLE" | \
                   jq --argneedle "$(echo "$SELECTED_TITLE" | tr '[:upper:]' '[:lower:]')" -r \
-                  '(.[] | select(.title | ascii_downcase | contains($needle))) | .id | first // empty')
+                  '(.[] | select(.title | ascii_downcase | contains($needle))) | .id | first ')
         
         # If the above `contains` is too broad (e.g. "Google" matches "Google Mail"), use exact match after lowercasing:
         # ITEM_ID=$(echo "$OP_LIST_JSON_FOR_ID_BY_TITLE" | \
         #           jq --arg selected_title_lower "$(echo "$SELECTED_TITLE" | tr '[:upper:]' '[:lower:]')" -r \
-        #           '(.[] | select(.title | ascii_downcase == $selected_title_lower)) | .id | first // empty')
+        #           '(.[] | select(.title | ascii_downcase == $selected_title_lower)) | .id')
 
         log_debug "ITEM_ID after title search ('$SELECTED_TITLE'): '$ITEM_ID'"
     else
@@ -246,7 +246,7 @@ if [ -n "$ITEM_ID" ]; then
     if [ -n "$PASSWORD" ]; then
         USERNAME=$(echo "$ITEM_JSON" | jq -r '.fields[]? | select(.purpose=="USERNAME") | .value // empty')
         if [ -z "$USERNAME" ]; then
-            USERNAME=$(echo "$ITEM_JSON" | jq -r '.fields[]? | select(.label=="username" or .label=="Username" or .label=="email" or .label=="Email") | .value // empty')
+            USERNAME=$(echo "$ITEM_JSON" | jq -r '.fields[]? | select(.label=="username" or .label=="Username" or .label=="email" or .label=="Email") | .value ')
         fi
         log_debug "Username: '$USERNAME'"
 
