@@ -20,6 +20,7 @@
     gperf
     python3Packages.virtualenv
     cmake
+    frp
     ninja
     ccache
     libffi
