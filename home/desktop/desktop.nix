@@ -102,7 +102,7 @@ echo "Press Ctrl+C to stop."
 
 frpc -c "$CONFIG_FILE"
 
-    ''
+    '')
     #google-cloud-sdk
     #custom-bambu-studio
     #bambu-studio
