@@ -229,11 +229,11 @@ in
   programs.qutebrowser = {
     enable = true;
     settings = {
+    };
       searchEngines = {
         w = "https://wikipedia.org/w/index.php?search={}";
         aw = "https://wiki.archlinux.org/?search={}";
       };
-    };
   };
 
   home.sessionVariables = {
