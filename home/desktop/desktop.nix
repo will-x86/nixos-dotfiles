@@ -229,11 +229,24 @@ in
   programs.qutebrowser = {
     enable = true;
     settings = {
+      content.greasemonkey = [
+        {
+          content.greasemonkey = [
+            {
+              name = "1password";
+              namespace = "1password";
+              match = [ "*://*/*" ];
+              run-at = "document-end";
+              script = builtins.readFile ../dotfiles/qutebrowser/1pass.js;
+            }
+          ];
+        }
+      ];
     };
-      searchEngines = {
-        w = "https://wikipedia.org/w/index.php?search={}";
-        aw = "https://wiki.archlinux.org/?search={}";
-      };
+    searchEngines = {
+      w = "https://wikipedia.org/w/index.php?search={}";
+      aw = "https://wiki.archlinux.org/?search={}";
+    };
   };
 
   home.sessionVariables = {
