@@ -234,13 +234,12 @@ in
       (pkgs.writeText "1password.js" (builtins.readFile ../dotfiles/qutebrowser/1pass.js))
 
     ];
-    keybindings = {
 
-      normal = {
-        "<Ctrl-p>" = "spawn --userscript 1password.js";
-      };
+  keyBindings = {
+    normal = {
+      "<Ctrl-p>" = "spawn --userscript 1password.js";
     };
-
+  };
     settings = {
       tabs.show = "multiple";
     };
