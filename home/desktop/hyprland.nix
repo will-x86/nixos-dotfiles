@@ -188,8 +188,8 @@
 
       bind = SUPER_SHIFT, V, exec, ~/.config/rofi/assets/clipManager.sh
       #bind  = SUPER, O,exec, firefox -P "j" --new-instance
-      bind = SUPER, O, exec, firefox --new-tab "${secrets.owu}"
-      bind = SUPER, S, exec, firefox --new-tab "${secrets.sng}"
+      bind = SUPER, O, exec, firefox --new-tab "${secrets.owu}", workspace, 2
+      bind = SUPER, S, exec, firefox --new-tab "${secrets.sng}", workspace, 2
       bind  = SUPER, X,       exec, $wlogout
       bind  = SUPER, A,       exec, hyprshot -m region
 
