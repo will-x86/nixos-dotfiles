@@ -71,35 +71,35 @@ in
   home.packages = with pkgs; [
     pulsemixer
     (writeShellScriptBin "kabam" ''
-FRP_SERVER_ADDR="${secrets.tunnelDomain}" 
-FRP_SERVER_PORT="7000"
+      FRP_SERVER_ADDR="${secrets.tunnelDomain}" 
+      FRP_SERVER_PORT="7000"
 
-if [ -z "$1" ]; then
-    echo "Usage: kabam <local_port>"
-    echo "Example: kabam 8080"
-    exit 1
-fi
+      if [ -z "$1" ]; then
+          echo "Usage: kabam <local_port>"
+          echo "Example: kabam 8080"
+          exit 1
+      fi
 
-LOCAL_PORT=$1
-CONFIG_FILE="/tmp/frpc_config.toml"
+      LOCAL_PORT=$1
+      CONFIG_FILE="/tmp/frpc_config.toml"
 
-trap "rm -f $CONFIG_FILE" EXIT
+      trap "rm -f $CONFIG_FILE" EXIT
 
-cat > "$CONFIG_FILE" << EOF
-serverAddr = "$FRP_SERVER_ADDR"
-serverPort = $FRP_SERVER_PORT
+      cat > "$CONFIG_FILE" << EOF
+      serverAddr = "$FRP_SERVER_ADDR"
+      serverPort = $FRP_SERVER_PORT
 
-[[proxies]]
-name = "web"
-type = "http"
-localPort = $LOCAL_PORT
-customDomains = ["${secrets.tunnelDomain}"]
-EOF
+      [[proxies]]
+      name = "web"
+      type = "http"
+      localPort = $LOCAL_PORT
+      customDomains = ["${secrets.tunnelDomain}"]
+      EOF
 
-echo "--- ✅ Tunneling to https://${secrets.tunnelDomain} ---"
-echo "Press Ctrl+C to stop."
+      echo "--- ✅ Tunneling to https://${secrets.tunnelDomain} ---"
+      echo "Press Ctrl+C to stop."
 
-frpc -c "$CONFIG_FILE"
+      frpc -c "$CONFIG_FILE"
 
     '')
     #google-cloud-sdk
@@ -225,6 +225,15 @@ frpc -c "$CONFIG_FILE"
   programs.rofi = {
     enable = true;
     plugins = [ pkgs.rofi-emoji ];
+  };
+  programs.qutebrowser = {
+    enable = true;
+    settings = {
+      searchEngines = {
+        w = "https://wikipedia.org/w/index.php?search={}";
+        aw = "https://wiki.archlinux.org/?search={}";
+      };
+    };
   };
 
   home.sessionVariables = {
