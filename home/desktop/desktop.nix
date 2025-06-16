@@ -8,7 +8,7 @@
 }:
 let
   base = import ../base/base.nix { inherit config pkgs; };
-  hyprland = import ./hyprland.nix { inherit config pkgs; };
+  hyprland = import ./hyprland.nix { inherit config pkgs secrets; };
   pkgs-stable = import inputs.nixpkgs-stable {
     system = pkgs.system;
     config.allowUnfree = true;
