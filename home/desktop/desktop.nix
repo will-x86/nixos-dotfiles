@@ -122,7 +122,7 @@ frpc -c "$CONFIG_FILE"
     obs-studio
     # trezor-suite
     # trezor-agent
-    Qutebrowser
+    qutebrowser
     pywalfox-native
     slurp # color picker
     eslint
