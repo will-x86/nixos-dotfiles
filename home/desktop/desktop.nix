@@ -226,19 +226,19 @@ in
     enable = true;
     plugins = [ pkgs.rofi-emoji ];
   };
+
   programs.qutebrowser = {
     enable = true;
+
+    greasemonkey = [
+      (pkgs.writeText "1password.js" (builtins.readFile ../dotfiles/qutebrowser/1pass.js))
+
+    ];
+
     settings = {
-      content.greasemonkey = [
-        {
-          name = "1password";
-          namespace = "1password";
-          match = [ "*://*/*" ];
-          "run-at" = "document-end";
-          script = builtins.readFile ../dotfiles/qutebrowser/1pass.js;
-        }
-      ];
+       tabs.show = "multiple";
     };
+
     searchEngines = {
       w = "https://wikipedia.org/w/index.php?search={}";
       aw = "https://wiki.archlinux.org/?search={}";
