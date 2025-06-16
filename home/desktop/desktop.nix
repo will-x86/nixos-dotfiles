@@ -2,7 +2,7 @@
   config,
   inputs,
   pkgs,
-  system ? pkgs.system,
+  # system ? pkgs.system,
   secrets,
   ...
 }:
@@ -230,16 +230,12 @@ in
   programs.qutebrowser = {
     enable = true;
 
-    greasemonkey = [
-      (pkgs.writeText "1password.js" (builtins.readFile ../dotfiles/qutebrowser/1pass.js))
-
-    ];
-
     keyBindings = {
       normal = {
         ",p" = "spawn --userscript 1password.js";
       };
     };
+
     settings = {
       tabs.show = "multiple";
     };
@@ -249,6 +245,12 @@ in
       aw = "https://wiki.archlinux.org/?search={}";
     };
   };
+
+  xdg.configFile."qutebrowser/userscripts/1password.js" = {
+    source = pkgs.writeScript "1password.js" (builtins.readFile ../dotfiles/qutebrowser/1pass.js);
+  };
+
+  # ... rest of your configuration ...
   home.sessionVariables = {
     ANTHROPIC_API_KEY = "${secrets.anthropic.api_key}";
   };
