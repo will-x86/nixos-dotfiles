@@ -206,13 +206,9 @@ if [ -z "$ITEM_ID" ]; then
         # Use case-insensitive title matching and test() for robustness
         # Also ensure we are looking for string equality after lowercasing
         OP_LIST_JSON_FOR_ID_BY_TITLE=$(op item list $OP_SESSION_ARGS --format json)
-        # For detailed debugging of this specific jq query, uncomment the next two lines
-        # log_debug "Full op item list JSON for title search:"
-        # echo "$OP_LIST_JSON_FOR_ID_BY_TITLE" # This can be very large
-
         ITEM_ID=$(echo "$OP_LIST_JSON_FOR_ID_BY_TITLE" | \
-                  jq --argneedle "$(echo "$SELECTED_TITLE" | tr '[:upper:]' '[:lower:]')" -r \
-                  '(.[] | select(.title | ascii_downcase | contains($needle))) | .id | first ')
+          jq --arg title "$SELECTED_TITLE" -r \
+          '((.[] | select(.title == $title) | .id) | first) // ""') # Using // "" for empty string
         
         # If the above `contains` is too broad (e.g. "Google" matches "Google Mail"), use exact match after lowercasing:
         # ITEM_ID=$(echo "$OP_LIST_JSON_FOR_ID_BY_TITLE" | \
