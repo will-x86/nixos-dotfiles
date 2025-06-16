@@ -96,7 +96,7 @@ localPort = $LOCAL_PORT
 customDomains = ["${secrets.tunnelDomain}"]
 EOF
 
-echo "--- ✅ Tunneling localhost:\${LOCAL_PORT} to https://${secrets.tunnelDomain} ---"
+echo "--- ✅ Tunneling to https://${secrets.tunnelDomain} ---"
 echo "Press Ctrl+C to stop."
 
 frpc -c "$CONFIG_FILE"
