@@ -71,7 +71,7 @@ in
   home.packages = with pkgs; [
     pulsemixer
     (writeShellScriptBin "kabam" ''
-    #!/bin/sh
+#!/bin/sh
 FRP_SERVER_ADDR="${secrets.tunnelDomain}" 
 FRP_SERVER_PORT="7000"
 
