@@ -234,9 +234,12 @@ in
       (pkgs.writeText "1password.js" (builtins.readFile ../dotfiles/qutebrowser/1pass.js))
 
     ];
+    normal = {
+      "<Ctrl-p>" = "spawn --userscript 1password.js";
+    };
 
     settings = {
-       tabs.show = "multiple";
+      tabs.show = "multiple";
     };
 
     searchEngines = {
