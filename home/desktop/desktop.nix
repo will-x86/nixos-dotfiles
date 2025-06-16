@@ -70,6 +70,39 @@ in
   };
   home.packages = with pkgs; [
     pulsemixer
+    (writeShellScriptBin "kabam" ''
+    #!/bin/sh
+FRP_SERVER_ADDR="${secrets.tunnelDomain}" 
+FRP_SERVER_PORT="7000"
+
+if [ -z "$1" ]; then
+    echo "Usage: kabam <local_port>"
+    echo "Example: kabam 8080"
+    exit 1
+fi
+
+LOCAL_PORT=$1
+CONFIG_FILE="/tmp/frpc_config.toml"
+
+trap "rm -f $CONFIG_FILE" EXIT
+
+cat > "$CONFIG_FILE" << EOF
+serverAddr = "$FRP_SERVER_ADDR"
+serverPort = $FRP_SERVER_PORT
+
+[[proxies]]
+name = "web"
+type = "http"
+localPort = $LOCAL_PORT
+customDomains = ["${secrets.tunnelDomain}"]
+EOF
+
+echo "--- ✅ Tunneling localhost:${LOCAL_PORT} to https://${secrets.tunnelDomain} ---"
+echo "Press Ctrl+C to stop."
+
+frpc -c "$CONFIG_FILE"
+
+    ''
     #google-cloud-sdk
     #custom-bambu-studio
     #bambu-studio
