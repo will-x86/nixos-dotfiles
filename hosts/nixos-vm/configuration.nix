@@ -24,6 +24,7 @@
   services.tailscale.enable = true;
 
   nixpkgs.config.allowUnfree = true;
+  users.users.will.linger = true;
   nix.settings.trusted-users = [
     "root"
     "will"
