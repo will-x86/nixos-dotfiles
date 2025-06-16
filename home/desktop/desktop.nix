@@ -190,7 +190,7 @@ frpc -c "$CONFIG_FILE"
     udiskie
     #ryujinx
     anydesk
-    qutebrowser-qt5
+    qutebrowser
     waybar
     #viewnior
     hyprshot
