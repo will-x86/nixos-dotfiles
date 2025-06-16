@@ -235,11 +235,11 @@ in
 
     ];
 
-  keyBindings = {
-    normal = {
-      "<Ctrl-p>" = "spawn --userscript 1password.js";
+    keyBindings = {
+      normal = {
+        ",p" = "spawn --userscript 1password.js";
+      };
     };
-  };
     settings = {
       tabs.show = "multiple";
     };
