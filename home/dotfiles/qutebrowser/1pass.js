@@ -77,14 +77,6 @@ cat <<EOF
 EOF
 }
 
-# --- Optional Debug Log Setup (can be commented out for production) ---
-# DEBUG_LOG_FILE="/tmp/qute_1p_debug.log"
-# echo "--- New 1Password Script Run $(date) ---" > "$DEBUG_LOG_FILE"
-# exec > >(tee -a "$DEBUG_LOG_FILE") 2>&1
-# log_debug() { echo "DEBUG: $1"; }
-# --- End Debug Log Setup ---
-
-# If not debugging, ensure log_debug is a no-op
 log_debug() { :; }
 
 
