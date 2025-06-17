@@ -264,7 +264,7 @@ in
       };
       Service = {
         Type = "simple";
-        ExecStart = "${pkgs.nextcloud-client}/bin/nextcloudcmd -h -n --path /music /home/will/Documents/Next ${secrets.nextcloud.domain}";
+        ExecStart = "${pkgs.nextcloud-client}/bin/nextcloudcmd -h -n --path / /home/will/Documents/Next ${secrets.nextcloud.domain}";
         TimeoutStopSec = "180";
         KillMode = "process";
         KillSignal = "SIGINT";
