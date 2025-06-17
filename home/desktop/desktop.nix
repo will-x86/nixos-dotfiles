@@ -273,7 +273,7 @@ in
     };
     timers.nextcloud-autosync = {
       Unit.Description = "Automatic sync files with Nextcloud when booted up after 5 minutes then rerun every 60 minutes";
-      #Timer.OnBootSec = "5min";
+      Timer.OnBootSec = "1min";
       Timer.OnUnitActiveSec = "60min";
       Install.WantedBy = [
         "multi-user.target"
