@@ -155,6 +155,7 @@ in
     webkitgtk_6_0
     nextcloud-client
     #inputs.zen-browser.packages.${system}.default
+    libreoffice
     syncthingtray
     iwd
     polkit
