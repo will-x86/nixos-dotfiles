@@ -250,39 +250,19 @@ in
     source = pkgs.writeScript "1password.js" (builtins.readFile ../dotfiles/qutebrowser/1pass.js);
   };
 
-  home.file.".netrc".text = ''
-    default
-        login ${secrets.nextcloud.username} 
-        password ${secrets.nextcloud.password}
-  '';
-
-  systemd.user = {
-    services.nextcloud-autosync = {
-      Unit = {
-        Description = "Auto sync Nextcloud";
-        After = "network-online.target";
-      };
-      Service = {
-        Type = "simple";
-        ExecStart = "${pkgs.nextcloud-client}/bin/nextcloudcmd -h -n --path / /home/will/Documents/SyncDoc/ ${secrets.nextcloud.domain}";
-        TimeoutStopSec = "180";
-        KillMode = "process";
-        KillSignal = "SIGINT";
-      };
-      Install.WantedBy = [ "multi-user.target" ];
+  systemd.user.services.nextcloud-client = {
+    Unit = {
+      Description = "Nextcloud Client";
+      After = "network-online.target";
     };
-    timers.nextcloud-autosync = {
-      Unit.Description = "Automatic sync files with Nextcloud when booted up after 5 minutes then rerun every 60 minutes";
-      Timer.OnBootSec = "1min";
-      Timer.OnUnitActiveSec = "60min";
-      Install.WantedBy = [
-        "multi-user.target"
-        "timers.target"
-      ];
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.nextcloud-client}/bin/nextcloud --background";
+      Restart = "on-failure";
+      RestartSec = "5s";
     };
-    startServices = true;
+    Install.WantedBy = [ "default.target" ];
   };
-
   # ... rest of your configuration ...
   home.sessionVariables = {
     ANTHROPIC_API_KEY = "${secrets.anthropic.api_key}";
