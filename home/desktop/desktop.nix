@@ -250,6 +250,39 @@ in
     source = pkgs.writeScript "1password.js" (builtins.readFile ../dotfiles/qutebrowser/1pass.js);
   };
 
+  home.file.".netrc".text = ''
+    default
+        login ${secrets.nextcloud.username} 
+        password ${secrets.nextcloud.password}
+  '';
+
+  systemd.user = {
+    services.nextcloud-autosync = {
+      Unit = {
+        Description = "Auto sync Nextcloud";
+        After = "network-online.target";
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "${pkgs.nextcloud-client}/bin/nextcloudcmd -h -n --path /music /home/will/Documents/Next ${secrets.nextcloud.domain}";
+        TimeoutStopSec = "180";
+        KillMode = "process";
+        KillSignal = "SIGINT";
+      };
+      Install.WantedBy = [ "multi-user.target" ];
+    };
+    timers.nextcloud-autosync = {
+      Unit.Description = "Automatic sync files with Nextcloud when booted up after 5 minutes then rerun every 60 minutes";
+      Timer.OnBootSec = "5min";
+      Timer.OnUnitActiveSec = "60min";
+      Install.WantedBy = [
+        "multi-user.target"
+        "timers.target"
+      ];
+    };
+    startServices = true;
+  };
+
   # ... rest of your configuration ...
   home.sessionVariables = {
     ANTHROPIC_API_KEY = "${secrets.anthropic.api_key}";

@@ -147,12 +147,12 @@ if op whoami $OP_SESSION_ARGS > /dev/null 2>&1; then
         PASSWORD=$(echo "$ITEM_JSON" | jq -r '.fields[]? | select(.purpose=="PASSWORD") | .value // empty')
         
         if [ -n "$PASSWORD" ]; then
-            ITEM_TITLE=$(echo "$ITEM_JSON" | jq -r '.title // "Item"') # V2: .title
+            ITEM_TITLE=$(echo "$ITEM_JSON" | jq -r '.title // "Item"') 
             USERNAME=$(echo "$ITEM_JSON" | jq -r '.fields[]? | select(.purpose=="USERNAME") | .value // empty')
             if [ -z "$USERNAME" ]; then
                  USERNAME=$(echo "$ITEM_JSON" | jq -r '.fields[]? | select(.label | strings | test("^(username|email|user)$"; "i")) | .value // empty')
             fi
-            if [ -z "$USERNAME" ]; then # If still no username, try any text field not password or totp - a bit broad
+            if [ -z "$USERNAME" ]; then 
                 USERNAME=$(echo "$ITEM_JSON" | jq -r '[.fields[]? | select(.type == "STRING" and .purpose == null and (.label | strings | ascii_downcase | test("password|totp|otp") | not)) | .value] | first // empty')
             fi
 
@@ -161,14 +161,14 @@ if op whoami $OP_SESSION_ARGS > /dev/null 2>&1; then
                 js | sed 's,//.*$,,' | tr '\n' ' ' # Old script had this
             }
             echo "jseval -q $(printjs)" >> "$QUTE_FIFO"
-            echo "message-info '1P: Filled credentials for $ITEM_TITLE.'" >> "$QUTE_FIFO" # Adapted message
+            echo "message-info '1P: Filled credentials for $ITEM_TITLE.'" >> "$QUTE_FIFO" 
 
             # TOTP - V2: `op item get --otp`
             TOTP=$(op item get $OP_SESSION_ARGS "$UUID" --otp 2>/dev/null) || TOTP=""
             if [ -n "$TOTP" ]; then
                 if command -v xclip > /dev/null; then
                     echo "$TOTP" | xclip -in -selection clipboard
-                    echo "message-info 'Pasted one time password for $ITEM_TITLE to clipboard'" >> "$QUTE_FIFO" # Matched old message
+                    echo "message-info 'Pasted one time password for $ITEM_TITLE to clipboard'" >> "$QUTE_FIFO" 
                 else
                     echo "message-warn '1P: xclip missing, cannot copy OTP.'" >> "$QUTE_FIFO"
                 fi
