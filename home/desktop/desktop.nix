@@ -238,7 +238,6 @@ in
     };
     settings = {
       tabs.show = "multiple";
-      # Add these settings for font and zoom
       fonts = {
         default_size = "12pt";
         web.size.default = 16;
@@ -253,7 +252,7 @@ in
         prompts = "12pt";
       };
       zoom = {
-        default = "125";
+        default = "150%";
         levels = [
           "25%"
           "33%"
