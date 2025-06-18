@@ -244,7 +244,7 @@ in
 
     searchEngines = {
       w = "https://wikipedia.org/w/index.php?search={}";
-      aw = "https://wiki.archlinux.org/?search={}";
+      no = "https://search.nixos.org/packages?q={}";
     };
   };
 
