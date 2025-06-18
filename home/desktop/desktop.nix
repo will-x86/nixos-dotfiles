@@ -234,6 +234,8 @@ in
     keyBindings = {
       normal = {
         ",p" = "spawn --userscript 1password.js";
+        "tT" = "config-cycle tabs.position top left";
+
       };
     };
     settings = {
@@ -272,10 +274,18 @@ in
           "500%"
         ];
       };
+      auto_save.session = true;
+      tabs.width = "7%";
+
       colors = {
-        webpage.darkmode.enable = true;
-        webpage.darkmode.algorithm = "lightness-cielab"
-        webpage.darkmode.policy.images = "never";
+        webpage = {
+          darkmode = {
+            enable = true;
+            algorithm = "lightness-cielab";
+            policy.images = "never";
+          };
+        };
+        content.blocking.enable = true;
         completion = {
           category = {
             bg = "#3b4252";
@@ -415,10 +425,17 @@ in
     searchEngines = {
       w = "https://wikipedia.org/w/index.php?search={}";
       no = "https://search.nixos.org/packages?channel=unstable&query={}";
+      aw = "https://wiki.archlinux.org/?search={}";
+      ap = "https://archlinux.org/packages/?sort=&q={}&maintainer=&flagged=";
+      gh = "https://github.com/search?o=desc&q={}&s=stars";
+      y = "https://www.youtube.com/results?search_query={}";
     };
   };
   xdg.configFile."qutebrowser/userscripts/1password.js" = {
     source = pkgs.writeScript "1password.js" (builtins.readFile ../dotfiles/qutebrowser/1pass.js);
+  };
+  xdg.configFile."qutebrowser/userscripts/yt-ads.js" = {
+    source = pkgs.writeScript "yt-ads.js" (builtins.readFile ../dotfiles/qutebrowser/yt-ads.js);
   };
 
   systemd.user.services.nextcloud-client = {
