@@ -244,7 +244,7 @@ in
 
     searchEngines = {
       w = "https://wikipedia.org/w/index.php?search={}";
-      no = "https://search.nixos.org/packages?q={}";
+      no = "https://search.nixos.org/packages?channel=unstable&query={}";
     };
   };
 
