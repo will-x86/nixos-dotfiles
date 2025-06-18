@@ -231,23 +231,54 @@ in
 
   programs.qutebrowser = {
     enable = true;
-
     keyBindings = {
       normal = {
         ",p" = "spawn --userscript 1password.js";
       };
     };
-
     settings = {
       tabs.show = "multiple";
+      # Add these settings for font and zoom
+      fonts = {
+        default_size = "12pt";
+        web.size.default = 16;
+        completion.entry = "12pt";
+        statusbar = "12pt";
+        tabs.selected = "12pt";
+        tabs.unselected = "12pt";
+        hints = "12pt";
+        messages.error = "12pt";
+        messages.info = "12pt";
+        messages.warning = "12pt";
+        prompts = "12pt";
+      };
+      zoom = {
+        default = "125";
+        levels = [
+          "25%"
+          "33%"
+          "50%"
+          "67%"
+          "75%"
+          "90%"
+          "100%"
+          "110%"
+          "125%"
+          "150%"
+          "175%"
+          "200%"
+          "250%"
+          "300%"
+          "400%"
+          "500%"
+        ];
+      };
     };
-
     searchEngines = {
       w = "https://wikipedia.org/w/index.php?search={}";
       no = "https://search.nixos.org/packages?channel=unstable&query={}";
     };
   };
-
   xdg.configFile."qutebrowser/userscripts/1password.js" = {
     source = pkgs.writeScript "1password.js" (builtins.readFile ../dotfiles/qutebrowser/1pass.js);
   };
