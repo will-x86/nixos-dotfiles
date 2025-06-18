@@ -247,7 +247,7 @@ in
         statusbar = "12pt";
         tabs.selected = "12pt";
         tabs.unselected = "12pt";
-        hints = "12pt";
+        hints = "15pt";
         messages.error = "12pt";
         messages.info = "12pt";
         messages.warning = "12pt";
