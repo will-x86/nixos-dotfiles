@@ -277,7 +277,10 @@ in
       auto_save.session = true;
       tabs.width = "7%";
 
-      content.blocking.enabled = true;
+      content = {
+        blocking.enabled = true;
+        javascript.clipboard = "access";
+      };
       colors = {
         webpage = {
           darkmode = {
@@ -288,135 +291,135 @@ in
         };
         completion = {
           category = {
-            bg = "#3b4252";
-            border.bottom = "#3b4252";
-            border.top = "#3b4252";
-            fg = "#eceff4";
+            bg = "#2e3440";
+            border.bottom = "#2e3440";
+            border.top = "#2e3440";
+            fg = "#e5e9f0";
           };
-          even.bg = "#434c5e";
-          odd.bg = "#434c5e";
-          fg = "#eceff4";
-          match.fg = "#eee8d5";
+          even.bg = "#3b4252";
+          odd.bg = "#3b4252";
+          fg = "#d8dee9";
+          match.fg = "#ebcb8b";
           item.selected = {
-            bg = "#8fbcbb";
-            border.bottom = "#8fbcbb";
-            border.top = "#8fbcbb";
+            bg = "#4c566a";
+            border.bottom = "#4c566a";
+            border.top = "#4c566a";
             fg = "#eceff4";
           };
           scrollbar = {
-            bg = "#4c566a";
-            fg = "#eee8d5";
+            bg = "#3b4252";
+            fg = "#e5e9f0";
           };
         };
         downloads = {
-          bar.bg = "#3b4252";
+          bar.bg = "#2e3440";
           error = {
             bg = "#bf616a";
-            fg = "#eceff4";
+            fg = "#e5e9f0";
           };
-          start = {
-            fg = "#eceff4";
-          };
+          stop.bg = "#b48ead";
+          system.bg = "none";
         };
         hints = {
-          bg = "#8fbcbb";
-          fg = "#eceff4";
-          match.fg = "#eee8d5";
+          bg = "#ebcb8b";
+          fg = "#2e3440";
+          match.fg = "#5e81ac";
         };
         keyhint = {
-          fg = "#eceff4";
+          bg = "#3b4252";
+          fg = "#e5e9f0";
           suffix.fg = "#ebcb8b";
         };
         messages = {
           error = {
             bg = "#bf616a";
             border = "#bf616a";
-            fg = "#eceff4";
+            fg = "#e5e9f0";
           };
           info = {
-            bg = "#3b4252";
-            border = "#3b4252";
-            fg = "#eceff4";
+            bg = "#88c0d0";
+            border = "#88c0d0";
+            fg = "#e5e9f0";
           };
           warning = {
-            bg = "#ebcb8b";
-            border = "#ebcb8b";
-            fg = "#eceff4";
+            bg = "#d08770";
+            border = "#d08770";
+            fg = "#e5e9f0";
           };
         };
         prompts = {
           bg = "#434c5e";
-          border = "1px solid #eceff4";
-          fg = "#eceff4";
-          selected.bg = "#e5e9f0";
+          border = "1px solid #2e3440";
+          fg = "#e5e9f0";
+          selected.bg = "#4c566a";
         };
         statusbar = {
           caret = {
-            bg = "#5e81ac";
-            fg = "#eceff4";
+            bg = "#b48ead";
+            fg = "#e5e9f0";
             selection = {
-              bg = "#8fbcbb";
-              fg = "#eceff4";
+              bg = "#b48ead";
+              fg = "#e5e9f0";
             };
           };
           command = {
-            bg = "#3b4252";
-            fg = "#eceff4";
+            bg = "#434c5e";
+            fg = "#e5e9f0";
             private = {
-              bg = "#e5e9f0";
-              fg = "#eceff4";
+              bg = "#434c5e";
+              fg = "#e5e9f0";
             };
           };
           insert = {
             bg = "#a3be8c";
-            fg = "#eceff4";
+            fg = "#3b4252";
           };
           normal = {
-            bg = "#3b4252";
-            fg = "#eceff4";
+            bg = "#2e3440";
+            fg = "#e5e9f0";
           };
           passthrough = {
-            bg = "#b48ead";
-            fg = "#eceff4";
+            bg = "#5e81ac";
+            fg = "#e5e9f0";
           };
           private = {
-            bg = "#e5e9f0";
-            fg = "#eceff4";
+            bg = "#4c566a";
+            fg = "#e5e9f0";
           };
-          progress.bg = "#eceff4";
+          progress.bg = "#e5e9f0";
           url = {
             error.fg = "#bf616a";
-            fg = "#eceff4";
-            hover.fg = "#eee8d5";
+            fg = "#e5e9f0";
+            hover.fg = "#88c0d0";
             success = {
-              http.fg = "#eceff4";
-              https.fg = "#eceff4";
+              http.fg = "#e5e9f0";
+              https.fg = "#a3be8c";
             };
-            warn.fg = "#ebcb8b";
+            warn.fg = "#d08770";
           };
         };
         tabs = {
+          bar.bg = "#4c566a";
           even = {
-            bg = "#e5e9f0";
-            fg = "#eee8d5";
+            bg = "#4c566a";
+            fg = "#e5e9f0";
           };
           odd = {
-            bg = "#e5e9f0";
-            fg = "#eee8d5";
+            bg = "#4c566a";
+            fg = "#e5e9f0";
           };
           indicator = {
             error = "#bf616a";
-            start = "#8fbcbb";
-            stop = "#ebcb8b";
+            system = "none";
           };
           selected = {
             even = {
-              bg = "#3b4252";
-              fg = "#eceff4";
+              bg = "#2e3440";
+              fg = "#e5e9f0";
             };
             odd = {
-              bg = "#3b4252";
-              fg = "#eceff4";
+              bg = "#2e3440";
+              fg = "#e5e9f0";
             };
           };
         };
