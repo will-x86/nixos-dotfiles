@@ -277,15 +277,15 @@ in
       auto_save.session = true;
       tabs.width = "7%";
 
+      content.blocking.enable = true;
       colors = {
         webpage = {
           darkmode = {
-            enable = true;
+            enabled = true;
             algorithm = "lightness-cielab";
             policy.images = "never";
           };
         };
-        content.blocking.enable = true;
         completion = {
           category = {
             bg = "#3b4252";
