@@ -273,7 +273,9 @@ in
         ];
       };
       colors = {
-          webpage.prefers_color_scheme_dark = true;
+        webpage.darkmode.enable = true;
+        webpage.darkmode.algorithm = "lightness-cielab"
+        webpage.darkmode.policy.images = "never";
         completion = {
           category = {
             bg = "#3b4252";
