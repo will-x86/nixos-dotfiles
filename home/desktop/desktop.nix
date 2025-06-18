@@ -277,7 +277,7 @@ in
       auto_save.session = true;
       tabs.width = "7%";
 
-      content.blocking.enable = true;
+      content.blocking.enabled = true;
       colors = {
         webpage = {
           darkmode = {
