@@ -229,177 +229,192 @@ in
     plugins = [ pkgs.rofi-emoji ];
   };
 
-programs.qutebrowser = {
-  enable = true;
-  keyBindings = {
-    normal = {
-      ",p" = "spawn --userscript 1password.js";
+  programs.qutebrowser = {
+    enable = true;
+    keyBindings = {
+      normal = {
+        ",p" = "spawn --userscript 1password.js";
+      };
     };
-  };
-  settings = {
-    tabs.show = "multiple";
-    fonts = {
-      default_size = "12pt";
-      web.size.default = 16;
-      completion.entry = "12pt";
-      statusbar = "12pt";
-      tabs.selected = "12pt";
-      tabs.unselected = "12pt";
-      hints = "12pt";
-      messages.error = "12pt";
-      messages.info = "12pt";
-      messages.warning = "12pt";
-      prompts = "12pt";
-    };
-    zoom = {
-      default = "150%";
-      levels = [
-        "25%" "33%" "50%" "67%" "75%" "90%" "100%" "110%" 
-        "125%" "150%" "175%" "200%" "250%" "300%" "400%" "500%"
-      ];
-    };
-    colors = {
-      completion = {
-        category = {
-          bg = "#3b4252";
-          border.bottom = "#3b4252";
-          border.top = "#3b4252";
-          fg = "#eceff4";
-        };
-        even.bg = "#434c5e";
-        odd.bg = "#434c5e";
-        fg = "#eceff4";
-        match.fg = "#eee8d5";
-        item.selected = {
-          bg = "#8fbcbb";
-          border.bottom = "#8fbcbb";
-          border.top = "#8fbcbb";
-          fg = "#eceff4";
-        };
-        scrollbar = {
-          bg = "#4c566a";
-          fg = "#eee8d5";
-        };
+    settings = {
+      tabs.show = "multiple";
+      fonts = {
+        default_size = "12pt";
+        web.size.default = 16;
+        completion.entry = "12pt";
+        statusbar = "12pt";
+        tabs.selected = "12pt";
+        tabs.unselected = "12pt";
+        hints = "12pt";
+        messages.error = "12pt";
+        messages.info = "12pt";
+        messages.warning = "12pt";
+        prompts = "12pt";
       };
-      downloads = {
-        bar.bg = "#3b4252";
-        error = {
-          bg = "#bf616a";
-          fg = "#eceff4";
-        };
-        start = {
-          fg = "#eceff4";
-        };
+      zoom = {
+        default = "150%";
+        levels = [
+          "25%"
+          "33%"
+          "50%"
+          "67%"
+          "75%"
+          "90%"
+          "100%"
+          "110%"
+          "125%"
+          "150%"
+          "175%"
+          "200%"
+          "250%"
+          "300%"
+          "400%"
+          "500%"
+        ];
       };
-      hints = {
-        bg = "#8fbcbb";
-        fg = "#eceff4";
-        match.fg = "#eee8d5";
-      };
-      keyhint = {
-        fg = "#eceff4";
-        suffix.fg = "#ebcb8b";
-      };
-      messages = {
-        error = {
-          bg = "#bf616a";
-          border = "#bf616a";
+      colors = {
+          webpage.prefers_color_scheme_dark = true;
+        completion = {
+          category = {
+            bg = "#3b4252";
+            border.bottom = "#3b4252";
+            border.top = "#3b4252";
+            fg = "#eceff4";
+          };
+          even.bg = "#434c5e";
+          odd.bg = "#434c5e";
           fg = "#eceff4";
-        };
-        info = {
-          bg = "#3b4252";
-          border = "#3b4252";
-          fg = "#eceff4";
-        };
-        warning = {
-          bg = "#ebcb8b";
-          border = "#ebcb8b";
-          fg = "#eceff4";
-        };
-      };
-      prompts = {
-        bg = "#434c5e";
-        border = "1px solid #eceff4";
-        fg = "#eceff4";
-        selected.bg = "#e5e9f0";
-      };
-      statusbar = {
-        caret = {
-          bg = "#5e81ac";
-          fg = "#eceff4";
-          selection = {
+          match.fg = "#eee8d5";
+          item.selected = {
             bg = "#8fbcbb";
+            border.bottom = "#8fbcbb";
+            border.top = "#8fbcbb";
+            fg = "#eceff4";
+          };
+          scrollbar = {
+            bg = "#4c566a";
+            fg = "#eee8d5";
+          };
+        };
+        downloads = {
+          bar.bg = "#3b4252";
+          error = {
+            bg = "#bf616a";
+            fg = "#eceff4";
+          };
+          start = {
             fg = "#eceff4";
           };
         };
-        command = {
-          bg = "#3b4252";
+        hints = {
+          bg = "#8fbcbb";
           fg = "#eceff4";
+          match.fg = "#eee8d5";
+        };
+        keyhint = {
+          fg = "#eceff4";
+          suffix.fg = "#ebcb8b";
+        };
+        messages = {
+          error = {
+            bg = "#bf616a";
+            border = "#bf616a";
+            fg = "#eceff4";
+          };
+          info = {
+            bg = "#3b4252";
+            border = "#3b4252";
+            fg = "#eceff4";
+          };
+          warning = {
+            bg = "#ebcb8b";
+            border = "#ebcb8b";
+            fg = "#eceff4";
+          };
+        };
+        prompts = {
+          bg = "#434c5e";
+          border = "1px solid #eceff4";
+          fg = "#eceff4";
+          selected.bg = "#e5e9f0";
+        };
+        statusbar = {
+          caret = {
+            bg = "#5e81ac";
+            fg = "#eceff4";
+            selection = {
+              bg = "#8fbcbb";
+              fg = "#eceff4";
+            };
+          };
+          command = {
+            bg = "#3b4252";
+            fg = "#eceff4";
+            private = {
+              bg = "#e5e9f0";
+              fg = "#eceff4";
+            };
+          };
+          insert = {
+            bg = "#a3be8c";
+            fg = "#eceff4";
+          };
+          normal = {
+            bg = "#3b4252";
+            fg = "#eceff4";
+          };
+          passthrough = {
+            bg = "#b48ead";
+            fg = "#eceff4";
+          };
           private = {
             bg = "#e5e9f0";
             fg = "#eceff4";
           };
-        };
-        insert = {
-          bg = "#a3be8c";
-          fg = "#eceff4";
-        };
-        normal = {
-          bg = "#3b4252";
-          fg = "#eceff4";
-        };
-        passthrough = {
-          bg = "#b48ead";
-          fg = "#eceff4";
-        };
-        private = {
-          bg = "#e5e9f0";
-          fg = "#eceff4";
-        };
-        progress.bg = "#eceff4";
-        url = {
-          error.fg = "#bf616a";
-          fg = "#eceff4";
-          hover.fg = "#eee8d5";
-          success = {
-            http.fg = "#eceff4";
-            https.fg = "#eceff4";
-          };
-          warn.fg = "#ebcb8b";
-        };
-      };
-      tabs = {
-        even = {
-          bg = "#e5e9f0";
-          fg = "#eee8d5";
-        };
-        odd = {
-          bg = "#e5e9f0";
-          fg = "#eee8d5";
-        };
-        indicator = {
-          error = "#bf616a";
-          start = "#8fbcbb";
-          stop = "#ebcb8b";
-        };
-        selected = {
-          even = {
-            bg = "#3b4252";
+          progress.bg = "#eceff4";
+          url = {
+            error.fg = "#bf616a";
             fg = "#eceff4";
+            hover.fg = "#eee8d5";
+            success = {
+              http.fg = "#eceff4";
+              https.fg = "#eceff4";
+            };
+            warn.fg = "#ebcb8b";
+          };
+        };
+        tabs = {
+          even = {
+            bg = "#e5e9f0";
+            fg = "#eee8d5";
           };
           odd = {
-            bg = "#3b4252";
-            fg = "#eceff4";
+            bg = "#e5e9f0";
+            fg = "#eee8d5";
+          };
+          indicator = {
+            error = "#bf616a";
+            start = "#8fbcbb";
+            stop = "#ebcb8b";
+          };
+          selected = {
+            even = {
+              bg = "#3b4252";
+              fg = "#eceff4";
+            };
+            odd = {
+              bg = "#3b4252";
+              fg = "#eceff4";
+            };
           };
         };
       };
     };
+    searchEngines = {
+      w = "https://wikipedia.org/w/index.php?search={}";
+      no = "https://search.nixos.org/packages?channel=unstable&query={}";
+    };
   };
-  searchEngines = {
-    w = "https://wikipedia.org/w/index.php?search={}";
-    no = "https://search.nixos.org/packages?channel=unstable&query={}";
-  };
-};
   xdg.configFile."qutebrowser/userscripts/1password.js" = {
     source = pkgs.writeScript "1password.js" (builtins.readFile ../dotfiles/qutebrowser/1pass.js);
   };
