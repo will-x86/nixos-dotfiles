@@ -284,7 +284,7 @@ in
       colors = {
         webpage = {
           darkmode = {
-            enabled = true;
+            enabled = false;
             algorithm = "lightness-cielab";
             policy.images = "never";
           };
