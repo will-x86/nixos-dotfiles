@@ -441,6 +441,8 @@ in
     source = pkgs.writeScript "yt-ads.js" (builtins.readFile ../dotfiles/qutebrowser/yt-ads.js);
   };
 
+  security.pam.services.nextcloud-client.kwallet.enable = true;
+
   systemd.user.services.nextcloud-client = {
     Unit = {
       Description = "Nextcloud Client";
