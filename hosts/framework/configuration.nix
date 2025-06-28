@@ -22,7 +22,7 @@
     "amdgpu.dcdebugmask=0x10"
   ];
   security.pki.certificates = [
-    (builtins.readFile "${./../secrets/NextDNS.cer}")
+    (builtins.readFile "${./../../secrets/NextDNS.cer}")
   ];
   services = {
     fwupd.enable = true;
