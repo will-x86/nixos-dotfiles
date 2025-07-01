@@ -10,11 +10,11 @@
         "~/.config/hypr/waybar/modules.jsonc"
     ],
     "modules-left": [
-        "clock"
     ],
     "modules-center": [
+        "clock",
+        "group/custom-group"
     ],
     "modules-right": [
-        "group/custom-group"
     ]
 }
