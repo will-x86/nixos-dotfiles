@@ -13,7 +13,6 @@
         "clock"
     ],
     "modules-center": [
-        "xhyprland/workspaces"
     ],
     "modules-right": [
         "group/custom-group"
