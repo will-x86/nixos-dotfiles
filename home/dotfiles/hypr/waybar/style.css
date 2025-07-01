@@ -44,7 +44,7 @@ tooltip label {
   transition: all 0.4s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
-/*#workspaces button.active {
+#workspaces button.active {
   background: alpha(@background, 0.2);
   color: lighter(@main-color);
   border-radius: 20px;
@@ -56,12 +56,11 @@ tooltip label {
   animation: gradient_f 20s ease-in infinite;
   transition: all 0.8s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
-*/
 
-/*#workspaces button.focused {
+#workspaces button.focused {
   color: @color5;
   background: transparent;
-}*/
+}
 
 #workspaces button.urgent {
   color: @color5;
