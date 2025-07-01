@@ -179,6 +179,7 @@ in
     libnotify
     kdePackages.dolphin
     #davinci-resolve
+    zoom-us
     brightnessctl
     greetd.tuigreet
     obsidian
