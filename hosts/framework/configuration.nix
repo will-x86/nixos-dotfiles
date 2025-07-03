@@ -50,6 +50,8 @@
       pkgs.openocd
       pkgs.android-udev-rules
       pkgs.via
+      pkgs.qmk-udev-rules
+      pkgs.vial
     ];
     blueman.enable = true;
     desktopManager.plasma6.enable = true;
@@ -85,7 +87,6 @@
     xwayland.enable = true;
   };
   programs.hyprlock.enable = true;
-  hardware.keyboard.qmk.enable = true;
   programs.adb.enable = true;
   programs.streamdeck-ui = {
     enable = true;

@@ -7,6 +7,8 @@
 }:
 {
   system.autoUpgrade.enable = true;
+  hardware.keyboard.qmk.enable = true;
+
   system.autoUpgrade.allowReboot = false;
   system.autoUpgrade.dates = "weekly";
   nix.gc.automatic = true;
