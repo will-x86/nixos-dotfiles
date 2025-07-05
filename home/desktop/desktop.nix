@@ -230,211 +230,211 @@ in
     plugins = [ pkgs.rofi-emoji ];
   };
 
-#  programs.qutebrowser = {
-#    enable = true;
-#    keyBindings = {
-#      normal = {
-#        ",p" = "spawn --userscript 1password.js";
-#        "tT" = "config-cycle tabs.position top left";
-#
-#      };
-#    };
-#    settings = {
-#      tabs.show = "multiple";
-#      fonts = {
-#        default_size = "12pt";
-#        web.size.default = 16;
-#        completion.entry = "12pt";
-#        statusbar = "12pt";
-#        tabs.selected = "12pt";
-#        tabs.unselected = "12pt";
-#        hints = "15pt";
-#        messages.error = "12pt";
-#        messages.info = "12pt";
-#        messages.warning = "12pt";
-#        prompts = "12pt";
-#      };
-#      zoom = {
-#        default = "150%";
-#        levels = [
-#          "25%"
-#          "33%"
-#          "50%"
-#          "67%"
-#          "75%"
-#          "90%"
-#          "100%"
-#          "110%"
-#          "125%"
-#          "150%"
-#          "175%"
-#          "200%"
-#          "250%"
-#          "300%"
-#          "400%"
-#          "500%"
-#        ];
-#      };
-#      auto_save.session = true;
-#      tabs.width = "7%";
-#
-#      content = {
-#        blocking.enabled = true;
-#        javascript.clipboard = "access";
-#      };
-#      colors = {
-#        webpage = {
-#          darkmode = {
-#            enabled = false;
-#            algorithm = "lightness-cielab";
-#            policy.images = "never";
-#          };
-#        };
-#        completion = {
-#          category = {
-#            bg = "#2e3440";
-#            border.bottom = "#2e3440";
-#            border.top = "#2e3440";
-#            fg = "#e5e9f0";
-#          };
-#          even.bg = "#3b4252";
-#          odd.bg = "#3b4252";
-#          fg = "#d8dee9";
-#          match.fg = "#ebcb8b";
-#          item.selected = {
-#            bg = "#4c566a";
-#            border.bottom = "#4c566a";
-#            border.top = "#4c566a";
-#            fg = "#eceff4";
-#          };
-#          scrollbar = {
-#            bg = "#3b4252";
-#            fg = "#e5e9f0";
-#          };
-#        };
-#        downloads = {
-#          bar.bg = "#2e3440";
-#          error = {
-#            bg = "#bf616a";
-#            fg = "#e5e9f0";
-#          };
-#          stop.bg = "#b48ead";
-#          system.bg = "none";
-#        };
-#        hints = {
-#          bg = "#ebcb8b";
-#          fg = "#2e3440";
-#          match.fg = "#5e81ac";
-#        };
-#        keyhint = {
-#          bg = "#3b4252";
-#          fg = "#e5e9f0";
-#          suffix.fg = "#ebcb8b";
-#        };
-#        messages = {
-#          error = {
-#            bg = "#bf616a";
-#            border = "#bf616a";
-#            fg = "#e5e9f0";
-#          };
-#          info = {
-#            bg = "#88c0d0";
-#            border = "#88c0d0";
-#            fg = "#e5e9f0";
-#          };
-#          warning = {
-#            bg = "#d08770";
-#            border = "#d08770";
-#            fg = "#e5e9f0";
-#          };
-#        };
-#        prompts = {
-#          bg = "#434c5e";
-#          border = "1px solid #2e3440";
-#          fg = "#e5e9f0";
-#          selected.bg = "#4c566a";
-#        };
-#        statusbar = {
-#          caret = {
-#            bg = "#b48ead";
-#            fg = "#e5e9f0";
-#            selection = {
-#              bg = "#b48ead";
-#              fg = "#e5e9f0";
-#            };
-#          };
-#          command = {
-#            bg = "#434c5e";
-#            fg = "#e5e9f0";
-#            private = {
-#              bg = "#434c5e";
-#              fg = "#e5e9f0";
-#            };
-#          };
-#          insert = {
-#            bg = "#a3be8c";
-#            fg = "#3b4252";
-#          };
-#          normal = {
-#            bg = "#2e3440";
-#            fg = "#e5e9f0";
-#          };
-#          passthrough = {
-#            bg = "#5e81ac";
-#            fg = "#e5e9f0";
-#          };
-#          private = {
-#            bg = "#4c566a";
-#            fg = "#e5e9f0";
-#          };
-#          progress.bg = "#e5e9f0";
-#          url = {
-#            error.fg = "#bf616a";
-#            fg = "#e5e9f0";
-#            hover.fg = "#88c0d0";
-#            success = {
-#              http.fg = "#e5e9f0";
-#              https.fg = "#a3be8c";
-#            };
-#            warn.fg = "#d08770";
-#          };
-#        };
-#        tabs = {
-#          bar.bg = "#4c566a";
-#          even = {
-#            bg = "#4c566a";
-#            fg = "#e5e9f0";
-#          };
-#          odd = {
-#            bg = "#4c566a";
-#            fg = "#e5e9f0";
-#          };
-#          indicator = {
-#            error = "#bf616a";
-#            system = "none";
-#          };
-#          selected = {
-#            even = {
-#              bg = "#2e3440";
-#              fg = "#e5e9f0";
-#            };
-#            odd = {
-#              bg = "#2e3440";
-#              fg = "#e5e9f0";
-#            };
-#          };
-#        };
-#      };
-#    };
-#    searchEngines = {
-#      w = "https://wikipedia.org/w/index.php?search={}";
-#      no = "https://search.nixos.org/packages?channel=unstable&query={}";
-#      aw = "https://wiki.archlinux.org/?search={}";
-#      ap = "https://archlinux.org/packages/?sort=&q={}&maintainer=&flagged=";
-#      gh = "https://github.com/search?o=desc&q={}&s=stars";
-#      y = "https://www.youtube.com/results?search_query={}";
-#    };
-#  };
+  #  programs.qutebrowser = {
+  #    enable = true;
+  #    keyBindings = {
+  #      normal = {
+  #        ",p" = "spawn --userscript 1password.js";
+  #        "tT" = "config-cycle tabs.position top left";
+  #
+  #      };
+  #    };
+  #    settings = {
+  #      tabs.show = "multiple";
+  #      fonts = {
+  #        default_size = "12pt";
+  #        web.size.default = 16;
+  #        completion.entry = "12pt";
+  #        statusbar = "12pt";
+  #        tabs.selected = "12pt";
+  #        tabs.unselected = "12pt";
+  #        hints = "15pt";
+  #        messages.error = "12pt";
+  #        messages.info = "12pt";
+  #        messages.warning = "12pt";
+  #        prompts = "12pt";
+  #      };
+  #      zoom = {
+  #        default = "150%";
+  #        levels = [
+  #          "25%"
+  #          "33%"
+  #          "50%"
+  #          "67%"
+  #          "75%"
+  #          "90%"
+  #          "100%"
+  #          "110%"
+  #          "125%"
+  #          "150%"
+  #          "175%"
+  #          "200%"
+  #          "250%"
+  #          "300%"
+  #          "400%"
+  #          "500%"
+  #        ];
+  #      };
+  #      auto_save.session = true;
+  #      tabs.width = "7%";
+  #
+  #      content = {
+  #        blocking.enabled = true;
+  #        javascript.clipboard = "access";
+  #      };
+  #      colors = {
+  #        webpage = {
+  #          darkmode = {
+  #            enabled = false;
+  #            algorithm = "lightness-cielab";
+  #            policy.images = "never";
+  #          };
+  #        };
+  #        completion = {
+  #          category = {
+  #            bg = "#2e3440";
+  #            border.bottom = "#2e3440";
+  #            border.top = "#2e3440";
+  #            fg = "#e5e9f0";
+  #          };
+  #          even.bg = "#3b4252";
+  #          odd.bg = "#3b4252";
+  #          fg = "#d8dee9";
+  #          match.fg = "#ebcb8b";
+  #          item.selected = {
+  #            bg = "#4c566a";
+  #            border.bottom = "#4c566a";
+  #            border.top = "#4c566a";
+  #            fg = "#eceff4";
+  #          };
+  #          scrollbar = {
+  #            bg = "#3b4252";
+  #            fg = "#e5e9f0";
+  #          };
+  #        };
+  #        downloads = {
+  #          bar.bg = "#2e3440";
+  #          error = {
+  #            bg = "#bf616a";
+  #            fg = "#e5e9f0";
+  #          };
+  #          stop.bg = "#b48ead";
+  #          system.bg = "none";
+  #        };
+  #        hints = {
+  #          bg = "#ebcb8b";
+  #          fg = "#2e3440";
+  #          match.fg = "#5e81ac";
+  #        };
+  #        keyhint = {
+  #          bg = "#3b4252";
+  #          fg = "#e5e9f0";
+  #          suffix.fg = "#ebcb8b";
+  #        };
+  #        messages = {
+  #          error = {
+  #            bg = "#bf616a";
+  #            border = "#bf616a";
+  #            fg = "#e5e9f0";
+  #          };
+  #          info = {
+  #            bg = "#88c0d0";
+  #            border = "#88c0d0";
+  #            fg = "#e5e9f0";
+  #          };
+  #          warning = {
+  #            bg = "#d08770";
+  #            border = "#d08770";
+  #            fg = "#e5e9f0";
+  #          };
+  #        };
+  #        prompts = {
+  #          bg = "#434c5e";
+  #          border = "1px solid #2e3440";
+  #          fg = "#e5e9f0";
+  #          selected.bg = "#4c566a";
+  #        };
+  #        statusbar = {
+  #          caret = {
+  #            bg = "#b48ead";
+  #            fg = "#e5e9f0";
+  #            selection = {
+  #              bg = "#b48ead";
+  #              fg = "#e5e9f0";
+  #            };
+  #          };
+  #          command = {
+  #            bg = "#434c5e";
+  #            fg = "#e5e9f0";
+  #            private = {
+  #              bg = "#434c5e";
+  #              fg = "#e5e9f0";
+  #            };
+  #          };
+  #          insert = {
+  #            bg = "#a3be8c";
+  #            fg = "#3b4252";
+  #          };
+  #          normal = {
+  #            bg = "#2e3440";
+  #            fg = "#e5e9f0";
+  #          };
+  #          passthrough = {
+  #            bg = "#5e81ac";
+  #            fg = "#e5e9f0";
+  #          };
+  #          private = {
+  #            bg = "#4c566a";
+  #            fg = "#e5e9f0";
+  #          };
+  #          progress.bg = "#e5e9f0";
+  #          url = {
+  #            error.fg = "#bf616a";
+  #            fg = "#e5e9f0";
+  #            hover.fg = "#88c0d0";
+  #            success = {
+  #              http.fg = "#e5e9f0";
+  #              https.fg = "#a3be8c";
+  #            };
+  #            warn.fg = "#d08770";
+  #          };
+  #        };
+  #        tabs = {
+  #          bar.bg = "#4c566a";
+  #          even = {
+  #            bg = "#4c566a";
+  #            fg = "#e5e9f0";
+  #          };
+  #          odd = {
+  #            bg = "#4c566a";
+  #            fg = "#e5e9f0";
+  #          };
+  #          indicator = {
+  #            error = "#bf616a";
+  #            system = "none";
+  #          };
+  #          selected = {
+  #            even = {
+  #              bg = "#2e3440";
+  #              fg = "#e5e9f0";
+  #            };
+  #            odd = {
+  #              bg = "#2e3440";
+  #              fg = "#e5e9f0";
+  #            };
+  #          };
+  #        };
+  #      };
+  #    };
+  #    searchEngines = {
+  #      w = "https://wikipedia.org/w/index.php?search={}";
+  #      no = "https://search.nixos.org/packages?channel=unstable&query={}";
+  #      aw = "https://wiki.archlinux.org/?search={}";
+  #      ap = "https://archlinux.org/packages/?sort=&q={}&maintainer=&flagged=";
+  #      gh = "https://github.com/search?o=desc&q={}&s=stars";
+  #      y = "https://www.youtube.com/results?search_query={}";
+  #    };
+  #  };
   xdg.configFile."qutebrowser/userscripts/1password.js" = {
     source = pkgs.writeScript "1password.js" (builtins.readFile ../dotfiles/qutebrowser/1pass.js);
   };
@@ -442,20 +442,6 @@ in
     source = pkgs.writeScript "yt-ads.js" (builtins.readFile ../dotfiles/qutebrowser/yt-ads.js);
   };
 
-
-  systemd.user.services.nextcloud-client = {
-    Unit = {
-      Description = "Nextcloud Client";
-      After = "network-online.target";
-    };
-    Service = {
-      Type = "simple";
-      ExecStart = "${pkgs.nextcloud-client}/bin/nextcloud --background";
-      Restart = "on-failure";
-      RestartSec = "5s";
-    };
-    Install.WantedBy = [ "default.target" ];
-  };
   # ... rest of your configuration ...
   home.sessionVariables = {
     ANTHROPIC_API_KEY = "${secrets.anthropic.api_key}";
