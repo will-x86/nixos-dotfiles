@@ -2,19 +2,10 @@
 export PATH=$PATH:/usr/local/go/bin
 
 export PATH=$PATH:/home/will/.cargo/bin
-alias gst='git status'
-alias gc='git commit'
-alias co='git checkout'
-alias gaa='git add -A'
-alias gd='git diff'
-alias gdc='git diff --cached'
 
-alias gw="cd ~/go/src/github.com/will-x86/"
-alias nd="nix develop -c $SHELL"
 #alias ls='ls --color'
 alias vim='nvim'
 alias vi='nvim'
-alias c='clear'
 
 # Zinit setup
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -49,10 +40,6 @@ zinit wait lucid for \
            bindkey '^b' backward-word" \
     zdharma-continuum/null
 
-#bindkey '^f' autosuggest-accept
-#bindkey '^p' history-search-backward
-#bindkey '^n' history-search-forward
-#bindkey '^[w' kill-region
 
 # History settings
 HISTSIZE=5000
@@ -60,7 +47,6 @@ HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 setopt appendhistory sharehistory histignorespace histsavenodups histfindnodups
 
-# Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
@@ -68,6 +54,6 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # Deferred loading of shell integrations
 eval "$(direnv hook zsh)"  # Uncomment if you use direnv
-eval "$(starship init zsh)"
-  eval "$(fzf --zsh)"
+#eval "$(starship init zsh)"
+eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
