@@ -247,7 +247,7 @@
       bind = SUPER, 0, workspace, 0
 
       exec-once=[workspace 1 silent] $kitty -T
-      exec-once=[workspace 2 silent] qutebrowser
+      exec-once=[workspace 2 silent] firefox
       exec-once=[workspace 3 silent] obsidiab
       exec-once=[workspace 4 silent] bruno
       exec-once=[workspace 5 silent] beekeeper-studio
