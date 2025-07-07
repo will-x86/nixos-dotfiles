@@ -119,6 +119,7 @@ in
     finamp
     #lsb-release
     jellyfin-web
+    proton-pass
     obs-studio
     # trezor-suite
     # trezor-agent
