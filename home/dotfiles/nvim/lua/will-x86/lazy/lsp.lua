@@ -31,6 +31,7 @@ return {
 					json = { "prettier" },
 					html = { "prettier" },
 					css = { "prettier" },
+					svelte= { "prettier" },
 					markdown = { "prettier" },
 					rust = { "rustfmt", lsp_format = "fallback" },
 					zig = { "zigfmt" },
