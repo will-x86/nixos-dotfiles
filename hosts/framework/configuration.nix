@@ -13,7 +13,7 @@
     ./packages.nix
     ./flatpack.nix
   ];
-
+  programs.nix-ld.enable = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 20;
   boot.initrd.luks.devices."luks-a26d1b6a-644e-425e-89d3-a7619fcf22ea".device =
