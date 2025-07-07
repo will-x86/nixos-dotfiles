@@ -13,7 +13,7 @@
       networkmanagerapplet
       kdePackages.plasma-nm
       via
-      android-studio
+      #android-studio
       kodiPackages.jellyfin
       jellyfin-web
     ]
