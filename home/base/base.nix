@@ -92,6 +92,7 @@
     fastfetch
     python3
     gopls
+    svelte-language-server
     lua-language-server
     btop
     #gcc

@@ -137,6 +137,11 @@ return {
 				filetypes = { "kotlin", "kt", "kts" },
 			})
 
+			lspconfig.svelte_language_server.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
