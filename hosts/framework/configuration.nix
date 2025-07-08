@@ -14,6 +14,7 @@
     ./flatpack.nix
   ];
   systemd.tmpfiles.rules = [ "d /mnt/protondrive 0755 root root" ];
+
   systemd.services.proton-bisync = {
     description = "Bidirectional sync between local directory and Proton Drive";
     after = [
@@ -24,7 +25,12 @@
     serviceConfig = {
       Type = "oneshot";
       User = "will";
-      ExecStart = "${pkgs.rclone}/bin/rclone bisync /home/will/Documents/Proton remote:/ --config=/etc/rclone-proton.conf";
+
+      # The key change is here:
+      ExecStart = ''
+        ${pkgs.rclone}/bin/rclone bisync /home/will/Documents/Proton remote:/ \
+          --config=/var/lib/rclone-protondrive/rclone.conf
+      '';
     };
   };
 
