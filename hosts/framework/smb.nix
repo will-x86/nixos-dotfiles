@@ -5,7 +5,7 @@
     [remote]
     type = protondrive
     user = ${secrets.proton.email}
-    pass = ${secrets.proton.pass}  
+    pass = ${secrets.proton.passtwo}  
   '';
 
   fileSystems."/mnt/protondrive" = {
@@ -19,7 +19,6 @@
       "config=/etc/rclone-proton.conf"
     ];
   };
-  systemd.tmpfiles.rules = [ "d /mnt/protondrive 0755 root root" ];
   fileSystems."/mnt/FractalMedia" = {
     device = "//${secrets.samba.fracRemote}/Media";
     fsType = "cifs";
