@@ -18,8 +18,8 @@
     description = "Bidirectional sync between local directory and Proton Drive";
     after = [
       "network-online.target"
-      "mnt-protondrive.mount"
-    ]; 
+      "rclone-protondrive-mount.service"
+    ];
     wants = [ "network-online.target" ];
     serviceConfig = {
       Type = "oneshot";

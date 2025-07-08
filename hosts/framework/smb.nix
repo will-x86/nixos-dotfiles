@@ -1,4 +1,4 @@
-{ secrets, ... }:
+{ secrets, pkgs, ... }:
 {
 
   environment.etc."rclone-proton.conf".text = ''
@@ -8,18 +8,29 @@
     password = ${secrets.proton.pass}  
   '';
 
-  fileSystems."/mnt/protondrive" = {
-    device = "remote:/";
-    fsType = "rclone";
-    options = [
-      "nodev"
-      "nofail"
-      "allow_other"
-      "args2env"
-      "config=/etc/rclone-proton.conf"
-    ];
-    depends = [ "network-online.target" ];
 
+  systemd.services.rclone-protondrive-mount = {
+    description = "Mount Proton Drive using rclone";
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+
+    serviceConfig = {
+      Type = "simple"; 
+
+      Restart = "on-failure";
+      RestartSec = "15s";
+
+      ExecStart = ''
+        ${pkgs.rclone}/bin/rclone mount \
+          --config=/etc/rclone-proton.conf \
+          --allow-other \
+          remote:/ /mnt/protondrive
+      '';
+
+      ExecStop = "${pkgs.fuse}/bin/fusermount -u /mnt/protondrive";
+    };
+
+    wantedBy = [ "multi-user.target" ];
   };
   fileSystems."/mnt/FractalMedia" = {
     device = "//${secrets.samba.fracRemote}/Media";
