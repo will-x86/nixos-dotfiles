@@ -1,5 +1,24 @@
 { secrets, ... }:
 {
+
+  environment.etc."rclone-proton.conf".text = ''
+    [remote]
+    type = protondrive
+    user = ${secrets.proton.email}
+    pass = ${secrets.proton.pass}  
+    '';
+
+  fileSystems."/mnt/protondrive" = {
+    device = "remote:/";
+    fsType = "rclone";
+    options = [
+      "nodev"
+      "nofail"
+      "allow_other"
+      "args2env"
+      "config=/etc/rclone-proton.conf"
+    ];
+  };
   fileSystems."/mnt/FractalMedia" = {
     device = "//${secrets.samba.fracRemote}/Media";
     fsType = "cifs";

@@ -9,6 +9,7 @@
     with pkgs;
     [
       cifs-utils
+      rclone
       nfs-utils
       networkmanagerapplet
       kdePackages.plasma-nm

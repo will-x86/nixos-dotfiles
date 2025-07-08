@@ -13,8 +13,30 @@
     ./packages.nix
     ./flatpack.nix
   ];
+  systemd.services.proton-bisync = {
+    description = "Bidirectional sync between local directory and Proton Drive";
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      User = "will"; 
+      ExecStart = "${pkgs.rclone}/bin/rclone bisync ~/Documents/Proton remote:/ --config=/etc/rclone-proton.conf";
+    };
+  };
+
+  systemd.timers.proton-bisync = {
+    description = "Timer for Proton Drive bidirectional sync";
+    wantedBy = [ "timers.target" ];
+
+    timerConfig = {
+      OnBootSec = "5min";
+      OnUnitActiveSec = "30min"; # Run every 30 minutes
+      Unit = "proton-bisync.service";
+    };
+  };
   programs.nix-ld.enable = true;
-    virtualisation.waydroid.enable = true;
+  virtualisation.waydroid.enable = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 20;
   boot.initrd.luks.devices."luks-a26d1b6a-644e-425e-89d3-a7619fcf22ea".device =
