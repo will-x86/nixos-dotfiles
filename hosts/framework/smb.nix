@@ -4,8 +4,8 @@
   environment.etc."rclone-proton.conf".text = ''
     [remote]
     type = protondrive
-    user = ${secrets.proton.email}
-    pass = ${secrets.proton.passtwo}  
+    username = ${secrets.proton.email}
+    password = ${secrets.proton.pass}  
   '';
 
   fileSystems."/mnt/protondrive" = {
@@ -18,6 +18,8 @@
       "args2env"
       "config=/etc/rclone-proton.conf"
     ];
+    depends = [ "network-online.target" ];
+
   };
   fileSystems."/mnt/FractalMedia" = {
     device = "//${secrets.samba.fracRemote}/Media";
