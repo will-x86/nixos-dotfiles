@@ -6,7 +6,7 @@
     type = protondrive
     user = ${secrets.proton.email}
     pass = ${secrets.proton.pass}  
-    '';
+  '';
 
   fileSystems."/mnt/protondrive" = {
     device = "remote:/";
