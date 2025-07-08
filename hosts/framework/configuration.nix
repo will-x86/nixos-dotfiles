@@ -22,7 +22,6 @@
       Type = "oneshot";
       User = "will";
       ExecStart = "${pkgs.rclone}/bin/rclone bisync /home/will/Documents/Proton remote:/ --config=/etc/rclone-proton.conf";
-
     };
   };
 
