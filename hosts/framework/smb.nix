@@ -19,6 +19,7 @@
       "config=/etc/rclone-proton.conf"
     ];
   };
+  systemd.tmpfiles.rules = [ "d /mnt/protondrive 0755 root root" ];
   fileSystems."/mnt/FractalMedia" = {
     device = "//${secrets.samba.fracRemote}/Media";
     fsType = "cifs";
