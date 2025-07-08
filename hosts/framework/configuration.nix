@@ -26,7 +26,6 @@
       Type = "oneshot";
       User = "will";
 
-      # The key change is here:
       ExecStart = ''
         ${pkgs.rclone}/bin/rclone bisync /home/will/Documents/Proton remote:/ \
           --config=/var/lib/rclone-protondrive/rclone.conf

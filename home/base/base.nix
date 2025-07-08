@@ -14,32 +14,21 @@
   home.stateVersion = "24.11";
   programs.neovim.enable = true;
   home.packages = with pkgs; [
-    ### Espressif
-    flex
-    bison
-    gperf
-    python3Packages.virtualenv
-    cmake
-    frp
-    ninja
-    ccache
-    libffi
-    openssl
-    dfu-util
-    libusb1
-    ### End espressif
     ### Neovim
     lua-language-server
-    kotlin-language-server
     stylua
-    # gofmt  is in go
+    tailwindcss-language-server
+    svelte-language-server
+    lua-language-server
+    alejandra
+    typescript-language-server
     gotools
     yaml-language-server
     yamlfix
-    gofumpt
     rustfmt
     nil # nix
-    nixfmt-rfc-style
+    #nixfmt-rfc-style
+    zls
     nodePackages.prettier
     typescript
     eslint_d
@@ -48,32 +37,28 @@
     arduino-language-server
     zig
     arduino-cli
-
     ### End neovim
     nodejs
-    alacritty
+    #alacritty
     unzip
-    immich-go
-    go-blueprint
-    flutter
+    #immich-go
+    #go-blueprint
+    #flutter
     lsof
-    virt-viewer
+    #virt-viewer
     moonlight-qt
     ntfsprogs
-    zls
-    awscli2
-    cloudflared
+    #awscli2
+    #cloudflared
     dig
-    libcgroup
-    wget
-    p7zip
+    #libcgroup
+    #wget
+    #p7zip
     curl
-    gh
-    tailwindcss-language-server
-    nnn
+    #gh
+    #nnn
     exfat
     deno
-    typescript-language-server
     killall
     ffmpeg-full
     #clang-tools
@@ -86,19 +71,16 @@
     cargo
     gnumake
     zip
-    sshpass
+    #sshpass
     jq
     go
     fastfetch
     python3
     gopls
-    svelte-language-server
-    lua-language-server
     btop
     #gcc
     tree
     rust-analyzer
-    alejandra
     tmux
     fzf
     ripgrep

@@ -45,12 +45,6 @@ in
     };
   };
 
-  home.file = {
-    ".config/lf" = {
-      source = ../dotfiles/lf;
-      recursive = true;
-    };
-  };
 
   home.file = {
     ".config/rofi" = {
@@ -106,19 +100,19 @@ in
     #custom-bambu-studio
     #bambu-studio
     #ventoy-full
-    lf
+    #lf
     pywal
     wlogout
     bluetui
     #pkgs-stable.google-chrome
     #wineWowPackages.waylandFull
-    jellyfin-media-player
-    pkgs-stable.beekeeper-studio
+    #jellyfin-media-player
+    #pkgs-stable.beekeeper-studio
     # winetricks
     mokutil
-    finamp
+    #finamp
     #lsb-release
-    jellyfin-web
+    #jellyfin-web
     proton-pass
     obs-studio
     # trezor-suite
@@ -129,32 +123,28 @@ in
     mediawriter
     #gettext
     #cabextract
-    ctpv
+    #ctpv
     samba4Full
     devenv
-    glxinfo
+    #glxinfo
     #spacenavd
     bc
     gawk
     coreutils
     polkit
-    bruno
+    #bruno
     xdg-utils
     tailwindcss-language-server
     vscode-langservers-extracted
-    quickemu
-    mysql84
     zoom-us
     jdk17
     signal-desktop
     maven
-    prusa-slicer
     platformio
     orca-slicer
     gtk3
     gtk4
     webkitgtk_6_0
-    nextcloud-client
     #inputs.zen-browser.packages.${system}.default
     libreoffice
     syncthingtray
@@ -180,14 +170,13 @@ in
     libnotify
     kdePackages.dolphin
     #davinci-resolve
-    zoom-us
     brightnessctl
     greetd.tuigreet
     obsidian
     gocr
     #nfs-utils
     python311Packages.pip
-    upx
+    #upx
     pavucontrol
     cliphist
     wl-clipboard
