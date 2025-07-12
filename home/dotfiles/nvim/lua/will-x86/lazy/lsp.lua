@@ -130,9 +130,7 @@ return {
 						"--background-index",
 						"--query-driver=/**/.platformio/**/bin/*-g++,/**/.platformio/**/bin/*-gcc",
 					},
-					root_dir = function()
 				root_dir = lspconfig.util.root_pattern("platformio.ini", ".git"),
-					end,
 				})
 			else
 				-- clangd config
