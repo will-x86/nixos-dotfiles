@@ -111,6 +111,7 @@ return {
 			local esp_idf_path = os.getenv("IDF_PATH")
 			local clangd_nix = os.getenv("CLANGD_IDF_PATH")
 			local pio_query = os.getenv("PIO_QUERY")
+			local pio_test = os.getenv("PIO_TEST")
 			if esp_idf_path then
 				-- for esp-idf
 				require("lspconfig").clangd.setup({
@@ -121,6 +122,11 @@ return {
 						-- leave empty to stop nvim from cd'ing into ~/ due to global .clangd file
 					end,
 				})
+			elseif pio_test then
+				require("lspconfig").clangd.setup({
+                        on_attach = on_attach,
+    capabilities = capabilities,
+                })
 			elseif pio_query then
 				local home = os.getenv("HOME")
 				require("lspconfig").clangd.setup({
