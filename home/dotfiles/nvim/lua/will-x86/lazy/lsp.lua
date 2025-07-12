@@ -122,13 +122,18 @@ return {
 					end,
 				})
 			elseif pio_query then
+				local home = os.getenv("HOME")
 				require("lspconfig").clangd.setup({
 					-- handlers = handlers,
 					capabilities = capabilities,
 					cmd = {
 						clangd_nix,
 						"--background-index",
-						"--query-driver=~/.platformio/**/bin/*-g++,~/.platformio/**/bin/*-gcc",
+						"--query-driver="
+							.. home
+							.. "/.platformio/**/bin/*-g++,"
+							.. home
+							.. "/.platformio/**/bin/*-gcc",
 						"--log=verbose",
 					},
 					root_dir = lspconfig.util.root_pattern("platformio.ini", ".git"),
