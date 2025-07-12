@@ -128,9 +128,9 @@ return {
 					cmd = {
 						clangd_nix,
 						"--background-index",
-						"--query-driver=/**/.platformio/**/bin/*-g++,/**/.platformio/**/bin/*-gcc",
+						"--query-driver=~/.platformio/**/bin/*-g++,~/.platformio/**/bin/*-gcc",
 					},
-				root_dir = lspconfig.util.root_pattern("platformio.ini", ".git"),
+					root_dir = lspconfig.util.root_pattern("platformio.ini", ".git"),
 				})
 			else
 				-- clangd config
