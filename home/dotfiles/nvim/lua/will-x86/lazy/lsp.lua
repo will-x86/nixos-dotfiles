@@ -134,6 +134,7 @@ return {
 							.. "/.platformio/**/bin/*-g++,"
 							.. home
 							.. "/.platformio/**/bin/*-gcc",
+						"--target=xtensa-none-elf",
 						"--log=verbose",
 					},
 					root_dir = lspconfig.util.root_pattern("platformio.ini", ".git"),
