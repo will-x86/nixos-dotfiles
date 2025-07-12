@@ -115,7 +115,7 @@ return {
 				require("lspconfig").clangd.setup({
 					-- handlers = handlers,
 					capabilities = capabilities,
-					cmd = { "clangd", "--background-index", "--query-driver=/**/.platformio/**/bin/*-g++,/**/.platformio/**/bin/*-gcc" },
+					cmd = { "clangd", "--background-index", "--query-driver=~/.platformio/**/bin/*-g++" },
 					root_dir = function()
 						-- leave empty to stop nvim from cd'ing into ~/ due to global .clangd file
 					end,
