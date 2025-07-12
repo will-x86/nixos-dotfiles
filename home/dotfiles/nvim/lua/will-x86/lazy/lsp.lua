@@ -110,7 +110,7 @@ return {
 			--root_dir = util.root_pattern('.clangd', 'sdkconfig', '.git'),
 			local esp_idf_path = os.getenv("IDF_PATH")
 			local clangd_nix = os.getenv("CLANGD_IDF_PATH")
-			local pio_query= os.getenv("PIO_QUERY")
+			local pio_query = os.getenv("PIO_QUERY")
 			if esp_idf_path then
 				-- for esp-idf
 				require("lspconfig").clangd.setup({
@@ -121,16 +121,19 @@ return {
 						-- leave empty to stop nvim from cd'ing into ~/ due to global .clangd file
 					end,
 				})
-            elseif pio_query then
+			elseif pio_query then
 				require("lspconfig").clangd.setup({
 					-- handlers = handlers,
 					capabilities = capabilities,
-					cmd = { clangd_nix, "--background-index", "--query-driver=/**/.platformio/**/bin/*-g++,/**/.platformio/**/bin/*-gcc" },
+					cmd = {
+						clangd_nix,
+						"--background-index",
+						"--query-driver=/**/.platformio/**/bin/*-g++,/**/.platformio/**/bin/*-gcc",
+					},
 					root_dir = function()
-						-- leave empty to stop nvim from cd'ing into ~/ due to global .clangd file
+				root_dir = lspconfig.util.root_pattern("platformio.ini", ".git"),
 					end,
 				})
-
 			else
 				-- clangd config
 				require("lspconfig").clangd.setup({
