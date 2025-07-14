@@ -12,44 +12,9 @@
     ./user.nix
     ./packages.nix
     ./flatpack.nix
+    ./proton.nix
   ];
-  systemd.tmpfiles.rules = [ "d /mnt/protondrive 0755 root root" ];
 
-  systemd.services.proton-bisync = {
-    description = "Bidirectional sync between local directory and Proton Drive";
-    after = [
-      "network-online.target"
-      "rclone-protondrive-mount.service"
-    ];
-    wants = [ "network-online.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      User = "will";
-
-      ExecStart = ''
-        ${pkgs.rclone}/bin/rclone bisync /home/will/Documents/SyncDoc remote:/ \
-          --config=/var/lib/rclone-protondrive/rclone.conf
-      '';
-    };
-  };
-  systemd.paths.proton-bisync = {
-    description = "Watch for changes in SyncDoc directory";
-    pathConfig = {
-      PathChanged = "/home/will/Documents/SyncDoc";
-      Unit = "proton-bisync.service";
-    };
-    wantedBy = [ "multi-user.target" ];
-  };
-
-  #  systemd.timers.proton-bisync = {
-  #    description = "Timer for Proton Drive bidirectional sync";
-  #    wantedBy = [ "timers.target" ];
-  #    timerConfig = {
-  #      OnBootSec = "5min";
-  #      OnUnitActiveSec = "30min";
-  #      Unit = "proton-bisync.service";
-  #    };
-  #  };
   programs.nix-ld.enable = true;
   virtualisation.waydroid.enable = true;
   boot.loader.systemd-boot.enable = true;
