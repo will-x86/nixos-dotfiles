@@ -32,16 +32,24 @@
       '';
     };
   };
-
-  systemd.timers.proton-bisync = {
-    description = "Timer for Proton Drive bidirectional sync";
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnBootSec = "5min";
-      OnUnitActiveSec = "30min";
+  systemd.paths.proton-bisync = {
+    description = "Watch for changes in SyncDoc directory";
+    pathConfig = {
+      PathChanged = "/home/will/Documents/SyncDoc";
       Unit = "proton-bisync.service";
     };
+    wantedBy = [ "multi-user.target" ];
   };
+
+  #  systemd.timers.proton-bisync = {
+  #    description = "Timer for Proton Drive bidirectional sync";
+  #    wantedBy = [ "timers.target" ];
+  #    timerConfig = {
+  #      OnBootSec = "5min";
+  #      OnUnitActiveSec = "30min";
+  #      Unit = "proton-bisync.service";
+  #    };
+  #  };
   programs.nix-ld.enable = true;
   virtualisation.waydroid.enable = true;
   boot.loader.systemd-boot.enable = true;
