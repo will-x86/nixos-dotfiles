@@ -28,7 +28,7 @@
         ${pkgs.rclone}/bin/rclone mount \
           --config=/var/lib/rclone-protondrive/rclone.conf \
           --allow-other \
-          --vfs-cache-mode writes \
+          --vfs-cache-mode full \
           remote:/ /mnt/protondrive
       '';
 
