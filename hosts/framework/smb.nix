@@ -18,7 +18,7 @@
       Restart = "on-failure";
       RestartSec = "15s";
 
-      StateDirectory = "rclone-protondrive";
+      StateDirectory = "rclone-will";
 
       ExecStartPre = ''
         /bin/sh -c 'if [ ! -f "/var/lib/rclone-protondrive/rclone.conf" ]; then ${pkgs.coreutils}/bin/cp /etc/rclone-proton.conf /var/lib/rclone-protondrive/rclone.conf; fi'
