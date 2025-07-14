@@ -41,17 +41,12 @@
               sdkPkgs:
               with sdkPkgs;
               [
-                # Useful packages for building and testing.
                 build-tools-34-0-0
                 cmdline-tools-latest
                 emulator
                 platform-tools
                 platforms-android-34
 
-                # Other useful packages for a development environment.
-                # ndk-26-1-10909125
-                # skiaparser-3
-                # sources-android-34
               ]
               ++ lib.optionals (system == "aarch64-darwin") [
                 # system-images-android-34-google-apis-arm64-v8a

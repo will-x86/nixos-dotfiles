@@ -4,7 +4,6 @@ FRAMEWORK_DIR=~/projects/nixos-dotfiles
 UPGRADE=false
 BUILDER=false
 
-# Parse command line arguments
 while [ "$#" -gt 0 ]; do
     case "$1" in
         --upgrade) UPGRADE=true ;;
