@@ -15,28 +15,33 @@
   ];
   systemd.tmpfiles.rules = [ "d /mnt/protondrive 0755 root root" ];
 
-systemd.services.rclone-protondrive-mount = {
-  description = "Mount Proton Drive using rclone";
-  wants = [ "network-online.target" ];
-  wantedBy = [ "multi-user.target" ];
+  systemd.services.proton-bisync = {
+    description = "Bidirectional sync between local directory and Proton Drive";
+    after = [
+      "network-online.target"
+      "rclone-protondrive-mount.service"
+    ];
+    wants = [ "network-online.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      User = "will";
 
-  serviceConfig = {
-    Type = "simple";
-    User = "will";
-    Restart = "on-failure";
-    RestartSec = "10s";
-
-    ExecStart = ''
-      ${pkgs.rclone}/bin/rclone mount remote:/ /home/will/ProtonDrive \
-        --config=/var/lib/rclone-protondrive/rclone.conf \
-        --vfs-cache-mode=full \
-        --dir-cache-time=5m \
-        --poll-interval=1m
-    '';
-    ExecStop = "${pkgs.fuse}/bin/fusermount -u /home/will/ProtonDrive";
+      ExecStart = ''
+        ${pkgs.rclone}/bin/rclone bisync /home/will/Documents/SyncDoc remote:/ \
+          --config=/var/lib/rclone-protondrive/rclone.conf
+      '';
+    };
   };
-};
 
+  systemd.timers.proton-bisync = {
+    description = "Timer for Proton Drive bidirectional sync";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnBootSec = "5min";
+      OnUnitActiveSec = "30min";
+      Unit = "proton-bisync.service";
+    };
+  };
   programs.nix-ld.enable = true;
   virtualisation.waydroid.enable = true;
   boot.loader.systemd-boot.enable = true;
