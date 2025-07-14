@@ -5,6 +5,11 @@
   ...
 }:
 {
+
+## One time I needed to run a re-sync
+##I ran:
+#sudo -u MYUERNAME rclone bisync PROTON_FOLDER_LOCATION remote:/ --config=/var/lib/rclone-protondrive/rclone.conf --resync --protondrive-replace-existing-draft=true
+
   ## Create drive mount
   systemd.tmpfiles.rules = [ "d /mnt/protondrive 0755 root root" ];
   ## Add in rclone config
