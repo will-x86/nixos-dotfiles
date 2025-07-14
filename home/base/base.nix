@@ -27,7 +27,7 @@
     yamlfix
     rustfmt
     nil # nix
-    #nixfmt-rfc-style
+    nixfmt-rfc-style
     zls
     nodePackages.prettier
     typescript
