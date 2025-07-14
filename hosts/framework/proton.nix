@@ -2,6 +2,7 @@
   pkgs,
   config,
   secrets,
+  ...
 }:
 {
   ## Create drive mount
