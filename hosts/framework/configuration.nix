@@ -15,32 +15,31 @@
   ];
   systemd.tmpfiles.rules = [ "d /mnt/protondrive 0755 root root" ];
 
-  systemd.services.proton-bisync = {
-    description = "Bidirectional sync between local directory and Proton Drive";
-    after = [
-      "network-online.target"
-      "rclone-protondrive-mount.service"
-    ];
-    wants = [ "network-online.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      User = "will";
-
-      ExecStart = ''
-        ${pkgs.rclone}/bin/rclone bisync /home/will/Documents/SyncDoc remote:/ \
-          --config=/var/lib/rclone-protondrive/rclone.conf
-      '';
-    };
+systemd.services.proton-bisync = {
+  description = "Bidirectional sync between local directory and Proton Drive";
+  after = [
+    "network-online.target"
+    "rclone-protondrive-mount.service"
+  ];
+  wants = [ "network-online.target" ];
+  serviceConfig = {
+    Type = "oneshot";
+    User = "will";
+    ExecStart = ''
+      ${pkgs.bash}/bin/bash -c '
+        if ! ${pkgs.rclone}/bin/rclone bisync /home/will/Documents/SyncDoc remote:/ \
+          --config=/var/lib/rclone-protondrive/rclone.conf --dry-run > /dev/null 2>&1; then
+          echo "Running initial resync..."
+          ${pkgs.rclone}/bin/rclone bisync /home/will/Documents/SyncDoc remote:/ \
+            --config=/var/lib/rclone-protondrive/rclone.conf --resync
+        else
+          ${pkgs.rclone}/bin/rclone bisync /home/will/Documents/SyncDoc remote:/ \
+            --config=/var/lib/rclone-protondrive/rclone.conf
+        fi
+      '
+    '';
   };
-  systemd.paths.proton-bisync = {
-    description = "Watch for changes in SyncDoc directory";
-    pathConfig = {
-      PathChanged = "/home/will/Documents/SyncDoc";
-      Unit = "proton-bisync.service";
-    };
-    wantedBy = [ "multi-user.target" ];
-  };
-
+};
   #  systemd.timers.proton-bisync = {
   #    description = "Timer for Proton Drive bidirectional sync";
   #    wantedBy = [ "timers.target" ];
