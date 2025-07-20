@@ -61,7 +61,7 @@
     deno
     killall
     ffmpeg-full
-    #clang-tools
+    clang-tools
     hfsprogs
     tailscale
     git-crypt
