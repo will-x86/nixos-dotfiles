@@ -124,7 +124,7 @@ in
     #gettext
     #cabextract
     #ctpv
-    samba4Full
+    #samba4Full
     devenv
     #glxinfo
     #spacenavd
@@ -155,7 +155,6 @@ in
     #swaylock
     dbeaver-bin
     discord
-    postman
     arduino
     #llvmPackages_latest.lldb
     #lldb
