@@ -45,7 +45,6 @@ in
     };
   };
 
-
   home.file = {
     ".config/rofi" = {
       source = ../dotfiles/rofi;
@@ -96,47 +95,24 @@ in
       frpc -c "$CONFIG_FILE"
 
     '')
-    #google-cloud-sdk
-    #custom-bambu-studio
-    #bambu-studio
-    #ventoy-full
-    #lf
     pywal
     wlogout
     bluetui
-    #pkgs-stable.google-chrome
-    #wineWowPackages.waylandFull
-    #jellyfin-media-player
-    #pkgs-stable.beekeeper-studio
-    # winetricks
-    mokutil
-    #finamp
-    #lsb-release
-    #jellyfin-web
+    #mokutil
     proton-pass
     obs-studio
-    # trezor-suite
-    # trezor-agent
     pywalfox-native
-    slurp # color picker
+    slurp
     eslint
     mediawriter
-    #gettext
-    #cabextract
-    #ctpv
-    #samba4Full
     devenv
-    #glxinfo
-    #spacenavd
     bc
     gawk
     coreutils
     polkit
-    #bruno
     xdg-utils
     tailwindcss-language-server
     vscode-langservers-extracted
-    zoom-us
     jdk17
     signal-desktop
     maven
@@ -145,19 +121,15 @@ in
     gtk3
     gtk4
     webkitgtk_6_0
-    #inputs.zen-browser.packages.${system}.default
     libreoffice
     syncthingtray
     iwd
     polkit
     python312Packages.dbus-python
     mcomix
-    #swaylock
     dbeaver-bin
     discord
     arduino
-    #llvmPackages_latest.lldb
-    #lldb
     avrdude
     ccls
     vscode
@@ -165,38 +137,27 @@ in
     qmk
     grim
     kicad
-    jdt-language-server
     libnotify
     kdePackages.dolphin
-    #davinci-resolve
     brightnessctl
     greetd.tuigreet
     obsidian
     gocr
-    #nfs-utils
-    python311Packages.pip
-    #upx
     pavucontrol
     cliphist
     wl-clipboard
-    udiskie
-    #ryujinx
-    anydesk
-    #qutebrowser
-    waybar
-    #viewnior
-    hyprshot
+    udiskie # auto-mount drives
+    waybar # bar
+    hyprshot # screenshots
     mako
     foot
     swww
     mpv
-    mpc-cli
-    mpd
-    #slurp
-    imagemagick
+    #mpc-cli
+    imagemagick # convert XXX
     feh
     playerctl
-    google-chrome
+    #google-chrome
     nixos-shell # vm's
     nixos-generators
     (pkgs.callPackage (

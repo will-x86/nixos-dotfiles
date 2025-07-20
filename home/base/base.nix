@@ -16,12 +16,14 @@
   home.packages = with pkgs; [
     ### Neovim
     lua-language-server
+    jdt-language-server
     stylua
     tailwindcss-language-server
     svelte-language-server
     lua-language-server
     alejandra
     typescript-language-server
+    gopls
     gotools
     yaml-language-server
     yamlfix
@@ -39,26 +41,13 @@
     arduino-cli
     ### End neovim
     nodejs
-    #alacritty
     unzip
-    #immich-go
-    #go-blueprint
-    #flutter
     lsof
-    #virt-viewer
     moonlight-qt
     ntfsprogs
-    #awscli2
-    #cloudflared
     dig
-    #libcgroup
-    #wget
-    #p7zip
     curl
-    #gh
-    #nnn
     exfat
-    deno
     killall
     ffmpeg-full
     clang-tools
@@ -68,17 +57,13 @@
     samba
     unrar-wrapper
     yarn
-    cargo
     gnumake
     zip
-    #sshpass
     jq
     go
     fastfetch
     python3
-    gopls
     btop
-    #gcc
     tree
     rust-analyzer
     tmux

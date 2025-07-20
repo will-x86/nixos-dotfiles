@@ -36,7 +36,6 @@
     xserver.videoDrivers = [ "amdgpu" ];
     flatpak.enable = true;
     mullvad-vpn.enable = true;
-    #trezord.enable = true;
     syncthing = {
       enable = true;
       user = "will";
@@ -51,10 +50,7 @@
       pkgs.platformio-core
       pkgs.platformio-core.udev
       pkgs.openocd
-      pkgs.android-udev-rules
-      pkgs.via
       pkgs.qmk-udev-rules
-      pkgs.vial
     ];
     blueman.enable = true;
     desktopManager.plasma6.enable = true;
@@ -81,20 +77,12 @@
   networking.hostName = "framework";
   hardware.spacenavd.enable = true;
   boot.initrd.kernelModules = [ "amdgpu" ];
-  programs.steam = {
-    enable = true;
-    localNetworkGameTransfers.openFirewall = true;
-  };
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
   };
   programs.hyprlock.enable = true;
   programs.adb.enable = true;
-  programs.streamdeck-ui = {
-    enable = true;
-    autoStart = true;
-  };
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
