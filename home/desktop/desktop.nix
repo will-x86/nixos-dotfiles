@@ -157,7 +157,7 @@ in
     imagemagick # convert XXX
     feh
     playerctl
-    #google-chrome
+    google-chrome
     nixos-shell # vm's
     nixos-generators
     (pkgs.callPackage (
