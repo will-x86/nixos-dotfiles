@@ -19,6 +19,7 @@
     jdt-language-server
     stylua
     tailwindcss-language-server
+    rubyPackages_3_1.ruby-lsp
     svelte-language-server
     lua-language-server
     alejandra

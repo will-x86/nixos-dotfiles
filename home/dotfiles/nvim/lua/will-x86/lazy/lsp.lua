@@ -124,9 +124,9 @@ return {
 				})
 			elseif pio_test then
 				require("lspconfig").clangd.setup({
-                        on_attach = on_attach,
-    capabilities = capabilities,
-                })
+					on_attach = on_attach,
+					capabilities = capabilities,
+				})
 			elseif pio_query then
 				local home = os.getenv("HOME")
 				require("lspconfig").clangd.setup({
@@ -254,10 +254,19 @@ return {
 				},
 			})
 
+			lspconfig.ruby_lsp.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
 			lspconfig.eslint.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
-				root_dir = lspconfig.util.root_pattern("eslint.config.mjs",".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json"),
+				root_dir = lspconfig.util.root_pattern(
+					"eslint.config.mjs",
+					".eslintrc.js",
+					".eslintrc.cjs",
+					".eslintrc.json"
+				),
 			})
 
 			lspconfig.html.setup({ capabilities = capabilities, on_attach = on_attach })
