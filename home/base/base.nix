@@ -43,6 +43,7 @@
     nodejs
     unzip
     lsof
+    libpq
     moonlight-qt
     ntfsprogs
     dig
