@@ -257,7 +257,7 @@ return {
 			lspconfig.eslint.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
-				root_dir = lspconfig.util.root_pattern(".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json"),
+				root_dir = lspconfig.util.root_pattern("eslint.config.mjs",".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json"),
 			})
 
 			lspconfig.html.setup({ capabilities = capabilities, on_attach = on_attach })
