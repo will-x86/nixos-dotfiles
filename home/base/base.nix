@@ -44,6 +44,7 @@
     unzip
     lsof
     libpq
+    postgresql
     moonlight-qt
     ntfsprogs
     dig
