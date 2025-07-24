@@ -69,6 +69,7 @@
     btop
     tree
     rust-analyzer
+    dnsmasq
     tmux
     fzf
     ripgrep
