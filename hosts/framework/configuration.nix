@@ -45,6 +45,28 @@
         user = "will";
         password = "${secrets.syncthing.pass}";
       };
+      devices = {
+        "frac" = {
+          id = "${secrets.syncthing.frac}";
+          name = "frac";
+          addresses = [ "dynamic" ];
+        };
+      };
+      folders = {
+        "BooxNotes" = {
+
+          id = "92jht-xiuqh";
+          path = "/home/will/Documents/BooxNotes";
+        };
+        "BooxBooks" = {
+          id = "x2w61-muute";
+          path = "/home/will/Documents/BooxBooks";
+        };
+        "SyncDoc" = {
+          id = "xq7l5-sdtka";
+          path = "/home/will/Documents/SyncDoc";
+        };
+      };
     };
     udev.packages = [
       pkgs.platformio-core

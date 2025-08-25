@@ -259,8 +259,6 @@
 
       #-- Startup ----------------------------------------------------
       exec-once=~/.config/hypr/scripts/startup
-      exec-once = wl-paste --type text --watch cliphist store
-      exec-once = wl-paste --type image --watch cliphist store
       exec-once = udiskie
 
         ## LAyer rules

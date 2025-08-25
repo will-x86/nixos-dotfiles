@@ -19,7 +19,6 @@
     jdt-language-server
     stylua
     tailwindcss-language-server
-#    rubyPackages_3_1.ruby-lsp
     svelte-language-server
     lua-language-server
     alejandra
@@ -37,7 +36,6 @@
     eslint_d
     vue-language-server
     vscode-langservers-extracted
-    arduino-language-server
     zig
     arduino-cli
     ### End neovim
@@ -53,7 +51,6 @@
     exfat
     killall
     ffmpeg-full
-    clang-tools
     hfsprogs
     tailscale
     git-crypt
@@ -69,7 +66,7 @@
     btop
     tree
     rust-analyzer
-    dnsmasq
+    dnsmasq # Used for pretending to be a router lol
     tmux
     fzf
     ripgrep
