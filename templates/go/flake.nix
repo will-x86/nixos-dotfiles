@@ -1,6 +1,5 @@
 {
   description = "Basic go flake";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
   };

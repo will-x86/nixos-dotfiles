@@ -16,8 +16,6 @@
   nix.gc.options = "--delete-older-than 10d";
   nix.settings.auto-optimise-store = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  #networking.nameservers = ["1.1.1.1" "1.0.0.1"];
-# Managed my tailscale^^^
   networking.networkmanager = {
     enable = true;
     wifi.backend = "wpa_supplicant";
@@ -112,8 +110,6 @@
       "containerd"
       "kvm"
       "adbusers"
-    ];
-    packages = with pkgs; [
     ];
   };
 

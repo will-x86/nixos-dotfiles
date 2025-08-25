@@ -29,7 +29,6 @@
   ];
   services = {
     fwupd.enable = true;
-    #jellyfin.enable = true;
     power-profiles-daemon.enable = true;
     tailscale.enable = true;
     xserver.enable = true;
@@ -73,8 +72,6 @@
       };
     };
     udev.packages = [
-      pkgs.platformio-core
-      pkgs.platformio-core.udev
       pkgs.openocd
       pkgs.qmk-udev-rules
     ];

@@ -14,17 +14,6 @@ let
     config.allowUnfree = true;
   };
 
-  /*
-    custom-bambu-studio = pkgs.bambu-studio.overrideAttrs (oldAttrs: {
-      version = "01.00.01.50";
-      src = pkgs.fetchFromGitHub {
-        owner = "bambulab";
-        repo = "BambuStudio";
-        rev = "v01.00.01.50";
-        hash = "sha256-7mkrPl2CQSfc1lRjl1ilwxdYcK5iRU//QGKmdCicK30=";
-      };
-    });
-  */
 in
 {
   imports = [
@@ -98,7 +87,6 @@ in
     pywal
     wlogout
     bluetui
-    #mokutil
     proton-pass
     obs-studio
     pywalfox-native
@@ -111,12 +99,9 @@ in
     coreutils
     polkit
     xdg-utils
-    tailwindcss-language-server
-    vscode-langservers-extracted
     jdk17
     signal-desktop
     maven
-    platformio
     orca-slicer
     gtk3
     gtk4
@@ -126,11 +111,8 @@ in
     iwd
     polkit
     python312Packages.dbus-python
-    mcomix
     dbeaver-bin
     discord
-    arduino
-    avrdude
     ccls
     vscode
     vulkan-tools
@@ -140,21 +122,16 @@ in
     libnotify
     kdePackages.dolphin
     brightnessctl
-    greetd.tuigreet
     obsidian
     gocr
     pavucontrol
-    cliphist
     wl-clipboard
     udiskie # auto-mount drives
     waybar # bar
     hyprshot # screenshots
     mako
-    foot
     swww
     mpv
-    #mpc-cli
-    imagemagick # convert XXX
     feh
     playerctl
     google-chrome
