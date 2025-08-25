@@ -59,7 +59,7 @@
       }
 
       animations {
-          enabled = yes
+          enabled = no # Below is useless now, but I figured I'd keep regardless
 
           bezier = wind, 0.05, 0.9, 0.1, 1.05
           bezier = winIn, 0.1, 1.1, 0.1, 1.1
@@ -74,10 +74,8 @@
           animation = fade, 1, 10, default
           animation = workspaces, 1, 5, wind
       }
-      # Laptop shit idk
+      # Laptop shit, see startup script if removing this
       exec-once = cat /proc/acpi/button/lid/LID0/state | grep closed && sleep 3 && hyprctl keyword monitor "eDP-1, disable" && notify-send "Laptop lid closed, disabling monitor"
-      exec-once = kdeconnect-indicator
-      exec-once = kdeconnectd
       bindl = , switch:Lid Switch, exec, hyprctl keyword monitor "eDP-1, disable"
       bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1, preferred,auto,1"
       input {
@@ -178,18 +176,13 @@
       bind = SUPER, e, exec, $kitty -e lf
 
       bind = SUPER,       Return, exec, $kitty -T
-      bind = SUPER_SHIFT, w, exec,  $kitty -W
-      bind = SUPER_SHIFT, Return, exec, $kitty -f
-      bind = SUPER,       T,      exec, $kitty
-      bind = SUPER_SHIFT, F, exec, XDG_CURRENT_DESKTOP=kde dolphin
+      bind = SUPER,       T,      exec, $kitty -W 
       bindr = SUPER, SUPER_L, exec, $rofi_launcher
 
 
 
-      bind = SUPER_SHIFT, V, exec, ~/.config/rofi/assets/clipManager.sh
-      #bind  = SUPER, O,exec, firefox -P "j" --new-instance
       bind = SUPER, O, exec, firefox --new-tab "${secrets.owu}"
-      bind = SUPER, S, exec, firefox --new-tab "${secrets.sng}"
+      bind = SUPER, B, exec, firefox --new-tab "${secrets.ha}"
       bind  = SUPER, X,       exec, $wlogout
       bind  = SUPER, A,       exec, hyprshot -m region
 
@@ -248,6 +241,7 @@
 
       exec-once=[workspace 1 silent] $kitty -T
       exec-once=[workspace 2 silent] firefox
+      exec-once=[workspace 8 silent] 1password
 
       # Send to Workspaces
       bind = SUPER_SHIFT, 1, movetoworkspace, 1

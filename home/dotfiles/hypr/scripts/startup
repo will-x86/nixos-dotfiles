@@ -10,7 +10,9 @@ for _prs in "${_ps[@]}"; do
 done
 
 
-
+if grep -q "closed" /proc/acpi/button/lid/LID0/state; then
+  hyprctl keyword monitor "eDP-1, disable"
+fi
 
 ~/.config/hypr/scripts/notifications &
 swww-daemon & 
