@@ -76,7 +76,10 @@
   programs = {
     home-manager.enable = true;
     git.enable = true;
-    zsh.enable = true;
+    zsh = {
+      enable = true;
+      initExtra = builtins.readFile ../dotfiles/.zshrc;
+    };
     firefox.enable = true;
     direnv.enable = true;
     zoxide = {
@@ -95,7 +98,7 @@
     ".config/starship.toml".source = ../dotfiles/starship.toml;
     ".tmux-sessioniser".source = ../dotfiles/.tmux-sessioniser;
     "tmux-sessioniser".source = ../dotfiles/tmux-sessioniser;
-    ".zshrc".source = ../dotfiles/.zshrc;
+    #".zshrc".source = ../dotfiles/.zshrc;
     ".config/kitty" = {
       source = ../dotfiles/kitty;
       recursive = true;
