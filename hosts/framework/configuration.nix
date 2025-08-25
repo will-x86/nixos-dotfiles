@@ -44,6 +44,7 @@
         user = "will";
         password = "${secrets.syncthing.pass}";
       };
+      settings = {
       devices = {
         "frac" = {
           id = "${secrets.syncthing.frac}";
@@ -51,7 +52,6 @@
           addresses = [ "dynamic" ];
         };
       };
-      settings = {
         folders = {
           "BooxNotes" = {
             id = "92jht-xiuqh";
