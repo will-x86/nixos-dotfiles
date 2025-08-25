@@ -112,7 +112,7 @@ return {
 			local clangd_nix = os.getenv("CLANGD_IDF_PATH")
 			local pio_query = os.getenv("PIO_QUERY")
 			local pio_test = os.getenv("PIO_TEST")
-			local CUSTOM_CLANGD= os.getenv("CUSTOM_CLANGD")
+			local CUSTOM_CLANGD = os.getenv("CUSTOM_CLANGD")
 			if esp_idf_path then
 				-- for esp-idf
 				require("lspconfig").clangd.setup({
@@ -145,9 +145,9 @@ return {
 					},
 					root_dir = lspconfig.util.root_pattern("platformio.ini", ".git"),
 				})
-            elseif CUSTOM_CLANGD then
+			elseif CUSTOM_CLANGD then
 				require("lspconfig").clangd.setup({
-					cmd = { 'clangd', "--query-driver="+CUSTOM_CLANGD},
+					cmd = { "clangd", "--query-driver=" .. CUSTOM_CLANGD },
 					handlers = {
 						["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 							disable = { "cpp copyright" },
