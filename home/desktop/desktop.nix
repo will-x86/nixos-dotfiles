@@ -160,6 +160,7 @@ in
     google-chrome
     nixos-shell # vm's
     nixos-generators
+    stm32cubemx
     (pkgs.callPackage (
       { stdenv }:
 
