@@ -78,7 +78,7 @@
     git.enable = true;
     zsh = {
       enable = true;
-      initExtra = builtins.readFile ../dotfiles/.zshrc;
+      initContent= builtins.readFile ../dotfiles/.zshrc;
     };
     firefox.enable = true;
     direnv.enable = true;
