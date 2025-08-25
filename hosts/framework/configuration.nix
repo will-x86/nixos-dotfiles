@@ -52,19 +52,23 @@
           addresses = [ "dynamic" ];
         };
       };
-      folders = {
-        "BooxNotes" = {
-
-          id = "92jht-xiuqh";
-          path = "/home/will/Documents/BooxNotes";
-        };
-        "BooxBooks" = {
-          id = "x2w61-muute";
-          path = "/home/will/Documents/BooxBooks";
-        };
-        "SyncDoc" = {
-          id = "xq7l5-sdtka";
-          path = "/home/will/Documents/SyncDoc";
+      settings = {
+        folders = {
+          "BooxNotes" = {
+            id = "92jht-xiuqh";
+            path = "/home/will/Documents/BooxNotes";
+            devices = [ "frac" ];
+          };
+          "BooxBooks" = {
+            id = "x2w61-muute";
+            path = "/home/will/Documents/BooxBooks";
+            devices = [ "frac" ];
+          };
+          "SyncDoc" = {
+            id = "xq7l5-sdtka";
+            path = "/home/will/Documents/SyncDoc";
+            devices = [ "frac" ];
+          };
         };
       };
     };
