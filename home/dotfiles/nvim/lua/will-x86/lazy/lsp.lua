@@ -101,70 +101,15 @@ return {
 				end, opts)
 			end
 
-			-- ESP32 clangd setup
-			--local esp32 = require("esp32")
-			--local clangd_config = esp32.lsp_config()
-			--clangd_config.capabilities = capabilities
-			--clangd_config.on_attach = on_attach
-			--lspconfig.clangd.setup(clangd_config)
-			--root_dir = util.root_pattern('.clangd', 'sdkconfig', '.git'),
-			local esp_idf_path = os.getenv("IDF_PATH")
-			local clangd_nix = os.getenv("CLANGD_IDF_PATH")
-			local pio_query = os.getenv("PIO_QUERY")
-			local pio_test = os.getenv("PIO_TEST")
-			local CUSTOM_CLANGD = os.getenv("CUSTOM_CLANGD")
-			if esp_idf_path then
-				-- for esp-idf
-				require("lspconfig").clangd.setup({
-					-- handlers = handlers,
-					capabilities = capabilities,
-					cmd = { clangd_nix, "--background-index", "--query-driver=**" },
-					root_dir = function()
-						-- leave empty to stop nvim from cd'ing into ~/ due to global .clangd file
-					end,
-				})
-			elseif pio_test then
-				require("lspconfig").clangd.setup({
-					on_attach = on_attach,
-					capabilities = capabilities,
-				})
-			elseif pio_query then
-				local home = os.getenv("HOME")
-				require("lspconfig").clangd.setup({
-					-- handlers = handlers,
-					capabilities = capabilities,
-					cmd = {
-						clangd_nix,
-						"--background-index",
-						"--query-driver="
-							.. home
-							.. "/.platformio/**/bin/*-g++,"
-							.. home
-							.. "/.platformio/**/bin/*-gcc",
-						"--log=verbose",
+			lspconfig.ccls.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+				init_options = {
+					cache = {
+						directory = ".ccls-cache",
 					},
-					root_dir = lspconfig.util.root_pattern("platformio.ini", ".git"),
-				})
-			elseif CUSTOM_CLANGD then
-				require("lspconfig").clangd.setup({
-					cmd = { "clangd", "--query-driver=" .. CUSTOM_CLANGD },
-					handlers = {
-						["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-							disable = { "cpp copyright" },
-						}),
-					},
-				})
-			else
-				-- clangd config
-				require("lspconfig").clangd.setup({
-					-- cmd = { 'clangd', "--background-index", "--clang-tidy"},
-					handlers = {
-						["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-							disable = { "cpp copyright" },
-						}),
-					},
-				})
-			end
+				},
+			})
 			-- Other LSP servers
 			lspconfig.kotlin_language_server.setup({
 				capabilities = capabilities,
