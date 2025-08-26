@@ -103,10 +103,6 @@
     enable = true;
     xwayland.enable = true;
   };
-  # Kicad
-  environment.variables = {
-    GTK_THEME = "Adwaita:dark";
-  };
   programs.hyprlock.enable = true;
   programs.adb.enable = true;
   hardware.graphics = {

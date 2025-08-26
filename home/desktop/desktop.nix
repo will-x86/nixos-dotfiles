@@ -161,5 +161,7 @@ in
 
   home.sessionVariables = {
     ANTHROPIC_API_KEY = "${secrets.anthropic.api_key}";
+    GTK_THEME = "Adwaita:dark";
+
   };
 }
