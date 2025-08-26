@@ -138,6 +138,7 @@ in
     nixos-shell # vm's
     nixos-generators
     stm32cubemx
+    tidal-hifi
     (pkgs.callPackage (
       { stdenv }:
 

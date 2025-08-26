@@ -176,7 +176,7 @@
       bind = SUPER, e, exec, $kitty -e lf
 
       bind = SUPER,       Return, exec, $kitty -T
-      bind = SUPER,       T,      exec, $kitty -W 
+      bind = SUPER,       T,      exec, $kitty
       bindr = SUPER, SUPER_L, exec, $rofi_launcher
 
 
