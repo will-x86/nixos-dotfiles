@@ -105,7 +105,7 @@
   };
   # Kicad
   environment.variables = {
-    GTK_THEME= "Adwaita:dark";
+    GTK_THEME = "Adwaita:dark";
   };
   programs.hyprlock.enable = true;
   programs.adb.enable = true;
