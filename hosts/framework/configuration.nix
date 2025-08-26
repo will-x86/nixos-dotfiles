@@ -45,13 +45,13 @@
         password = "${secrets.syncthing.pass}";
       };
       settings = {
-      devices = {
-        "frac" = {
-          id = "${secrets.syncthing.frac}";
-          name = "frac";
-          addresses = [ "dynamic" ];
+        devices = {
+          "frac" = {
+            id = "${secrets.syncthing.frac}";
+            name = "frac";
+            addresses = [ "dynamic" ];
+          };
         };
-      };
         folders = {
           "BooxNotes" = {
             id = "92jht-xiuqh";
@@ -102,6 +102,10 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+  };
+  # Kicad
+  environment.variables = {
+    GTK_THEME= "Adwaita:dark";
   };
   programs.hyprlock.enable = true;
   programs.adb.enable = true;
