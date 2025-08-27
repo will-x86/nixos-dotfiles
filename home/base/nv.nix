@@ -7,7 +7,7 @@
 {
   programs.nixvim = {
     enable = true;
-
+    package = pkgs.neovim-unwrapped;
     opts = {
       number = true;
       relativenumber = true;

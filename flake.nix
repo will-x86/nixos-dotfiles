@@ -49,7 +49,7 @@
         home-manager.extraSpecialArgs = commonSpecialArgs;
         home-manager.users.will = import homeConfig;
         home-manager.sharedModules = [
-          inputs.nixvim.homeManagerModules.nixvim
+          inputs.nixvim.homeModules.nixvim
         ];
       };
 
