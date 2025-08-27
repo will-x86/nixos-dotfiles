@@ -212,6 +212,7 @@ return {
 			lspconfig.ruby_lsp.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
+				cmd = { "./bin/ruby-lsp" },
 			})
 			lspconfig.eslint.setup({
 				capabilities = capabilities,
