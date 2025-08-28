@@ -44,6 +44,11 @@
 
   plugins.none-ls = {
     enable = true;
+    settings={
+
+    
+    settings = {
+      debounce = 150;
     sources = {
       diagnostics = {
         eslint_d.enable = true;
@@ -52,10 +57,6 @@
       code_actions = {
         eslint_d.enable = true;
       };
-    };
-    
-    settings = {
-      debounce = 150;
       
       diagnostics_format = "[#{c}] #{m} (#{s})";
       
