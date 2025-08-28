@@ -8,7 +8,7 @@
     isort
     gopls
     rustfmt
-    nodePackages.typescript-language-server
+    typescript-language-server
   ];
 
   plugins.conform-nvim = {
