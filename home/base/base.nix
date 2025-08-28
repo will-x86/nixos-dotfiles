@@ -105,9 +105,11 @@
       recursive = true;
     };
     # You will be missed
-    /*".config/nvim" = {
-      source = ../dotfiles/nvim;
-      recursive = true;
-    };*/
+    /*
+      ".config/nvim" = {
+        source = ../dotfiles/nvim;
+        recursive = true;
+      };
+    */
   };
 }
