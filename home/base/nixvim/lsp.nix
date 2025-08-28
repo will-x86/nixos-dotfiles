@@ -27,14 +27,6 @@
         eslint.enable = true;
       };
     };
-    typescript-tools = {
-      enable = true;
-      settings = {
-        tsserver_plugins = [
-          "@vue/typescript-plugin"
-        ];
-      };
-    };
   };
   extraPlugins = with pkgs.vimPlugins; [
     nvim-lspconfig
@@ -319,12 +311,6 @@
       -- Zig LSP
       require("lspconfig").zls.setup({
       	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
-      -- TS LSP
-      require("typescript-tools").setup({
-        on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
       })
