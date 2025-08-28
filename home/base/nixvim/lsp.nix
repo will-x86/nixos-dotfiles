@@ -38,7 +38,6 @@
   };
   extraPlugins = with pkgs.vimPlugins; [
     nvim-lspconfig
-    nodePackages."@vue/typescript-plugin"
   ];
   extraConfigLua =
     # lua
