@@ -16,7 +16,7 @@
   #programs.neovim.enable = true;
   home.packages = with pkgs; [
     ### Neovim
-    lua-language-server
+    /*lua-language-server
     jdt-language-server
     stylua
     tailwindcss-language-server
@@ -39,6 +39,7 @@
     vscode-langservers-extracted
     zig
     arduino-cli
+    */
     ### End neovim
     nodejs
     unzip
