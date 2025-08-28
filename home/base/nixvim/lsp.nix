@@ -24,6 +24,7 @@
       zls.enable = true;
     };
   };
+  plugins.confirm-nvim.enable = true;
   extraPlugins = with pkgs.vimPlugins; [
     nvim-lspconfig
     typescript-tools-nvim
