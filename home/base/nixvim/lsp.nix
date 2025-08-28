@@ -3,29 +3,29 @@
   plugins = {
     lsp = {
       enable = true;
-    servers = {
-      bashls.enable = true;
-      #clangd.enable = true;
-      ccls.enable = true;
-      cmake.enable = true;
-      cssls.enable = true;
-      gopls.enable = true;
-      html.enable = true;
-      jsonls.enable = true;
-      lua_ls.enable = true;
-      nixd.enable = true;
-      ruff.enable = true;
-      ruby_lsp.enable = true;
-      rust_analyzer = {
-        enable = true;
-        installCargo = true;
-        installRustc = true;
+      servers = {
+        bashls.enable = true;
+        #clangd.enable = true;
+        ccls.enable = true;
+        cmake.enable = true;
+        cssls.enable = true;
+        gopls.enable = true;
+        html.enable = true;
+        jsonls.enable = true;
+        lua_ls.enable = true;
+        nixd.enable = true;
+        ruff.enable = true;
+        ruby_lsp.enable = true;
+        rust_analyzer = {
+          enable = true;
+          installCargo = true;
+          installRustc = true;
+        };
+        # ts_ls.enable = true; # Disabled in favor of typescript-tools
+        yamlls.enable = true;
+        zls.enable = true;
+        eslint.enable = true;
       };
-      # ts_ls.enable = true; # Disabled in favor of typescript-tools
-      yamlls.enable = true;
-      zls.enable = true;
-      eslint.enable = true;
-    };
     };
     typescript-tools = {
       enable = true;
@@ -38,6 +38,7 @@
   };
   extraPlugins = with pkgs.vimPlugins; [
     nvim-lspconfig
+    nodePackages."@vue/typescript-plugin"
   ];
   extraConfigLua =
     # lua

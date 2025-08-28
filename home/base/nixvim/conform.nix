@@ -14,17 +14,17 @@
     enable = true;
     settings = {
       notify_on_error = false;
-      
+
       format_on_save = {
         timeout_ms = 500;
         lsp_fallback = true;
       };
-      
+
       format_on_save_disabled_filetypes = [
         "c"
         "cpp"
       ];
-      
+
       formatters_by_ft = {
         lua = [ "stylua" ];
         nix = [ "nixfmt" ];
@@ -36,9 +36,13 @@
         css = [ "prettier" ];
         json = [ "prettier" ];
         yaml = [ "prettier" ];
-        python = [ "isort" "black" ];
+        python = [
+          "isort"
+          "black"
+        ];
         go = [ "gofmt" ];
         rust = [ "rustfmt" ];
+        ruby = [ "ruby" ];
       };
     };
   };
