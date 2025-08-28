@@ -19,7 +19,7 @@
         installCargo = true;
         installRustc = true;
       };
-      ts_ls.enable = true;
+      #ts_ls.enable = true;
       yamlls.enable = true;
       zls.enable = true;
     };
@@ -292,11 +292,11 @@
       })
 
       -- Typescript/Javascript LSP
-      require("lspconfig").ts_ls.setup({
+      --[[require("lspconfig").ts_ls.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
-      })
+      })]]--
 
       require("typescript-tools").setup {
       	on_attach = function()
