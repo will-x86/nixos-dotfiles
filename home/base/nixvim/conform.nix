@@ -8,6 +8,7 @@
     isort
     gopls
     rustfmt
+    tsserver
   ];
 
   plugins.conform-nvim = {
