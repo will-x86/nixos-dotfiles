@@ -22,6 +22,7 @@
       #ts_ls.enable = true;
       yamlls.enable = true;
       zls.enable = true;
+      eslint.enable = true;
     };
   };
   extraPlugins = with pkgs.vimPlugins; [
@@ -206,6 +207,13 @@
 
       -- CSS LSP
       require("lspconfig").cssls.setup({
+      	on_attach = function()
+      		set_cmn_lsp_keybinds()
+      	end,
+      })
+
+      -- eslitn LSP
+      require("lspconfig").eslint.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
