@@ -21,7 +21,6 @@
           installCargo = true;
           installRustc = true;
         };
-        # ts_ls.enable = true; # Disabled in favor of typescript-tools
         yamlls.enable = true;
         zls.enable = true;
         eslint.enable = true;
