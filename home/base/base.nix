@@ -41,6 +41,7 @@
     arduino-cli
     */
     ### End neovim
+    nixd
     nodejs
     unzip
     lsof
