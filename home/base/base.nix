@@ -7,13 +7,13 @@
   imports = [
     ./git.nix
     ./ssh.nix
-    ./nv.nix
+    ./nixvim
     ./tui/tmux.nix
   ];
   home.username = "will";
   home.homeDirectory = "/home/will";
   home.stateVersion = "24.11";
-  programs.neovim.enable = true;
+  #programs.neovim.enable = true;
   home.packages = with pkgs; [
     ### Neovim
     lua-language-server
@@ -79,7 +79,7 @@
     git.enable = true;
     zsh = {
       enable = true;
-      initContent= builtins.readFile ../dotfiles/.zshrc;
+      initContent = builtins.readFile ../dotfiles/.zshrc;
     };
     firefox.enable = true;
     direnv.enable = true;
@@ -104,9 +104,10 @@
       source = ../dotfiles/kitty;
       recursive = true;
     };
-    ".config/nvim" = {
+    # You will be missed
+    /*".config/nvim" = {
       source = ../dotfiles/nvim;
       recursive = true;
-    };
+    };*/
   };
 }
