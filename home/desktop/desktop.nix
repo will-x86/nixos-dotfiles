@@ -139,6 +139,7 @@ in
     nixos-generators
     stm32cubemx
     tidal-hifi
+    freecad
     (pkgs.callPackage (
       { stdenv }:
 
