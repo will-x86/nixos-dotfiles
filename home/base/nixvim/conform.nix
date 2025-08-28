@@ -46,9 +46,11 @@
     enable = true;
     settings={
 
-    
-    settings = {
       debounce = 150;
+      
+      diagnostics_format = "[#{c}] #{m} (#{s})";
+      
+      update_in_insert = false;
     sources = {
       diagnostics = {
         eslint_d.enable = true;
@@ -57,11 +59,9 @@
       code_actions = {
         eslint_d.enable = true;
       };
-      
-      diagnostics_format = "[#{c}] #{m} (#{s})";
-      
-      update_in_insert = false;
     };
+    };
+    
   };
 
   keymaps = [
