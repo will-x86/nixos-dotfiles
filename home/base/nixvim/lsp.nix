@@ -14,6 +14,7 @@
       lua_ls.enable = true;
       nixd.enable = true;
       ruff.enable = true;
+      ruby_lsp.enable = true;
       rust_analyzer = {
         enable = true;
         installCargo = true;
@@ -301,6 +302,12 @@
       })
 
 
+      -- ruby LSP
+      require("lspconfig").ruby_lsp.setup({
+      	on_attach = function()
+      		set_cmn_lsp_keybinds()
+      	end,
+      })
       -- YAML LSP
       require("lspconfig").yamlls.setup({
       	on_attach = function()
