@@ -18,7 +18,7 @@
 
     globals.mapleader = " ";
     colorschemes.nord.enable = true;
-    
+
     diagnostic.settings = {
       virtual_text = true;
       signs = true;
