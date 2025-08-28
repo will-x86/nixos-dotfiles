@@ -13,13 +13,13 @@
       lua_ls.enable = true;
       nixd.enable = true;
       prismals.enable = true;
-      ruff_lsp.enable = true;
+      ruff.enable = true;
       rust_analyzer = {
         enable = true;
         installCargo = true;
         installRustc = true;
       };
-      tsserver.enable = true;
+      ts_ls.enable = true;
       yamlls.enable = true;
       zls.enable = true;
     };
@@ -268,7 +268,7 @@
       })
 
       -- Python LSP
-      require("lspconfig").ruff_lsp.setup({
+      require("lspconfig").ruff.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
@@ -292,7 +292,7 @@
       })
 
       -- Typescript/Javascript LSP
-      require("lspconfig").tsserver.setup({
+      require("lspconfig").ts_ls.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
