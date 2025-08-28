@@ -8,7 +8,6 @@
     isort
     gopls
     rustfmt
-    tsserver
     nodePackages.typescript-language-server
   ];
 
