@@ -9,6 +9,7 @@
     gopls
     rustfmt
     tsserver
+    nodePackages.typescript-language-server
   ];
 
   plugins.conform-nvim = {
