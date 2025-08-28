@@ -13,7 +13,6 @@
       jsonls.enable = true;
       lua_ls.enable = true;
       nixd.enable = true;
-      prismals.enable = true;
       ruff.enable = true;
       rust_analyzer = {
         enable = true;
@@ -261,12 +260,6 @@
       	},
       })
 
-      -- Prisma LSP
-      require("lspconfig").prismals.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
 
       -- Python LSP
       require("lspconfig").ruff.setup({
