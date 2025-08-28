@@ -8,7 +8,6 @@
     isort
     gopls
     rustfmt
-    nodePackages."@vue/typescript-plugin"
   ];
 
   plugins.conform-nvim = {
