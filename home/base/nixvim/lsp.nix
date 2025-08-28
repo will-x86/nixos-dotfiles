@@ -20,6 +20,7 @@
         installRustc = true;
       };
       ts_ls.enable = true;
+      volar.enable = true;
       yamlls.enable = true;
       zls.enable = true;
       eslint.enable = true;
@@ -306,6 +307,19 @@
       		set_cmn_lsp_keybinds()
       	end,
       })
+      -- Volar LSP (Vue)
+      require("lspconfig").volar.setup({
+      	on_attach = function()
+      		set_cmn_lsp_keybinds()
+      	end,
+      	filetypes = { "vue", "typescript", "javascript" },
+      	init_options = {
+      		vue = {
+      			hybridMode = false,
+      		},
+      	},
+      })
+
       -- Zig LSP
       require("lspconfig").zls.setup({
       	on_attach = function()

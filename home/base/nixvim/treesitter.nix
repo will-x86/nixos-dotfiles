@@ -27,6 +27,7 @@
         "zig"
         "cmake"
         "markdown"
+        "vue"
       ];
     };
   };
