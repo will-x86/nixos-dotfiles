@@ -117,7 +117,7 @@
       		},
       		{
       			mode = "n",
-      			key = "dj",
+      			key = "]d",
       			action = vim.diagnostic.goto_next,
       			options = {
       				buffer = 0,
@@ -126,7 +126,7 @@
       		},
       		{
       			mode = "n",
-      			key = "dk",
+      			key = "[d",
       			action = vim.diagnostic.goto_prev,
       			options = {
       				buffer = 0,
