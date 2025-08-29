@@ -4,6 +4,7 @@ let
   desiredFlatpaks = [
     "com.bambulab.BambuStudio "
     "com.valvesoftware.SteamLink "
+    "com.easyeda.EasyEDAPro  "
   ];
 in
 {
