@@ -15,6 +15,7 @@
         lua_ls.enable = true;
         nixd.enable = true;
         ruff.enable = true;
+        marksman.enable = true;
         ruby_lsp.enable = true;
         rust_analyzer = {
           enable = true;
