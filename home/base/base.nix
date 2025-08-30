@@ -16,31 +16,33 @@
   #programs.neovim.enable = true;
   home.packages = with pkgs; [
     ### Neovim
-    /*lua-language-server
-    jdt-language-server
-    stylua
-    tailwindcss-language-server
-    svelte-language-server
-    lua-language-server
-    alejandra
-    typescript-language-server
-    gopls
-    gotools
-    yaml-language-server
-    yamlfix
-    rustfmt
-    nil # nix
-    nixfmt-rfc-style
-    zls
-    nodePackages.prettier
-    typescript
-    eslint_d
-    vue-language-server
-    vscode-langservers-extracted
-    zig
-    arduino-cli
+    /*
+      lua-language-server
+      jdt-language-server
+      stylua
+      tailwindcss-language-server
+      svelte-language-server
+      lua-language-server
+      alejandra
+      typescript-language-server
+      gopls
+      gotools
+      yaml-language-server
+      yamlfix
+      rustfmt
+      nil # nix
+      nixfmt-rfc-style
+      zls
+      nodePackages.prettier
+      typescript
+      eslint_d
+      vue-language-server
+      vscode-langservers-extracted
+      zig
+      arduino-cli
     */
     ### End neovim
+    gcc
     nodejs
     unzip
     lsof
