@@ -117,6 +117,7 @@ in
     vscode
     vulkan-tools
     qmk
+    zoom-us
     grim
     kicad
     libnotify
