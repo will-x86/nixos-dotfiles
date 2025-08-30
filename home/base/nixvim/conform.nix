@@ -49,7 +49,7 @@
 
   keymaps = [
     {
-      mode = "";
+      mode = "v";
       key = "<leader>f";
       action.__raw = ''
         function()
