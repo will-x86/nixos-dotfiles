@@ -58,6 +58,9 @@
     hfsprogs
     tailscale
     git-crypt
+    openssl
+    rclone
+    git-lfs
     samba
     unrar-wrapper
     yarn
