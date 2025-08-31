@@ -78,6 +78,9 @@
       exec-once = cat /proc/acpi/button/lid/LID0/state | grep closed && sleep 3 && hyprctl keyword monitor "eDP-1, disable" && notify-send "Laptop lid closed, disabling monitor"
       bindl = , switch:Lid Switch, exec, hyprctl keyword monitor "eDP-1, disable"
       bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1, preferred,auto,1"
+
+      focus_on_activate = true
+      mouse_move_focuses_monitor = true
       input {
       	kb_model =
       	kb_layout =
@@ -99,7 +102,6 @@
       	follow_mouse = 1
       	mouse_refocus = true
       	float_switch_override_focus = 1
-        focus_on_activate = true
       	touchpad {
       		disable_while_typing = true
       		natural_scroll = false
