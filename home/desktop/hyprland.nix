@@ -79,8 +79,6 @@
       bindl = , switch:Lid Switch, exec, hyprctl keyword monitor "eDP-1, disable"
       bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1, preferred,auto,1"
 
-      focus_on_activate = true
-      mouse_move_focuses_monitor = true
       input {
       	kb_model =
       	kb_layout =
@@ -132,6 +130,8 @@
 
 
       misc {
+        focus_on_activate = true
+        mouse_move_focuses_monitor = true
       	disable_hyprland_logo = true
       	force_default_wallpaper = 0
       	vfr = on
