@@ -77,7 +77,7 @@
       # Laptop shit, see startup script if removing this
       exec-once = cat /proc/acpi/button/lid/LID0/state | grep closed && sleep 3 && hyprctl keyword monitor "eDP-1, disable" && notify-send "Laptop lid closed, disabling monitor"
       bindl = , switch:Lid Switch, exec, hyprctl keyword monitor "eDP-1, disable"
-      bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1, preferred,auto,2"
+      bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1, highres,0x0,1.5"
 
       input {
       	kb_model =
@@ -147,7 +147,7 @@
 
 
 
-      monitor=eDP-1,highres,0x0,2
+      monitor=eDP-1,highres,0x0,1.5
 
 
       $notifycmd = notify-send -h string:x-canonical-private-synchronous:hypr-cfg -u low
