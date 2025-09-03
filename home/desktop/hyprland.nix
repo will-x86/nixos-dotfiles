@@ -143,10 +143,6 @@
       	use_nearest_neighbor = true
       	force_zero_scaling = true
       }
-      env =QT_AUTO_SCREEN_SCALE_FACTOR=1
-      env =QT_SCALE_FACTOR_ROUNDING_POLICY=Round
-      env =GDK_SCALE=1
-      env =GDK_DPI_SCALE=1.5  # Adjust based on your scaling needs
 
 
 
