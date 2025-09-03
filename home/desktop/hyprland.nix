@@ -13,7 +13,7 @@
       	border_size = 1
       	no_border_on_floating = false
       	gaps_in = 2
-      	gaps_out = 5
+      	gaps_out = 4
       	gaps_workspaces = -10
         col.active_border = rgba(808080ee) rgba(808080ee) 45deg
       	col.inactive_border = 0xFF2a323b 0xFF353f4a 45deg
