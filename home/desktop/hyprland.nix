@@ -143,10 +143,11 @@
       	use_nearest_neighbor = true
       	force_zero_scaling = true
       }
+      env = GDK_SCALE=1.5
 
 
 
-      monitor=eDP-1,2256x1504,0x0,2
+      monitor=eDP-1,highres,0x0,2
 
 
       $notifycmd = notify-send -h string:x-canonical-private-synchronous:hypr-cfg -u low
