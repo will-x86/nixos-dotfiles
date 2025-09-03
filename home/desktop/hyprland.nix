@@ -20,7 +20,7 @@
       	layout = dwindle
       	no_focus_fallback = false
       	resize_on_border = true
-      	extend_border_grab_area = 15
+      	extend_border_grab_area = 16
       	hover_icon_on_border = true
       	allow_tearing = false
       }
@@ -38,7 +38,7 @@
 
           blur {
             enabled = true
-            size = 5
+            size = 4
             passes = 2
             ignore_opacity = true
             popups = true
@@ -89,7 +89,7 @@
       	numlock_by_default = false
       	repeat_rate = 25
       	repeat_delay = 600
-          sensitivity = 1.5
+        sensitivity = 1.5
       	accel_profile = flat
       	force_no_accel = false
       	left_handed = false
@@ -141,7 +141,7 @@
 
       xwayland {
       	use_nearest_neighbor = true
-      	force_zero_scaling = false
+      	force_zero_scaling = true
       }
 
 
