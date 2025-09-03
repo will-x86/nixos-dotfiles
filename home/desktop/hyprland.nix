@@ -77,7 +77,7 @@
       # Laptop shit, see startup script if removing this
       exec-once = cat /proc/acpi/button/lid/LID0/state | grep closed && sleep 3 && hyprctl keyword monitor "eDP-1, disable" && notify-send "Laptop lid closed, disabling monitor"
       bindl = , switch:Lid Switch, exec, hyprctl keyword monitor "eDP-1, disable"
-      bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1, highres,auto,2"
+      bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1, highres,auto,1"
 
       input {
       	kb_model =
@@ -143,11 +143,14 @@
       	use_nearest_neighbor = true
       	force_zero_scaling = true
       }
-      env = GDK_SCALE=1.5
+      QT_AUTO_SCREEN_SCALE_FACTOR=1
+      QT_SCALE_FACTOR_ROUNDING_POLICY=Round
+      GDK_SCALE=1
+      GDK_DPI_SCALE=1.5  # Adjust based on your scaling needs
 
 
 
-      monitor=eDP-1,highres,0x0,2
+      monitor=eDP-1,highres,0x0,1
 
 
       $notifycmd = notify-send -h string:x-canonical-private-synchronous:hypr-cfg -u low
