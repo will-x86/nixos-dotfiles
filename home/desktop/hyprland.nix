@@ -10,34 +10,35 @@
     extraConfig = ''
       bindm = SUPER, mouse:272, movewindow
       general {
-      	border_size = expr:round(1 * $monitorSCALE)
+      	border_size = 1
       	no_border_on_floating = false
-      	gaps_in = expr:round(2 * $monitorSCALE)
-      	gaps_out = expr:round(4 * $monitorSCALE)
+      	gaps_in = 2
+      	gaps_out = 4
       	gaps_workspaces = -10
         col.active_border = rgba(808080ee) rgba(808080ee) 45deg
       	col.inactive_border = 0xFF2a323b 0xFF353f4a 45deg
       	layout = dwindle
       	no_focus_fallback = false
       	resize_on_border = true
-      	extend_border_grab_area = expr:round(16 * $monitorSCALE)
+      	extend_border_grab_area = 16
       	hover_icon_on_border = true
       	allow_tearing = false
       }
-
+      # This is for VM's
+      # ALT + R = ignore all hyprland keybindings
       bind=ALT,R,submap,passthrough
       submap=passthrough
       bind=,escape,submap,reset
       submap=reset
-
+      #END VM MAPPING
       decoration {
-        rounding = expr:round(6 * $monitorSCALE)
+        rounding = 6
         active_opacity = 1
         inactive_opacity = 0.9
 
           blur {
             enabled = true
-            size = expr:round(4 * $monitorSCALE)
+            size = 4
             passes = 2
             ignore_opacity = true
             popups = true
@@ -50,7 +51,7 @@
 
         shadow {
           enabled = true
-          range = expr:round(20 * $monitorSCALE)
+          range = 20
           render_power = 4
           color = rgba(000000b3)
           ignore_window = true
@@ -58,7 +59,7 @@
       }
 
       animations {
-          enabled = no
+          enabled = no # Below is useless now, but I figured I'd keep regardless
 
           bezier = wind, 0.05, 0.9, 0.1, 1.05
           bezier = winIn, 0.1, 1.1, 0.1, 1.1
@@ -73,10 +74,10 @@
           animation = fade, 1, 10, default
           animation = workspaces, 1, 5, wind
       }
-
+      # Laptop shit, see startup script if removing this
       exec-once = cat /proc/acpi/button/lid/LID0/state | grep closed && sleep 3 && hyprctl keyword monitor "eDP-1, disable" && notify-send "Laptop lid closed, disabling monitor"
       bindl = , switch:Lid Switch, exec, hyprctl keyword monitor "eDP-1, disable"
-      bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1, highres,0x0,1.5"
+      bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1, highres,auto,2"
 
       input {
       	kb_model =
@@ -116,7 +117,7 @@
       gestures {
       	workspace_swipe = true
       	workspace_swipe_fingers = 3
-      	workspace_swipe_distance = expr:round(300 * $monitorSCALE)
+      	workspace_swipe_distance = 300
       	workspace_swipe_invert = true
       	workspace_swipe_min_speed_to_force = 30
       	workspace_swipe_cancel_ratio = 0.5
@@ -142,10 +143,11 @@
       	use_nearest_neighbor = true
       	force_zero_scaling = true
       }
+      env = GDK_SCALE=1.5
 
 
 
-      monitor=eDP-1,highres,0x0,1.5
+      monitor=eDP-1,highres,0x0,2
 
 
       $notifycmd = notify-send -h string:x-canonical-private-synchronous:hypr-cfg -u low
@@ -209,16 +211,19 @@
       bind = SUPER,       Space,  togglefloating,
       bind = SUPER,       Space,  centerwindow,
 
+      # Change Focus
       bind = SUPER, h,  movefocus, l
       bind = SUPER, l, movefocus, r
       bind = SUPER, k,    movefocus, u
       bind = SUPER, j,  movefocus, d
 
+      # Move Active
       bind = SUPER_SHIFT, h,  movewindow, l
       bind = SUPER_SHIFT, l, movewindow, r
       bind = SUPER_SHIFT, k,    movewindow, u
       bind = SUPER_SHIFT, j,  movewindow, d
 
+      # Resize Active
       binde = SUPER_CTRL, h,  resizeactive, -20 0
       binde = SUPER_CTRL, l, resizeactive, 20 0
       binde = SUPER_CTRL, k,    resizeactive, 0 -20
@@ -226,6 +231,7 @@
 
 
 
+      # Workspaces
       bind = SUPER, 1, workspace, 1
       bind = SUPER, 2, workspace, 2
       bind = SUPER, 3, workspace, 3
@@ -242,6 +248,7 @@
       exec-once=[workspace 3 silent] obsidian
       exec-once=[workspace 8 silent] 1password
 
+      # Send to Workspaces
       bind = SUPER_SHIFT, 1, movetoworkspace, 1
       bind = SUPER_SHIFT, 2, movetoworkspace, 2
       bind = SUPER_SHIFT, 3, movetoworkspace, 3
@@ -255,9 +262,11 @@
       bind = SUPER, escape, exec, hyprlock
 
 
+      #-- Startup ----------------------------------------------------
       exec-once=~/.config/hypr/scripts/startup
       exec-once = udiskie
 
+        ## LAyer rules
         layerrule = blur, waybar
         layerrule = ignorezero, waybar
         layerrule = blurpopups, waybar
