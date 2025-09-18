@@ -100,6 +100,7 @@ in
     polkit
     xdg-utils
     jdk17
+    lan-mouse
     signal-desktop
     maven
     orca-slicer
