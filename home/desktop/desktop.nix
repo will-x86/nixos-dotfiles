@@ -99,6 +99,7 @@ in
     coreutils
     polkit
     xdg-utils
+    synergy
     jdk17
     signal-desktop
     maven
