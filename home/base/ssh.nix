@@ -1,18 +1,13 @@
 {
-  config,
-  secrets,
-  pkgs,
-  ...
-}:
-{
   programs.ssh.enable = true;
-
-  programs.ssh.extraConfig = ''
-    Host *
-      IdentityFile ~/.ssh/ed25519
-    Host localhost
-        UserKnownHostsFile /dev/null
-    Host *
-      IdentityAgent ~/.1password/agent.sock
-  '';
+  programs.ssh.enableDefaultConfig = false;
+  programs.ssh.matchBlocks = {
+    "*" = {
+      identityFile = "~/.ssh/ed25519";
+      identityAgent = "~/.1password/agent.sock";
+    };
+    "localhost" = {
+      userKnownHostsFile = "/dev/null";
+    };
+  };
 }
