@@ -110,10 +110,6 @@
       source = ../dotfiles/kitty;
       recursive = true;
     };
-    ".config/lan-mouse" = {
-      source = ../dotfiles/lan-mouse;
-      recursive = true;
-    };
     # You will be missed
     /*
       ".config/nvim" = {
