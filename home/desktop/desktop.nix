@@ -179,7 +179,7 @@ in
           position = "right";
           hostname = "DESKTOP-ACLK4KR";
           activate_on_startup = true;
-          ips = [ "${secrets.lan-mouse.windows}" ];
+          #ips = [ "${secrets.lan-mouse.windows}" ];
           port = 4242;
         }
       ];
