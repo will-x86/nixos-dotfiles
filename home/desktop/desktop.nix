@@ -171,13 +171,13 @@ in
       port = 4242;
 
       authorized_fingerprints = {
-        "${secrets.lan-mouse.windowsTLS}" = "DESKTOP-ACLK4KR";
+        "${secrets.lan-mouse.windowsTLS}" = "desktopdaddy";
       };
 
       clients = [
         {
           position = "right";
-          hostname = "DESKTOP-ACLK4KR";
+          hostname = "desktopdaddy";
           activate_on_startup = true;
           #ips = [ "${secrets.lan-mouse.windows}" ];
           port = 4242;
