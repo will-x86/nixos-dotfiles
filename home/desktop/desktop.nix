@@ -159,9 +159,31 @@ in
   programs.lan-mouse = {
     enable = true;
     # systemd = false;
-    # package = inputs.lan-mouse.packages.${pkgs.stdenv.hostPlatform.system}.default
-    # Optional configuration in nix syntax, see config.toml for available options
-    # settings = { };
+    # package = inputs.lan-mouse.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    # Configuration converted from TOML to Nix syntax
+    settings = {
+      release_bind = [
+        "KeyA"
+        "KeyS"
+        "KeyD"
+        "KeyF"
+      ];
+      port = 4242;
+
+      authorized_fingerprints = {
+        "${secrets.lan-mouse.windows}" = "DESKTOP_ACLK4KR";
+      };
+
+      clients = [
+        {
+          position = "right";
+          hostname = "DESKTOP-ACLK4KR";
+          activate_on_startup = true;
+          ips = [ "${secrets.lan-mouse.windows}" ];
+          port = 4242;
+        }
+      ];
+    };
   };
 
   programs.rofi = {
