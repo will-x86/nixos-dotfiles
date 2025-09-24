@@ -171,7 +171,7 @@ in
       port = 4242;
 
       authorized_fingerprints = {
-        "${secrets.lan-mouse.windows}" = "DESKTOP-ACLK4KR";
+        "${secrets.lan-mouse.windowsTLS}" = "DESKTOP-ACLK4KR";
       };
 
       clients = [
