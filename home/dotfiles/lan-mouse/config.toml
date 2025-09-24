@@ -15,9 +15,9 @@ port = 4242
 position = "right"
 # The hostname is optional: When no hostname is specified,
 # at least one ip address needs to be specified.
-#hostname = "desktopdaddy"
+hostname = "DESKTOP-ACLK4KR"
 activate_on_startup = true
 # ips for ethernet and wifi
-ips = ["10.0.0.60"]
+#ips = ["10.0.0.60"]
 # optional port
 port = 4242
