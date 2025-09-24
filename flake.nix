@@ -8,6 +8,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lan-mouse.url = "github:feschber/lan-mouse";
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,6 +51,7 @@
         home-manager.users.will = import homeConfig;
         home-manager.sharedModules = [
           inputs.nixvim.homeModules.nixvim
+          inputs.lan-mouse.homeModules.lan-mouse
         ];
       };
 

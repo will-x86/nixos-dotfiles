@@ -100,7 +100,7 @@ in
     polkit
     xdg-utils
     jdk17
-    lan-mouse
+    #lan-mouse
     signal-desktop
     maven
     orca-slicer
@@ -156,6 +156,13 @@ in
       }
     ) { })
   ];
+  programs.lan-mouse = {
+    enable = true;
+    # systemd = false;
+    # package = inputs.lan-mouse.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # Optional configuration in nix syntax, see config.toml for available options
+    # settings = { };
+  };
 
   programs.rofi = {
     enable = true;
