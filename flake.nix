@@ -51,7 +51,7 @@
         home-manager.users.will = import homeConfig;
         home-manager.sharedModules = [
           inputs.nixvim.homeModules.nixvim
-          inputs.lan-mouse.homeModules.default
+          inputs.lan-mouse.homeManagerModules.default
         ];
       };
 
