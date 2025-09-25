@@ -85,6 +85,7 @@ in
 
     '')
     pywal
+    blender
     wlogout
     bluetui
     proton-pass
