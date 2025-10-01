@@ -99,6 +99,7 @@ in
     gawk
     coreutils
     polkit
+    jetbrains.idea-ultimate
     xdg-utils
     jdk17
     #lan-mouse
