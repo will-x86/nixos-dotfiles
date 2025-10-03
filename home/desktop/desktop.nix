@@ -134,6 +134,7 @@ in
     waybar # bar
     hyprshot # screenshots
     mako
+    spotify
     swww
     mpv
     feh
