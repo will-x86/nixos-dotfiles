@@ -51,22 +51,36 @@
             name = "frac";
             addresses = [ "dynamic" ];
           };
+          "bigDaddy" = {
+            id = "${secrets.syncthing.bigDaddy}";
+            name = "bigDaddy";
+            addresses = [ "dynamic" ];
+          };
         };
         folders = {
           "BooxNotes" = {
             id = "92jht-xiuqh";
             path = "/home/will/Documents/BooxNotes";
-            devices = [ "frac" ];
+            devices = [
+              "frac"
+              "bigDaddy"
+            ];
           };
           "BooxBooks" = {
             id = "x2w61-muute";
             path = "/home/will/Documents/BooxBooks";
-            devices = [ "frac" ];
+            devices = [
+              "frac"
+              "bigDaddy"
+            ];
           };
           "SyncDoc" = {
             id = "xq7l5-sdtka";
             path = "/home/will/Documents/SyncDoc";
-            devices = [ "frac" ];
+            devices = [
+              "frac"
+              "bigDaddy"
+            ];
           };
         };
       };
