@@ -135,6 +135,7 @@ in
     hyprshot # screenshots
     mako
     spotify
+    bottles
     swww
     mpv
     feh
