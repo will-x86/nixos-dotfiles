@@ -18,7 +18,7 @@
   programs.nix-ld.enable = true;
   virtualisation.waydroid.enable = true;
   boot.loader.systemd-boot.enable = true;
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   boot.loader.systemd-boot.configurationLimit = 20;
   boot.initrd.luks.devices."luks-a26d1b6a-644e-425e-89d3-a7619fcf22ea".device =
     "/dev/disk/by-uuid/a26d1b6a-644e-425e-89d3-a7619fcf22ea";
