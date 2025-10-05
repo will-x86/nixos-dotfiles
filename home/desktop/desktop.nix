@@ -183,7 +183,7 @@ in
           position = "right";
           hostname = "desktopdaddy";
           activate_on_startup = true;
-          #ips = [ "${secrets.lan-mouse.windows}" ];
+          ips = [ "${secrets.lan-mouse.windows}" ];
           port = 4242;
         }
       ];
