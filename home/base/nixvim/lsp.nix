@@ -17,7 +17,6 @@
         ruff.enable = true;
         marksman.enable = true;
         ruby_lsp.enable = true;
-        atopile.enable = false;
         rust_analyzer = {
           enable = true;
           installCargo = true;
@@ -26,6 +25,7 @@
         yamlls.enable = true;
         zls.enable = true;
         eslint.enable = true;
+        atopile.enable = false; # Fuck knows, some error about pkg not found
       };
     };
   };
