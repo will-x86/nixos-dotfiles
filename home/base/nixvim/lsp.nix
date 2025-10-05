@@ -25,7 +25,6 @@
         yamlls.enable = true;
         zls.enable = true;
         eslint.enable = true;
-        atopile.enable = false; # Fuck knows, some error about pkg not found
       };
     };
   };
