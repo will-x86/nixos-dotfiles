@@ -11,7 +11,6 @@
     lan-mouse.url = "github:feschber/lan-mouse";
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs =
