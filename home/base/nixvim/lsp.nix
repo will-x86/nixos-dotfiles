@@ -315,5 +315,12 @@
       		set_cmn_lsp_keybinds()
       	end,
       })
+
+      -- Python LSP
+      vim.lsp.config.pylsp.setup({
+      	on_attach = function()
+      		set_cmn_lsp_keybinds()
+      	end,
+      })
     '';
 }
