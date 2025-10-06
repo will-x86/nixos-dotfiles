@@ -3,68 +3,27 @@
   plugins = {
     lsp = {
       enable = true;
-      keymaps = [
-        {
-          mode = "n";
-          key = "K";
-          lspBufAction = "hover";
-        }
-        {
-          mode = "i";
-          key = "<C-s>";
-          lspBufAction = "signature_help";
-        }
-        {
-          mode = "n";
-          key = "gd";
-          lspBufAction = "definition";
-        }
-        {
-          mode = "n";
-          key = "gy";
-          lspBufAction = "type_definition";
-        }
-        {
-          mode = "n";
-          key = "gi";
-          lspBufAction = "implementation";
-        }
-        {
-          mode = "n";
-          key = "vrr";
-          lspBufAction = "references";
-        }
-        {
-          mode = "n";
-          key = "vws";
-          lspBufAction = "workspace_symbol";
-        }
-        {
-          mode = "n";
-          key = "vd";
-          action = lib.nixvim.mkRaw "vim.diagnostic.open_float";
-        }
-        {
-          mode = "n";
-          key = "]d";
-          action = lib.nixvim.mkRaw "vim.diagnostic.goto_next";
-        }
-        {
-          mode = "n";
-          key = "[d";
-          action = lib.nixvim.mkRaw "vim.diagnostic.goto_prev";
-        }
-        {
-          mode = "n";
-          key = "vca";
-          lspBufAction = "code_action";
-        }
-        {
-          mode = "n";
-          key = "vrn";
-          lspBufAction = "rename";
-        }
-      ];
+      keymaps = {
+        lspBuf = {
+          K = "hover";
+          "<C-s>" = {
+            action = "signature_help";
+            mode = "i";
+          };
+          gd = "definition";
+          gy = "type_definition";
+          gi = "implementation";
+          vrr = "references";
+          vws = "workspace_symbol";
+          vca = "code_action";
+          vrn = "rename";
+        };
+        diagnostic = {
+          vd = "open_float";
+          "]d" = "goto_next";
+          "[d" = "goto_prev";
+        };
+      };
       servers = {
         bashls.enable = true;
         ccls.enable = true;
