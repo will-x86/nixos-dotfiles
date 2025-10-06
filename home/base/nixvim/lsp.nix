@@ -36,8 +36,6 @@
   extraConfigLua =
     # lua
     ''
-      -- Extra nvim-lspconfig configuration
-      -- Common LSP key mappings
       local function set_cmn_lsp_keybinds()
       	local lsp_keybinds = {
       		-- LSP Information
@@ -90,7 +88,7 @@
       		},
       		{
       			mode = "n",
-      			key = "vrr", -- Changed from original "gr" to avoid conflict with `vrn`
+      			key = "vrr",
       			action = vim.lsp.buf.references,
       			options = {
       				buffer = 0,
@@ -162,115 +160,116 @@
       	end
       end
 
-      -- Additional lsp-config
       local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
       capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-      -- Individual LSP configs
-      -- Bash LSP
-      require('lspconfig').bashls.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
 
+      -- asm LSP
+      vim.lsp.config.asm_lsp = {
+      	cmd = { 'asm-lsp' },
+      	filetypes = { 'asm', 's' },
+      	root_dir = function(fname)
+      		return vim.fs.root(0, { '.git' }) or vim.loop.cwd()
+      	end,
+      	capabilities = capabilities,
+      }
+
+      -- Bash LSP
+      vim.lsp.config.bashls = {
+      	cmd = { 'bash-language-server', 'start' },
+      	filetypes = { 'sh' },
+      	root_dir = vim.fs.root(0, { '.git' }),
+      }
 
       -- ccls LSP
-      require('lspconfig').ccls.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
-      -- clang LSP
-      --[[require('lspconfig').clangd.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })]]--
+      vim.lsp.config.ccls = {
+      	cmd = { 'ccls' },
+      	filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+      	root_dir = vim.fs.root(0, { 'compile_commands.json', '.ccls', '.git' }),
+      }
 
       -- cmake LSP
-      require('lspconfig').cmake.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
+      vim.lsp.config.cmake = {
+      	cmd = { 'cmake-language-server' },
+      	filetypes = { 'cmake' },
+      	root_dir = vim.fs.root(0, { 'CMakeLists.txt', '.git' }),
+      }
 
       -- CSS LSP
-      require('lspconfig').cssls.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
+      vim.lsp.config.cssls = {
+      	cmd = { 'vscode-css-language-server', '--stdio' },
+      	filetypes = { 'css', 'scss', 'less' },
+      	root_dir = vim.fs.root(0, { 'package.json', '.git' }),
+      }
 
-      -- eslitn LSP
-      require('lspconfig').eslint.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
+      -- eslint LSP
+      vim.lsp.config.eslint = {
+      	cmd = { 'vscode-eslint-language-server', '--stdio' },
+      	filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+      	root_dir = vim.fs.root(0, { '.eslintrc', '.eslintrc.js', '.eslintrc.json', 'package.json', '.git' }),
+      }
 
       -- golang lsp
-      require('lspconfig').gopls.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
+      vim.lsp.config.gopls = {
+      	cmd = { 'gopls' },
+      	filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+      	root_dir = vim.fs.root(0, { 'go.mod', '.git' }),
+      }
 
       -- HTML lsp
-      require('lspconfig').html.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
+      vim.lsp.config.html = {
+      	cmd = { 'vscode-html-language-server', '--stdio' },
+      	filetypes = { 'html' },
+      	root_dir = vim.fs.root(0, { 'package.json', '.git' }),
+      }
 
       -- JSON lsp
-      require('lspconfig').jsonls.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
+      vim.lsp.config.jsonls = {
+      	cmd = { 'vscode-json-language-server', '--stdio' },
+      	filetypes = { 'json', 'jsonc' },
+      	root_dir = vim.fs.root(0, { 'package.json', '.git' }),
+      }
 
       -- Lua LSP
-      require('lspconfig').lua_ls.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
+      vim.lsp.config.lua_ls = {
+      	cmd = { 'lua-language-server' },
+      	filetypes = { 'lua' },
+      	root_dir = vim.fs.root(0, { '.luarc.json', '.luarc.jsonc', '.git' }),
+      }
 
       -- Markdown LSP
-      require('lspconfig').marksman.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
+      vim.lsp.config.marksman = {
+      	cmd = { 'marksman', 'server' },
+      	filetypes = { 'markdown' },
+      	root_dir = vim.fs.root(0, { '.git' }),
+      }
 
       -- Nix LSP
-      require('lspconfig').nixd.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
+      vim.lsp.config.nixd = {
+      	cmd = { 'nixd' },
+      	filetypes = { 'nix' },
+      	root_dir = vim.fs.root(0, { 'flake.nix', '.git' }),
       	settings = {
       		nixd = {
       			formatting = {
-      				command = { "nixfmt" },
+      				command = { 'nixfmt' },
       			},
       		},
       	},
-      })
+      }
 
-
-      -- Python LSP
-      require('lspconfig').ruff.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
+      -- Python LSP (ruff)
+      vim.lsp.config.ruff = {
+      	cmd = { 'ruff', 'server' },
+      	filetypes = { 'python' },
+      	root_dir = vim.fs.root(0, { 'pyproject.toml', 'setup.py', '.git' }),
+      }
 
       -- Rust LSP
-      require('lspconfig').rust_analyzer.setup({
-      	root_dir = function(fname)
-      		return vim.loop.cwd()
-      	end,
+      vim.lsp.config.rust_analyzer = {
+      	cmd = { 'rust-analyzer' },
+      	filetypes = { 'rust' },
+      	root_dir = vim.fs.root(0, { 'Cargo.toml', '.git' }),
       	settings = {
       		['rust-analyzer'] = {
       			cargo = {
@@ -278,35 +277,48 @@
       			},
       		},
       	},
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
+      }
 
       -- ruby LSP
-      require('lspconfig').ruby_lsp.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
+      vim.lsp.config.ruby_lsp = {
+      	cmd = { 'ruby-lsp' },
+      	filetypes = { 'ruby' },
+      	root_dir = vim.fs.root(0, { 'Gemfile', '.git' }),
+      }
+
       -- YAML LSP
-      require('lspconfig').yamlls.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
+      vim.lsp.config.yamlls = {
+      	cmd = { 'yaml-language-server', '--stdio' },
+      	filetypes = { 'yaml', 'yaml.docker-compose' },
+      	root_dir = vim.fs.root(0, { '.git' }),
+      }
 
       -- Zig LSP
-      require('lspconfig').zls.setup({
-      	on_attach = function()
+      vim.lsp.config.zls = {
+      	cmd = { 'zls' },
+      	filetypes = { 'zig', 'zir' },
+      	root_dir = vim.fs.root(0, { 'build.zig', '.git' }),
+      }
+
+      -- Python LSP (pylsp)
+      vim.lsp.config.pylsp = {
+      	cmd = { 'pylsp' },
+      	filetypes = { 'python' },
+      	root_dir = vim.fs.root(0, { 'pyproject.toml', 'setup.py', '.git' }),
+      }
+
+      -- Set up on_attach for all LSP servers
+      vim.api.nvim_create_autocmd('LspAttach', {
+      	callback = function(args)
       		set_cmn_lsp_keybinds()
       	end,
       })
 
-      -- Python LSP
-      require('lspconfig').pylsp.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
+      -- Enable LSP servers for appropriate filetypes
+      vim.api.nvim_create_autocmd('FileType', {
+      	pattern = '*',
+      	callback = function()
+      		vim.lsp.enable('*')
       	end,
       })
     '';
