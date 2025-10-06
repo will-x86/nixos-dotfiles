@@ -168,7 +168,7 @@
 
       -- Individual LSP configs
       -- Bash LSP
-      vim.lsp.config.bashls.setup({
+      require('lspconfig').bashls.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
@@ -176,76 +176,76 @@
 
 
       -- ccls LSP
-      vim.lsp.config.ccls.setup({
+      require('lspconfig').ccls.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
       })
       -- clang LSP
-      --[[vim.lsp.config.clangd.setup({
+      --[[require('lspconfig').clangd.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
       })]]--
 
       -- cmake LSP
-      vim.lsp.config.cmake.setup({
+      require('lspconfig').cmake.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
       })
 
       -- CSS LSP
-      vim.lsp.config.cssls.setup({
+      require('lspconfig').cssls.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
       })
 
       -- eslitn LSP
-      vim.lsp.config.eslint.setup({
+      require('lspconfig').eslint.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
       })
 
       -- golang lsp
-      vim.lsp.config.gopls.setup({
+      require('lspconfig').gopls.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
       })
 
       -- HTML lsp
-      vim.lsp.config.html.setup({
+      require('lspconfig').html.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
       })
 
       -- JSON lsp
-      vim.lsp.config.jsonls.setup({
+      require('lspconfig').jsonls.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
       })
 
       -- Lua LSP
-      vim.lsp.config.lua_ls.setup({
+      require('lspconfig').lua_ls.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
       })
 
       -- Markdown LSP
-      vim.lsp.config.marksman.setup({
+      require('lspconfig').marksman.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
       })
 
       -- Nix LSP
-      vim.lsp.config.nixd.setup({
+      require('lspconfig').nixd.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
@@ -260,14 +260,14 @@
 
 
       -- Python LSP
-      vim.lsp.config.ruff.setup({
+      require('lspconfig').ruff.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
       })
 
       -- Rust LSP
-      vim.lsp.config.rust_analyzer.setup({
+      require('lspconfig').rust_analyzer.setup({
       	root_dir = function(fname)
       		return vim.loop.cwd()
       	end,
@@ -284,27 +284,27 @@
       })
 
       -- ruby LSP
-      vim.lsp.config.ruby_lsp.setup({
+      require('lspconfig').ruby_lsp.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
       })
       -- YAML LSP
-      vim.lsp.config.yamlls.setup({
+      require('lspconfig').yamlls.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
       })
 
       -- Zig LSP
-      vim.lsp.config.zls.setup({
+      require('lspconfig').zls.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
       })
 
       -- Python LSP
-      vim.lsp.config.pylsp.setup({
+      require('lspconfig').pylsp.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
