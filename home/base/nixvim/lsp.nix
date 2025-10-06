@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   plugins = {
     lsp = {
@@ -42,17 +42,17 @@
         {
           mode = "n";
           key = "vd";
-          action = "vim.diagnostic.open_float";
+          action = lib.nixvim.mkRaw "vim.diagnostic.open_float";
         }
         {
           mode = "n";
           key = "]d";
-          action = "vim.diagnostic.goto_next";
+          action = lib.nixvim.mkRaw "vim.diagnostic.goto_next";
         }
         {
           mode = "n";
           key = "[d";
-          action = "vim.diagnostic.goto_prev";
+          action = lib.nixvim.mkRaw "vim.diagnostic.goto_prev";
         }
         {
           mode = "n";
