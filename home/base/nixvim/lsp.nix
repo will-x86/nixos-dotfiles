@@ -167,20 +167,6 @@
       capabilities.textDocument.completion.completionItem.snippetSupport = true
 
       -- Individual LSP configs
-      -- asm LSP
-      vim.lsp.config.asm_lsp.setup({
-      	capabilities = capabilities,
-      	filetypes = { "asm" },
-
-      	-- Fix for missing root dir
-      	root_dir = function(fname)
-      		return vim.loop.cwd()
-      	end,
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
-
       -- Bash LSP
       vim.lsp.config.bashls.setup({
       	on_attach = function()
