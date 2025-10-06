@@ -18,6 +18,7 @@
         marksman.enable = true;
         ruby_lsp.enable = true;
         pylsp.enable = true;
+        asm_lsp.enable = false;
         rust_analyzer = {
           enable = true;
           installCargo = true;
