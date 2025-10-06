@@ -3,122 +3,68 @@
   plugins = {
     lsp = {
       enable = true;
-      onAttach = ''
-        local lsp_keybinds = {
-          {
-            mode = "n",
-            key = "K",
-            action = vim.lsp.buf.hover,
-            options = {
-              buffer = bufnr,
-              desc = "LSP: Hover [K]nowledge",
-            },
-          },
-          {
-            mode = "i",
-            key = "<C-s>",
-            action = vim.lsp.buf.signature_help,
-            options = {
-              buffer = bufnr,
-              desc = "LSP: Signature Help",
-            },
-          },
-          {
-            mode = "n",
-            key = "gd",
-            action = vim.lsp.buf.definition,
-            options = {
-              buffer = bufnr,
-              desc = "LSP: [G]oto [D]efinition",
-            },
-          },
-          {
-            mode = "n",
-            key = "gy",
-            action = vim.lsp.buf.type_definition,
-            options = {
-              buffer = bufnr,
-              desc = "LSP: [G]oto [T]ype Definition",
-            },
-          },
-          {
-            mode = "n",
-            key = "gi",
-            action = vim.lsp.buf.implementation,
-            options = {
-              buffer = bufnr,
-              desc = "LSP: [G]oto [I]mplementation",
-            },
-          },
-          {
-            mode = "n",
-            key = "vrr",
-            action = vim.lsp.buf.references,
-            options = {
-              buffer = bufnr,
-              desc = "LSP: View [R]eferences",
-            },
-          },
-          {
-            mode = "n",
-            key = "vws",
-            action = vim.lsp.buf.workspace_symbol,
-            options = {
-              buffer = bufnr,
-              desc = "LSP: View [W]orkspace [S]ymbols",
-            },
-          },
-          {
-            mode = "n",
-            key = "vd",
-            action = vim.diagnostic.open_float,
-            options = {
-              buffer = bufnr,
-              desc = "LSP: [V]iew [D]iagnostics in float",
-            },
-          },
-          {
-            mode = "n",
-            key = "]d",
-            action = vim.diagnostic.goto_next,
-            options = {
-              buffer = bufnr,
-              desc = "LSP: Next [D]iagnostic ([j]ump down)",
-            },
-          },
-          {
-            mode = "n",
-            key = "[d",
-            action = vim.diagnostic.goto_prev,
-            options = {
-              buffer = bufnr,
-              desc = "LSP: Previous [D]iagnostic ([k]ey up)",
-            },
-          },
-          {
-            mode = "n",
-            key = "vca",
-            action = vim.lsp.buf.code_action,
-            options = {
-              buffer = bufnr,
-              desc = "LSP: View [C]ode [A]ctions",
-            },
-          },
-          {
-            mode = "n",
-            key = "vrn",
-            action = vim.lsp.buf.rename,
-            options = {
-              buffer = bufnr,
-              desc = "LSP: [R]e[n]ame variable",
-            },
-          },
+      keymaps = [
+        {
+          mode = "n";
+          key = "K";
+          lspBufAction = "hover";
         }
-
-        for _, bind in ipairs(lsp_keybinds) do
-          vim.keymap.set(bind.mode, bind.key, bind.action, bind.options)
-        end
-      '';
+        {
+          mode = "i";
+          key = "<C-s>";
+          lspBufAction = "signature_help";
+        }
+        {
+          mode = "n";
+          key = "gd";
+          lspBufAction = "definition";
+        }
+        {
+          mode = "n";
+          key = "gy";
+          lspBufAction = "type_definition";
+        }
+        {
+          mode = "n";
+          key = "gi";
+          lspBufAction = "implementation";
+        }
+        {
+          mode = "n";
+          key = "vrr";
+          lspBufAction = "references";
+        }
+        {
+          mode = "n";
+          key = "vws";
+          lspBufAction = "workspace_symbol";
+        }
+        {
+          mode = "n";
+          key = "vd";
+          action = "vim.diagnostic.open_float";
+        }
+        {
+          mode = "n";
+          key = "]d";
+          action = "vim.diagnostic.goto_next";
+        }
+        {
+          mode = "n";
+          key = "[d";
+          action = "vim.diagnostic.goto_prev";
+        }
+        {
+          mode = "n";
+          key = "vca";
+          lspBufAction = "code_action";
+        }
+        {
+          mode = "n";
+          key = "vrn";
+          lspBufAction = "rename";
+        }
+      ];
       servers = {
         bashls.enable = true;
         ccls.enable = true;
