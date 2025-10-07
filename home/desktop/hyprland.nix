@@ -99,7 +99,7 @@
       	natural_scroll = false
       	follow_mouse = 1
       	mouse_refocus = true
-      	float_switch_override_focus = 1
+      	float_switch_override_focus = 0
       	touchpad {
       		disable_while_typing = true
       		natural_scroll = false
