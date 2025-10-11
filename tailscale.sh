@@ -17,7 +17,10 @@ set_exit_node() {
     local exit_node=$1
 
     if [ "$exit_node" = "uk" ]; then
-        exit_node="gb-glw-wg-001.mullvad.ts.net"
+        exit_node="gb-mnc-wg-201.mullvad.ts.net"
+    fi
+    if [ "$exit_node" = "usa" ]; then
+        exit_node="us-chi-wg-301.mullvad.ts.net"
     fi
 
     if [ -z "$exit_node" ]; then
