@@ -143,6 +143,7 @@ in
     google-chrome
     nixos-shell # vm's
     nixos-generators
+    anydesk
     stm32cubemx
     tidal-hifi
     freecad
