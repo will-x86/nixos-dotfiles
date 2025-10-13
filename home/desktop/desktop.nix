@@ -97,7 +97,7 @@ in
     devenv
     bc
     thonny
-    python314Packages.setuptools
+    python313Packages.setuptools
     gawk
     coreutils
     polkit
