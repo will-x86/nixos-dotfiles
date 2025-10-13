@@ -85,7 +85,6 @@ in
 
     '')
     pywal
-    pkgs-stable.thonny
     blender
     wlogout
     bluetui

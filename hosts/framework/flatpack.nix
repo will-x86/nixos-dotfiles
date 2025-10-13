@@ -5,6 +5,7 @@ let
     "com.bambulab.BambuStudio "
     "com.valvesoftware.SteamLink "
     "com.easyeda.EasyEDAPro  "
+    "org.thonny.Thonny"
   ];
 in
 {
