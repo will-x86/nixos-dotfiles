@@ -89,8 +89,8 @@ in
     arduino-ide
     ## Stupoid thonny
     thonny
-    python312Packages.pip
-    python312Packages.setuptools
+    python313Packages.pip
+    python313Packages.setuptools
     ## Stupoid thonny  end
     wlogout
     bluetui
