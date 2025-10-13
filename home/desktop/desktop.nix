@@ -87,10 +87,11 @@ in
     pywal
     blender
     arduino-ide
+    ## Stupoid thonny
     thonny
-    python312
     python312Packages.pip
     python312Packages.setuptools
+    ## Stupoid thonny  end
     wlogout
     bluetui
     proton-pass
