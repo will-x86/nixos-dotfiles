@@ -87,7 +87,6 @@ in
     pywal
     blender
     arduino-ide
-    mu
     wlogout
     bluetui
     proton-pass
