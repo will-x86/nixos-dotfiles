@@ -85,6 +85,7 @@ in
 
     '')
     pywal
+    pkgs-stable.thonny
     blender
     wlogout
     bluetui
@@ -96,8 +97,6 @@ in
     mediawriter
     devenv
     bc
-    thonny
-    python313Packages.setuptools
     gawk
     coreutils
     polkit
