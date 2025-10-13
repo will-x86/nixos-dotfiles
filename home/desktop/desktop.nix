@@ -96,6 +96,7 @@ in
     mediawriter
     devenv
     bc
+    thonny
     gawk
     coreutils
     polkit
