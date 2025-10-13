@@ -87,6 +87,10 @@ in
     pywal
     blender
     arduino-ide
+    thonny
+    python312
+    python312Packages.pip
+    python312Packages.setuptools
     wlogout
     bluetui
     proton-pass
