@@ -87,7 +87,7 @@ in
     pywal
     blender
     arduino-ide
-    gtkpod
+    rhythmbox
     wlogout
     bluetui
     proton-pass
