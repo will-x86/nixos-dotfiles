@@ -88,6 +88,7 @@ in
     blender
     arduino-ide
     rhythmbox
+    usbutils
     wlogout
     bluetui
     proton-pass

@@ -18,6 +18,7 @@
   programs.nix-ld.enable = true;
   virtualisation.waydroid.enable = true;
   boot.loader.systemd-boot.enable = true;
+  services.usbmuxd.enable = true;
   programs.steam = {
     enable = true;
     #remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
