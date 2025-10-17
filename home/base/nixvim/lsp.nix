@@ -26,7 +26,19 @@
       };
       servers = {
         bashls.enable = true;
-        ccls.enable = true;
+        #ccls.enable = true;
+        clangd = {
+          enable = true;
+          extraOptions = {
+            cmd = [
+              "clangd"
+              "--background-index"
+              "--clang-tidy"
+              "--completion-style=detailed"
+              "--query-driver=${pkgs.gcc-arm-embedded}/bin/*"
+            ];
+          };
+        };
         cmake.enable = true;
         cssls.enable = true;
         gopls.enable = true;
