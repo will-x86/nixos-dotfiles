@@ -30,13 +30,18 @@
         clangd = {
           enable = true;
           extraOptions = {
-            cmd = [
-              "clangd"
-              "--background-index"
-              "--clang-tidy"
-              "--completion-style=detailed"
-              "--query-driver=${pkgs.gcc-arm-embedded}/bin/*"
-            ];
+            cmd =
+              let
+                clangdPath =
+                  if (builtins.getEnv "clangd_nix") == "true" then (builtins.getEnv "CLANGD_IDF_PATH") else "clangd";
+              in
+              [
+                clangdPath
+                "--background-index"
+                "--clang-tidy"
+                "--completion-style=detailed"
+                "--query-driver=**"
+              ];
           };
         };
         cmake.enable = true;
