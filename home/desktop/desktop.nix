@@ -106,7 +106,6 @@ in
     xdg-utils
     jdk17
     #lan-mouse
-    signal-desktop
     maven
     orca-slicer
     gtk3
@@ -148,8 +147,6 @@ in
     nixos-generators
     anydesk
     stm32cubemx
-    tidal-hifi
-    freecad
     (pkgs.callPackage (
       { stdenv }:
 
