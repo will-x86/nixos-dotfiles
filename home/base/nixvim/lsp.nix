@@ -26,24 +26,7 @@
       };
       servers = {
         bashls.enable = true;
-        #ccls.enable = true;
-        clangd = {
-          enable = true;
-          extraOptions = {
-            cmd =
-              let
-                clangdPath =
-                  if (builtins.getEnv "clangd_nix") == "true" then (builtins.getEnv "CLANGD_IDF_PATH") else "clangd";
-              in
-              [
-                clangdPath
-                "--background-index"
-                "--clang-tidy"
-                "--completion-style=detailed"
-                "--query-driver=**"
-              ];
-          };
-        };
+        ccls.enable = true;
         cmake.enable = true;
         cssls.enable = true;
         gopls.enable = true;

@@ -84,7 +84,6 @@ in
       frpc -c "$CONFIG_FILE"
 
     '')
-    esp-idf-full
     pywal
     blender
     arduino-ide
