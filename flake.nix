@@ -35,10 +35,13 @@
       mkPkgs = pkgs: {
         inherit system;
         config.allowUnfree = true;
-        overlaps = [ esp-dev.overlays.default ];
       };
 
-      pkgs = import nixpkgs (mkPkgs nixpkgs);
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = [ esp-dev.overlays.default ];
+      };
       pkgs-stable = import nixpkgs-stable (mkPkgs nixpkgs-stable);
 
       commonSpecialArgs = {
