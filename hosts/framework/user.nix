@@ -3,8 +3,12 @@
   users.users.will.extraGroups = [
     "dialout"
     "adbusers"
+    "libvirtd"
     # Other groups like "networkmanager", "wheel", "docker" are already in all.nix
   ];
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
 
   nix.settings.trusted-users = [
     "root"
