@@ -12,7 +12,6 @@
     nixvim = {
       url = "github:nix-community/nixvim";
     };
-    esp-dev.url = "github:mirrexagon/nixpkgs-esp-dev";
   };
   outputs =
     inputs:
@@ -22,7 +21,6 @@
         nixpkgs-stable
         home-manager
         nixos-wsl
-        esp-dev
         ;
       system = "x86_64-linux";
 
@@ -37,11 +35,7 @@
         config.allowUnfree = true;
       };
 
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-        overlays = [ esp-dev.overlays.default ];
-      };
+      pkgs = import nixpkgs (mkPkgs nixpkgs);
       pkgs-stable = import nixpkgs-stable (mkPkgs nixpkgs-stable);
 
       commonSpecialArgs = {
