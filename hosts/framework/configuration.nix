@@ -30,6 +30,7 @@
     "/dev/disk/by-uuid/a26d1b6a-644e-425e-89d3-a7619fcf22ea";
   boot.kernelParams = [
     "amdgpu.dcdebugmask=0x10"
+    "amd_iommu=on"
   ];
   security.pki.certificates = [
     (builtins.readFile "${./../../secrets/NextDNS.cer}")
@@ -119,7 +120,13 @@
   powerManagement.powertop.enable = true;
   networking.hostName = "framework";
   hardware.spacenavd.enable = true;
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = [
+    "amdgpu"
+    "vfio_pci"
+    "vfio"
+    "vfio_iommu_type1"
+  ];
+
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
