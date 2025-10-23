@@ -36,7 +36,21 @@
   ];
   services = {
     fwupd.enable = true;
-    power-profiles-daemon.enable = true;
+    #power-profiles-daemon.enable = true;
+    power-profiles-daemon.enable = false;
+    auto-cpufreq = {
+      enable = true;
+      settings = {
+        battery = {
+          governor = "powersave";
+          turbo = "never";
+        };
+        charger = {
+          governor = "performance";
+          turbo = "auto";
+        };
+      };
+    };
     tailscale.enable = true;
     xserver.enable = true;
     xserver.videoDrivers = [ "amdgpu" ];
