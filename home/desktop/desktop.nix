@@ -20,7 +20,13 @@ in
     base
     hyprland
   ];
-
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
+    config.common.default = "*";
+  };
   home.file = {
     ".config/hypr" = {
       source = ../dotfiles/hypr;
@@ -101,6 +107,7 @@ in
     bc
     gawk
     coreutils
+    xdg-utils
     polkit
     jetbrains.idea-ultimate
     xdg-utils
