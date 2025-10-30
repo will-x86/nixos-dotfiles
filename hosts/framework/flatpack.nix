@@ -19,6 +19,7 @@ in
       # 3. Get currently installed Flatpaks
       installedFlatpaks=$(${pkgs.flatpak}/bin/flatpak list --app --columns=application)
 
+
       # 4. Remove any Flatpaks that are NOT in the desired list
       for installed in $installedFlatpaks; do
         if ! echo ${toString desiredFlatpaks} | ${grep}/bin/grep -q $installed; then
@@ -36,6 +37,8 @@ in
       # 6. Remove unused Flatpaks
       ${pkgs.flatpak}/bin/flatpak uninstall --unused -y
 
+      flatpak override --user com.easyeda.EasyEDAPro --env=BROWSER=firefox
+      flatpak override --user com.easyeda.EasyEDAPro --filesystem=home
       # 7. Update all installed Flatpaks
       ${pkgs.flatpak}/bin/flatpak update -y
     '';
