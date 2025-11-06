@@ -41,7 +41,7 @@
       # normal fonts
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
+      noto-fonts-color-emoji
 
       inputs.self.packages.${pkgs.system}.SF-Pro
       inputs.self.packages.${pkgs.system}.SF-Pro-mono
