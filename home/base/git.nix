@@ -6,9 +6,9 @@
 {
   programs.git = {
     enable = true;
-    userName = "${secrets.git.username}";
-    userEmail = "${secrets.git.email}";
-    extraConfig = {
+    settings = {
+      user.name = "${secrets.git.username}";
+      user.email = "${secrets.git.email}";
       color = {
         ui = "auto";
         diff = {
