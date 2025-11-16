@@ -128,7 +128,7 @@
 
 
       misc {
-        focus_on_activate = false
+        focus_on_activate = true
         mouse_move_focuses_monitor = true
       	disable_hyprland_logo = true
       	force_default_wallpaper = 0
