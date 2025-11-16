@@ -93,7 +93,6 @@ in
     pywal
     blender
     arduino-ide
-    rhythmbox
     usbutils
     wlogout
     bluetui
