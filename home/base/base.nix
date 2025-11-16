@@ -47,6 +47,7 @@
     unzip
     lsof
     libpq
+    marp-cli
     postgresql
     moonlight-qt
     ntfsprogs
