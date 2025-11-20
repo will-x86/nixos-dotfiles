@@ -25,6 +25,13 @@
     #dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     #localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+    #rocmOverrideGfx = "10.3.0";
+    host = "0.0.0.0";
+  };
+
   boot.loader.systemd-boot.configurationLimit = 20;
   boot.initrd.luks.devices."luks-a26d1b6a-644e-425e-89d3-a7619fcf22ea".device =
     "/dev/disk/by-uuid/a26d1b6a-644e-425e-89d3-a7619fcf22ea";
