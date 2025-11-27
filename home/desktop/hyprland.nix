@@ -242,7 +242,6 @@
 
       exec-once=[workspace 1 silent] $kitty -T
       exec-once=[workspace 2 silent] firefox
-      exec-once=[workspace 3 silent] obsidian
       exec-once=[workspace 8 silent] 1password
 
       # Send to Workspaces

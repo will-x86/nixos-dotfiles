@@ -3,7 +3,6 @@ export PATH=$PATH:/usr/local/go/bin
 
 export PATH=$PATH:/home/will/.cargo/bin
 
-#alias ls='ls --color'
 alias vim='nvim'
 alias vi='nvim'
 
