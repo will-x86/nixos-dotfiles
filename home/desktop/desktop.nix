@@ -148,7 +148,8 @@ in
     mpv
     feh
     playerctl
-    google-chrome
+    #google-chrome # byebye chrome
+    chromium
     nixos-shell # vm's
     nixos-generators
     anydesk

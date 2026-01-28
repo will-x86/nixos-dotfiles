@@ -140,7 +140,6 @@
     xwayland.enable = true;
   };
   programs.hyprlock.enable = true;
-  programs.adb.enable = true;
   hardware.graphics = {
     enable = true;
     enable32Bit = true;

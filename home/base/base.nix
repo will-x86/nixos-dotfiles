@@ -88,7 +88,7 @@
       enable = true;
       initContent = builtins.readFile ../dotfiles/.zshrc;
     };
-    firefox.enable = true;
+    #firefox.enable = true; # byebye
     direnv.enable = true;
     zoxide = {
       enable = true;
