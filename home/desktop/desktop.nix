@@ -108,7 +108,7 @@ in
     coreutils
     xdg-utils
     polkit
-    jetbrains.idea-ultimate
+    jetbrains.idea
     xdg-utils
     jdk17
     #lan-mouse

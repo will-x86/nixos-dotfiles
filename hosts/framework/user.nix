@@ -6,9 +6,13 @@
     "libvirtd"
     # Other groups like "networkmanager", "wheel", "docker" are already in all.nix
   ];
-  virtualisation.libvirtd.enable = true;
+  virtualisation = {
+    libvirtd.enable = true;
+    podman.enable = true;
+    podman.dockerCompat = true;
+    spiceUSBRedirection.enable = true;
+  };
   programs.virt-manager.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
 
   nix.settings.trusted-users = [
     "root"

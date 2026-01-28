@@ -69,6 +69,7 @@
     zip
     jq
     go
+    distrobox
     fastfetch
     python3
     btop
