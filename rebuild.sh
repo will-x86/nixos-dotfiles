@@ -13,9 +13,6 @@ while [ "$#" -gt 0 ]; do
     shift
 done
 
-git_no_pager() {
-    GIT_PAGER=cat git "$@"
-}
 
 if [ ! -d "$FRAMEWORK_DIR" ]; then
     echo "Directory $FRAMEWORK_DIR does not exist."
@@ -27,22 +24,22 @@ pwd
 
 #alejandra .
 gen=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | grep current)
-git_no_pager diff
+git --no-pager diff
 git add .
 git commit -m "$gen" || true
 
 echo "Rebuilding NixOS and applying Home Manager configuration"
 if [ "$UPGRADE" = true ]; then
     if [ "$BUILDER" = true ]; then
-        sudo -E nixos-rebuild --builders 'ssh://root@nixos-vm?ssh-key=/home/will/.ssh/ed25519' switch --flake .#$HOST --show-trace --upgrade
+        sudo -E nixos-rebuild --builders 'ssh://root@nixos-vm?ssh-key=/home/will/.ssh/ed25519' switch --flake ".#$HOST" --show-trace --upgrade
     else
-        sudo nixos-rebuild switch --flake .#$HOST --show-trace --upgrade
+        sudo nixos-rebuild switch --flake ".#$HOST" --show-trace --upgrade
     fi
 else
     if [ "$BUILDER" = true ]; then
-        sudo nixos-rebuild --builders 'ssh://root@nixos-vm' switch --flake .#$HOST --show-trace
+        sudo nixos-rebuild --builders 'ssh://root@nixos-vm' switch --flake ".#$HOST" --show-trace
     else
-        sudo nixos-rebuild switch --flake .#$HOST --show-trace
+        sudo nixos-rebuild switch --flake ".#$HOST" --show-trace
     fi
 fi
 
