@@ -129,11 +129,16 @@
   ];
   home-manager.backupFileExtension = "backup";
 
-  virtualisation.docker.enable = true;
-  virtualisation.containerd.enable = true;
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
+  virtualisation = {
+    docker = {
+      enable = true;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
+    };
+    containerd.enable = true;
+    podman.enable = true;
   };
 
   networking.firewall = {
