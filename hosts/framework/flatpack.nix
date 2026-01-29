@@ -37,7 +37,7 @@ in
       # 6. Remove unused Flatpaks
       ${pkgs.flatpak}/bin/flatpak uninstall --unused -y
 
-      flatpak override --user com.easyeda.EasyEDAPro --env=BROWSER=firefox
+      flatpak override --user com.easyeda.EasyEDAPro --env=BROWSER=chromium
       flatpak override --user com.easyeda.EasyEDAPro --filesystem=home
       # 7. Update all installed Flatpaks
       ${pkgs.flatpak}/bin/flatpak update -y

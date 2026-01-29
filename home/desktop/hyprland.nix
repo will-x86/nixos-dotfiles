@@ -151,11 +151,11 @@
 
 
 
-      windowrule {
-        name = float-utilities
-        match:class = ^(yad|nm-connection-editor|pavucontrol|xfce-polkit|kvantummanager|qt5ct|feh|Viewnior|Gpicview|Gimp|MPlayer)$
-        float = on
-      }
+            windowrule {
+                name = float-utilities
+                match:class = ^(yad|nm-connection-editor|pavucontrol|xfce-polkit|kvantummanager|qt5ct|feh|Viewnior|Gpicview|Gimp|MPlayer)$
+                float = on
+            }
             $kitty= ~/.config/hypr/scripts/kitty
             $volume      = ~/.config/hypr/scripts/volume
             $backlight   = ~/.config/hypr/scripts/brightness
@@ -173,8 +173,6 @@
 
 
 
-            bind = SUPER, O, exec, firefox --new-tab "${secrets.owu}"
-            bind = SUPER, B, exec, firefox --new-tab "${secrets.ha}"
             bind  = SUPER, X,       exec, $wlogout
             bind  = SUPER, A,       exec, hyprshot -m region
 
@@ -232,7 +230,7 @@
             bind = SUPER, 0, workspace, 0
 
             exec-once=[workspace 1 silent] $kitty -T
-            exec-once=[workspace 2 silent] firefox
+            exec-once=[workspace 2 silent] chromium
             exec-once=[workspace 8 silent] 1password
 
             # Send to Workspaces
@@ -252,27 +250,44 @@
             #-- Startup ----------------------------------------------------
             exec-once=~/.config/hypr/scripts/startup
             exec-once = udiskie
+      layerrule {
+        name = waybar-effects
+        match:namespace = waybar
+        blur = on
+        ignore_alpha = 0.0
+        blur_popups = on
+      }
 
-              ## LAyer rules
-              layerrule = blur, waybar
-              layerrule = ignorezero, waybar
-              layerrule = blurpopups, waybar
+      layerrule {
+        name = logout-dialog-effects
+        match:namespace = logout_dialog
+        blur = on
+        animation = popin 95%
+      }
 
-              layerrule = blur, logout_dialog
-              layerrule = animation popin 95%, logout_dialog
+      layerrule {
+        name = rofi-effects
+        match:namespace = rofi
+        blur = on
+        ignore_alpha = 0.0
+        animation = popin 95%
+      }
 
-              layerrule = blur, rofi
-              layerrule = ignorezero, rofi
-              layerrule = animation popin 95%, rofi
-              layerrule = unset, rofi
+      layerrule {
+        name = notification-center-effects
+        match:namespace = swaync-control-center
+        blur = on
+        ignore_alpha = 0.0
+        animation = popin 95%
+      }
 
-              layerrule = blur, swaync-control-center
-              layerrule = ignorezero, swaync-control-center
-              layerrule = animation popin 95%, swaync-control-center
-
-              layerrule = blur, swaync-notification-window
-              layerrule = ignorezero, swaync-notification-window
-              layerrule = animation slide, swaync-notification-window
+      layerrule {
+        name = notification-window-effects
+        match:namespace = swaync-notification-window
+        blur = on
+        ignore_alpha = 0.0
+        animation = slide
+      }
     '';
   };
 }
