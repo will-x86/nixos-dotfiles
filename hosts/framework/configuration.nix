@@ -116,10 +116,12 @@
       variant = "";
     };
     printing.enable = true;
-    greetd.settings.default_session = {
-      user = "will";
-      #command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd start-hyprland";
-      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${pkgs.hyprland/share/wayland-sessions}";
+    services.greetd = {
+      enable = true;
+      settings.default_session = {
+        user = "will";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${pkgs.hyprland}/share/wayland-sessions";
+      };
     };
     pulseaudio.enable = false;
     gvfs.enable = true;
