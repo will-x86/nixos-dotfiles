@@ -43,8 +43,9 @@
     */
     ### End neovim
     gcc
-    uwsm
+    uwsm # launch tui
     impala # wifi
+    xdg-terminal-exec # launcht ui
     nodejs
     unzip
     lsof
