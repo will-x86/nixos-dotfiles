@@ -43,6 +43,7 @@
     */
     ### End neovim
     gcc
+    uwsm
     impala # wifi
     nodejs
     unzip
