@@ -56,7 +56,6 @@
     xserver.enable = true;
     xserver.videoDrivers = [ "amdgpu" ];
     flatpak.enable = true;
-    mullvad-vpn.enable = true;
     syncthing = {
       enable = true;
       user = "will";
@@ -111,7 +110,6 @@
       pkgs.openocd
       pkgs.qmk-udev-rules
     ];
-    blueman.enable = true;
     desktopManager.plasma6.enable = true;
     xserver.xkb = {
       layout = "us";
@@ -120,7 +118,8 @@
     printing.enable = true;
     greetd.settings.default_session = {
       user = "will";
-      command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd start-hyprland";
+      #command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd start-hyprland";
+      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${pkgs.hyprland/share/wayland-sessions}";
     };
     pulseaudio.enable = false;
     gvfs.enable = true;
