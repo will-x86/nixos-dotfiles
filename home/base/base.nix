@@ -43,6 +43,7 @@
     */
     ### End neovim
     gcc
+    impala # wifi
     nodejs
     unzip
     lsof

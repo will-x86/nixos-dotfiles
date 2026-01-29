@@ -16,11 +16,19 @@
   nix.gc.options = "--delete-older-than 10d";
   nix.settings.auto-optimise-store = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  networking.networkmanager = {
-    enable = true;
-    wifi.backend = "wpa_supplicant";
-  };
+  #networking.networkmanager = {
+  #  enable = true;
+  #wifi.backend = "wpa_supplicant";
+  #};
   time.timeZone = "Europe/London";
+  networking.wireless.iwd.settings = {
+    Network = {
+      EnableIPv6 = true;
+    };
+    Settings = {
+      AutoConnect = true;
+    };
+  };
 
   i18n.defaultLocale = "en_GB.UTF-8";
   i18n.extraLocaleSettings = {
