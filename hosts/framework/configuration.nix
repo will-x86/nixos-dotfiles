@@ -12,7 +12,7 @@
     ./user.nix
     ./packages.nix
     ./flatpack.nix
-    ./proton.nix
+    #./proton.nix
   ];
 
   programs.nix-ld.enable = true;
