@@ -116,7 +116,7 @@
       variant = "";
     };
     printing.enable = true;
-    services.greetd = {
+    greetd = {
       enable = true;
       settings.default_session = {
         user = "will";
