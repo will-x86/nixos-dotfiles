@@ -9,12 +9,11 @@
     "include": [
         "~/.config/hypr/waybar/modules.jsonc"
     ],
-    "modules-left": [
-    ],
+    "modules-left": [],
     "modules-center": [
+        "network",
         "clock",
         "group/custom-group"
     ],
-    "modules-right": [
-    ]
+    "modules-right": []
 }

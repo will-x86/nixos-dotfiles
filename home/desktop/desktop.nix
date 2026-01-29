@@ -230,4 +230,10 @@ in
     ANTHROPIC_API_KEY = "${secrets.anthropic.api_key}";
 
   };
+  home.file = {
+    ".config/scripts" = {
+      source = ../dotfiles/scripts;
+      recursive = true;
+    };
+  };
 }
