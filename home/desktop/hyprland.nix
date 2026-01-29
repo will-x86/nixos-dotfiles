@@ -247,7 +247,6 @@
             bind = SUPER, escape, exec, hyprlock
 
 
-            #-- Startup ----------------------------------------------------
             exec-once=~/.config/hypr/scripts/startup
             exec-once = udiskie
       layerrule {

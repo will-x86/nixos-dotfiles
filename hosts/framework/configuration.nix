@@ -118,14 +118,9 @@
       variant = "";
     };
     printing.enable = true;
-    greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          user = "will";
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland";
-        };
-      };
+    greetd.settings.default_session = {
+      user = "will";
+      command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd start-hyprland";
     };
     pulseaudio.enable = false;
     gvfs.enable = true;
