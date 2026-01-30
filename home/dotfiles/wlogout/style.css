@@ -19,6 +19,8 @@ button {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 30%;
+  min-width: 80px;
+  min-height: 80px;
 }
 
 button:hover,
