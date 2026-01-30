@@ -153,7 +153,7 @@
 
             windowrule {
                 name = float-utilities
-                match:class = ^(yad|nm-connection-editor|pavucontrol|xfce-polkit|kvantummanager|qt5ct|feh|Viewnior|Gpicview|Gimp|MPlayer)$
+                match:class = ^(yad|nm-connection-editor|pavucontrol|xfce-polkit|kvantummanager|qt5ct|feh|Viewnior|Gpicview|Gimp|MPlayer|bt-manager|wifi-manager)$
                 float = on
             }
             $kitty= ~/.config/hypr/scripts/kitty
