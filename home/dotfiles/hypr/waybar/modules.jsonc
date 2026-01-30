@@ -50,7 +50,7 @@
         "tooltip-format-disconnected": "Disconnected",
         "interval": 3,
         "spacing": 1,
-        "on-click": "launch-wifi"
+        "on-click": "~/.config/scripts/launch-wifi"
     },
     "bluetooth": {
         "format": "",
@@ -59,7 +59,7 @@
         "format-connected": "󰂱",
         "format-no-controller": "",
         "tooltip-format": "Devices connected: {num_connections}",
-        "on-click": "launch-bluetooth"
+        "on-click": "~/.config/scripts/launch-bluetooth"
     },
     "group/custom-group": {
         "orientation": "inherit",
