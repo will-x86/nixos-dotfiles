@@ -230,7 +230,7 @@
             bind = SUPER, 0, workspace, 0
 
             exec-once=[workspace 1 silent] $kitty -T
-            exec-once=[workspace 2 silent] chromium
+            #exec-once=[workspace 2 silent] chromium
             exec-once=[workspace 8 silent] 1password
 
             # Send to Workspaces
