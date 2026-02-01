@@ -64,8 +64,6 @@
         yamlls.enable = true;
         zls.enable = true;
         eslint.enable = true;
-        ## AI !!!  wow !
-        copilot.enable = true;
       };
     };
   };
