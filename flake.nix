@@ -44,7 +44,7 @@
       };
 
       mkHomeManagerConfig = homeConfig: {
-        home-manager.useGlobalPkgs = true;
+        #home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = commonSpecialArgs;
         home-manager.users.will = import homeConfig;
