@@ -15,7 +15,6 @@
     #./proton.nix
   ];
   pkgs.config.allowUnfree = true;
-  pkgs-stable.config.allowUnfree = true;
   programs.nix-ld.enable = true;
   virtualisation.waydroid.enable = true;
   boot.loader.systemd-boot.enable = true;

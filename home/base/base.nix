@@ -108,6 +108,7 @@
     kitty.enable = true;
     foot.enable = true;
   };
+  nixpkgs.config.allowUnfree = true;
 
   home.file = {
     ".config/starship.toml".source = ../dotfiles/starship.toml;
