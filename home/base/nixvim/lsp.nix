@@ -61,7 +61,7 @@
             "package.json"
           ];
         };
-        volar.enable = true;
+        vue_ls.enable = true;
         dartls.enable = true;
         rust_analyzer = {
           enable = true;
