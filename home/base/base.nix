@@ -16,6 +16,9 @@
   #programs.neovim.enable = true;
   home.packages = with pkgs; [
     ### Neovim
+
+    typescript-language-server # nixvim
+    typescript # nixvim
     /*
       lua-language-server
       jdt-language-server
