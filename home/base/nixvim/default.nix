@@ -2,7 +2,11 @@
 {
   programs.nixvim = {
     enable = true;
-
+    nixpkgs = {
+      config = {
+        allowUnfree = true;
+      };
+    };
     imports = [
       ./keymaps.nix
       ./tmux.nix
