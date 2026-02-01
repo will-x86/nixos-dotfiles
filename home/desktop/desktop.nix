@@ -154,6 +154,7 @@ in
     nixos-generators
     anydesk
     stm32cubemx
+    kiwix
     (pkgs.callPackage (
       { stdenv }:
 
