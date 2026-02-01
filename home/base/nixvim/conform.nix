@@ -32,6 +32,7 @@
         typescript = [ "prettier" ];
         javascriptreact = [ "prettier" ];
         typescriptreact = [ "prettier" ];
+        vue = [ "prettier" ];
         html = [ "prettier" ];
         css = [ "prettier" ];
         json = [ "prettier" ];
