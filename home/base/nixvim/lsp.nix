@@ -47,7 +47,16 @@
         marksman.enable = true;
         ruby_lsp.enable = true;
         pylsp.enable = true;
-        ts_ls.enable = true;
+        ts_ls = {
+          enable = true;
+          filetypes = [
+            "typescript"
+            "typescriptreact"
+            "javascript"
+            "javascriptreact"
+            "vue"
+          ];
+        };
         dartls.enable = true;
         rust_analyzer = {
           enable = true;
