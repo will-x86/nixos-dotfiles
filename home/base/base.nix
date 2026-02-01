@@ -108,7 +108,10 @@
     kitty.enable = true;
     foot.enable = true;
   };
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = pkg: true; # Allow all unfree packages
+  };
 
   home.file = {
     ".config/starship.toml".source = ../dotfiles/starship.toml;

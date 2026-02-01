@@ -135,7 +135,6 @@
     "flakes"
   ];
   home-manager.backupFileExtension = "backup";
-  home-manager.useGlobalPkgs = true;
 
   virtualisation = {
     docker = {
