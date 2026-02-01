@@ -109,7 +109,6 @@
     foot.enable = true;
   };
   nixpkgs.config.allowUnfree = true;
-  home-manager.useGlobalPkgs = true;
 
   home.file = {
     ".config/starship.toml".source = ../dotfiles/starship.toml;
