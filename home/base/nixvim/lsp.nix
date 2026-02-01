@@ -60,6 +60,17 @@
             pkgs.lib.lsp.root_patterns
             "package.json"
           ];
+          extraOptions = {
+            init_options = {
+              plugins = [
+                {
+                  name = "@vue/typescript-plugin";
+                  location = "${pkgs.nodePackages."@vue/language-server"}/lib/node_modules/@vue/language-server";
+                  languages = [ "vue" ];
+                }
+              ];
+            };
+          };
         };
         dartls.enable = true;
         rust_analyzer = {
