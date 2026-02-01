@@ -14,7 +14,7 @@
     ./flatpack.nix
     #./proton.nix
   ];
-  pkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
   programs.nix-ld.enable = true;
   virtualisation.waydroid.enable = true;
   boot.loader.systemd-boot.enable = true;
