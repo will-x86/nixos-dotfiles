@@ -56,6 +56,10 @@
             "javascriptreact"
             "vue"
           ];
+          root_dir = [
+            pkgs.lib.lsp.root_patterns
+            "package.json"
+          ];
         };
         dartls.enable = true;
         rust_analyzer = {
