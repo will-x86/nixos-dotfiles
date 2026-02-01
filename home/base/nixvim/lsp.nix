@@ -64,6 +64,8 @@
         yamlls.enable = true;
         zls.enable = true;
         eslint.enable = true;
+        ## AI !!!  wow !
+        plugins.lsp.servers.copilot.enable = true;
       };
     };
   };
