@@ -51,6 +51,10 @@
         home-manager.sharedModules = [
           inputs.nixvim.homeModules.nixvim
           inputs.lan-mouse.homeManagerModules.default
+          {
+            nixpkgs.config.allowUnfree = true;
+            nixpkgs.config.allowUnfreePredicate = _: true;
+          }
         ];
       };
 
