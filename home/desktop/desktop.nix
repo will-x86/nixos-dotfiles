@@ -155,6 +155,7 @@ in
     anydesk
     stm32cubemx
     kiwix
+    python312Packages.marimo
     (pkgs.callPackage (
       { stdenv }:
 
