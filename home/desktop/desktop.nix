@@ -156,6 +156,7 @@ in
     stm32cubemx
     kiwix
     python312Packages.marimo
+    android-studio
     (pkgs.callPackage (
       { stdenv }:
 
