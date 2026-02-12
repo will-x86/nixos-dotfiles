@@ -9,7 +9,6 @@
     enable = true;
     extraConfig = ''
             monitor = HEADLESS-2,disable
-            exec-once = hyprctl output create headless
             bindm = SUPER, mouse:272, movewindow
             general {
             	border_size = 1
