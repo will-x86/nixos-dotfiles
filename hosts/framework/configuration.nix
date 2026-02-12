@@ -38,30 +38,6 @@
       autoStart = true;
       capSysAdmin = true;
       openFirewall = true;
-      applications = {
-        env = {
-          PATH = "$(PATH):$(HOME)/.local/bin";
-        };
-        apps = [
-          {
-            name = "Desktop";
-            image-path = "desktop.png";
-          }
-          {
-            name = "Steam Big Picture + Hyprland Virtual Display";
-            prep-cmd = [
-              {
-                do = "bash -c \"hyprctl keyword monitor HEADLESS-2,\${SUNSHINE_CLIENT_WIDTH}x\${SUNSHINE_CLIENT_HEIGHT}@\${SUNSHINE_CLIENT_FPS},auto,1 && hyprctl keyword monitor eDP-1,disable\"";
-                undo = "bash -c \"hyprctl keyword monitor HEADLESS-2,disable && hyprctl keyword monitor eDP-1,preferred,auto,auto\"";
-              }
-            ];
-            detached = [
-              "bash -c 'DISPLAY=:0 steam -bigpicture > /tmp/steam-sunshine.log 2>&1'"
-            ];
-            image-path = "steam.png";
-          }
-        ];
-      };
     };
     fwupd.enable = true;
     power-profiles-daemon.enable = false;
