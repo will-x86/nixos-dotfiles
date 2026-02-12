@@ -33,7 +33,7 @@
     (builtins.readFile "${./../../secrets/NextDNS.cer}")
   ];
   services = {
-    services.sunshine = {
+    sunshine = {
       enable = true;
       autoStart = true;
       capSysAdmin = true;
@@ -62,7 +62,6 @@
           }
         ];
       };
-    };
     fwupd.enable = true;
     power-profiles-daemon.enable = false;
     auto-cpufreq = {
