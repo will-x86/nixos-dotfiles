@@ -62,6 +62,7 @@
           }
         ];
       };
+    };
     fwupd.enable = true;
     power-profiles-daemon.enable = false;
     auto-cpufreq = {
