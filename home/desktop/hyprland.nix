@@ -8,7 +8,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = ''
-            monitor = HEADLESS-2,disable
             bindm = SUPER, mouse:272, movewindow
             general {
             	border_size = 1
