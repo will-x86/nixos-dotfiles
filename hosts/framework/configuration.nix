@@ -33,12 +33,35 @@
     (builtins.readFile "${./../../secrets/NextDNS.cer}")
   ];
   services = {
-    sunshine = {
+    services.sunshine = {
       enable = true;
       autoStart = true;
       capSysAdmin = true;
       openFirewall = true;
-      user = "will";
+      applications = {
+        env = {
+          PATH = "$(PATH):$(HOME)/.local/bin";
+        };
+        apps = [
+          {
+            name = "Desktop";
+            image-path = "desktop.png";
+          }
+          {
+            name = "Steam Big Picture + Hyprland Virtual Display";
+            detached = [
+              "steam steam://open/bigpicture"
+            ];
+            prep-cmd = [
+              {
+                do = "bash -c \"hyprctl keyword monitor HEADLESS-2,\${SUNSHINE_CLIENT_WIDTH}x\${SUNSHINE_CLIENT_HEIGHT}@\${SUNSHINE_CLIENT_FPS},auto,1 && hyprctl keyword monitor eDP-1,disable\"";
+                undo = "bash -c \"hyprctl keyword monitor HEADLESS-2,disable && hyprctl keyword monitor eDP-1,preferred,auto,auto\"";
+              }
+            ];
+            image-path = "steam.png";
+          }
+        ];
+      };
     };
     fwupd.enable = true;
     power-profiles-daemon.enable = false;
