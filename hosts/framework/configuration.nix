@@ -38,6 +38,7 @@
       autoStart = true;
       capSysAdmin = true;
       openFirewall = true;
+      user = "will";
     };
     fwupd.enable = true;
     power-profiles-daemon.enable = false;
