@@ -12,7 +12,7 @@
     ./user.nix
     ./packages.nix
     ./flatpack.nix
-    #./proton.nix
+    ./proton.nix
   ];
   nixpkgs.config.allowUnfree = true;
   programs.nix-ld.enable = true;

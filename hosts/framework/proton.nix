@@ -90,13 +90,13 @@
     wantedBy = [ "multi-user.target" ];
   };
 
-  ## Pull every 30min
+  ## Pull every ages
   systemd.timers.proton-bisync-pull = {
     description = "Timer for Proton Drive bidirectional sync";
     wantedBy = [ "timers.target" ];
     timerConfig = {
       OnBootSec = "5min";
-      OnUnitActiveSec = "30min";
+      OnUnitActiveSec = "60min";
       Unit = "proton-bisync.service";
     };
   };
