@@ -114,6 +114,14 @@ in
     jdk17
     maven
     cargo
+    # Lan mouse:
+    pkg-config
+    glib
+    libinput
+    libX11
+    libXtst
+    gtk3
+    # end lan-mouse
     orca-slicer
     gtk3
     gtk4
