@@ -91,6 +91,7 @@ in
 
     '')
     pywal
+    deskflow # share mouse
     blender
     arduino-ide
     usbutils
