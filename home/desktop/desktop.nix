@@ -177,29 +177,31 @@ in
     # systemd = false;
     # package = inputs.lan-mouse.packages.${pkgs.stdenv.hostPlatform.system}.default;
     # Configuration converted from TOML to Nix syntax
-    settings = {
-      release_bind = [
-        "KeyA"
-        "KeyS"
-        "KeyD"
-        "KeyF"
-      ];
-      port = 4242;
+    /*
+      settings = {
+        release_bind = [
+          "KeyA"
+          "KeyS"
+          "KeyD"
+          "KeyF"
+        ];
+        port = 4242;
 
-      authorized_fingerprints = {
-        "${secrets.lan-mouse.windowsTLS}" = "desktopdaddy";
+        authorized_fingerprints = {
+          "${secrets.lan-mouse.windowsTLS}" = "desktopdaddy";
+        };
+
+        clients = [
+          {
+            position = "right";
+            hostname = "DESKTOP-ACLK4KR";
+            activate_on_startup = true;
+            ips = [ "${secrets.lan-mouse.windows}" ];
+            port = 4242;
+          }
+        ];
       };
-
-      clients = [
-        {
-          position = "right";
-          hostname = "DESKTOP-ACLK4KR";
-          activate_on_startup = true;
-          ips = [ "${secrets.lan-mouse.windows}" ];
-          port = 4242;
-        }
-      ];
-    };
+    */
   };
 
   programs.rofi = {
