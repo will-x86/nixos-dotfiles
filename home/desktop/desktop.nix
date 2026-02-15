@@ -113,6 +113,7 @@ in
     xdg-utils
     jdk17
     maven
+    cargo
     orca-slicer
     gtk3
     gtk4
