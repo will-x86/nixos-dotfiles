@@ -92,7 +92,6 @@ in
 
     '')
     pywal
-    lan-mouse
     blender
     arduino-ide
     usbutils
