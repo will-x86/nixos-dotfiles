@@ -53,6 +53,7 @@
     unzip
     lsof
     libpq
+    uv
     marp-cli
     postgresql
     moonlight-qt
