@@ -1,5 +1,18 @@
 { secrets, pkgs, ... }:
 {
+  fileSystems."/home/will/popos-projects" = {
+    device = "will@pop-os:/projects";
+    fsType = "sshfs";
+    options = [
+      "nodev"
+      "noauto"
+      "x-systemd.automount"
+      "x-systemd.mount-timeout=3"
+      "noatime"
+      "allow_other"
+      "IdentityFile=/home/will/.ssh/ed25519"
+    ];
+  };
   fileSystems."/mnt/FractalMedia" = {
     device = "//${secrets.samba.fracRemote}/Media";
     fsType = "cifs";
