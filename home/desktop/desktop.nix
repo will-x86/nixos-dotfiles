@@ -129,6 +129,7 @@ in
     vscode
     vulkan-tools
     qmk
+    bruno
     zoom-us
     grim
     kicad
