@@ -9,6 +9,7 @@
     settings = {
       user.name = "${secrets.git.username}";
       user.email = "${secrets.git.email}";
+      user.editor = "nvim";
       color = {
         ui = "auto";
         diff = {
