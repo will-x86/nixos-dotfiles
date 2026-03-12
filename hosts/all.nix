@@ -88,7 +88,6 @@
     enableDefaultPackages = true;
   };
   security.rtkit.enable = true;
-  services.trayscale.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
