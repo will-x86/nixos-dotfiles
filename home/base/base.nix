@@ -108,7 +108,6 @@
     starship.enable = true;
     kitty.enable = true;
     foot.enable = true;
-    trayscale.enable = true;
   };
   nixpkgs.config = {
     allowUnfree = true;
