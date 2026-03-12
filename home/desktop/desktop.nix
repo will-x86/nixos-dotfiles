@@ -117,6 +117,7 @@ in
     cargo
     orca-slicer
     gtk3
+    trayscale
     gtk4
     webkitgtk_6_0
     libreoffice
