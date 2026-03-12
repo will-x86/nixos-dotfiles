@@ -33,6 +33,7 @@
     (builtins.readFile "${./../../secrets/NextDNS.cer}")
   ];
   services = {
+    trayscale.enable = true;
     sunshine = {
       enable = true;
       autoStart = true;
