@@ -56,6 +56,7 @@ in
   };
   services = {
     kdeconnect.enable = true;
+    trayscale.enable = true;
   };
   home.packages = with pkgs; [
     pulsemixer
