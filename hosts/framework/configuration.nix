@@ -74,9 +74,9 @@
             name = "frac";
             addresses = [ "dynamic" ];
           };
-          "bigDaddy" = {
-            id = "${secrets.syncthing.bigDaddy}";
-            name = "bigDaddy";
+          "fone" = {
+            id = "${secrets.syncthing.fone}";
+            name = "fone";
             addresses = [ "dynamic" ];
           };
         };
@@ -86,7 +86,7 @@
             path = "/home/will/Documents/BooxNotes";
             devices = [
               "frac"
-              "bigDaddy"
+              "fone"
             ];
           };
           "BooxBooks" = {
@@ -94,7 +94,7 @@
             path = "/home/will/Documents/BooxBooks";
             devices = [
               "frac"
-              "bigDaddy"
+              "fone"
             ];
           };
           "SyncDoc" = {
@@ -102,7 +102,7 @@
             path = "/home/will/Documents/SyncDoc";
             devices = [
               "frac"
-              "bigDaddy"
+              "fone"
             ];
           };
         };
