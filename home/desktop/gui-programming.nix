@@ -9,7 +9,7 @@
     jetbrains.idea
     vscode
     stm32cubemx
-    arduini-ide
+    arduino-ide
 
     # other
     bruno
