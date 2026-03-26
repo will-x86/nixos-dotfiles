@@ -16,5 +16,7 @@
 
     obsidian
     spotify
+    chromium
+    anydesk
   ];
 }

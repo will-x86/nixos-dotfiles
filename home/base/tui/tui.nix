@@ -9,6 +9,7 @@
     xdg-terminal-exec # launch tui
     tmux
     btop
+    bluetui # bluetooth
 
   ];
 }
