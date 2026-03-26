@@ -8,7 +8,7 @@
     ./git.nix
     ./ssh.nix
     ./nixvim
-    ./programming
+    ./programming.nix
     ./tui/tmux.nix
     ./tui/tui.nix
   ];
