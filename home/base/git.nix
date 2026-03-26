@@ -1,6 +1,6 @@
 {
-  pkgs,
   secrets,
+  pkgs,
   ...
 }:
 {
@@ -24,4 +24,9 @@
       };
     };
   };
+  home.packages = with pkgs; [
+    git-crypt
+    git-lfs
+  ];
+
 }

@@ -19,6 +19,7 @@ in
   imports = [
     base
     hyprland
+    ./gui-programming.nix
   ];
   xdg.portal = {
     enable = true;
@@ -92,53 +93,28 @@ in
 
     '')
     pywal
-    blender
-    arduino-ide
     usbutils
     wlogout
-    bluetui
-    proton-pass
-    obs-studio
     pywalfox-native
     slurp
-    eslint
-    mediawriter
-    devenv
     bc
     gawk
     coreutils
     xdg-utils
     polkit
-    jetbrains.idea
-    xdg-utils
-    jdk17
-    maven
-    opencode
-    cargo
     orca-slicer
     gtk3
-    trayscale
     gtk4
     webkitgtk_6_0
-    libreoffice
     syncthingtray
     iwd
     polkit
     python312Packages.dbus-python
-    dbeaver-bin
-    discord
-    ccls
-    vscode
     vulkan-tools
     qmk
-    bruno
-    zoom-us
     grim
-    kicad
     libnotify
-    kdePackages.dolphin
     brightnessctl
-    obsidian
     gocr
     pavucontrol
     wl-clipboard
@@ -146,21 +122,10 @@ in
     waybar # bar
     hyprshot # screenshots
     mako
-    spotify
-    bottles
     swww
     mpv
     feh
     playerctl
-    #google-chrome # byebye chrome
-    chromium
-    nixos-shell # vm's
-    nixos-generators
-    anydesk
-    stm32cubemx
-    kiwix
-    python312Packages.marimo
-    android-studio
     (pkgs.callPackage (
       { stdenv }:
 
