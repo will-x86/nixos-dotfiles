@@ -20,6 +20,7 @@ in
     base
     hyprland
     ./gui-programming.nix
+    ./gui.nix
   ];
   xdg.portal = {
     enable = true;
@@ -59,7 +60,49 @@ in
     kdeconnect.enable = true;
   };
   home.packages = with pkgs; [
+    # --- hyprland / wayland ---
+    brightnessctl
+    grim
+    hyprshot
+    libnotify
+    mako
+    playerctl
+    pywal
+    pywalfox-native
+    slurp
+    swww
+    waybar
+    wl-clipboard
+    wlogout
+    xdg-utils
+
+    # --- audio / media ---
+    feh
+    mpv
+    pavucontrol
     pulsemixer
+
+    # --- system / desktop ---
+    coreutils
+    gawk
+    gtk3
+    gtk4
+    iwd
+    polkit
+    python312Packages.dbus-python
+    udiskie # auto-mount drives
+    vulkan-tools
+    webkitgtk_6_0
+
+    # --- cli utils ---
+    bc
+    gocr
+    usbutils
+
+    # --- apps ---
+    orca-slicer
+    qmk
+    syncthingtray
     (writeShellScriptBin "kabam" ''
       FRP_SERVER_ADDR="${secrets.tunnelDomain}" 
       FRP_SERVER_PORT="7000"
@@ -92,40 +135,6 @@ in
       frpc -c "$CONFIG_FILE"
 
     '')
-    pywal
-    usbutils
-    wlogout
-    pywalfox-native
-    slurp
-    bc
-    gawk
-    coreutils
-    xdg-utils
-    polkit
-    orca-slicer
-    gtk3
-    gtk4
-    webkitgtk_6_0
-    syncthingtray
-    iwd
-    polkit
-    python312Packages.dbus-python
-    vulkan-tools
-    qmk
-    grim
-    libnotify
-    brightnessctl
-    gocr
-    pavucontrol
-    wl-clipboard
-    udiskie # auto-mount drives
-    waybar # bar
-    hyprshot # screenshots
-    mako
-    swww
-    mpv
-    feh
-    playerctl
     (pkgs.callPackage (
       { stdenv }:
 

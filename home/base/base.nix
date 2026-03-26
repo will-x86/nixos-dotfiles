@@ -16,32 +16,37 @@
   home.homeDirectory = "/home/will";
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
-    unzip
-    lsof
-    libpq
-    moonlight-qt
-    ntfsprogs
-    dig
+    # --- cli utils ---
     curl
+    dig
+    fastfetch
+    file
+    fzf
+    jq
+    ripgrep
+    tree
+    unzip
+    zip
+    zoxide
+
+    # --- system / filesystem ---
+    dnsmasq # Used for pretending to be a router lol
     exfat
     ffmpeg-full
+    gnumake
     hfsprogs
-    tailscale
+    libpq
+    lsof
+    ntfsprogs
     openssl
     rclone
     samba
     unrar-wrapper
-    gnumake
-    zip
-    jq
+
+    # --- apps ---
     distrobox
-    fastfetch
-    tree
-    dnsmasq # Used for pretending to be a router lol
-    fzf
-    ripgrep
-    file
-    zoxide
+    moonlight-qt
+    tailscale
   ];
   programs = {
     home-manager.enable = true;
