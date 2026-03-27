@@ -62,6 +62,9 @@
             pkgs.lib.lsp.root_patterns
             "package.json"
           ];
+          initOptions = {
+            typescript.tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
+          };
         };
         vue_ls.enable = true;
         dartls.enable = true;
