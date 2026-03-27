@@ -32,6 +32,7 @@
         gopls.enable = true;
         html.enable = true;
         jsonls.enable = true;
+        astro.enable = true;
         lua_ls.enable = true;
         nixd = {
           enable = true;

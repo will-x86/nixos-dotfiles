@@ -28,6 +28,7 @@
         "cmake"
         "markdown"
         "vue"
+        "astro"
       ];
     };
   };
