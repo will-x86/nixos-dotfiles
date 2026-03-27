@@ -62,7 +62,7 @@
             pkgs.lib.lsp.root_patterns
             "package.json"
           ];
-          initOptions = {
+          init_options = {
             typescript.tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
           };
         };
