@@ -56,6 +56,7 @@
             "javascript"
             "javascriptreact"
             "vue"
+            "astro"
           ];
           root_dir = [
             pkgs.lib.lsp.root_patterns
