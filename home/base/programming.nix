@@ -26,6 +26,8 @@
     rust-analyzer
     yarn
     cargo
+    openssl
+    pkg-config
     python312Packages.marimo
     python312Packages.dbus-python
     # tui programing
