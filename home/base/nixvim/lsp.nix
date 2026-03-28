@@ -30,7 +30,13 @@
         cmake.enable = true;
         cssls.enable = true;
         gopls.enable = true;
-        html.enable = true;
+        html = {
+          enable = true;
+          extraOptions = {
+            init_options.userLanguages.rust = "html";
+          };
+
+        };
         jsonls.enable = true;
         astro.enable = true;
         lua_ls.enable = true;
