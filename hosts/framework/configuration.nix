@@ -22,6 +22,7 @@
   programs.steam = {
     enable = true;
   };
+  programs.direnv.enable = true; # something something cache
 
   boot.loader.systemd-boot.configurationLimit = 20;
   boot.initrd.luks.devices."luks-a26d1b6a-644e-425e-89d3-a7619fcf22ea".device =
