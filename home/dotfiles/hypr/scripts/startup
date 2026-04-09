@@ -22,5 +22,3 @@ wal -i ~/.config/hypr/wallpapers/wallpaper2.png -q -n -e -s -c &
 # Start network manager applet
 #nm-applet --indicator &
 
-# Start mpd
-exec mpd &

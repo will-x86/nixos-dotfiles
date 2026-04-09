@@ -67,8 +67,6 @@ in
     libnotify
     mako
     playerctl
-    pywal
-    pywalfox-native
     slurp
     hyprpaper
     waybar
