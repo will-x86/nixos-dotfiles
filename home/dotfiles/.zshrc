@@ -37,7 +37,9 @@ zinit wait lucid for \
            bindkey '^p' history-search-backward; \
            bindkey '^n' history-search-forward; \
            bindkey '^[w' kill-region; \
-           bindkey '^b' backward-word" \
+           bindkey '^z' backward-word \
+           bindkey '^x' forward-word " \
+
     zdharma-continuum/null
 
 
