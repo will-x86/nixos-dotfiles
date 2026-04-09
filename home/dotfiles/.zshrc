@@ -39,7 +39,6 @@ zinit wait lucid for \
            bindkey '^[w' kill-region; \
            bindkey '^z' backward-word \
            bindkey '^x' forward-word " \
-
     zdharma-continuum/null
 
 
