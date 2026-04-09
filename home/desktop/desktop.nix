@@ -151,28 +151,10 @@ in
     enable = true;
     plugins = [ pkgs.rofi-emoji ];
   };
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
-    };
-    iconTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
-    };
-  };
-
+  # stylix doesn't support the 'kde' platform theme
   qt = {
     enable = true;
     platformTheme.name = "gtk";
-  };
-
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      gtk-theme = "Adwaita-dark";
-      color-scheme = "prefer-dark";
-    };
   };
 
   home.sessionVariables = {

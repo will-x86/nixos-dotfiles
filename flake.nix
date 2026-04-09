@@ -11,6 +11,10 @@
     nixvim = {
       url = "github:nix-community/nixvim";
     };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     inputs:
@@ -20,6 +24,7 @@
         nixpkgs-stable
         home-manager
         nixos-wsl
+        stylix
         ;
       system = "x86_64-linux";
 
@@ -106,6 +111,7 @@
         framework = mkHost {
           hostName = "framework";
           homeConfig = ./home/desktop/desktop.nix;
+          extraModules = [ stylix.nixosModules.stylix ];
         };
 
         bigDaddy = mkHost {

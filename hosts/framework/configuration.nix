@@ -13,6 +13,7 @@
     ./packages.nix
     ./flatpack.nix
     ./proton.nix
+    ./stylix.nix
   ];
   nixpkgs.config.allowUnfree = true;
   programs.nix-ld.enable = true;
