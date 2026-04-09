@@ -3,6 +3,8 @@
   stylix = {
     enable = true;
     image = ../../home/dotfiles/hypr/wallpapers/wallpaper2.png;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+
     polarity = "dark";
 
     fonts = {
@@ -55,6 +57,8 @@
 
       # Stylix doesn't support
       stylix.targets.qt.enable = false;
+      # ugly withotu
+      stylix.targets.nvim.enable = false;
     }
   ];
 }
