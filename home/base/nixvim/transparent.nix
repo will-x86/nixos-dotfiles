@@ -1,5 +1,10 @@
 let
-  status = ["Alternate" "Current" "Inactive" "Visible"];
+  status = [
+    "Alternate"
+    "Current"
+    "Inactive"
+    "Visible"
+  ];
   part = [
     "ADDED"
     "CHANGED"
@@ -24,13 +29,15 @@ let
     "TabLineFill"
     "NormalFloat"
     "FloatBorder"
+    "LineNr"
+    "SignColumn"
   ];
   # "Buffer" + status + part
-  buffer_status =
-    builtins.foldl' (acc: elem: acc ++ elem) []
-    (builtins.map (status: builtins.map (part: "Buffer" + status + part) part)
-      status);
-in {
+  buffer_status = builtins.foldl' (acc: elem: acc ++ elem) [ ] (
+    builtins.map (status: builtins.map (part: "Buffer" + status + part) part) status
+  );
+in
+{
   plugins = {
     transparent = {
       enable = true;
