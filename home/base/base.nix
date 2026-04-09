@@ -14,7 +14,7 @@
   ];
   home.username = "will";
   home.homeDirectory = "/home/will";
-  home.stateVersion = "24.11";
+  home.stateVersion = "26.05";
   home.packages = with pkgs; [
     # --- cli utils ---
     curl

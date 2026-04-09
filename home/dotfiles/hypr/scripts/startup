@@ -16,12 +16,11 @@ fi
 
 ~/.config/hypr/scripts/notifications &
 wal -i ~/.config/hypr/wallpapers/wallpaper2.png -q -n -e -s -c &
-pywalfox update &
 
 ~/.config/hypr/scripts/statusbar &
 
 # Start network manager applet
-nm-applet --indicator &
+#nm-applet --indicator &
 
 # Start mpd
 exec mpd &
