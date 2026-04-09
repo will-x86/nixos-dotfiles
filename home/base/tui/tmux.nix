@@ -81,8 +81,7 @@
       bind -T copy-mode-vi 'C-\' select-pane -l
       #bind -T copy-mode-vi 'C-Space' select-pane -t:.+
       bind-key -r f run-shell "tmux neww ~/tmux-sessioniser"
-      set -g window-style 'bg=default'
-      set -g window-active-style 'bg=default'
+      set -g status-style 'bg=default'
 
     '';
     plugins = with pkgs.tmuxPlugins; [
