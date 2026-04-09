@@ -15,8 +15,6 @@ if grep -q "closed" /proc/acpi/button/lid/LID0/state; then
 fi
 
 ~/.config/hypr/scripts/notifications &
-swww-daemon & 
-swww img ~/.config/hypr/wallpapers/wallpaper2.png & 
 wal -i ~/.config/hypr/wallpapers/wallpaper2.png -q -n -e -s -c &
 pywalfox update &
 

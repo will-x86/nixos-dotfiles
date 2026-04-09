@@ -70,7 +70,7 @@ in
     pywal
     pywalfox-native
     slurp
-    swww
+    hyprpaper
     waybar
     wl-clipboard
     wlogout
