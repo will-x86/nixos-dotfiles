@@ -66,6 +66,10 @@
         "--cmd cd"
       ];
     };
+    starship = {
+      enable = true;
+      settings = builtins.fromTOML (builtins.readFile ../dotfiles/starship.toml);
+    };
     kitty.enable = true;
     foot.enable = true;
   };
@@ -75,7 +79,7 @@
   };
 
   home.file = {
-    ".config/starship.toml".source = ../dotfiles/starship.toml;
+    # starship.toml is now managed via programs.starship.settings
     ".tmux-sessioniser".source = ../dotfiles/.tmux-sessioniser;
     "tmux-sessioniser".source = ../dotfiles/tmux-sessioniser;
     #".zshrc".source = ../dotfiles/.zshrc;
