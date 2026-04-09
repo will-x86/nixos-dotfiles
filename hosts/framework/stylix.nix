@@ -58,7 +58,7 @@
       # Stylix doesn't support
       stylix.targets.qt.enable = false;
       # ugly withotu
-      stylix.targets.nvim.enable = false;
+      stylix.targets.neovim.enable = false;
     }
   ];
 }
