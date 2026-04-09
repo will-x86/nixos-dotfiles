@@ -11,7 +11,7 @@ alias vi='nvim'
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)" && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
-#zinit light starship/starship
+zinit light starship/starship
 bindkey -s ^f "~/tmux-sessioniser\n"
 
 
@@ -36,10 +36,11 @@ zinit wait lucid for \
     atload"bindkey '^ ' autosuggest-accept; \
            bindkey '^p' history-search-backward; \
            bindkey '^n' history-search-forward; \
-           bindkey '^[w' kill-region; \
-           bindkey '^z' backward-word; \
-           bindkey '^x' forward-word" \
+           bindkey '^[w' kill-region;" \
     zdharma-continuum/null
+
+           #bindkey '^z' backward-word; \ // both are done via  alt + b and f
+           #bindkey '^x' forward-word" \
 
 # History settings
 HISTSIZE=5000

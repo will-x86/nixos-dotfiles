@@ -55,7 +55,10 @@
       initContent = builtins.readFile ../dotfiles/.zshrc;
     };
     #firefox.enable = true; # byebye
-    direnv.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
     zoxide = {
       enable = true;
       enableZshIntegration = true;
