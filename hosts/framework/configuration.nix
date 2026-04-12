@@ -143,6 +143,9 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    extraPackages = with pkgs; [
+      mesa.opencl # Enables Rusticl (OpenCL) support for resolve
+    ];
   };
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
