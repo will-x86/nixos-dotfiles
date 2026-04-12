@@ -18,5 +18,6 @@
     spotify
     chromium
     anydesk
+    davinci-resolve
   ];
 }
