@@ -147,6 +147,8 @@
       mesa.opencl # Enables Rusticl (OpenCL) support for resolve
     ];
   };
+  hardware.amdgpu.opencl.enable = true; # also support for resolve
+
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
