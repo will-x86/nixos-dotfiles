@@ -51,7 +51,13 @@
           };
         };
         #ruff.enable = true;
-        pyright.enable = true;
+        pyright = {
+          enable = true;
+          extraOptions = {
+            python.analysis.pythonPath = ".venv/bin/python";
+            python.analysis.venv = ".venv";
+          };
+        };
         marksman.enable = true;
         ruby_lsp.enable = true;
         ts_ls = {
