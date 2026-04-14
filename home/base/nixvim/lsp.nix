@@ -50,7 +50,8 @@
             };
           };
         };
-        ruff.enable = true;
+        #ruff.enable = true;
+        pyright.enable = true;
         marksman.enable = true;
         ruby_lsp.enable = true;
         ts_ls = {
