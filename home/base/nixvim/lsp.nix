@@ -53,9 +53,13 @@
         #ruff.enable = true;
         pyright = {
           enable = true;
-          extraOptions = {
-            python.analysis.pythonPath = ".venv/bin/python";
-            python.analysis.venv = ".venv";
+          settings = {
+            python = {
+              analysis = {
+                pythonPath = ".venv/bin/python";
+                venv = ".venv";
+              };
+            };
           };
         };
         marksman.enable = true;
