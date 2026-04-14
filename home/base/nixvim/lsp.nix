@@ -53,7 +53,6 @@
         ruff.enable = true;
         marksman.enable = true;
         ruby_lsp.enable = true;
-        pylsp.enable = true;
         ts_ls = {
           enable = true;
           filetypes = [
