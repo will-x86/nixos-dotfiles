@@ -19,5 +19,6 @@
     chromium
     anydesk
     davinci-resolve
+    zathura
   ];
 }
