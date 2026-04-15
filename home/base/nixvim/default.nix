@@ -33,7 +33,12 @@
     plugins = {
       #bufferline.enable = true;
       web-devicons.enable = true;
-      vimtex.enable = true;
+      vimtex = {
+        enable = true;
+        settings = {
+          view_method = "zathura";
+        };
+      };
       #copilot-vim.enable = true;
     };
   };
