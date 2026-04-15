@@ -10,6 +10,7 @@
     vscode
     stm32cubemx
     arduino-ide
+    zed-editor
 
     # other
     bruno
