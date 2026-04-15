@@ -36,6 +36,7 @@
       vimtex = {
         enable = true;
         settings = {
+          texlivePackage = pkgs.texliveFull;
           view_method = "zathura";
         };
       };
