@@ -30,6 +30,10 @@
       update_in_insert = false;
       severity_sort = false;
     };
+    extraPackages = with pkgs; [
+      texliveFull
+      zathura
+    ];
     plugins = {
       #bufferline.enable = true;
       web-devicons.enable = true;
