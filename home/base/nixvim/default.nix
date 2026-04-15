@@ -33,6 +33,7 @@
     extraPackages = with pkgs; [
       texliveFull
       zathura
+      xdotool
     ];
     plugins = {
       #bufferline.enable = true;
