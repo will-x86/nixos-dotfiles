@@ -35,8 +35,8 @@
       web-devicons.enable = true;
       vimtex = {
         enable = true;
+        texlivePackage = pkgs.texliveFull;
         settings = {
-          texlivePackage = pkgs.texliveFull;
           view_method = "zathura";
         };
       };
