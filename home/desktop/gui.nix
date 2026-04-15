@@ -19,6 +19,8 @@
     chromium
     anydesk
     davinci-resolve
-    zathura # tex viewer
+    texliveFull
+    zathura
+
   ];
 }
