@@ -20,6 +20,9 @@
     anydesk
     davinci-resolve
     zathura # tex viewer
-    texliveFull # compiler . ?
+    # texliveFull # compiler . ?
+    (texlive.combine {
+      inherit (texlive) scheme-full wrapfig;
+    })
   ];
 }
