@@ -55,10 +55,6 @@
         basedpyright = {
 
           enable = true;
-          config = {
-            root_markers = [
-              "pyproject.toml"
-            ];
           };
         };
         marksman.enable = true;
