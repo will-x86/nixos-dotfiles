@@ -52,7 +52,15 @@
         };
         ruff.enable = true;
         #pylsp.enable = true;
-        basedpyright.enable = true;
+        basedpyright = {
+
+          enable = true;
+          config = {
+            root_markers = [
+              "pyproject.toml"
+            ];
+          };
+        };
         marksman.enable = true;
         ruby_lsp.enable = true;
         ts_ls = {
