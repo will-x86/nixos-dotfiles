@@ -3,11 +3,12 @@
   extraPackages = with pkgs; [
     stylua
     nixfmt
-    nodePackages.prettier
+    nodePackages.prettierd
     black
     isort
     gopls
     rustfmt
+    eslint_d
   ];
 
   plugins.conform-nvim = {
@@ -16,7 +17,7 @@
       notify_on_error = false;
 
       format_on_save = {
-        timeout_ms = 500;
+        timeout_ms = 1000;
         lsp_fallback = true;
       };
 
@@ -28,15 +29,42 @@
       formatters_by_ft = {
         lua = [ "stylua" ];
         nix = [ "nixfmt" ];
-        javascript = [ "prettier" ];
-        typescript = [ "prettier" ];
-        javascriptreact = [ "prettier" ];
-        typescriptreact = [ "prettier" ];
-        vue = [ "prettier" ];
-        html = [ "prettier" ];
-        css = [ "prettier" ];
-        json = [ "prettier" ];
-        yaml = [ "prettier" ];
+        javascript = [
+          "eslint_d"
+          "prettierd"
+        ];
+        typescript = [
+          "eslint_d"
+          "prettierd"
+        ];
+        javascriptreact = [
+          "eslint_d"
+          "prettierd"
+        ];
+        typescriptreact = [
+          "eslint_d"
+          "prettierd"
+        ];
+        vue = [
+          "eslint_d"
+          "prettierd"
+        ];
+        html = [
+          "eslint_d"
+          "prettierd"
+        ];
+        css = [
+          "eslint_d"
+          "prettierd"
+        ];
+        json = [
+          "eslint_d"
+          "prettierd"
+        ];
+        yaml = [
+          "eslint_d"
+          "prettierd"
+        ];
         python = [
           "isort"
           "black"
