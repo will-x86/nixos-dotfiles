@@ -3,7 +3,7 @@
   extraPackages = with pkgs; [
     stylua
     nixfmt
-    nodePackages.prettierd
+    prettierd
     black
     isort
     gopls
