@@ -24,6 +24,14 @@
       action = ":m '>+1<CR>gv=gv";
     }
     {
+      mode = "n";
+      key = "<leader>q";
+      action = "<cmd>lua vim.diagnostic.setqflist()<CR>";
+      options = {
+        desc = "Open diagnostic [Q]uickfix list";
+      };
+    }
+    {
       mode = "v";
       key = "K";
       action = ":m '<-2<CR>gv=gv";
