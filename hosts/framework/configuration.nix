@@ -12,7 +12,6 @@
     ./user.nix
     ./packages.nix
     ./flatpack.nix
-    ./proton.nix
     ./stylix.nix
   ];
   nixpkgs.config.allowUnfree = true;

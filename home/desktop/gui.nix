@@ -19,6 +19,7 @@
     chromium
     anydesk
     davinci-resolve
+    celeste
 
   ];
 }
