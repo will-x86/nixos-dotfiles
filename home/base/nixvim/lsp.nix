@@ -66,7 +66,7 @@
             "javascriptreact"
             "vue"
             "astro"
-            "svelte"
+            #"svelte"
           ];
           root_dir = [
             pkgs.lib.lsp.root_patterns
@@ -76,6 +76,7 @@
             typescript.tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
           };
         };
+        svelte.enable = true;
         vue_ls.enable = true;
         dartls.enable = true;
         rust_analyzer = {
