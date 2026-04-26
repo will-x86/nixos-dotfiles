@@ -35,9 +35,10 @@
   ];
   services = {
     logind.settings.Login = {
+      HandlePowerKey = "suspend";
       HandleLidSwitch = "suspend";
-      HandleLidSwitchExternalPower = "lock";
-      HandleLidSwitchDocked = "ignore";
+      HandleLidSwitchExternalPower = "suspend";
+      HandleLidSwitchDocked = "ignore"; # hypridle/hyprlock handles
     };
     sunshine = {
       enable = true;
