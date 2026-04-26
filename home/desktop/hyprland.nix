@@ -24,6 +24,10 @@
         	hover_icon_on_border = true
         	allow_tearing = false
         }
+        # laptop idk
+        bindl = , switch:Lid Switch, exec, hyprctl keyword monitor "eDP-1, disable"
+        bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1, highres,0x0,1"
+        # end laptop
         # This is for VM's
         # ALT + R = ignore all hyprland keybindings
         bind=ALT,R,submap,passthrough

@@ -38,7 +38,7 @@
       HandlePowerKey = "suspend";
       HandleLidSwitch = "suspend";
       HandleLidSwitchExternalPower = "suspend";
-      HandleLidSwitchDocked = "ignore"; # hypridle/hyprlock handles
+      HandleLidSwitchDocked = "ignore";
     };
     sunshine = {
       enable = true;
