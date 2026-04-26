@@ -34,6 +34,11 @@
     (builtins.readFile "${./../../secrets/NextDNS.cer}")
   ];
   services = {
+    logind.settings.Login = {
+      HandleLidSwitch = "suspend";
+      HandleLidSwitchExternalPower = "lock";
+      HandleLidSwitchDocked = "ignore";
+    };
     sunshine = {
       enable = true;
       autoStart = true;
