@@ -119,7 +119,7 @@
       pkgs.openocd
       pkgs.qmk-udev-rules
     ];
-    desktopManager.plasma6.enable = true;
+    #desktopManager.plasma6.enable = true;
     xserver.xkb = {
       layout = "us";
       variant = "";
