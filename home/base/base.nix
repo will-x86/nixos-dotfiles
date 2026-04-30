@@ -17,6 +17,7 @@
   home.stateVersion = "26.05";
   home.packages = with pkgs; [
     # --- cli utils ---
+    nix-index
     curl
     dig
     fastfetch
