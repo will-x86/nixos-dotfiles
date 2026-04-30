@@ -34,6 +34,7 @@
       texliveFull
       zathura
       xdotool
+      python312Packages.pylatexenc
     ];
     plugins = {
       #bufferline.enable = true;
