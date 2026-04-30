@@ -38,7 +38,16 @@
     plugins = {
       #bufferline.enable = true;
       web-devicons.enable = true;
-      render-markdown.enable = true;
+      #render-markdown.enable = true;
+      render-markdown = {
+        enable = true;
+        settings = {
+          latex = {
+            enabled = true;
+            position = "above";
+          };
+        };
+      };
       vimtex = {
         enable = true;
         texlivePackage = pkgs.texliveFull;
