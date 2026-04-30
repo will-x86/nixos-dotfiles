@@ -38,6 +38,7 @@
     plugins = {
       #bufferline.enable = true;
       web-devicons.enable = true;
+      render-markdown.enable = true;
       vimtex = {
         enable = true;
         texlivePackage = pkgs.texliveFull;
