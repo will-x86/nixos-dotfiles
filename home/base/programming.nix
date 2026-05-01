@@ -19,6 +19,7 @@
     jdk17
     # lsp stuff
     typescript-language-server # nixvim
+    black
     eslint
     # extensions / other
     maven
