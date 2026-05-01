@@ -37,6 +37,7 @@
       python312Packages.pylatexenc
     ];
     plugins = {
+      image.enable = true;
       #bufferline.enable = true;
       web-devicons.enable = true;
       #render-markdown.enable = true;
