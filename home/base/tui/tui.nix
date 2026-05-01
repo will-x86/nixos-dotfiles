@@ -10,6 +10,7 @@
     tmux
     btop
     bluetui # bluetooth
+    yazi
 
   ];
 }
