@@ -145,7 +145,6 @@
 
 
         monitor=eDP-1,highres,0x0,1
-        monitor=DP-2,highres,0x0,2,transform,1
 
 
         $notifycmd = notify-send -h string:x-canonical-private-synchronous:hypr-cfg -u low
