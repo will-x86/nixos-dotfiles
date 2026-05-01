@@ -21,6 +21,7 @@
     typescript-language-server # nixvim
     black
     eslint
+    nixd
     # extensions / other
     maven
     uv
