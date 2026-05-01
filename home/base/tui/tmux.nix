@@ -35,6 +35,7 @@
       bind Enter split-window -v -c "#{pane_current_path}"
 
       bind x kill-pane
+      set -g allow-passthrough on
 
       # Bind m to maximize the current pane
        unbind M
