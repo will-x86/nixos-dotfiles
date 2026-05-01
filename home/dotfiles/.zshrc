@@ -3,7 +3,7 @@ export PATH=$PATH:/usr/local/go/bin
 
 export PATH=$PATH:/home/will/.cargo/bin
 export PATH=$PATH:/home/will/.config/scripts/
-
+export HYPRSHOT_DIR=$HOME/Pictures/Screenshots/
 alias vim='nvim'
 alias vi='nvim'
 
