@@ -1,0 +1,73 @@
+local mod = "SUPER"
+local shift = "SUPER + SHIFT"
+local ctrl = "SUPER + CTRL"
+local s = SCRIPTS
+
+local repeating = { repeating = true }
+local locked = { locked = true }
+local locked_r = { locked = true, repeating = true }
+
+-- Apps
+hl.bind(mod .. " + e", hl.dsp.exec_cmd(s.kitty .. " -e lf"))
+hl.bind(mod .. " + Return", hl.dsp.exec_cmd(s.kitty .. " -T"))
+hl.bind(mod .. " + T", hl.dsp.exec_cmd(s.kitty))
+hl.bind(mod .. " + X", hl.dsp.exec_cmd(s.wlogout))
+hl.bind(mod .. " + A", hl.dsp.exec_cmd("hyprshot -m region"))
+hl.bind(mod .. " + P", hl.dsp.exec_cmd(s.colorpicker))
+hl.bind(mod .. " + escape", hl.dsp.exec_cmd("hyprlock"))
+
+-- Launcher (released SUPER)
+hl.bind(mod .. " + SUPER_L", hl.dsp.exec_cmd(s.rofi), { release = true })
+
+-- Mouse
+hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+
+-- Windows
+hl.bind(mod .. " + Q", hl.dsp.window.close())
+hl.bind(mod .. " + F", hl.dsp.window.fullscreen({ mode = 0 }))
+hl.bind(mod .. " + Space", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mod .. " + Space", hl.dsp.window.center())
+
+-- Focus (hjkl)
+hl.bind(mod .. " + h", hl.dsp.focus({ direction = "left" }))
+hl.bind(mod .. " + l", hl.dsp.focus({ direction = "right" }))
+hl.bind(mod .. " + k", hl.dsp.focus({ direction = "up" }))
+hl.bind(mod .. " + j", hl.dsp.focus({ direction = "down" }))
+
+-- Move (hjkl)
+hl.bind(shift .. " + h", hl.dsp.window.move({ direction = "l" }))
+hl.bind(shift .. " + l", hl.dsp.window.move({ direction = "r" }))
+hl.bind(shift .. " + k", hl.dsp.window.move({ direction = "u" }))
+hl.bind(shift .. " + j", hl.dsp.window.move({ direction = "d" }))
+
+-- Resize (hjkl, repeating)
+hl.bind(ctrl .. " + h", function()
+	hl.dispatch(hl.dsp.window.resize({ x = -20, y = 0 }))
+end, repeating)
+hl.bind(ctrl .. " + l", function()
+	hl.dispatch(hl.dsp.window.resize({ x = 20, y = 0 }))
+end, repeating)
+hl.bind(ctrl .. " + k", function()
+	hl.dispatch(hl.dsp.window.resize({ x = 0, y = -20 }))
+end, repeating)
+hl.bind(ctrl .. " + j", function()
+	hl.dispatch(hl.dsp.window.resize({ x = 0, y = 20 }))
+end, repeating)
+
+-- Workspaces
+for i = 0, 9 do
+	hl.bind(mod .. " + " .. i, hl.dsp.focus({ workspace = i }))
+	hl.bind(shift .. " + " .. i, hl.dsp.window.move({ workspace = i }))
+end
+
+-- Media / brightness / volume
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(s.backlight .. " --inc"), locked_r)
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(s.backlight .. " --dec"), locked_r)
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(s.volume .. " --inc"), locked_r)
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(s.volume .. " --dec"), locked_r)
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(s.volume .. " --toggle"), locked)
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(s.volume .. " --toggle-mic"), locked)
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), locked)
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), locked)
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), locked)
+hl.bind("XF86AudioStop", hl.dsp.exec_cmd("playerctl stop"), locked)

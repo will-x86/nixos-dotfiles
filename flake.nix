@@ -15,6 +15,8 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dolphin-overlay.url = "github:rumboon/dolphin-overlay";
+
   };
   outputs =
     inputs:
@@ -25,6 +27,7 @@
         home-manager
         nixos-wsl
         stylix
+        dolphin-overlay
         ;
       system = "x86_64-linux";
 
@@ -75,6 +78,7 @@
             ./hosts/${hostName}/configuration.nix
             home-manager.nixosModules.home-manager
             (mkHomeManagerConfig homeConfig)
+            { nixpkgs.overlays = [ dolphin-overlay.overlays.default ]; }
           ]
           ++ extraModules;
         };

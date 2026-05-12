@@ -37,6 +37,7 @@
       python312Packages.pylatexenc
     ];
     plugins = {
+      lspconfig.enable = true;
       image.enable = true;
       #bufferline.enable = true;
       web-devicons.enable = true;
@@ -44,9 +45,16 @@
       render-markdown = {
         enable = true;
         settings = {
+          heading = {
+            enabled = false;
+          };
+          code = {
+            sign = false;
+          };
           latex = {
             enabled = true;
-            position = "above";
+            position = "center";
+            converter = "utftex";
           };
         };
       };
@@ -57,7 +65,11 @@
           view_method = "zathura";
         };
       };
+
       #copilot-vim.enable = true;
     };
+    extraConfigLua = ''
+      vim.g.vimtex_compiler_latexmk = { out_dir = "build" }
+    '';
   };
 }

@@ -13,6 +13,11 @@
     zoom-us
     kicad
     kdePackages.dolphin
+    #kdePackages.dolphin
+    #kdePackages.dolphin-plugins
+    #kdePackages.baloo-widgets
+    #kdePackages.baloo
+    freecad
 
     obsidian
     spotify
@@ -20,6 +25,7 @@
     anydesk
     davinci-resolve
     celeste
+    kdePackages.okular # pdf
 
   ];
 }

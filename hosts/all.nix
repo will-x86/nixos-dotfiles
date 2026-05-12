@@ -121,6 +121,8 @@
       "containerd"
       "kvm"
       "adbusers"
+      "plugdev"
+      "dialout"
     ];
   };
 
