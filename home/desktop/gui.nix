@@ -25,6 +25,7 @@
     anydesk
     davinci-resolve
     celeste
+    signal-desktop
     kdePackages.okular # pdf
 
   ];
