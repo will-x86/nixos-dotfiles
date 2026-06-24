@@ -97,7 +97,7 @@
           "javascriptreact"
           "vue"
           "astro"
-          "svelte"
+          # "svelte"
         ];
         root_markers = [
           "package.json"
