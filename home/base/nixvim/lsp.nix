@@ -1,5 +1,6 @@
 { pkgs, lib, ... }:
 {
+  plugins.lspconfig.enable = true; # Required for proper lsp hints / completions
   lsp.keymaps = [
     {
       key = "K";

@@ -37,7 +37,6 @@
       python312Packages.pylatexenc
     ];
     plugins = {
-      lspconfig.enable = true;
       image.enable = true;
       #bufferline.enable = true;
       web-devicons.enable = true;
