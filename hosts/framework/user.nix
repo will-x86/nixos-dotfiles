@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   users.users.will.extraGroups = [
     "dialout"
@@ -21,6 +21,19 @@
   programs._1password-gui = {
     enable = true;
     polkitPolicyOwners = [ "will" ];
+  };
+  services.xremap = {
+    enable = true;
+    package = pkgs.xremap;
+    userName = "will";
+    yamlConfig = ''
+      experimental_map:
+        - chords:
+            - keys: [CAPSLOCK]
+              actions: ESC
+              timeout: 30
+    '';
+
   };
   # Ts ain't user
   services.udev.extraRules = ''
