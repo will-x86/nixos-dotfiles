@@ -27,13 +27,13 @@
     package = pkgs.xremap;
     userName = "will";
     yamlConfig = ''
-      experimental_map:
-        - chords:
-            - keys: [CAPSLOCK]
-              actions: ESC
-              timeout: 30
+      modmap:
+        - name: capslock-esc
+          remap:
+            CapsLock:
+              alone: Esc
+              alone_timeout_millis: 300
     '';
-
   };
   # Ts ain't user
   services.udev.extraRules = ''
