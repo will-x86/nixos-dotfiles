@@ -16,6 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dolphin-overlay.url = "github:rumboon/dolphin-overlay";
+    xremap-flake.url = "github:xremap/nix-flake";
 
   };
   outputs =
@@ -28,6 +29,7 @@
         nixos-wsl
         stylix
         dolphin-overlay
+        xremap-flake
         ;
       system = "x86_64-linux";
 
@@ -115,7 +117,10 @@
         framework = mkHost {
           hostName = "framework";
           homeConfig = ./home/desktop/desktop.nix;
-          extraModules = [ stylix.nixosModules.stylix ];
+          extraModules = [
+            stylix.nixosModules.stylix
+            xremap-flake.nixosModules.default
+          ];
         };
 
         bigDaddy = mkHost {
