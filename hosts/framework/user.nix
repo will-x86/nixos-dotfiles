@@ -28,11 +28,8 @@
     userName = "will";
     yamlConfig = ''
       modmap:
-        - name: capslock-esc
-          remap:
-            CapsLock:
-              alone: Esc
-              alone_timeout_millis: 300
+        - remap:
+            CapsLock: Esc
     '';
   };
   # Ts ain't user
