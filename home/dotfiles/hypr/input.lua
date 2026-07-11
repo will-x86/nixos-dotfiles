@@ -3,7 +3,6 @@ hl.config({
 		kb_model = "",
 		kb_layout = "",
 		kb_variant = "",
-		kb_options = "ctrl:nocaps",
 		kb_rules = "",
 		kb_file = "",
 
