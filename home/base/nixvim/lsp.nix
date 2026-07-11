@@ -67,11 +67,7 @@
       };
     };
 
-    #jsonls.enable = true;
-    jsonls = {
-      enable = true;
-      package = pkgs.vscode-langservers-extracted.override { nodejs = pkgs.nodejs_22; };
-    };
+    jsonls.enable = true;
     astro.enable = true;
     lua_ls.enable = true;
 
