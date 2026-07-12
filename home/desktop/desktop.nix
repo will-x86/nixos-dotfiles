@@ -20,6 +20,7 @@ in
     base
     hyprland
     ./gui-programming.nix
+    ./zed.nix
     ./gui.nix
   ];
   xdg.portal = {

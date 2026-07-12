@@ -9,6 +9,9 @@
   system.autoUpgrade.enable = true;
   hardware.keyboard.qmk.enable = true;
 
+  # For zed - so LSP's can resolve dynamic libs - https://wiki.nixos.org/wiki/Zed#Nix-ld_(recommended)
+  programs.nix-ld.enable = true;
+
   system.autoUpgrade.allowReboot = false;
   system.autoUpgrade.dates = "weekly";
   nix.gc.automatic = true;

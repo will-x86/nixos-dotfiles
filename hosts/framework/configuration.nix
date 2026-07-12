@@ -15,7 +15,6 @@
     ./stylix.nix
   ];
   nixpkgs.config.allowUnfree = true;
-  programs.nix-ld.enable = true;
   virtualisation.waydroid.enable = true;
   boot.loader.systemd-boot.enable = true;
   services.usbmuxd.enable = true;
