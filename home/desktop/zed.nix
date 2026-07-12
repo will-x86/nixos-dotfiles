@@ -110,6 +110,8 @@
           binary.path_lookup = true;
           initialization_options.cargo.allFeatures = true;
         };
+        astro-language-server.initialization_options.typescript.tsdk =
+          "${pkgs.typescript}/lib/node_modules/typescript/lib";
         gopls.binary.path_lookup = true;
         lua-language-server.binary.path_lookup = true;
         basedpyright.binary.path_lookup = true;
