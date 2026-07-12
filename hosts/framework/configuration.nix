@@ -13,6 +13,7 @@
     ./packages.nix
     ./flatpack.nix
     ./stylix.nix
+    ./fan.nix
   ];
   nixpkgs.config.allowUnfree = true;
   virtualisation.waydroid.enable = true;
