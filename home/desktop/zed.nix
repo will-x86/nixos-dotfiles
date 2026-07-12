@@ -46,6 +46,7 @@
       tab_size = 4;
       hard_tabs = false;
       soft_wrap = "none";
+      use_autoclose = false;
       scrollbar.show = "auto";
       vertical_scroll_margin = 10;
       wrap_guides = [ 80 ];
@@ -84,8 +85,7 @@
       lsp = {
         nixd.settings.nixd.formatting.command = [ "nixfmt" ];
         rust-analyzer.initialization_options.cargo.allFeatures = true;
-        astro-language-server.initialization_options.typescript.tsdk =
-          "${pkgs.typescript}/lib/node_modules/typescript/lib";
+        astro-language-server.initialization_options.typescript.tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
       };
 
       languages = {
