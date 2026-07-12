@@ -26,37 +26,17 @@
       "nord"
     ];
 
+    # LSP servers are downloaded by Zed itself and made to work via nix-ld.
+    # Only external formatters (which Zed won't fetch) need to be on PATH.
     extraPackages = with pkgs; [
-      nixd
-      bash-language-server
-      ccls
-      cmake-language-server
-      vscode-langservers-extracted # html / css / json / eslint
-      gopls
-      lua-language-server
-      ruff
-      basedpyright
-      marksman
-      ruby-lsp
-      typescript-language-server
-      typescript # tsdk for astro/vue/ts servers
-      svelte-language-server
-      vue-language-server
-      astro-language-server
-      dart
-      rust-analyzer
-      yaml-language-server
-      zls
-
-      # formatters
-      nixfmt-rfc-style
+      nixfmt
       stylua
       prettierd
       eslint_d
       black
       isort
       rustfmt
-      go
+      go # gofmt
       nodejs
     ];
 
@@ -102,20 +82,10 @@
       };
 
       lsp = {
-        nixd = {
-          binary.path_lookup = true;
-          settings.nixd.formatting.command = [ "nixfmt" ];
-        };
-        rust-analyzer = {
-          binary.path_lookup = true;
-          initialization_options.cargo.allFeatures = true;
-        };
+        nixd.settings.nixd.formatting.command = [ "nixfmt" ];
+        rust-analyzer.initialization_options.cargo.allFeatures = true;
         astro-language-server.initialization_options.typescript.tsdk =
           "${pkgs.typescript}/lib/node_modules/typescript/lib";
-        gopls.binary.path_lookup = true;
-        lua-language-server.binary.path_lookup = true;
-        basedpyright.binary.path_lookup = true;
-        ruff.binary.path_lookup = true;
       };
 
       languages = {
