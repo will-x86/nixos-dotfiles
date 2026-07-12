@@ -19,6 +19,7 @@
     jdk17
     # lsp stuff
     typescript-language-server # nixvim
+    astro-language-server # zed .. ?
     black
     eslint
     nixd
