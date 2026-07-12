@@ -39,6 +39,7 @@
       marksman
       ruby-lsp
       typescript-language-server
+      typescript # tsdk for astro/vue/ts servers
       svelte-language-server
       vue-language-server
       astro-language-server
