@@ -71,10 +71,10 @@
 
       load_direnv = "shell_hook";
 
-      node = {
-        path = lib.getExe pkgs.nodejs;
-        npm_path = lib.getExe' pkgs.nodejs "npm";
-      };
+      #node = {
+      #path = lib.getExe pkgs.nodejs;
+      #npm_path = lib.getExe' pkgs.nodejs "npm";
+      #};
 
       terminal = {
         shell = "system";
