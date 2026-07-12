@@ -59,6 +59,8 @@
       stylix.targets.qt.enable = false;
       # ugly withotu
       stylix.targets.nixvim.enable = false;
+      # managed in home/desktop/zed.nix
+      stylix.targets.zed.enable = false;
     }
   ];
 }
