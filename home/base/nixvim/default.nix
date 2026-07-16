@@ -49,6 +49,7 @@
           };
           code = {
             sign = false;
+            border = "thin"; # keep the fence line as a rendered row so lines don't shift
           };
           latex = {
             enabled = true;
