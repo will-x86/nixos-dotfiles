@@ -1,5 +1,6 @@
 # Path and aliases
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/home/will/.local/bin
 
 export PATH=$PATH:/home/will/.cargo/bin
 export PATH=$PATH:/home/will/.config/scripts/
