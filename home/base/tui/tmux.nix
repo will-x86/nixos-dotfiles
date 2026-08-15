@@ -7,6 +7,7 @@
       # True color
       set-option -sa terminal-overrides ",xterm*:Tc"
       set -g extended-keys on
+      set -g extended-keys-format csi-u
 
       # Unbind <C-b> as the prefix key
       unbind C-b
