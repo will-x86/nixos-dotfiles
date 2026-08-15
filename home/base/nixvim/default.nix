@@ -71,6 +71,8 @@
     };
     extraConfigLua = ''
       vim.g.vimtex_compiler_latexmk = { out_dir = "build" }
+      -- Make inlay hints more readable
+      vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#88c0d0", bg = "NONE" })
     '';
   };
 }
