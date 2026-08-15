@@ -53,7 +53,7 @@
       action = lib.nixvim.mkRaw "function() vim.diagnostic.jump({ count = -1, float = true }) end";
     }
   ];
-  #lsp.inlayHints.enable = true;
+  lsp.inlayHints.enable = true;
   lsp.servers = {
     bashls.enable = true;
     ccls.enable = true;
