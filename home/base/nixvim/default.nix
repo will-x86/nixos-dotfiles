@@ -37,7 +37,7 @@
       python312Packages.pylatexenc
     ];
     plugins = {
-      figet.enable = true;
+      fidget.enable = true;
       image.enable = true;
       #bufferline.enable = true;
       web-devicons.enable = true;
