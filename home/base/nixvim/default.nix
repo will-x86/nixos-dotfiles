@@ -71,6 +71,13 @@
     };
     extraConfigLua = ''
       vim.g.vimtex_compiler_latexmk = { out_dir = "build" }
+      -- Brighten inlay hints
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "*",
+        callback = function()
+          vim.cmd("highlight LspInlayHint guifg=#88c0d0 guibg=NONE")
+        end,
+      })
     '';
   };
 }
