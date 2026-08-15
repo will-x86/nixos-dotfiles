@@ -71,9 +71,7 @@
     };
     extraConfigLua = ''
       vim.g.vimtex_compiler_latexmk = { out_dir = "build" }
+      vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#ffffff" })
     '';
-    highlight = {
-      LspInlayHint = { fg = "#ffffff" };
-    };
   };
 }
