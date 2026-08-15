@@ -71,13 +71,6 @@
     };
     extraConfigLua = ''
       vim.g.vimtex_compiler_latexmk = { out_dir = "build" }
-      -- Make inlay hints more readable (apply after colorscheme loads)
-      vim.api.nvim_create_autocmd("ColorScheme", {
-        pattern = "*",
-        callback = function()
-          vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#88c0d0", bg = "NONE" })
-        end,
-      })
     '';
   };
 }
