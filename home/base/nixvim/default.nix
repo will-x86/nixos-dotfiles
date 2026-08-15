@@ -71,13 +71,9 @@
     };
     extraConfigLua = ''
       vim.g.vimtex_compiler_latexmk = { out_dir = "build" }
-      -- Brighten inlay hints after colorscheme loads
-      vim.api.nvim_create_autocmd("ColorScheme", {
-        pattern = "*",
-        callback = function()
-          vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#88c0d0" })
-        end,
-      })
     '';
+    highlight = {
+      LspInlayHint = { fg = "#ffffff" };
+    };
   };
 }
