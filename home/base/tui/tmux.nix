@@ -6,6 +6,7 @@
     extraConfig = ''
       # True color
       set-option -sa terminal-overrides ",xterm*:Tc"
+      set -g extended-keys on
 
       # Unbind <C-b> as the prefix key
       unbind C-b
