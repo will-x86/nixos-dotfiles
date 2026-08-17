@@ -126,6 +126,7 @@
       "adbusers"
       "plugdev"
       "dialout"
+      "podman"
     ];
   };
 
