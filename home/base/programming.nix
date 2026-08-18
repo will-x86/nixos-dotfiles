@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   ...
 }:
 {
@@ -31,10 +32,12 @@
     cargo
     openssl
     pkg-config
-    python312Packages.marimo
     python312Packages.dbus-python
     # tui programing
     opencode
+  ];
+  home.packages = with pkgs-stable; [
+    python312Packages.marimo
 
   ];
 }
