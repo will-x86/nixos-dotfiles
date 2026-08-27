@@ -24,7 +24,7 @@
     chromium
     anydesk
     davinci-resolve
-    celeste
+    #celeste
     signal-desktop
     kdePackages.okular # pdf
 
