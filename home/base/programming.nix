@@ -36,6 +36,9 @@
       python312Packages.dbus-python
       # tui programing
       opencode
+
+      # tools
+      cloudflare-cli
     ])
     ++ (with pkgs-stable; [
       python312Packages.marimo
