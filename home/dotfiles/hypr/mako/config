@@ -44,4 +44,4 @@ text-color=#C0CAF5
 [urgency=high]
 border-color=#F77890
 text-color=#F98EA0
-default-timeout=0
+default-timeout=10000
