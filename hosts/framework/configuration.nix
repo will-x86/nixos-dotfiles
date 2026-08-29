@@ -140,6 +140,13 @@
   networking.hostName = "framework";
   hardware.spacenavd.enable = true;
   boot.initrd.kernelModules = [ "amdgpu" ];
+
+  boot.initrd.systemd.enable = true;
+  systemd.services.display-manager.serviceConfig.KeyringMode = "inherit";
+  security.pam.services.sddm-autologin.text = pkgs.lib.mkBefore ''
+    auth optional ${pkgs.systemd}/lib/security/pam_systemd_loadkey.so
+    auth include sddm
+  '';
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
