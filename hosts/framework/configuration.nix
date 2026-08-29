@@ -1,5 +1,5 @@
 {
-  #config,
+  config,
   pkgs,
   secrets,
   pkgs-stable,
@@ -129,7 +129,7 @@
       enable = true;
       settings.default_session = {
         user = "will";
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions /run/current-system/sw/share/wayland-sessions";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
       };
     };
     pulseaudio.enable = false;
