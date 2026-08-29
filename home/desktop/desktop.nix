@@ -37,6 +37,9 @@ in
       recursive = true;
     };
   };
+
+  # mako reads ~/.config/mako/config by default; deploy there.
+  home.file.".config/mako/config".source = ../dotfiles/hypr/mako/config;
   home.file = {
     ".config/btop" = {
       source = ../dotfiles/btop;
