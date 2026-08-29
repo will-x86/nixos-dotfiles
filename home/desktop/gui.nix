@@ -14,8 +14,8 @@
       discord
       zoom-us
       kicad
-      kdePackages.dolphin
       #kdePackages.dolphin
+
       #kdePackages.dolphin-plugins
       #kdePackages.baloo-widgets
       #kdePackages.baloo
