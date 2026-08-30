@@ -10,7 +10,7 @@
   xorg,
   xdotool,
   libayatana-appindicator,
-  libGL,
+  libsecret,
   glib,
 }:
 
@@ -45,6 +45,7 @@ rustPlatform.buildRustPackage {
     libGL
     xdotool
     libayatana-appindicator
+    libsecret
     glib
   ];
 
