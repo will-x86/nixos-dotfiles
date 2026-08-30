@@ -53,18 +53,15 @@ rustPlatform.buildRustPackage {
     libsecret
     glib
   ];
-
   cargoHash = "sha256-Ab+xzYWsaXHTGiWttggQ5D3qcG9xLZzLn1d8NJj11Ws=";
-  # autoPatchelfHook handles ELF DT_NEEDED entries for gtk3, glib, etc.
-  # Rust crates dlopen libvulkan and libsecret at runtime — no DT_NEEDED.
-  # Add their paths to RPATH explicitly before wrapping.
+  # autoPatchelfHook covers DT_NEEDED libs (gtk3, glib, xdo, etc.).
+  # libsecret and libvulkan are dlopen'd by Rust at runtime; add them to
+  # LD_LIBRARY_PATH via the wrapper since they have no DT_NEEDED entries.
   postFixup = ''
-    for bin in $out/bin/neutronsync $out/bin/neutronsync-gui; do
-      patchelf --add-rpath ${lib.makeLibraryPath [vulkan-loader libsecret]} "$bin"
-    done
     for bin in neutronsync neutronsync-gui; do
       wrapProgram "$out/bin/$bin" \
-        --prefix PATH : ${lib.makeBinPath [glib xdotool]}
+        --prefix PATH : ${lib.makeBinPath [glib xdotool]} \
+        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [vulkan-loader libsecret]}
     done
   '';
 
