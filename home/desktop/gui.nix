@@ -4,8 +4,9 @@
   ...
 }:
 {
-  home.packages =
-    (with pkgs; [
+  home.packages = (
+    with pkgs;
+    [
       blender
       obs-studio
       mediawriter # fedoras media writer
@@ -14,11 +15,6 @@
       discord
       zoom-us
       kicad
-      #kdePackages.dolphin
-
-      #kdePackages.dolphin-plugins
-      #kdePackages.baloo-widgets
-      #kdePackages.baloo
       freecad
 
       obsidian
@@ -29,8 +25,6 @@
       signal-desktop
       kdePackages.okular # pdf
 
-    ])
-    ++ (with pkgs-stable; [
-      celeste
-    ]);
+    ]
+  );
 }
