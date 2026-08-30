@@ -11,8 +11,8 @@
   xorg,
   xdotool,
   libayatana-appindicator,
+  vulkan-loader,
   libsecret,
-  libGL,
   glib,
 }:
 
@@ -47,18 +47,23 @@ rustPlatform.buildRustPackage {
     libxcbPkg
     libGL
     xdotool
+    vulkan-loader
     libayatana-appindicator
     libsecret
     glib
   ];
 
   cargoHash = "sha256-Ab+xzYWsaXHTGiWttggQ5D3qcG9xLZzLn1d8NJj11Ws=";
-  # autoPatchelfHook embeds RPATH for every needed lib from the buildInputs
-  # closure; the wrapper only adds binaries to PATH.
+  # autoPatchelfHook handles ELF DT_NEEDED entries for gtk3, glib, etc.
+  # Rust crates dlopen libvulkan and libsecret at runtime — no DT_NEEDED.
+  # Add their paths to RPATH explicitly before wrapping.
   postFixup = ''
+    for bin in $out/bin/neutronsync $out/bin/neutronsync-gui; do
+      patchelf --add-rpath ${lib.makeLibraryPath [vulkan-loader libsecret]} "$bin"
+    done
     for bin in neutronsync neutronsync-gui; do
       wrapProgram "$out/bin/$bin" \
-        --prefix PATH : ${lib.makeBinPath [ glib xdotool ]}
+        --prefix PATH : ${lib.makeBinPath [glib xdotool]}
     done
   '';
 
