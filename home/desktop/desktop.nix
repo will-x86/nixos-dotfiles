@@ -161,7 +161,7 @@ in
   # stylix doesn't support the 'kde' platform theme
   qt = {
     enable = true;
-    platformTheme.name = "gtk3";
+    #platformTheme.name = "gtk3";
   };
 
   home.sessionVariables = {
