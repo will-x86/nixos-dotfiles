@@ -96,6 +96,9 @@ in
     vulkan-tools
     webkitgtk_6_0
 
+    libsecret
+    neutronsync
+    proton-drive-cli
     # --- cli utils ---
     bc
     gocr

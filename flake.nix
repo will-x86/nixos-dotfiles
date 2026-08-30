@@ -18,11 +18,17 @@
 
     xremap-flake.url = "github:xremap/nix-flake";
 
+    fenix.url = "github:nix-community/fenix";
+    fenix.inputs.nixpkgs.follows = "nixpkgs";
+    neutronsync.url = "github:WilhelmZA/protondrive_linux_sync/rust";
+    neutronsync.flake = false;
+
   };
   outputs =
     inputs:
     let
       inherit (inputs)
+        fenix
         nixpkgs
         nixpkgs-stable
         home-manager
@@ -47,6 +53,18 @@
       pkgs = import nixpkgs (mkPkgs nixpkgs);
       pkgs-stable = import nixpkgs-stable (mkPkgs nixpkgs-stable);
 
+      fenix-stable = fenix.packages.${system}.stable;
+
+      neutronsync-overlay = final: prev: {
+        proton-drive-cli = final.callPackage ./pkgs/proton-drive-cli.nix {};
+        neutronsync = final.callPackage ./pkgs/neutronsync.nix {
+          rustPlatform = final.makeRustPlatform {
+            rustc = fenix-stable.toolchain;
+            cargo = fenix-stable.toolchain;
+          };
+        };
+      };
+
       commonSpecialArgs = {
         inherit inputs system pkgs-stable;
         secrets = loadSecrets;
@@ -62,6 +80,9 @@
           {
             nixpkgs.config.allowUnfree = true;
             nixpkgs.config.allowUnfreePredicate = _: true;
+          }
+          {
+            nixpkgs.overlays = [ neutronsync-overlay ];
           }
         ];
       };
@@ -89,7 +110,15 @@
       systemPackages = localPkgsDefinition.perSystem { inherit pkgs system; };
     in
     {
-      packages.${system} = systemPackages.packages;
+      packages.${system} = systemPackages.packages // {
+        proton-drive-cli = pkgs.callPackage ./pkgs/proton-drive-cli.nix {};
+        neutronsync = pkgs.callPackage ./pkgs/neutronsync.nix {
+          rustPlatform = pkgs.makeRustPlatform {
+            rustc = fenix-stable.toolchain;
+            cargo = fenix-stable.toolchain;
+          };
+        };
+      };
 
       templates =
         let
