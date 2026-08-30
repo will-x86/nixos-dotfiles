@@ -50,11 +50,14 @@ rustPlatform.buildRustPackage {
   ];
 
   cargoHash = "sha256-Ab+xzYWsaXHTGiWttggQ5D3qcG9xLZzLn1d8NJj11Ws=";
-
-  # Wrap binaries so they can find gio at runtime.
+  # Wrap binaries so they can find gio and runtime shared libs.
   postFixup = ''
     for bin in neutronsync neutronsync-gui; do
       wrapProgram "$out/bin/$bin" \
+        --prefix PATH : ${lib.makeBinPath [ glib ]} \
+        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ xdotool libsecret ]}
+    done
+  '';
         --prefix PATH : ${lib.makeBinPath [ glib ]}
     done
   '';
