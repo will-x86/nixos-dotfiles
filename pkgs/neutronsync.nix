@@ -56,7 +56,7 @@ rustPlatform.buildRustPackage {
     for bin in neutronsync neutronsync-gui; do
       wrapProgram "$out/bin/$bin" \
         --prefix PATH : ${lib.makeBinPath [ glib xdotool ]} \
-        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ gtk3 libxkbcommon wayland libX11 libxcbPkg libGL libayatana-appindicator libsecret ]}
+        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ gtk3 libxkbcommon wayland libX11 libxcbPkg libGL libayatana-appindicator libsecret xdotool ]}
     done
   '';
 
