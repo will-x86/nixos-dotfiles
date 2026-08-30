@@ -58,9 +58,6 @@ rustPlatform.buildRustPackage {
         --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ xdotool libsecret ]}
     done
   '';
-        --prefix PATH : ${lib.makeBinPath [ glib ]}
-    done
-  '';
 
   meta = with lib; {
     description = "Bidirectional Proton Drive folder sync built on the official proton-drive CLI";
