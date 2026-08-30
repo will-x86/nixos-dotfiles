@@ -11,6 +11,7 @@
   xdotool,
   libayatana-appindicator,
   libsecret,
+  libGL,
   glib,
 }:
 
