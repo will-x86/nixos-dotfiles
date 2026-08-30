@@ -4,6 +4,7 @@
   fetchFromGitHub,
   pkg-config,
   makeWrapper,
+  autoPatchelfHook,
   gtk3,
   libxkbcommon,
   wayland,
@@ -35,6 +36,7 @@ rustPlatform.buildRustPackage {
   nativeBuildInputs = [
     pkg-config
     makeWrapper
+    autoPatchelfHook
   ];
 
   buildInputs = [
@@ -51,12 +53,12 @@ rustPlatform.buildRustPackage {
   ];
 
   cargoHash = "sha256-Ab+xzYWsaXHTGiWttggQ5D3qcG9xLZzLn1d8NJj11Ws=";
-  # Wrap binaries so they can find gio and runtime shared libs.
+  # autoPatchelfHook embeds RPATH for every needed lib from the buildInputs
+  # closure; the wrapper only adds binaries to PATH.
   postFixup = ''
     for bin in neutronsync neutronsync-gui; do
       wrapProgram "$out/bin/$bin" \
-        --prefix PATH : ${lib.makeBinPath [ glib xdotool ]} \
-        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ gtk3 libxkbcommon wayland libX11 libxcbPkg libGL libayatana-appindicator libsecret xdotool ]}
+        --prefix PATH : ${lib.makeBinPath [ glib xdotool ]}
     done
   '';
 
