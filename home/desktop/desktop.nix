@@ -63,6 +63,12 @@ in
   services = {
     kdeconnect.enable = true;
   };
+
+  # Prevent kded5's GTK config module from writing ~/.gtkrc-2.0
+  # due to 10 billion conflicts
+  programs.plasma.configFile.kded5rc = {
+    "Module-gtkconfig"."autoload" = false;
+  };
   home.packages = with pkgs; [
     # --- hyprland / wayland ---
     brightnessctl
