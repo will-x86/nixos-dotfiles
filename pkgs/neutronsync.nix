@@ -11,6 +11,7 @@
   xorg,
   xdotool,
   libayatana-appindicator,
+  libGL,
   vulkan-loader,
   libsecret,
   glib,
