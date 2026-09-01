@@ -22,7 +22,7 @@ fresh_cache = true
 [options]
 # Proton's per-user root. Remote paths in [[pair]] resolve under this unless
 # they start with "/".
-remote_root = "/"
+remote_root = "/my-files"
 
 # Propagate deletions across sides. Recoverable both ways: remote -> Proton
 # online trash, local -> desktop trash (see local_delete). A missing baseline

@@ -163,14 +163,11 @@ in
     capsule = true;
     capsule_opacity = 0.45;
     start = [ ];
-    # = [ "clock" ];
     center = [
       "clock"
       "tray"
       "notifications"
       "clipboard"
-      "network"
-      "bluetooth"
       "volume"
       "brightness"
       "battery"
