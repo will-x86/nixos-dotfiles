@@ -8,8 +8,9 @@ local locked = { locked = true }
 local locked_r = { locked = true, repeating = true }
 
 -- Apps
-hl.bind(mod .. " + e", hl.dsp.exec_cmd(s.kitty .. " -e lf"))
+-- Tmux sessioniser by default
 hl.bind(mod .. " + Return", hl.dsp.exec_cmd(s.kitty .. " -T"))
+-- Normal kitty
 hl.bind(mod .. " + T", hl.dsp.exec_cmd(s.kitty))
 hl.bind(mod .. " + X", hl.dsp.exec_cmd(s.wlogout))
 hl.bind(mod .. " + A", hl.dsp.exec_cmd("hyprshot -m region"))
@@ -24,9 +25,10 @@ hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 
 -- Windows
 hl.bind(mod .. " + Q", hl.dsp.window.close())
+-- normal full screen
 hl.bind(shift .. " + F", hl.dsp.window.fullscreen({ mode = 0 }))
 -- https://wiki.hypr.land/configuring/core/dispatchers/#fullscreen_state
--- mode = 1 means it keeps bindings
+-- mode = 1 means it keeps borders etc
 hl.bind(mod .. " + F", hl.dsp.window.fullscreen({ mode = 1 }))
 hl.bind(mod .. " + Space", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mod .. " + Space", hl.dsp.window.center())
@@ -42,20 +44,6 @@ hl.bind(shift .. " + h", hl.dsp.window.move({ direction = "l" }))
 hl.bind(shift .. " + l", hl.dsp.window.move({ direction = "r" }))
 hl.bind(shift .. " + k", hl.dsp.window.move({ direction = "u" }))
 hl.bind(shift .. " + j", hl.dsp.window.move({ direction = "d" }))
-
--- Resize (hjkl, repeating)
-hl.bind(ctrl .. " + h", function()
-	hl.dispatch(hl.dsp.window.resize({ x = -20, y = 0 }))
-end, repeating)
-hl.bind(ctrl .. " + l", function()
-	hl.dispatch(hl.dsp.window.resize({ x = 20, y = 0 }))
-end, repeating)
-hl.bind(ctrl .. " + k", function()
-	hl.dispatch(hl.dsp.window.resize({ x = 0, y = -20 }))
-end, repeating)
-hl.bind(ctrl .. " + j", function()
-	hl.dispatch(hl.dsp.window.resize({ x = 0, y = 20 }))
-end, repeating)
 
 -- Workspaces
 for i = 0, 9 do
