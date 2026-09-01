@@ -1,6 +1,8 @@
 {
   pkgs,
   pkgs-stable,
+  inputs,
+  system,
   ...
 }:
 {
@@ -41,8 +43,8 @@
       cloudflare-cli
 
       # AIIIII
-      chatgpt
       codex
+      inputs.codex-desktop-linux.packages.${system}.default
     ])
     ++ (with pkgs-stable; [
       python312Packages.marimo

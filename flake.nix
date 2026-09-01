@@ -23,6 +23,8 @@
     neutronsync.url = "github:WilhelmZA/protondrive_linux_sync/rust";
     neutronsync.flake = false;
 
+    codex-desktop-linux.url = "github:ilysenko/codex-desktop-linux";
+
   };
   outputs =
     inputs:
