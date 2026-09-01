@@ -127,7 +127,6 @@
     printing.enable = true;
     greetd = {
       enable = true;
-      enableKwallet = true;
 
       settings.default_session = {
         user = "will";
@@ -137,6 +136,7 @@
     pulseaudio.enable = false;
     gvfs.enable = true;
   };
+  security.polkit.enable = true;
 
   powerManagement.powertop.enable = true;
   networking.hostName = "framework";
