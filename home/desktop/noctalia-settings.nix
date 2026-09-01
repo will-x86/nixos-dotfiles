@@ -163,8 +163,9 @@ in
     capsule = true;
     capsule_opacity = 0.45;
     start = [ ];
-    center = [ "clock" ];
-    end = [
+    # = [ "clock" ];
+    center = [
+      "clock"
       "tray"
       "notifications"
       "clipboard"
