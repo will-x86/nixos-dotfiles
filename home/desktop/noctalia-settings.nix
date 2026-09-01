@@ -165,11 +165,10 @@ in
     start = [ ];
     center = [
       "clock"
-      "tray"
       "notifications"
       "clipboard"
       "control-center"
-      "session"
+      "tray"
     ];
     end = [ ];
   };
