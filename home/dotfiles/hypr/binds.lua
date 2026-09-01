@@ -1,9 +1,7 @@
 local mod = "SUPER"
 local shift = "SUPER + SHIFT"
-local ctrl = "SUPER + CTRL"
 local s = SCRIPTS
 
-local repeating = { repeating = true }
 local locked = { locked = true }
 local locked_r = { locked = true, repeating = true }
 

@@ -39,6 +39,9 @@
 
       # tools
       cloudflare-cli
+
+      # AIIIII
+      codex
     ])
     ++ (with pkgs-stable; [
       python312Packages.marimo
