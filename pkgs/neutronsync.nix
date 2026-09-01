@@ -51,9 +51,6 @@ rustPlatform.buildRustPackage {
     glib
   ];
   cargoHash = "sha256-Ab+xzYWsaXHTGiWttggQ5D3qcG9xLZzLn1d8NJj11Ws=";
-  # autoPatchelfHook covers DT_NEEDED libs (gtk3, glib, xdo, etc.).
-  # libsecret and libvulkan are dlopen'd by Rust at runtime; add them to
-  # LD_LIBRARY_PATH via the wrapper since they have no DT_NEEDED entries.
   postFixup = ''
     for bin in neutronsync neutronsync-gui; do
       wrapProgram "$out/bin/$bin" \
@@ -71,13 +68,15 @@ rustPlatform.buildRustPackage {
         }
     done
   '';
+  postInstall = ''
+    install -Dm644 packaging/neutronsync-gui.desktop $out/share/applications/neutronsync-gui.desktop
+  '';
 
   meta = with lib; {
     description = "Bidirectional Proton Drive folder sync built on the official proton-drive CLI";
     homepage = "https://github.com/WilhelmZA/protondrive_linux_sync";
     license = licenses.mit;
     mainProgram = "neutronsync";
-    maintainers = with maintainers; [ ];
     platforms = platforms.linux;
   };
 }
