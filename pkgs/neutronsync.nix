@@ -51,6 +51,15 @@ rustPlatform.buildRustPackage {
     glib
   ];
   cargoHash = "sha256-Ab+xzYWsaXHTGiWttggQ5D3qcG9xLZzLn1d8NJj11Ws=";
+
+  # WGPU/Vulkan is dlopen'd, so autoPatchelf won't pick it up from DT_NEEDED.
+  # Putting it on RUNPATH means even the raw .wrapped binary (which some
+  # launchers rewrite Exec to) can create a surface without the wrapper.
+  runtimeDependencies = [
+    vulkan-loader
+    libsecret
+  ];
+
   postFixup = ''
     for bin in neutronsync neutronsync-gui; do
       wrapProgram "$out/bin/$bin" \
@@ -71,7 +80,7 @@ rustPlatform.buildRustPackage {
   postInstall = ''
     install -Dm644 packaging/neutronsync-gui.desktop $out/share/applications/neutronsync-gui.desktop
     substituteInPlace $out/share/applications/neutronsync-gui.desktop \
-      --replace-fail '.neutronsync-gui-wrapped' 'neutronsync-gui'
+      --replace-fail 'Exec=neutronsync-gui %U' "Exec=$out/bin/neutronsync-gui %U"
   '';
 
   meta = with lib; {
