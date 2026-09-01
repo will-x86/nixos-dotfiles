@@ -88,7 +88,7 @@
       set -g status-left-style 'bg=default'
       set -g status-right-style 'bg=default'
 
-      # Keep Nord's palette without its boxed Powerline status segments.
+      # REmove boxed Powerline status segments.
       set -g status-left '#[fg=#b48ead,bg=default,bold]#S #[default]'
       set -g window-status-format '#[fg=#d8dee9,bg=default] #I #W#{?window_flags, #F,} '
       set -g window-status-current-format '#[fg=#88c0d0,bg=default,bold] #I #W#{?window_flags, #F,} '
