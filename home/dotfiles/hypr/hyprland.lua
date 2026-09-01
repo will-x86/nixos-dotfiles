@@ -1,6 +1,5 @@
 require("monitors")
 require("autostart")
-require("laptop")
 require("env")
 
 require("general")
