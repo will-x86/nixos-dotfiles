@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let
   grep = pkgs.gnugrep;
   desiredFlatpaks = [

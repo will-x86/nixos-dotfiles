@@ -1,4 +1,9 @@
 { pkgs, inputs, ... }:
+let
+  system = pkgs.stdenv.hostPlatform.system;
+  SF-Pro = inputs.self.packages.${system}.SF-Pro;
+  SF-Pro-mono = inputs.self.packages.${system}.SF-Pro-mono;
+in
 {
   stylix = {
     enable = true;
@@ -13,12 +18,13 @@
         name = "Noto Serif";
       };
       sansSerif = {
-        package = inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.SF-Pro;
+        package = SF-Pro;
         name = "SF Pro Display";
       };
+      # kitty.conf: font_family Liga SFMono Nerd Font
       monospace = {
-        package = pkgs.nerd-fonts.departure-mono;
-        name = "DepartureMono Nerd Font Mono";
+        package = SF-Pro-mono;
+        name = "Liga SFMono Nerd Font";
       };
       emoji = {
         package = pkgs.noto-fonts-color-emoji;

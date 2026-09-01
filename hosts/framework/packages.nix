@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   pkgs-stable,
   ...
@@ -13,7 +12,6 @@
       nfs-utils
       networkmanagerapplet
       kdePackages.plasma-nm
-      llama-cpp-rocm
 
     ]
     ++ (with pkgs-stable; [

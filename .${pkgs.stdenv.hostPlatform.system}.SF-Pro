@@ -1,0 +1,757 @@
+[34mdiff --git a/flake.nix b/flake.nix[m
+[34mindex 256c7df..0c7cf8f 100644[m
+[34m--- a/flake.nix[m
+[34m+++ b/flake.nix[m
+[36m@@ -32,7 +32,6 @@[m
+         nixpkgs[m
+         nixpkgs-stable[m
+         home-manager[m
+[31m-        nixos-wsl[m
+         stylix[m
+ [m
+         xremap-flake[m
+[36m@@ -72,7 +71,6 @@[m
+       };[m
+ [m
+       mkHomeManagerConfig = homeConfig: {[m
+[31m-        #home-manager.useGlobalPkgs = true;[m
+         home-manager.useUserPackages = true;[m
+         home-manager.extraSpecialArgs = commonSpecialArgs;[m
+         home-manager.users.will = import homeConfig;[m
+[36m@@ -157,15 +155,6 @@[m
+           hostName = "bigDaddy";[m
+           homeConfig = ./home/desktop/desktop.nix;[m
+         };[m
+[31m-[m
+[31m-        nixos-vm = mkHost {[m
+[31m-          hostName = "nixos-vm";[m
+[31m-        };[m
+[31m-[m
+[31m-        wsl-nix = mkHost {[m
+[31m-          hostName = "wsl-nix";[m
+[31m-          extraModules = [ nixos-wsl.nixosModules.default ];[m
+[31m-        };[m
+       };[m
+     };[m
+ }[m
+[34mdiff --git a/home/base/base.nix b/home/base/base.nix[m
+[34mindex bc07d35..12d12e4 100644[m
+[34m--- a/home/base/base.nix[m
+[34m+++ b/home/base/base.nix[m
+[36m@@ -1,5 +1,4 @@[m
+ {[m
+[31m-  config,[m
+   pkgs,[m
+   ...[m
+ }:[m
+[36m@@ -31,7 +30,6 @@[m
+     zoxide[m
+ [m
+     # --- system / filesystem ---[m
+[31m-    dnsmasq # Used for pretending to be a router lol[m
+     exfat[m
+     ffmpeg-full[m
+     gnumake[m
+[36m@@ -46,7 +44,6 @@[m
+ [m
+     # --- apps ---[m
+     distrobox[m
+[31m-    moonlight-qt[m
+     tailscale[m
+   ];[m
+   programs = {[m
+[36m@@ -55,7 +52,6 @@[m
+       enable = true;[m
+       initContent = builtins.readFile ../dotfiles/.zshrc;[m
+     };[m
+[31m-    #firefox.enable = true; # byebye[m
+     direnv = {[m
+       enable = true;[m
+       nix-direnv.enable = true;[m
+[36m@@ -69,7 +65,7 @@[m
+     };[m
+     starship = {[m
+       enable = true;[m
+[31m-      settings = builtins.fromTOML (builtins.readFile ../dotfiles/starship.toml);[m
+[32m+[m[32m      settings = fromTOML (builtins.readFile ../dotfiles/starship.toml);[m
+     };[m
+     kitty.enable = true;[m
+     foot.enable = true;[m
+[36m@@ -80,10 +76,8 @@[m
+   };[m
+ [m
+   home.file = {[m
+[31m-    # starship.toml is now managed via programs.starship.settings[m
+     ".tmux-sessioniser".source = ../dotfiles/.tmux-sessioniser;[m
+     "tmux-sessioniser".source = ../dotfiles/tmux-sessioniser;[m
+[31m-    #".zshrc".source = ../dotfiles/.zshrc;[m
+     ".config/kitty" = {[m
+       source = ../dotfiles/kitty;[m
+       recursive = true;[m
+[34mdiff --git a/home/base/nixvim/cmp.nix b/home/base/nixvim/cmp.nix[m
+[34mindex d72e10b..5c576fa 100644[m
+[34m--- a/home/base/nixvim/cmp.nix[m
+[34m+++ b/home/base/nixvim/cmp.nix[m
+[36m@@ -17,7 +17,7 @@[m
+                                 	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),[m
+               					["<C-n>"] = cmp.mapping.select_next_item(cmp_select),[m
+               					["<C-Space>"] = cmp.mapping.confirm({ select = true }),[m
+[31m-[m
+[32m+[m[32m                                ['<C-,>'] = cmp.mapping.complete(),[m
+                             		--[[['<C-d>'] = cmp.mapping.scroll_docs(-4),[m
+                             		['<C-f>'] = cmp.mapping.scroll_docs(4),[m
+                             		['<C-e>'] = cmp.mapping.close(),[m
+[34mdiff --git a/home/base/nixvim/default.nix b/home/base/nixvim/default.nix[m
+[34mindex e12aac1..b5f9b63 100644[m
+[34m--- a/home/base/nixvim/default.nix[m
+[34m+++ b/home/base/nixvim/default.nix[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-{ config, pkgs, ... }:[m
+[32m+[m[32m{ pkgs, ... }:[m
+ {[m
+   programs.nixvim = {[m
+     enable = true;[m
+[36m@@ -30,12 +30,6 @@[m
+       update_in_insert = false;[m
+       severity_sort = false;[m
+     };[m
+[31m-    extraPackages = with pkgs; [[m
+[31m-      texliveFull[m
+[31m-      zathura[m
+[31m-      xdotool[m
+[31m-      python312Packages.pylatexenc[m
+[31m-    ];[m
+     plugins = {[m
+       fidget.enable = true;[m
+       image.enable = true;[m
+[36m@@ -59,19 +53,9 @@[m
+           };[m
+         };[m
+       };[m
+[31m-      vimtex = {[m
+[31m-        enable = true;[m
+[31m-        texlivePackage = pkgs.texliveFull;[m
+[31m-        settings = {[m
+[31m-          view_method = "zathura";[m
+[31m-        };[m
+[31m-      };[m
+[31m-[m
+[31m-      #copilot-vim.enable = true;[m
+     };[m
+     extraConfigLua = ''[m
+[31m-      vim.g.vimtex_compiler_latexmk = { out_dir = "build" }[m
+       vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#c792ea" })[m
+     '';[m
+   };[m
+[31m-}[m
+\ No newline at end of file[m
+[32m+[m[32m}[m
+[34mdiff --git a/home/desktop/desktop.nix b/home/desktop/desktop.nix[m
+[34mindex b836b11..2a181e9 100644[m
+[34m--- a/home/desktop/desktop.nix[m
+[34m+++ b/home/desktop/desktop.nix[m
+[36m@@ -1,6 +1,5 @@[m
+ {[m
+   config,[m
+[31m-  inputs,[m
+   pkgs,[m
+   # system ? pkgs.system,[m
+   secrets,[m
+[36m@@ -9,11 +8,6 @@[m
+ let[m
+   base = import ../base/base.nix { inherit config pkgs; };[m
+   hyprland = import ./hyprland.nix { inherit config pkgs secrets; };[m
+[31m-  pkgs-stable = import inputs.nixpkgs-stable {[m
+[31m-    system = pkgs.stdenv.hostPlatform.system;[m
+[31m-    config.allowUnfree = true;[m
+[31m-  };[m
+[31m-[m
+ in[m
+ {[m
+   imports = [[m
+[36m@@ -38,7 +32,8 @@[m [min[m
+     };[m
+   };[m
+ [m
+[31m-  # mako reads ~/.config/mako/config by default; deploy there.[m
+[32m+[m[32m  # Hyprland mako uses ~/.config/hypr/mako/config but for timeout for other apps[m
+[32m+[m[32m  # we need ~/.config/mako/config too[m
+   home.file.".config/mako/config".source = ../dotfiles/hypr/mako/config;[m
+   home.file = {[m
+     ".config/btop" = {[m
+[36m@@ -110,38 +105,6 @@[m [min[m
+     orca-slicer[m
+     qmk[m
+     syncthingtray[m
+[31m-    (writeShellScriptBin "kabam" ''[m
+[31m-      FRP_SERVER_ADDR="${secrets.tunnelDomain}" [m
+[31m-      FRP_SERVER_PORT="7000"[m
+[31m-[m
+[31m-      if [ -z "$1" ]; then[m
+[31m-          echo "Usage: kabam <local_port>"[m
+[31m-          echo "Example: kabam 8080"[m
+[31m-          exit 1[m
+[31m-      fi[m
+[31m-[m
+[31m-      LOCAL_PORT=$1[m
+[31m-      CONFIG_FILE="/tmp/frpc_config.toml"[m
+[31m-[m
+[31m-      trap "rm -f $CONFIG_FILE" EXIT[m
+[31m-[m
+[31m-      cat > "$CONFIG_FILE" << EOF[m
+[31m-      serverAddr = "$FRP_SERVER_ADDR"[m
+[31m-      serverPort = $FRP_SERVER_PORT[m
+[31m-[m
+[31m-      [[proxies]][m
+[31m-      name = "web"[m
+[31m-      type = "http"[m
+[31m-      localPort = $LOCAL_PORT[m
+[31m-      customDomains = ["${secrets.tunnelDomain}"][m
+[31m-      EOF[m
+[31m-[m
+[31m-      echo "--- ✅ Tunneling to https://${secrets.tunnelDomain} ---"[m
+[31m-      echo "Press Ctrl+C to stop."[m
+[31m-[m
+[31m-      frpc -c "$CONFIG_FILE"[m
+[31m-[m
+[31m-    '')[m
+     (pkgs.callPackage ([m
+       { stdenv }:[m
+ [m
+[36m@@ -160,16 +123,10 @@[m [min[m
+     enable = true;[m
+     plugins = [ pkgs.rofi-emoji ];[m
+   };[m
+[31m-  # stylix doesn't support the 'kde' platform theme[m
+   qt = {[m
+     enable = true;[m
+[31m-    #platformTheme.name = "gtk3";[m
+   };[m
+ [m
+[31m-  home.sessionVariables = {[m
+[31m-    ANTHROPIC_API_KEY = "${secrets.anthropic.api_key}";[m
+[31m-[m
+[31m-  };[m
+   home.file = {[m
+     ".config/scripts" = {[m
+       source = ../dotfiles/scripts;[m
+[34mdiff --git a/home/desktop/gui-programming.nix b/home/desktop/gui-programming.nix[m
+[34mindex 290b348..e62a352 100644[m
+[34m--- a/home/desktop/gui-programming.nix[m
+[34m+++ b/home/desktop/gui-programming.nix[m
+[36m@@ -6,11 +6,6 @@[m
+   home.packages = with pkgs; [[m
+     # ide[m
+     android-studio[m
+[31m-    jetbrains.idea[m
+[31m-    vscode[m
+[31m-    stm32cubemx[m
+[31m-    arduino-ide[m
+[31m-    # zed-editor managed in ./zed.nix[m
+ [m
+     # other[m
+     bruno[m
+[34mdiff --git a/home/desktop/hyprland.nix b/home/desktop/hyprland.nix[m
+[34mindex 6b262c1..1631def 100644[m
+[34m--- a/home/desktop/hyprland.nix[m
+[34m+++ b/home/desktop/hyprland.nix[m
+[36m@@ -1,7 +1,4 @@[m
+ {[m
+[31m-  config,[m
+[31m-  secrets,[m
+[31m-  pkgs,[m
+   ...[m
+ }:[m
+ {[m
+[34mdiff --git a/home/desktop/zed.nix b/home/desktop/zed.nix[m
+[34mindex a7dd610..1b9034f 100644[m
+[34m--- a/home/desktop/zed.nix[m
+[34m+++ b/home/desktop/zed.nix[m
+[36m@@ -71,11 +71,6 @@[m
+ [m
+       load_direnv = "shell_hook";[m
+ [m
+[31m-      #node = {[m
+[31m-      #path = lib.getExe pkgs.nodejs;[m
+[31m-      #npm_path = lib.getExe' pkgs.nodejs "npm";[m
+[31m-      #};[m
+[31m-[m
+       terminal = {[m
+         shell = "system";[m
+         working_directory = "current_project_directory";[m
+[36m@@ -137,19 +132,18 @@[m
+       };[m
+     };[m
+ [m
+[31m-    # leader = space; ports the custom nixvim binds[m
+[32m+[m[32m    # leader = space[m
+     userKeymaps = [[m
+       {[m
+         context = "Editor && VimControl && !menu";[m
+         bindings = {[m
+[31m-          # Telescope-style project navigation[m
+[32m+[m[32m          # Telescope-style nav[m
+           "ctrl-p" = "file_finder::Toggle"; # <C-p> git files[m
+           "space p f" = "file_finder::Toggle"; # <leader>pf find files[m
+           "space p s" = "pane::DeploySearch"; # <leader>ps live grep[m
+           "space p v" = "project_panel::ToggleFocus"; # <leader>pv file explorer[m
+[31m-          "space e" = "project_panel::ToggleFocus"; # <leader>e (harpoon menu -> file tree)[m
+[32m+[m[32m          "space e" = "project_panel::ToggleFocus"; # filetree[m
+ [m
+[31m-          # LSP (mirrors nixvim lsp.keymaps)[m
+           "g d" = "editor::GoToDefinition";[m
+           "g y" = "editor::GoToTypeDefinition";[m
+           "g i" = "editor::GoToImplementation";[m
+[36m@@ -160,7 +154,6 @@[m
+           "] d" = "editor::GoToDiagnostic";[m
+           "[ d" = "editor::GoToPreviousDiagnostic";[m
+ [m
+[31m-          # Misc[m
+           "space f" = "editor::Format"; # <leader>f format[m
+           "space y" = "editor::Copy"; # <leader>y system clipboard[m
+           "space q" = "diagnostics::Deploy"; # <leader>q diagnostics list[m
+[34mdiff --git a/home/dotfiles/kitty/kitty.conf b/home/dotfiles/kitty/kitty.conf[m
+[34mindex 752324f..cb988eb 100644[m
+[34m--- a/home/dotfiles/kitty/kitty.conf[m
+[34m+++ b/home/dotfiles/kitty/kitty.conf[m
+[36m@@ -1,6 +1,5 @@[m
+ # vim:fileencoding=utf-8:foldmethod=marker[m
+ [m
+[31m-#include ~/.cache/wal/colors-kitty.conf[m
+ include ./nord.conf[m
+ [m
+ font_family      Liga SFMono Nerd Font[m
+[34mdiff --git a/hosts/all.nix b/hosts/all.nix[m
+[34mindex bf3ec66..46f9176 100644[m
+[34m--- a/hosts/all.nix[m
+[34m+++ b/hosts/all.nix[m
+[36m@@ -1,8 +1,6 @@[m
+ {[m
+[31m-  config,[m
+   pkgs,[m
+   inputs,[m
+[31m-  secrets,[m
+   neutronsync-overlay,[m
+   ...[m
+ }:[m
+[36m@@ -52,50 +50,6 @@[m
+     LC_TELEPHONE = "en_GB.UTF-8";[m
+     LC_TIME = "en_GB.UTF-8";[m
+   };[m
+[31m-  fonts = {[m
+[31m-    packages = with pkgs; [[m
+[31m-      material-symbols[m
+[31m-[m
+[31m-      # normal fonts[m
+[31m-      noto-fonts[m
+[31m-      noto-fonts-cjk-sans[m
+[31m-      noto-fonts-color-emoji[m
+[31m-[m
+[31m-      #inputs.self.packages.${pkgs.system}.SF-Pro[m
+[31m-      inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.SF-Pro[m
+[31m-      #inputs.self.packages.${pkgs.system}.SF-Pro-mono[m
+[31m-      inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.SF-Pro-mono[m
+[31m-[m
+[31m-      # nerdfonts[m
+[31m-      nerd-fonts.symbols-only[m
+[31m-      nerd-fonts.departure-mono[m
+[31m-      departure-mono[m
+[31m-    ];[m
+[31m-    fontconfig = {[m
+[31m-      enable = true;[m
+[31m-      antialias = true;[m
+[31m-      hinting = {[m
+[31m-        enable = true;[m
+[31m-        autohint = false;[m
+[31m-        style = "full";[m
+[31m-      };[m
+[31m-      subpixel = {[m
+[31m-        lcdfilter = "default";[m
+[31m-        rgba = "rgb";[m
+[31m-      };[m
+[31m-      defaultFonts =[m
+[31m-        let[m
+[31m-          addAll = builtins.mapAttrs (_: v: [ "Symbols Nerd Font" ] ++ v ++ [ "Noto Color Emoji" ]);[m
+[31m-        in[m
+[31m-        addAll {[m
+[31m-          serif = [ "Noto Sans Serif" ];[m
+[31m-          sansSerif = [ "SF Pro Display" ];[m
+[31m-          monospace = [ "Departure Mono" ];[m
+[31m-          emoji = [ "Noto Color Emoji" ];[m
+[31m-        };[m
+[31m-    };[m
+[31m-    enableDefaultPackages = true;[m
+[31m-  };[m
+   security.rtkit.enable = true;[m
+   services.pipewire = {[m
+     enable = true;[m
+[34mdiff --git a/hosts/framework/configuration.nix b/hosts/framework/configuration.nix[m
+[34mindex 88cc55a..1049de2 100644[m
+[34m--- a/hosts/framework/configuration.nix[m
+[34m+++ b/hosts/framework/configuration.nix[m
+[36m@@ -2,7 +2,6 @@[m
+   config,[m
+   pkgs,[m
+   secrets,[m
+[31m-  pkgs-stable,[m
+   ...[m
+ }:[m
+ {[m
+[36m@@ -41,12 +40,6 @@[m
+       HandleLidSwitchExternalPower = "suspend";[m
+       HandleLidSwitchDocked = "ignore";[m
+     };[m
+[31m-    sunshine = {[m
+[31m-      enable = true;[m
+[31m-      autoStart = true;[m
+[31m-      capSysAdmin = true;[m
+[31m-      openFirewall = true;[m
+[31m-    };[m
+     fwupd.enable = true;[m
+     power-profiles-daemon.enable = false;[m
+     auto-cpufreq = {[m
+[36m@@ -97,14 +90,6 @@[m
+               "fone"[m
+             ];[m
+           };[m
+[31m-          "BooxBooks" = {[m
+[31m-            id = "x2w61-muute";[m
+[31m-            path = "/home/will/Documents/BooxBooks";[m
+[31m-            devices = [[m
+[31m-              "frac"[m
+[31m-              "fone"[m
+[31m-            ];[m
+[31m-          };[m
+           "SyncDoc" = {[m
+             id = "xq7l5-sdtka";[m
+             path = "/home/will/Documents/SyncDoc";[m
+[34mdiff --git a/hosts/nixos-vm/configuration.nix b/hosts/nixos-vm/configuration.nix[m
+[34mdeleted file mode 100644[m
+[34mindex 7c0d57f..0000000[m
+[34m--- a/hosts/nixos-vm/configuration.nix[m
+[34m+++ /dev/null[m
+[36m@@ -1,89 +0,0 @@[m
+[31m-{[m
+[31m-  config,[m
+[31m-  pkgs,[m
+[31m-  secrets,[m
+[31m-  ...[m
+[31m-}:[m
+[31m-{[m
+[31m-  imports = [[m
+[31m-    ./hardware-configuration.nix[m
+[31m-  ];[m
+[31m-[m
+[31m-  boot.loader.systemd-boot.enable = true;[m
+[31m-  boot.loader.efi.canTouchEfiVariables = true;[m
+[31m-  networking.hostName = "nixos-vm";[m
+[31m-  i18n.defaultLocale = "en_GB.UTF-8";[m
+[31m-  time.timeZone = "Europe/London";[m
+[31m-  hardware.enableAllFirmware = true;[m
+[31m-[m
+[31m-  services.displayManager.autoLogin.enable = true;[m
+[31m-  services.displayManager.autoLogin.user = "will";[m
+[31m-  services.xserver.xkb = {[m
+[31m-    layout = "us";[m
+[31m-    variant = "";[m
+[31m-  };[m
+[31m-  services.tailscale.enable = true;[m
+[31m-[m
+[31m-  nixpkgs.config.allowUnfree = true;[m
+[31m-  users.users.will.linger = true;[m
+[31m-  nix.settings.trusted-users = [[m
+[31m-    "root"[m
+[31m-    "will"[m
+[31m-  ];[m
+[31m-  services = {[m
+[31m-    openssh = {[m
+[31m-      enable = true;[m
+[31m-      settings = {[m
+[31m-        PermitRootLogin = "yes";[m
+[31m-        PasswordAuthentication = true;[m
+[31m-      };[m
+[31m-    };[m
+[31m-  };[m
+[31m-[m
+[31m-  programs._1password.enable = true;[m
+[31m-[m
+[31m-  environment.systemPackages = with pkgs; [[m
+[31m-    cifs-utils[m
+[31m-    samba[m
+[31m-    (import (builtins.fetchGit {[m
+[31m-      name = "my-old-revision";[m
+[31m-      url = "https://github.com/NixOS/nixpkgs/";[m
+[31m-      ref = "refs/heads/nixos-unstable";[m
+[31m-      rev = "028048884dc9517e548703beb24a11408cc51402";[m
+[31m-    }) { system = "x86_64-linux"; }).neovim[m
+[31m-  ];[m
+[31m-[m
+[31m-  fileSystems."/mnt/FractalMedia" = {[m
+[31m-    device = "//${secrets.samba.fracRemote}/Media";[m
+[31m-    fsType = "cifs";[m
+[31m-    options = [[m
+[31m-      "username=will"[m
+[31m-      "password=${secrets.samba.frac}"[m
+[31m-      "noauto"[m
+[31m-      "x-systemd.automount"[m
+[31m-      "x-systemd.mount-timeout=3"[m
+[31m-      "uid=1000"[m
+[31m-      "gid=100"[m
+[31m-      "dir_mode=0777"[m
+[31m-      "file_mode=0666"[m
+[31m-      "nofail"[m
+[31m-    ];[m
+[31m-  };[m
+[31m-  fileSystems."/mnt/Fractal" = {[m
+[31m-    device = "//${secrets.samba.fracRemote}/Vault";[m
+[31m-    fsType = "cifs";[m
+[31m-    options = [[m
+[31m-      "username=will"[m
+[31m-      "noauto"[m
+[31m-      "password=${secrets.samba.frac}"[m
+[31m-      "x-systemd.automount"[m
+[31m-      "x-systemd.mount-timeout=3"[m
+[31m-      "uid=1000"[m
+[31m-      "gid=100"[m
+[31m-      "dir_mode=0777"[m
+[31m-      "file_mode=0666"[m
+[31m-      "nofail"[m
+[31m-    ];[m
+[31m-  };[m
+[31m-  system.stateVersion = "24.11";[m
+[31m-}[m
+[34mdiff --git a/hosts/nixos-vm/hardware-configuration.nix b/hosts/nixos-vm/hardware-configuration.nix[m
+[34mdeleted file mode 100644[m
+[34mindex 6d92df4..0000000[m
+[34m--- a/hosts/nixos-vm/hardware-configuration.nix[m
+[34m+++ /dev/null[m
+[36m@@ -1,52 +0,0 @@[m
+[31m-# Do not modify this file!  It was generated by ‘nixos-generate-config’[m
+[31m-# and may be overwritten by future invocations.  Please make changes[m
+[31m-# to /etc/nixos/configuration.nix instead.[m
+[31m-{[m
+[31m-  config,[m
+[31m-  lib,[m
+[31m-  pkgs,[m
+[31m-  modulesPath,[m
+[31m-  ...[m
+[31m-}:[m
+[31m-{[m
+[31m-  imports = [[m
+[31m-    (modulesPath + "/profiles/qemu-guest.nix")[m
+[31m-  ];[m
+[31m-[m
+[31m-  boot.initrd.availableKernelModules = [[m
+[31m-    "ata_piix"[m
+[31m-    "xhci_pci"[m
+[31m-    "ahci"[m
+[31m-    "virtio_pci"[m
+[31m-    "sr_mod"[m
+[31m-    "virtio_blk"[m
+[31m-  ];[m
+[31m-  boot.initrd.kernelModules = [ ];[m
+[31m-  boot.kernelModules = [ ];[m
+[31m-  boot.extraModulePackages = [ ];[m
+[31m-[m
+[31m-  fileSystems."/" = {[m
+[31m-    device = "/dev/disk/by-uuid/5e7a1f8c-0aa7-4bd1-b83e-ea25ab49f72c";[m
+[31m-    fsType = "ext4";[m
+[31m-  };[m
+[31m-[m
+[31m-  fileSystems."/boot" = {[m
+[31m-    device = "/dev/disk/by-uuid/F2A6-B933";[m
+[31m-    fsType = "vfat";[m
+[31m-    options = [[m
+[31m-      "fmask=0022"[m
+[31m-      "dmask=0022"[m
+[31m-    ];[m
+[31m-  };[m
+[31m-[m
+[31m-  swapDevices = [ ];[m
+[31m-[m
+[31m-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking[m
+[31m-  # (the default) this is the recommended approach. When using systemd-networkd it's[m
+[31m-  # still possible to use this option, but it's recommended to use it in conjunction[m
+[31m-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.[m
+[31m-  networking.useDHCP = lib.mkDefault true;[m
+[31m-  # networking.interfaces.ens3.useDHCP = lib.mkDefault true;[m
+[31m-[m
+[31m-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";[m
+[31m-}[m
+[34mdiff --git a/hosts/wsl-nix/configuration.nix b/hosts/wsl-nix/configuration.nix[m
+[34mdeleted file mode 100644[m
+[34mindex c073a91..0000000[m
+[34m--- a/hosts/wsl-nix/configuration.nix[m
+[34m+++ /dev/null[m
+[36m@@ -1,47 +0,0 @@[m
+[31m-# Edit this configuration file to define what should be installed on[m
+[31m-# your system. Help is available in the configuration.nix(5) man page, on[m
+[31m-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).[m
+[31m-# NixOS-WSL specific options are documented on the NixOS-WSL repository:[m
+[31m-# https://github.com/nix-community/NixOS-WSL[m
+[31m-{[m
+[31m-  config,[m
+[31m-  lib,[m
+[31m-  pkgs,[m
+[31m-  ...[m
+[31m-}:[m
+[31m-{[m
+[31m-  wsl.enable = true;[m
+[31m-  services = {[m
+[31m-    tailscale.enable = true;[m
+[31m-    openssh = {[m
+[31m-      enable = true;[m
+[31m-      settings = {[m
+[31m-        PermitRootLogin = "yes";[m
+[31m-        PasswordAuthentication = true;[m
+[31m-      };[m
+[31m-    };[m
+[31m-  };[m
+[31m-[m
+[31m-  wsl.defaultUser = "will";[m
+[31m-  programs._1password.enable = true;[m
+[31m-  nixpkgs.config.allowUnfree = true;[m
+[31m-  networking.hostName = "wsl-nix";[m
+[31m-  environment.systemPackages = with pkgs; [[m
+[31m-    cifs-utils[m
+[31m-    samba[m
+[31m-    (import (builtins.fetchGit {[m
+[31m-      name = "my-old-revision";[m
+[31m-      url = "https://github.com/NixOS/nixpkgs/";[m
+[31m-      ref = "refs/heads/nixos-unstable";[m
+[31m-      rev = "028048884dc9517e548703beb24a11408cc51402";[m
+[31m-    }) { system = "x86_64-linux"; }).neovim[m
+[31m-  ];[m
+[31m-[m
+[31m-  # This value determines the NixOS release from which the default[m
+[31m-  # settings for stateful data, like file locations and database versions[m
+[31m-  # on your system were taken. It's perfectly fine and recommended to leave[m
+[31m-  # this value at the release version of the first install of this system.[m
+[31m-  # Before changing this value read the documentation for this option[m
+[31m-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).[m
+[31m-  system.stateVersion = "24.11"; # Did you read the comment?[m
+[31m-}[m
+[34mdiff --git a/port_forward.sh b/port_forward.sh[m
+[34mdeleted file mode 100755[m
+[34mindex f7d9298..0000000[m
+[34m--- a/port_forward.sh[m
+[34m+++ /dev/null[m
+[36m@@ -1,6 +0,0 @@[m
+[31m-#!/usr/bin/env sh [m
+[31m-[m
+[31m-ssh -L 9000:localhost:9000 will@100.104.160.115 [m
+[31m-[m
+[31m-[m
+[31m-[m
+[34mdiff --git a/tailscale.sh b/tailscale.sh[m
+[34mdeleted file mode 100755[m
+[34mindex e12dff6..0000000[m
+[34m--- a/tailscale.sh[m
+[34m+++ /dev/null[m
+[36m@@ -1,106 +0,0 @@[m
+[31m-#!/bin/sh[m
+[31m-[m
+[31m-CONFIG_FILE="$HOME/.tailscale_config"[m
+[31m-[m
+[31m-log_error() {[m
+[31m-    echo "Error: $1" >&2[m
+[31m-    exit 1[m
+[31m-}[m
+[31m-[m
+[31m-check_tailscale() {[m
+[31m-    if ! command -v tailscale &> /dev/null; then[m
+[31m-        log_error "Tailscale is not installed. Please install from https://tailscale.com/download"[m
+[31m-    fi[m
+[31m-}[m
+[31m-[m
+[31m-set_exit_node() {[m
+[31m-    local exit_node=$1[m
+[31m-[m
+[31m-    if [ "$exit_node" = "uk" ]; then[m
+[31m-        exit_node="gb-mnc-wg-201.mullvad.ts.net"[m
+[31m-    fi[m
+[31m-    if [ "$exit_node" = "usa" ]; then[m
+[31m-        exit_node="us-chi-wg-301.mullvad.ts.net"[m
+[31m-    fi[m
+[31m-[m
+[31m-    if [ -z "$exit_node" ]; then[m
+[31m-        if [ -f "$CONFIG_FILE" ]; then[m
+[31m-            exit_node=$(cat "$CONFIG_FILE")[m
+[31m-        else[m
+[31m-            log_error "No exit node specified. Usage: $0 mullvad <exit-node-hostname>"[m
+[31m-        fi[m
+[31m-    fi[m
+[31m-[m
+[31m-    echo "Setting exit node to: $exit_node"[m
+[31m-    sudo tailscale set --exit-node="$exit_node" --exit-node-allow-lan-access=true[m
+[31m-    [m
+[31m-    echo "$exit_node" > "$CONFIG_FILE"[m
+[31m-}[m
+[31m-[m
+[31m-advertise_routes() {[m
+[31m-    echo "Advertising local network routes"[m
+[31m-    sudo tailscale up --advertise-routes=10.0.0.0/16[m
+[31m-}[m
+[31m-[m
+[31m-reset_routes() {[m
+[31m-    echo "Resetting route advertisements"[m
+[31m-    sudo tailscale up --advertise-routes=[m
+[31m-}[m
+[31m-[m
+[31m-accept_routes() {[m
+[31m-    echo "Accepting routes"[m
+[31m-    local exit_node=$1[m
+[31m-    if [ -z "$exit_node" ]; then[m
+[31m-        if [ -f "$CONFIG_FILE" ]; then[m
+[31m-            exit_node=$(cat "$CONFIG_FILE")[m
+[31m-        else[m
+[31m-            log_error "No exit node specified. Usage: $0 accept-routes <exit-node-hostname>"[m
+[31m-        fi[m
+[31m-    fi[m
+[31m-    if [ "$exit_node" = "uk" ]; then[m
+[31m-        exit_node="gb-glw-wg-001.mullvad.ts.net"[m
+[31m-    fi[m
+[31m-    echo "Setting exit node to: $exit_node"[m
+[31m-    [m
+[31m-    echo "$exit_node" > "$CONFIG_FILE"[m
+[31m-[m
+[31m-    sudo tailscale up --accept-routes=true --exit-node-allow-lan-access=true --exit-node="$exit_node"[m
+[31m-}[m
+[31m-[m
+[31m-tailscale_up() {[m
+[31m-    echo "Bringing Tailscale up"[m
+[31m-    sudo tailscale up[m
+[31m-}[m
+[31m-[m
+[31m-main() {[m
+[31m-    check_tailscale[m
+[31m-[m
+[31m-    case "$1" in[m
+[31m-        mullvad)[m
+[31m-            set_exit_node "$2"[m
+[31m-            ;;[m
+[31m-        advertise)[m
+[31m-            advertise_routes[m
+[31m-            ;;[m
+[31m-        advertise-reset)[m
+[31m-            reset_routes[m
+[31m-            ;;[m
+[31m-        accept-routes)[m
+[31m-            accept_routes "$2"[m
+[31m-            ;;[m
+[31m-        up)[m
+[31m-            tailscale_up[m
+[31m-            ;;[m
+[31m-        *)[m
+[31m-            echo "Usage:"[m
+[31m-            echo "  $0 mullvad [exit-node]     - Set exit node (optional hostname)"[m
+[31m-            echo "  $0 advertise               - Advertise local network routes"[m
+[31m-            echo "  $0 advertise-reset         - Reset route advertisements"[m
+[31m-            echo "  $0 accept-routes           - Accept routes"[m
+[31m-            echo "  $0 up                      - Bring Tailscale up"[m
+[31m-            exit 1[m
+[31m-            ;;[m
+[31m-    esac[m
+[31m-}[m
+[31m-[m
+[31m-main "$@"[m

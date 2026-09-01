@@ -30,6 +30,7 @@
   boot.kernelParams = [
     "amdgpu.dcdebugmask=0x10"
   ];
+  # Trust the nextDNS certificate to avoid cert issues on browser.
   security.pki.certificates = [
     (builtins.readFile "${./../../secrets/NextDNS.cer}")
   ];
@@ -58,6 +59,7 @@
     tailscale.enable = true;
     xserver.enable = true;
     xserver.videoDrivers = [ "amdgpu" ];
+    # Enable flatpaks, see flatpak.nix
     flatpak.enable = true;
     syncthing = {
       enable = true;
@@ -119,6 +121,7 @@
         command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
       };
     };
+    # Needed for proton-drive-cli
     gnome.gnome-keyring.enable = true;
     pulseaudio.enable = false;
     gvfs.enable = true;
