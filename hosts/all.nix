@@ -27,15 +27,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   networking.networkmanager = {
     enable = true;
-    wifi.backend = "iwd";
-  };
-  networking.wireless.iwd.settings = {
-    Network = {
-      EnableIPv6 = true;
-    };
-    Settings = {
-      AutoConnect = true;
-    };
+    wifi.backend = "wpa_supplicant";
   };
 
   i18n.defaultLocale = "en_GB.UTF-8";

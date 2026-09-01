@@ -151,24 +151,30 @@ in
   bar.main = {
     position = "top";
     thickness = 34;
-    background_opacity = 0.1;
+    background_opacity = 0.25;
     radius = 20;
-    margin_ends = 878;
+    margin_ends = 10;
     margin_edge = 5;
     padding = 14;
     widget_spacing = 6;
     shadow = false;
     reserve_space = true;
-    capsule = false;
+    capsule = true;
+    capsule_opacity = 0.45;
     start = [ ];
-    center = [
-      "clock"
-      "battery"
-      "bluetooth"
-      "network"
+    center = [ "clock" ];
+    end = [
       "tray"
+      "notifications"
+      "clipboard"
+      "network"
+      "bluetooth"
+      "volume"
+      "brightness"
+      "battery"
+      "control-center"
+      "session"
     ];
-    end = [ ];
   };
 
   control_center = {
