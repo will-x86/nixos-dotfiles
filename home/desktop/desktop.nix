@@ -63,14 +63,7 @@ in
   services = {
     kdeconnect.enable = true;
   };
-
-  # Prevent kded5's GTK config module from managing ~/.gtkrc-2.0
-  xdg.configFile."kded5rc" = {
-    text = ''
-      [Module-gtkconfig]
-      autoload=false
-    '';
-  };
+  xdg.configFile."gtkrc-2.0".force = true;
   home.packages = with pkgs; [
     # --- hyprland / wayland ---
     brightnessctl

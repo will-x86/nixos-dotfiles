@@ -5,7 +5,6 @@ export PATH=$PATH:/home/will/.local/bin
 export PATH=$PATH:/home/will/.cargo/bin
 export PATH=$PATH:/home/will/.config/scripts/
 export HYPRSHOT_DIR=$HOME/Pictures/Screenshots/
-alias vim='nvim'
 alias vi='nvim'
 export EDITOR='nvim'
 # Zinit setup
@@ -54,8 +53,8 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-# Deferred loading of shell integrations
-eval "$(direnv hook zsh)"  # Uncomment if you use direnv
+
+eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
