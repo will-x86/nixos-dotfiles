@@ -133,10 +133,12 @@
         command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
       };
     };
+    gnome.gnome-keyring.enable = true;
     pulseaudio.enable = false;
     gvfs.enable = true;
   };
   security.polkit.enable = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
 
   powerManagement.powertop.enable = true;
   networking.hostName = "framework";
@@ -147,6 +149,7 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    withUWSM = true;
   };
   programs.hyprlock.enable = true;
   hardware.graphics = {

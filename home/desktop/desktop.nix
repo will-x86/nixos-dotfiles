@@ -62,7 +62,9 @@ in
   };
   services = {
     kdeconnect.enable = true;
+    gnome-keyring.enable = true;
   };
+  dconf.enable = true;
   home.packages = with pkgs; [
     # --- hyprland / wayland ---
     brightnessctl
