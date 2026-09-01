@@ -42,7 +42,6 @@ in
     screenshot = {
       save_to_file = true;
       copy_to_clipboard = true;
-      freeze = true;
     };
   };
 
@@ -139,7 +138,7 @@ in
     reserve_space = true;
     capsule = true;
     capsule_opacity = 0.72;
-    capsule_border = "outline_variant";
+    capsule_border = "outline";
     start = [ "launcher" "workspaces" ];
     center = [ "clock" "media" ];
     end = [ "tray" "notifications" "clipboard" "network" "bluetooth" "volume" "brightness" "battery" "control-center" "session" ];
