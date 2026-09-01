@@ -62,7 +62,7 @@
       # managed in home/desktop/zed.nix
       stylix.targets.zed.enable = false;
 
-      # Stops conflict
+      # Stops conflict of .gtkrc 2.0 or whatever
       stylix.targets.gtk.enable = false;
     }
   ];

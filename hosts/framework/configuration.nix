@@ -143,6 +143,7 @@
 
   boot.initrd.systemd.enable = true;
   systemd.services.display-manager.serviceConfig.KeyringMode = "inherit";
+  security.pam.services.greetd.enableKwallet = true;
   security.pam.services.sddm-autologin.text = pkgs.lib.mkBefore ''
     auth optional ${pkgs.systemd}/lib/security/pam_systemd_loadkey.so
     auth include sddm
