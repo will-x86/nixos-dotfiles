@@ -63,7 +63,6 @@ in
   services = {
     kdeconnect.enable = true;
   };
-  xdg.configFile."gtkrc-2.0".force = true;
   home.packages = with pkgs; [
     # --- hyprland / wayland ---
     brightnessctl
