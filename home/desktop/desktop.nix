@@ -36,10 +36,6 @@ in
       source = ../dotfiles/btop;
       recursive = true;
     };
-    ".config/scripts" = {
-      source = ../dotfiles/scripts;
-      recursive = true;
-    };
     ".config/alacritty/alacritty.toml".source = ../dotfiles/hypr/alacritty/alacritty.toml;
     ".config/alacritty/fonts.toml".source = ../dotfiles/hypr/alacritty/fonts.toml;
     ".config/alacritty/colors.toml".source = ../dotfiles/hypr/alacritty/colors.toml;
