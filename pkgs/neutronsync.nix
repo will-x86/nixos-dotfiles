@@ -8,19 +8,16 @@
   gtk3,
   libxkbcommon,
   wayland,
-  xorg,
   xdotool,
   libayatana-appindicator,
   libGL,
   vulkan-loader,
   libsecret,
   glib,
+  libx11,
+  libxcb,
 }:
 
-let
-  libX11 = xorg.libX11;
-  libxcbPkg = xorg.libxcb;
-in
 rustPlatform.buildRustPackage {
   pname = "neutronsync";
   version = "0.3.3";
@@ -44,8 +41,8 @@ rustPlatform.buildRustPackage {
     gtk3
     libxkbcommon
     wayland
-    libX11
-    libxcbPkg
+    libx11
+    libxcb
     libGL
     xdotool
     vulkan-loader
