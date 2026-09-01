@@ -127,7 +127,6 @@
     printing.enable = true;
     greetd = {
       enable = true;
-      enableKwallet = true;
 
       settings.default_session = {
         user = "will";
@@ -144,29 +143,6 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   boot.initrd.systemd.enable = true;
-  ## Stolen https://discourse.nixos.org/t/how-to-automatically-unlock-kwallet-at-start-up/61308/9
-  security.pam.services.greetd.kwallet = {
-    enable = true;
-    forceRun = true;
-  };
-
-  services.dbus.packages = with pkgs.kdePackages; [ kwallet ];
-  xdg.portal.extraPortals = with pkgs.kdePackages; [ kwallet ];
-
-  systemd.user.services.pam-kwallet-init = {
-    description = "Unlock kwallet from pam credentials";
-    wantedBy = [ "graphical-session.target" ];
-    wants = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.kdePackages.kwallet-pam}/libexec/pam_kwallet_init";
-      Slice = "background.slice";
-      Restart = "no";
-    };
-  };
-  ## End stolen
-
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
