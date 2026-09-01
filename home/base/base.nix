@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   ...
 }:
@@ -31,7 +30,6 @@
     zoxide
 
     # --- system / filesystem ---
-    dnsmasq # Used for pretending to be a router lol
     exfat
     ffmpeg-full
     gnumake
@@ -46,7 +44,6 @@
 
     # --- apps ---
     distrobox
-    moonlight-qt
     tailscale
   ];
   programs = {
@@ -55,7 +52,6 @@
       enable = true;
       initContent = builtins.readFile ../dotfiles/.zshrc;
     };
-    #firefox.enable = true; # byebye
     direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -69,7 +65,7 @@
     };
     starship = {
       enable = true;
-      settings = builtins.fromTOML (builtins.readFile ../dotfiles/starship.toml);
+      settings = (builtins.readFile ../dotfiles/starship.toml);
     };
     kitty.enable = true;
     foot.enable = true;
@@ -80,10 +76,8 @@
   };
 
   home.file = {
-    # starship.toml is now managed via programs.starship.settings
     ".tmux-sessioniser".source = ../dotfiles/.tmux-sessioniser;
     "tmux-sessioniser".source = ../dotfiles/tmux-sessioniser;
-    #".zshrc".source = ../dotfiles/.zshrc;
     ".config/kitty" = {
       source = ../dotfiles/kitty;
       recursive = true;

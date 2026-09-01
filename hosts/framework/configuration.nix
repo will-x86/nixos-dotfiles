@@ -2,7 +2,6 @@
   config,
   pkgs,
   secrets,
-  pkgs-stable,
   ...
 }:
 {
@@ -40,12 +39,6 @@
       HandleLidSwitch = "suspend";
       HandleLidSwitchExternalPower = "suspend";
       HandleLidSwitchDocked = "ignore";
-    };
-    sunshine = {
-      enable = true;
-      autoStart = true;
-      capSysAdmin = true;
-      openFirewall = true;
     };
     fwupd.enable = true;
     power-profiles-daemon.enable = false;

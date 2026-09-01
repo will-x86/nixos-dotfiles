@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   pkgs,
   # system ? pkgs.system,
   secrets,
@@ -9,11 +8,6 @@
 let
   base = import ../base/base.nix { inherit config pkgs; };
   hyprland = import ./hyprland.nix { inherit config pkgs secrets; };
-  pkgs-stable = import inputs.nixpkgs-stable {
-    system = pkgs.stdenv.hostPlatform.system;
-    config.allowUnfree = true;
-  };
-
 in
 {
   imports = [
@@ -38,7 +32,8 @@ in
     };
   };
 
-  # mako reads ~/.config/mako/config by default; deploy there.
+  # Hyprland mako uses ~/.config/hypr/mako/config but for timeout for other apps
+  # we need ~/.config/mako/config too
   home.file.".config/mako/config".source = ../dotfiles/hypr/mako/config;
   home.file = {
     ".config/btop" = {
@@ -110,38 +105,6 @@ in
     orca-slicer
     qmk
     syncthingtray
-    (writeShellScriptBin "kabam" ''
-      FRP_SERVER_ADDR="${secrets.tunnelDomain}" 
-      FRP_SERVER_PORT="7000"
-
-      if [ -z "$1" ]; then
-          echo "Usage: kabam <local_port>"
-          echo "Example: kabam 8080"
-          exit 1
-      fi
-
-      LOCAL_PORT=$1
-      CONFIG_FILE="/tmp/frpc_config.toml"
-
-      trap "rm -f $CONFIG_FILE" EXIT
-
-      cat > "$CONFIG_FILE" << EOF
-      serverAddr = "$FRP_SERVER_ADDR"
-      serverPort = $FRP_SERVER_PORT
-
-      [[proxies]]
-      name = "web"
-      type = "http"
-      localPort = $LOCAL_PORT
-      customDomains = ["${secrets.tunnelDomain}"]
-      EOF
-
-      echo "--- ✅ Tunneling to https://${secrets.tunnelDomain} ---"
-      echo "Press Ctrl+C to stop."
-
-      frpc -c "$CONFIG_FILE"
-
-    '')
     (pkgs.callPackage (
       { stdenv }:
 
@@ -160,16 +123,10 @@ in
     enable = true;
     plugins = [ pkgs.rofi-emoji ];
   };
-  # stylix doesn't support the 'kde' platform theme
   qt = {
     enable = true;
-    #platformTheme.name = "gtk3";
   };
 
-  home.sessionVariables = {
-    ANTHROPIC_API_KEY = "${secrets.anthropic.api_key}";
-
-  };
   home.file = {
     ".config/scripts" = {
       source = ../dotfiles/scripts;

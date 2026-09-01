@@ -1,7 +1,4 @@
 {
-  config,
-  secrets,
-  pkgs,
   ...
 }:
 {

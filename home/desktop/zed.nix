@@ -71,11 +71,6 @@
 
       load_direnv = "shell_hook";
 
-      #node = {
-      #path = lib.getExe pkgs.nodejs;
-      #npm_path = lib.getExe' pkgs.nodejs "npm";
-      #};
-
       terminal = {
         shell = "system";
         working_directory = "current_project_directory";
@@ -137,19 +132,18 @@
       };
     };
 
-    # leader = space; ports the custom nixvim binds
+    # leader = space
     userKeymaps = [
       {
         context = "Editor && VimControl && !menu";
         bindings = {
-          # Telescope-style project navigation
+          # Telescope-style nav
           "ctrl-p" = "file_finder::Toggle"; # <C-p> git files
           "space p f" = "file_finder::Toggle"; # <leader>pf find files
           "space p s" = "pane::DeploySearch"; # <leader>ps live grep
           "space p v" = "project_panel::ToggleFocus"; # <leader>pv file explorer
-          "space e" = "project_panel::ToggleFocus"; # <leader>e (harpoon menu -> file tree)
+          "space e" = "project_panel::ToggleFocus"; # filetree
 
-          # LSP (mirrors nixvim lsp.keymaps)
           "g d" = "editor::GoToDefinition";
           "g y" = "editor::GoToTypeDefinition";
           "g i" = "editor::GoToImplementation";
@@ -160,7 +154,6 @@
           "] d" = "editor::GoToDiagnostic";
           "[ d" = "editor::GoToPreviousDiagnostic";
 
-          # Misc
           "space f" = "editor::Format"; # <leader>f format
           "space y" = "editor::Copy"; # <leader>y system clipboard
           "space q" = "diagnostics::Deploy"; # <leader>q diagnostics list

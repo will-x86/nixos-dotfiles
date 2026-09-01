@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   programs.nixvim = {
     enable = true;
@@ -30,12 +30,6 @@
       update_in_insert = false;
       severity_sort = false;
     };
-    extraPackages = with pkgs; [
-      texliveFull
-      zathura
-      xdotool
-      python312Packages.pylatexenc
-    ];
     plugins = {
       fidget.enable = true;
       image.enable = true;
@@ -59,18 +53,8 @@
           };
         };
       };
-      vimtex = {
-        enable = true;
-        texlivePackage = pkgs.texliveFull;
-        settings = {
-          view_method = "zathura";
-        };
-      };
-
-      #copilot-vim.enable = true;
     };
     extraConfigLua = ''
-      vim.g.vimtex_compiler_latexmk = { out_dir = "build" }
       vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#c792ea" })
     '';
   };
