@@ -168,12 +168,10 @@ in
       "tray"
       "notifications"
       "clipboard"
-      "volume"
-      "brightness"
-      "battery"
       "control-center"
       "session"
     ];
+    end = [ ];
   };
 
   control_center = {
