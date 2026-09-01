@@ -1,8 +1,6 @@
 {
-  config,
   pkgs,
   inputs,
-  secrets,
   neutronsync-overlay,
   ...
 }:
@@ -51,50 +49,6 @@
     LC_PAPER = "en_GB.UTF-8";
     LC_TELEPHONE = "en_GB.UTF-8";
     LC_TIME = "en_GB.UTF-8";
-  };
-  fonts = {
-    packages = with pkgs; [
-      material-symbols
-
-      # normal fonts
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-color-emoji
-
-      #inputs.self.packages.${pkgs.system}.SF-Pro
-      inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.SF-Pro
-      #inputs.self.packages.${pkgs.system}.SF-Pro-mono
-      inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.SF-Pro-mono
-
-      # nerdfonts
-      nerd-fonts.symbols-only
-      nerd-fonts.departure-mono
-      departure-mono
-    ];
-    fontconfig = {
-      enable = true;
-      antialias = true;
-      hinting = {
-        enable = true;
-        autohint = false;
-        style = "full";
-      };
-      subpixel = {
-        lcdfilter = "default";
-        rgba = "rgb";
-      };
-      defaultFonts =
-        let
-          addAll = builtins.mapAttrs (_: v: [ "Symbols Nerd Font" ] ++ v ++ [ "Noto Color Emoji" ]);
-        in
-        addAll {
-          serif = [ "Noto Sans Serif" ];
-          sansSerif = [ "SF Pro Display" ];
-          monospace = [ "Departure Mono" ];
-          emoji = [ "Noto Color Emoji" ];
-        };
-    };
-    enableDefaultPackages = true;
   };
   security.rtkit.enable = true;
   services.pipewire = {

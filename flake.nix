@@ -32,7 +32,6 @@
         nixpkgs
         nixpkgs-stable
         home-manager
-        nixos-wsl
         stylix
 
         xremap-flake
@@ -72,7 +71,6 @@
       };
 
       mkHomeManagerConfig = homeConfig: {
-        #home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = commonSpecialArgs;
         home-manager.users.will = import homeConfig;
@@ -156,15 +154,6 @@
         bigDaddy = mkHost {
           hostName = "bigDaddy";
           homeConfig = ./home/desktop/desktop.nix;
-        };
-
-        nixos-vm = mkHost {
-          hostName = "nixos-vm";
-        };
-
-        wsl-nix = mkHost {
-          hostName = "wsl-nix";
-          extraModules = [ nixos-wsl.nixosModules.default ];
         };
       };
     };
