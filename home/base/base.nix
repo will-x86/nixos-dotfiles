@@ -65,7 +65,7 @@
     };
     starship = {
       enable = true;
-      settings = (fromTOML ../dotfiles/starship.toml);
+      settings = fromTOML (builtins.readFile ../dotfiles/starship.toml);
     };
     kitty.enable = true;
     foot.enable = true;
