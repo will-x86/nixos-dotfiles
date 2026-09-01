@@ -56,7 +56,7 @@
       fenix-stable = fenix.packages.${system}.stable;
 
       neutronsync-overlay = final: prev: {
-        proton-drive-cli = final.callPackage ./pkgs/proton-drive-cli.nix {};
+        proton-drive = final.callPackage ./pkgs/proton-drive.nix { };
         neutronsync = final.callPackage ./pkgs/neutronsync.nix {
           rustPlatform = final.makeRustPlatform {
             rustc = fenix-stable.toolchain;
@@ -112,7 +112,7 @@
     in
     {
       packages.${system} = systemPackages.packages // {
-        proton-drive-cli = pkgs.callPackage ./pkgs/proton-drive-cli.nix {};
+        proton-drive-cli = pkgs.callPackage ./pkgs/proton-drive-cli.nix { };
         neutronsync = pkgs.callPackage ./pkgs/neutronsync.nix {
           rustPlatform = pkgs.makeRustPlatform {
             rustc = fenix-stable.toolchain;
