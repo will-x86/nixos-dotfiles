@@ -49,7 +49,7 @@ in
   home.packages = with pkgs; [
     # --- hyprland / wayland ---
     grim
-    libnotify
+    hyprpicker
     playerctl
     slurp
     wl-clipboard

@@ -141,7 +141,7 @@ in
     capsule_border = "outline";
     start = [ "launcher" "workspaces" ];
     center = [ "clock" "media" ];
-    end = [ "tray" "notifications" "clipboard" "network" "bluetooth" "volume" "brightness" "battery" "control-center" "session" ];
+    end = [ "tray" "notifications" "clipboard" "oldirtty/color_picker:widget" "network" "bluetooth" "volume" "brightness" "battery" "control-center" "session" ];
   };
 
   control_center = {
@@ -175,5 +175,8 @@ in
     };
   };
 
-  hooks.colors_changed = "hyprctl reload";
+  hooks = {
+    started = "noctalia msg plugins enable oldirtty/color_picker";
+    colors_changed = "hyprctl reload";
+  };
 }
