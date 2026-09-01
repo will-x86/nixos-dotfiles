@@ -127,6 +127,8 @@
     printing.enable = true;
     greetd = {
       enable = true;
+      enableKwallet = true;
+
       settings.default_session = {
         user = "will";
         command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
@@ -142,18 +144,29 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   boot.initrd.systemd.enable = true;
-  systemd.services.display-manager.serviceConfig.KeyringMode = "inherit";
-
-  # KWallet for proton-drive-cli
-  security.pam.services.login.kwallet = {
+  ## Stolen https://discourse.nixos.org/t/how-to-automatically-unlock-kwallet-at-start-up/61308/9
+  security.pam.services.greetd.kwallet = {
     enable = true;
     forceRun = true;
   };
 
-  security.pam.services.sddm-autologin.text = pkgs.lib.mkBefore ''
-    auth optional ${pkgs.systemd}/lib/security/pam_systemd_loadkey.so
-    auth include sddm
-  '';
+  services.dbus.packages = with pkgs.kdePackages; [ kwallet ];
+  xdg.portal.extraPortals = with pkgs.kdePackages; [ kwallet ];
+
+  systemd.user.services.pam-kwallet-init = {
+    description = "Unlock kwallet from pam credentials";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.kdePackages.kwallet-pam}/libexec/pam_kwallet_init";
+      Slice = "background.slice";
+      Restart = "no";
+    };
+  };
+  ## End stolen
+
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
