@@ -79,7 +79,6 @@ in
     feh
     mpv
     pavucontrol
-    pulsemixer
 
     # --- system / desktop ---
     coreutils
