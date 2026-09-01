@@ -150,18 +150,17 @@ in
 
   bar.main = {
     position = "top";
-    thickness = 36;
-    background_opacity = 0.82;
-    radius = 12;
+    thickness = 34;
+    background_opacity = 0.1;
+    radius = 20;
     margin_ends = 10;
-    margin_edge = 6;
-    padding = 10;
+    margin_edge = 5;
+    padding = 14;
     widget_spacing = 6;
-    shadow = true;
+    shadow = false;
     reserve_space = true;
     capsule = true;
-    capsule_opacity = 0.72;
-    capsule_border = "outline";
+    capsule_opacity = 0.2;
     start = [
       "launcher"
       "workspaces"
