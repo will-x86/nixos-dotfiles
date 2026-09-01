@@ -1,4 +1,8 @@
-general.import = ["~/.config/hypr/alacritty/colors.toml", "~/.config/hypr/alacritty/fonts.toml"]
+general.import = [
+  "~/.config/alacritty/colors.toml",
+  "~/.config/alacritty/fonts.toml",
+  "~/.config/alacritty/themes/noctalia.toml",
+]
 
 terminal.shell = { program = "/run/current-system/sw/bin/zsh" }
 
@@ -49,4 +53,3 @@ regex           = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|htt
 
 [debug]
 log_level = "Warn"
-

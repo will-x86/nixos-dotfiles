@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-rfkill unblock wifi
-
-exec kitty --class='wifi-manager' \
-     -o initial_window_width=800 \
-     -o initial_window_height=600 \
-     --title 'WiFi Manager' \
-     impala

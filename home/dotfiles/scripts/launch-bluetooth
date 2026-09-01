@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-rfkill unblock bluetooth
-
-exec kitty --class='bt-manager' \
-     -o initial_window_width=800 \
-     -o initial_window_height=600 \
-     --title 'Bluetooth Manager' \
-     bluetui

@@ -6,23 +6,20 @@ hl.window_rule({
 	float = true,
 })
 
-hl.layer_rule({ match = { namespace = "waybar" }, blur = true, ignore_alpha = 0.0, blur_popups = true })
-hl.layer_rule({ match = { namespace = "logout_dialog" }, blur = true, animation = "popin 95%" })
 hl.layer_rule({
-	match = { namespace = "rofi" },
+	name = "noctalia-surfaces",
+	match = {
+		namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd|window-switcher)$",
+	},
+	no_anim = true,
 	blur = true,
-	ignore_alpha = 0.0,
-	animation = "popin 95%",
+	blur_popups = true,
+	ignore_alpha = 0.5,
 })
-hl.layer_rule({
-	match = { namespace = "swaync-control-center" },
-	blur = true,
-	ignore_alpha = 0.0,
-	animation = "popin 95%",
-})
-hl.layer_rule({
-	match = { namespace = "swaync-notification-window" },
-	blur = true,
-	ignore_alpha = 0.0,
-	animation = "slide",
+
+hl.window_rule({
+	name = "noctalia-settings",
+	match = { class = "dev.noctalia.Noctalia" },
+	float = true,
+	size = { 1080, 920 },
 })

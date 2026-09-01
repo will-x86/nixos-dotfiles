@@ -11,10 +11,7 @@
     nixvim = {
       url = "github:nix-community/nixvim";
     };
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
 
     xremap-flake.url = "github:xremap/nix-flake";
 
@@ -34,8 +31,6 @@
         nixpkgs
         nixpkgs-stable
         home-manager
-        stylix
-
         xremap-flake
         ;
       system = "x86_64-linux";
@@ -148,7 +143,6 @@
           hostName = "framework";
           homeConfig = ./home/desktop/desktop.nix;
           extraModules = [
-            stylix.nixosModules.stylix
             xremap-flake.nixosModules.default
           ];
         };
@@ -159,4 +153,11 @@
         };
       };
     };
+
+  nixConfig = {
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
+  };
 }

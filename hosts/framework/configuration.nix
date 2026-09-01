@@ -11,7 +11,6 @@
     ./user.nix
     ./packages.nix
     ./flatpack.nix
-    ./stylix.nix
     ./fan.nix
   ];
   services.neutronsync.watch.enable = true;
@@ -140,7 +139,6 @@
     xwayland.enable = true;
     withUWSM = true;
   };
-  programs.hyprlock.enable = true;
   hardware.graphics = {
     enable = true;
     enable32Bit = true;

@@ -1,0 +1,180 @@
+{ ... }:
+let
+  wallpapers = toString ../dotfiles/hypr/wallpapers;
+in
+{
+  shell = {
+    font_family = "SF Pro Display";
+    time_format = "{:%I:%M %p}";
+    date_format = "%A, %d %B";
+    polkit_agent = true;
+    settings_show_advanced = true;
+    clipboard_enabled = true;
+    clipboard_history_max_entries = 100;
+    panel = {
+      transparency_mode = "glass";
+      borders = true;
+      shadow = true;
+      launcher_placement = "floating";
+      launcher_position = "center";
+      clipboard_placement = "floating";
+      clipboard_position = "center";
+      control_center_placement = "attached";
+      wallpaper_placement = "attached";
+      session_placement = "floating";
+      open_near_click_control_center = true;
+      open_near_click_wallpaper = true;
+    };
+    launcher = {
+      categories = true;
+      show_icons = true;
+      show_app_origin_indicator = true;
+      sort_by_usage = true;
+      provider_prefix = "/";
+      providers = {
+        calculator = { prefix = "calc"; global = true; };
+        emoji.prefix = "emo";
+        session.prefix = "session";
+        wallpaper.prefix = "wall";
+        windows.prefix = "win";
+      };
+    };
+    screenshot = {
+      save_to_file = true;
+      copy_to_clipboard = true;
+      freeze = true;
+    };
+  };
+
+  theme = {
+    mode = "dark";
+    source = "wallpaper";
+    wallpaper_scheme = "m3-content";
+    templates = {
+      enable_builtin_templates = true;
+      builtin_ids = [ "alacritty" "btop" "gtk3" "gtk4" "hyprland" "kcolorscheme" "kitty" ];
+      enable_community_templates = false;
+    };
+  };
+
+  wallpaper = {
+    enabled = true;
+    directory = wallpapers;
+    fill_mode = "crop";
+    transition = [ "fade" "wipe" "zoom" ];
+    transition_duration = 1200;
+    transition_on_startup = false;
+    default.path = "${wallpapers}/wallpaper2.png";
+    automation.enabled = false;
+  };
+
+  notification = {
+    enable_daemon = true;
+    show_app_name = true;
+    show_actions = true;
+    position = "top_right";
+    layer = "overlay";
+    background_opacity = 0.9;
+    offset_x = 12;
+    offset_y = 12;
+  };
+
+  osd = {
+    position = "top_center";
+    orientation = "horizontal";
+    background_opacity = 0.9;
+    offset_y = 12;
+    kinds = {
+      volume = true;
+      volume_output = true;
+      volume_input = true;
+      brightness = true;
+      wifi = true;
+      bluetooth = true;
+      dnd = true;
+      privacy = true;
+      power_profile = false;
+    };
+  };
+
+  lockscreen = {
+    enabled = true;
+    blurred_desktop = false;
+    blur_intensity = 0.5;
+    tint_intensity = 0.25;
+  };
+
+  idle = {
+    pre_action_fade_seconds = 2.0;
+    behavior = {
+      lock = { timeout = 300; action = "lock"; enabled = true; };
+      "screen-off" = { timeout = 600; action = "screen_off"; enabled = true; };
+      suspend = {
+        timeout = 1800;
+        action = "command";
+        command = "noctalia msg session lock-and-suspend";
+        enabled = true;
+      };
+    };
+  };
+
+  audio.enable_overdrive = false;
+  brightness.enable_ddcutil = false;
+  system.monitor.enabled = true;
+  dock.enabled = false;
+  desktop_widgets.enabled = false;
+  weather.enabled = false;
+  calendar.enabled = false;
+
+  bar.main = {
+    position = "top";
+    thickness = 36;
+    background_opacity = 0.82;
+    radius = 12;
+    margin_ends = 10;
+    margin_edge = 6;
+    padding = 10;
+    widget_spacing = 6;
+    shadow = true;
+    reserve_space = true;
+    capsule = true;
+    capsule_opacity = 0.72;
+    capsule_border = "outline_variant";
+    start = [ "launcher" "workspaces" ];
+    center = [ "clock" "media" ];
+    end = [ "tray" "notifications" "clipboard" "network" "bluetooth" "volume" "brightness" "battery" "control-center" "session" ];
+  };
+
+  control_center = {
+    sidebar = "compact";
+    sidebar_section = "compact";
+    width = 760;
+    show_shortcut_labels = true;
+    show_session_button = true;
+    hidden_tabs = [ "weather" "calendar" ];
+    shortcuts = [
+      { type = "wifi"; }
+      { type = "bluetooth"; }
+      { type = "notification"; }
+      { type = "wallpaper"; }
+      { type = "nightlight"; }
+      { type = "session"; }
+    ];
+  };
+
+  widget = {
+    media.hide_when_no_media = true;
+    network.show_label = false;
+    bluetooth.show_label = false;
+    volume.show_label = false;
+    brightness.show_label = false;
+    notifications.hide_when_no_unread = false;
+    clock = {
+      format = "{:%I:%M %p}";
+      tooltip_format = "{:%A, %d %B %Y}";
+      font_weight = 700;
+    };
+  };
+
+  hooks.colors_changed = "hyprctl reload";
+}

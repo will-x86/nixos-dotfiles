@@ -5,25 +5,23 @@ local s = SCRIPTS
 local locked = { locked = true }
 local locked_r = { locked = true, repeating = true }
 
-local function audio(command, notification)
-	return function()
-		hl.dispatch(hl.dsp.exec_cmd(command))
-		hl.notification.create({ text = notification, timeout = 1000, icon = "info" })
-	end
-end
-
 -- Apps
 -- Tmux sessioniser by default
 hl.bind(mod .. " + Return", hl.dsp.exec_cmd(s.kitty .. " -T"))
 -- Normal kitty
 hl.bind(mod .. " + T", hl.dsp.exec_cmd(s.kitty))
-hl.bind(mod .. " + X", hl.dsp.exec_cmd(s.wlogout))
-hl.bind(mod .. " + A", hl.dsp.exec_cmd("hyprshot -m region"))
+hl.bind(mod .. " + X", hl.dsp.exec_cmd("noctalia msg panel-toggle session"))
+hl.bind(mod .. " + A", hl.dsp.exec_cmd("noctalia msg screenshot-region"))
 hl.bind(mod .. " + P", hl.dsp.exec_cmd(s.colorpicker))
-hl.bind(mod .. " + escape", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mod .. " + escape", hl.dsp.exec_cmd("noctalia msg session lock"))
+hl.bind(mod .. " + V", hl.dsp.exec_cmd("noctalia msg panel-toggle clipboard"))
+hl.bind(mod .. " + S", hl.dsp.exec_cmd("noctalia msg panel-toggle control-center"))
+hl.bind(mod .. " + comma", hl.dsp.exec_cmd("noctalia msg settings-toggle"))
+hl.bind(mod .. " + W", hl.dsp.exec_cmd("noctalia msg panel-toggle wallpaper"))
+hl.bind("ALT + TAB", hl.dsp.exec_cmd("noctalia msg window-switcher"))
 
 -- Launcher (released SUPER)
-hl.bind(mod .. " + SUPER_L", hl.dsp.exec_cmd(s.rofi), { release = true })
+hl.bind(mod .. " + SUPER_L", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"), { release = true })
 
 -- Mouse
 hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
@@ -57,20 +55,12 @@ for i = 0, 9 do
 end
 
 -- Media / brightness / volume
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(s.backlight .. " --inc"), locked_r)
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(s.backlight .. " --dec"), locked_r)
-hl.bind("XF86AudioRaiseVolume", audio(
-	"wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+", "Volume +5%"
-), locked_r)
-hl.bind("XF86AudioLowerVolume", audio(
-	"wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-", "Volume -5%"
-), locked_r)
-hl.bind("XF86AudioMute", audio(
-	"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", "Volume mute toggled"
-), locked)
-hl.bind("XF86AudioMicMute", audio(
-	"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle", "Microphone mute toggled"
-), locked)
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("noctalia msg brightness-up"), locked_r)
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("noctalia msg brightness-down"), locked_r)
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("noctalia msg volume-up"), locked_r)
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("noctalia msg volume-down"), locked_r)
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("noctalia msg volume-mute"), locked)
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("noctalia msg mic-mute"), locked)
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), locked)
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), locked)
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), locked)

@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   # system ? pkgs.system,
   secrets,
   ...
@@ -11,6 +12,7 @@ let
 in
 {
   imports = [
+    inputs.noctalia.homeModules.default
     base
     hyprland
     ./gui-programming.nix
@@ -30,31 +32,20 @@ in
       source = ../dotfiles/hypr;
       recursive = true;
     };
-  };
-
-  # Hyprland mako uses ~/.config/hypr/mako/config but for timeout for other apps
-  # we need ~/.config/mako/config too
-  home.file.".config/mako/config".source = ../dotfiles/hypr/mako/config;
-  home.file = {
     ".config/btop" = {
       source = ../dotfiles/btop;
       recursive = true;
     };
-  };
-
-  home.file = {
-    ".config/rofi" = {
-      source = ../dotfiles/rofi;
+    ".config/scripts" = {
+      source = ../dotfiles/scripts;
       recursive = true;
     };
+    ".config/alacritty/alacritty.toml".source = ../dotfiles/hypr/alacritty/alacritty.toml;
+    ".config/alacritty/fonts.toml".source = ../dotfiles/hypr/alacritty/fonts.toml;
+    ".config/alacritty/colors.toml".source = ../dotfiles/hypr/alacritty/colors.toml;
+    ".config/neutronsync/neutronsync.toml".source = ../dotfiles/neutronsync.toml;
   };
 
-  home.file = {
-    ".config/wlogout" = {
-      source = ../dotfiles/wlogout;
-      recursive = true;
-    };
-  };
   services = {
     kdeconnect.enable = true;
     gnome-keyring.enable = true;
@@ -62,18 +53,16 @@ in
   dconf.enable = true;
   home.packages = with pkgs; [
     # --- hyprland / wayland ---
-    brightnessctl
     grim
-    hyprshot
     libnotify
-    mako
     playerctl
     slurp
-    hyprpaper
-    waybar
     wl-clipboard
-    wlogout
     xdg-utils
+
+    # Noctalia application-theme integration
+    adw-gtk3
+    qt6Packages.qt6ct
 
     # --- audio / media ---
     feh
@@ -104,6 +93,10 @@ in
     orca-slicer
     qmk
     syncthingtray
+    inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.SF-Pro
+    inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.SF-Pro-mono
+    noto-fonts
+    noto-fonts-color-emoji
     (pkgs.callPackage (
       { stdenv }:
 
@@ -118,22 +111,29 @@ in
       }
     ) { })
   ];
-  programs.rofi = {
+  programs.noctalia = {
     enable = true;
-    plugins = [ pkgs.rofi-emoji ];
-  };
-  qt = {
-    enable = true;
+    systemd.enable = true;
+    checkConfig = true;
+    settings = import ./noctalia-settings.nix { };
   };
 
-  home.file = {
-    ".config/scripts" = {
-      source = ../dotfiles/scripts;
-      recursive = true;
+  gtk = {
+    enable = true;
+    theme = {
+      package = pkgs.adw-gtk3;
+      name = "adw-gtk3-dark";
     };
   };
 
-  # neutronsync config
-  home.file.".config/neutronsync/neutronsync.toml".source = ../dotfiles/neutronsync.toml;
+  qt.enable = true;
+
+  home.pointerCursor = {
+    package = pkgs.adwaita-icon-theme;
+    name = "Adwaita";
+    size = 24;
+    gtk.enable = true;
+    x11.enable = true;
+  };
 
 }

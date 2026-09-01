@@ -66,6 +66,16 @@
     openssl
   ];
   services.dbus.enable = true;
+  services.upower.enable = true;
+
+  fonts.packages = with pkgs; [
+    material-symbols
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    nerd-fonts.symbols-only
+    nerd-fonts.departure-mono
+    departure-mono
+  ];
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;

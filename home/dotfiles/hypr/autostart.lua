@@ -1,8 +1,6 @@
 -- autostart.lua
 
 hl.on("hyprland.start", function()
-  hl.exec_cmd("hyprpaper")
-  hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/startup")
   hl.exec_cmd("udiskie")
 
   -- Workspace-pinned launches (previously exec-once=[workspace N silent] ...)
