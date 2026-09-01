@@ -3,9 +3,17 @@
   pkgs,
   inputs,
   secrets,
+  neutronsync-overlay,
   ...
 }:
 {
+  imports = [
+    ../services/neutronsync.nix
+  ];
+
+  # Make the neutronsync package available
+  nixpkgs.overlays = [ neutronsync-overlay ];
+
   system.autoUpgrade.enable = true;
   hardware.keyboard.qmk.enable = true;
 

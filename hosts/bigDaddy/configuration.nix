@@ -9,6 +9,7 @@
   imports = [
     ./hardware-configuration.nix
   ];
+  services.neutronsync.watch.enable = true;
 
   boot.loader.grub = {
     enable = true;

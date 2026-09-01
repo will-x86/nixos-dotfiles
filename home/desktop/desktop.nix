@@ -100,7 +100,7 @@ in
 
     libsecret
     neutronsync
-    proton-drive-cli
+    proton-drive
     # --- cli utils ---
     bc
     gocr
@@ -179,40 +179,5 @@ in
 
   # neutronsync config
   home.file.".config/neutronsync/neutronsync.toml".source = ../dotfiles/neutronsync.toml;
-
-  # Use one not both
-  # systemctl --user enable --now neutronsync-watch
-  systemd.user.services.neutronsync-watch = {
-    Unit = {
-      Description = "Proton Drive live sync (neutronsync watch)";
-      After = "network-online.target";
-      Wants = "network-online.target";
-    };
-    Service = {
-      Type = "simple";
-      ExecStart = "${pkgs.neutronsync}/bin/neutronsync watch";
-      Restart = "on-failure";
-      RestartSec = 30;
-      Nice = 10;
-      IOSchedulingClass = "idle";
-    };
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-  };
-
-  systemd.user.services.neutronsync-sync = {
-    Unit = {
-      Description = "Proton Drive bidirectional sync (neutronsync)";
-      After = "network-online.target";
-      Wants = "network-online.target";
-    };
-    Service = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.neutronsync}/bin/neutronsync sync";
-      Nice = 10;
-      IOSchedulingClass = "idle";
-    };
-  };
 
 }

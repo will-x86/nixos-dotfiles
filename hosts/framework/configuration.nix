@@ -15,6 +15,7 @@
     ./stylix.nix
     ./fan.nix
   ];
+  services.neutronsync.watch.enable = true;
   nixpkgs.config.allowUnfree = true;
   virtualisation.waydroid.enable = true;
   boot.loader.systemd-boot.enable = true;

@@ -68,6 +68,7 @@
       commonSpecialArgs = {
         inherit inputs system pkgs-stable;
         secrets = loadSecrets;
+        neutronsync-overlay = neutronsync-overlay;
       };
 
       mkHomeManagerConfig = homeConfig: {

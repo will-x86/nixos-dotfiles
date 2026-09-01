@@ -27,7 +27,7 @@ let
 in
 buildFHSEnv {
   inherit version;
-  name = "proton-drive-cli";
+  name = "proton-drive";
   targetPkgs =
     pkgs: with pkgs; [
       libsecret
