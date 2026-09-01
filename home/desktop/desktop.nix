@@ -38,7 +38,6 @@ in
     };
     ".config/alacritty/alacritty.toml".source = ../dotfiles/hypr/alacritty/alacritty.toml;
     ".config/alacritty/fonts.toml".source = ../dotfiles/hypr/alacritty/fonts.toml;
-    ".config/alacritty/colors.toml".source = ../dotfiles/hypr/alacritty/colors.toml;
     ".config/neutronsync/neutronsync.toml".source = ../dotfiles/neutronsync.toml;
   };
 
@@ -121,6 +120,10 @@ in
       name = "adw-gtk3-dark";
     };
   };
+
+  xdg.configFile."gtk-3.0/settings.ini".force = true;
+  xdg.configFile."gtk-4.0/settings.ini".force = true;
+  home.file.".gtkrc-2.0".force = true;
 
   qt.enable = true;
 
