@@ -127,6 +127,7 @@
     printing.enable = true;
     greetd = {
       enable = true;
+      enableKwallet = true;
 
       settings.default_session = {
         user = "will";
