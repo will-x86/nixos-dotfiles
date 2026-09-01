@@ -5,6 +5,12 @@ local s = SCRIPTS
 local locked = { locked = true }
 local locked_r = { locked = true, repeating = true }
 
+local function audio_cmd(command, target, label)
+	local level = "$(wpctl get-volume " .. target
+		.. " | awk '{printf \"%d%%\", $2 * 100; if ($3 == \"[MUTED]\") printf \" (muted)\"}')"
+	return command .. " && hyprctl notify -1 1000 'rgb(88c0d0)' \"" .. label .. ": " .. level .. "\""
+end
+
 -- Apps
 -- Tmux sessioniser by default
 hl.bind(mod .. " + Return", hl.dsp.exec_cmd(s.kitty .. " -T"))
@@ -52,10 +58,18 @@ end
 -- Media / brightness / volume
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(s.backlight .. " --inc"), locked_r)
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(s.backlight .. " --dec"), locked_r)
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), locked_r)
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), locked_r)
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), locked)
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), locked)
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(audio_cmd(
+	"wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+", "@DEFAULT_AUDIO_SINK@", "Volume"
+)), locked_r)
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(audio_cmd(
+	"wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-", "@DEFAULT_AUDIO_SINK@", "Volume"
+)), locked_r)
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(audio_cmd(
+	"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", "@DEFAULT_AUDIO_SINK@", "Volume"
+)), locked)
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(audio_cmd(
+	"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle", "@DEFAULT_AUDIO_SOURCE@", "Microphone"
+)), locked)
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), locked)
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), locked)
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), locked)
