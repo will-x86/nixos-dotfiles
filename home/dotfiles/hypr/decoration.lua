@@ -1,14 +1,3 @@
---
--- Look and feel configuration
-CACHYLGREEN = "rgba(82dcccff)"
-CACHYMGREEN = "rgba(00aa84ff)"
-CACHYDGREEN = "rgba(007d6fff)"
-CACHYLBLUE = "rgba(01ccffff)"
-CACHYMBLUE = "rgba(182545ff)"
-CACHYDBLUE = "rgba(111826ff)"
-CACHYWHITE = "rgba(ffffffff)"
-CACHYGREY = "rgba(ddddddff)"
-CACHYGRAY = "rgba(798bb2ff)"
 hl.config({
 	general = {
 		gaps_in = 3,
@@ -18,25 +7,25 @@ hl.config({
 		resize_on_border = true,
 		col = {
 			active_border = {
-				colors = { CACHYLGREEN, CACHYDGREEN },
+				colors = { LGREEN, DGREEN },
 				angle = 45,
 			},
-			inactive_border = CACHYGRAY,
+			inactive_border = GRAY,
 		},
 	},
 	group = {
 		col = {
-			border_active = CACHYLBLUE,
-			border_inactive = CACHYGRAY,
-			border_locked_active = CACHYDBLUE,
-			border_locked_inactive = CACHYGRAY,
+			border_active = LBLUE,
+			border_inactive = GRAY,
+			border_locked_active = DBLUE,
+			border_locked_inactive = GRAY,
 		},
 		groupbar = {
 			col = {
-				active = CACHYLGREEN,
-				inactive = CACHYGRAY,
-				locked_active = CACHYDBLUE,
-				locked_inactive = CACHYGRAY,
+				active = LGREEN,
+				inactive = GRAY,
+				locked_active = DBLUE,
+				locked_inactive = GRAY,
 			},
 		},
 	},

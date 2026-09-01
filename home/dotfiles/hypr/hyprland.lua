@@ -1,6 +1,7 @@
 require("monitors")
 require("autostart")
 require("env")
+require("colors")
 
 require("general")
 require("decoration")

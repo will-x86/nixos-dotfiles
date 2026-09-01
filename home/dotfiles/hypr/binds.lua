@@ -24,7 +24,10 @@ hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 
 -- Windows
 hl.bind(mod .. " + Q", hl.dsp.window.close())
-hl.bind(mod .. " + F", hl.dsp.window.fullscreen({ mode = 0 }))
+hl.bind(shift .. " + F", hl.dsp.window.fullscreen({ mode = 0 }))
+-- https://wiki.hypr.land/configuring/core/dispatchers/#fullscreen_state
+-- mode = 1 means it keeps bindings
+hl.bind(mod .. " + F", hl.dsp.window.fullscreen({ mode = 1 }))
 hl.bind(mod .. " + Space", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mod .. " + Space", hl.dsp.window.center())
 
