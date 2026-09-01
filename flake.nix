@@ -112,7 +112,7 @@
     in
     {
       packages.${system} = systemPackages.packages // {
-        proton-drive-cli = pkgs.callPackage ./pkgs/proton-drive-cli.nix { };
+        proton-drive = pkgs.callPackage ./pkgs/proton-drive.nix { };
         neutronsync = pkgs.callPackage ./pkgs/neutronsync.nix {
           rustPlatform = pkgs.makeRustPlatform {
             rustc = fenix-stable.toolchain;
