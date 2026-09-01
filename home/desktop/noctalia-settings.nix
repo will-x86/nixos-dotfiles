@@ -152,7 +152,7 @@ in
   bar.main = {
     position = "top";
     thickness = 34;
-    background_opacity = 0.25;
+    background_opacity = 0.0;
     radius = 20;
     margin_ends = 10;
     margin_edge = 5;
