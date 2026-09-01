@@ -41,6 +41,7 @@
       cloudflare-cli
 
       # AIIIII
+      chatgpt
       codex
     ])
     ++ (with pkgs-stable; [
