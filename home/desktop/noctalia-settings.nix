@@ -165,7 +165,6 @@ in
     start = [ ];
     center = [
       "clock"
-      "notifications"
       "clipboard"
       "control-center"
       "tray"
