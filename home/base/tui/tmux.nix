@@ -90,6 +90,7 @@
 
       # REmove boxed Powerline status segments.
       set -g status-left '#[fg=#b48ead,bg=default,bold]#S #[default]'
+      set -g status-right '#[fg=#d8dee9,bg=default]#H #[fg=#4c566a]| #[fg=#81a1c1]%Y-%m-%d #[fg=#4c566a]| #[fg=#88c0d0]%H:%M #[default]'
       set -g window-status-format '#[fg=#d8dee9,bg=default] #I #W#{?window_flags, #F,} '
       set -g window-status-current-format '#[fg=#88c0d0,bg=default,bold] #I #W#{?window_flags, #F,} '
       set -g window-status-separator '
