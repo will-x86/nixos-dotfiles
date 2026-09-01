@@ -1,68 +1,6 @@
 { secrets, ... }:
 {
-  fileSystems."/home/will/popos-projects" = {
-    device = "will@pop-os:/projects";
-    fsType = "sshfs";
-    options = [
-      "nodev"
-      "noauto"
-      "x-systemd.automount"
-      "x-systemd.mount-timeout=3"
-      "noatime"
-      "allow_other"
-      "IdentityFile=/home/will/.ssh/ed25519"
-    ];
-  };
-  fileSystems."/mnt/FractalMedia" = {
-    device = "//${secrets.samba.fracRemote}/Media";
-    fsType = "cifs";
-    options = [
-      "username=will"
-      "password=${secrets.samba.frac}"
-      "noauto"
-      "x-systemd.automount"
-      "x-systemd.mount-timeout=3"
-      "uid=1000"
-      "gid=100"
-      "dir_mode=0777"
-      "file_mode=0666"
-      "nofail"
-    ];
-  };
-  fileSystems."/mnt/Fractal" = {
-    device = "//${secrets.samba.fracRemote}/Vault";
-    fsType = "cifs";
-    options = [
-      "username=will"
-      "noauto"
-      "password=${secrets.samba.frac}"
-      "x-systemd.automount"
-      "x-systemd.mount-timeout=3"
-      "uid=1000"
-      "gid=100"
-      "dir_mode=0777"
-      "file_mode=0666"
-      "nofail"
-    ];
-  };
   fileSystems."/mnt/Immich" = {
-    device = "//${secrets.samba.fracRemote}/Immich";
-    fsType = "cifs";
-    options = [
-      "username=will"
-      "noauto"
-      "password=${secrets.samba.frac}"
-      "x-systemd.automount"
-      "x-systemd.mount-timeout=3"
-      "uid=1000"
-      "gid=100"
-      "dir_mode=0777"
-      "file_mode=0666"
-      "nofail"
-    ];
-  };
-
-  fileSystems."/mnt/NImmich" = {
     device = "${secrets.samba.fracRemote}:/mnt/Vault/Immich";
     fsType = "nfs";
     options = [
@@ -77,7 +15,7 @@
       "nofail"
     ];
   };
-  fileSystems."/mnt/NFractalMedia" = {
+  fileSystems."/mnt/FractalMedia" = {
     device = "${secrets.samba.fracRemote}:/mnt/Vault/Media";
     fsType = "nfs";
     options = [
@@ -93,7 +31,7 @@
     ];
   };
 
-  fileSystems."/mnt/NFractal" = {
+  fileSystems."/mnt/FractalVault" = {
     device = "${secrets.samba.fracRemote}:/mnt/Vault/Vault";
     fsType = "nfs";
     options = [

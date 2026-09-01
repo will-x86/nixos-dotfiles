@@ -45,7 +45,6 @@ in
     };
   };
 
-  # stylix.fonts.packages is read-only (serif/sans/mono/emoji only).
   fonts.packages = with pkgs; [
     material-symbols
     noto-fonts-cjk-sans
