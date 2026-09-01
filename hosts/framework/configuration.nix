@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   secrets,
   ...
@@ -112,21 +111,47 @@
       variant = "";
     };
     printing.enable = true;
-    greetd = {
-      enable = true;
-
-      settings.default_session = {
-        user = "will";
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
-      };
-    };
     # Needed for proton-drive-cli
     gnome.gnome-keyring.enable = true;
     pulseaudio.enable = false;
     gvfs.enable = true;
   };
   security.polkit.enable = true;
+  security.polkit.enablePkexecWrapper = true;
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (action.id == "org.noctalia.greeter.apply-appearance" &&
+          subject.active && subject.local && subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
   security.pam.services.greetd.enableGnomeKeyring = true;
+
+  programs.noctalia-greeter = {
+    enable = true;
+    settings = {
+      user.default = "will";
+      appearance = {
+        scheme = "Synced";
+        password_style = "default";
+        theme_mode = "dark";
+        font_family = "SF Pro Display";
+        corner_radius_scale = 1.0;
+      };
+      cursor = {
+        theme = "Adwaita";
+        size = 24;
+        path = "${pkgs.adwaita-icon-theme}/share/icons";
+      };
+      keyboard = {
+        layout = "us";
+        numlock = true;
+      };
+      idle.timeout = 300;
+      auth.request_timeout = 60;
+    };
+  };
 
   powerManagement.powertop.enable = true;
   networking.hostName = "framework";

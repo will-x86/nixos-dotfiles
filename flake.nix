@@ -12,6 +12,10 @@
       url = "github:nix-community/nixvim";
     };
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     xremap-flake.url = "github:xremap/nix-flake";
 
@@ -143,6 +147,7 @@
           hostName = "framework";
           homeConfig = ./home/desktop/desktop.nix;
           extraModules = [
+            inputs.noctalia-greeter.nixosModules.default
             xremap-flake.nixosModules.default
           ];
         };

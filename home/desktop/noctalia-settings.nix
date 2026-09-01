@@ -11,6 +11,7 @@ in
     settings_show_advanced = true;
     clipboard_enabled = true;
     clipboard_history_max_entries = 100;
+    greeter_sync.auto_sync = true;
     panel = {
       transparency_mode = "glass";
       borders = true;
