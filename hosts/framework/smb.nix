@@ -1,4 +1,4 @@
-{ secrets, pkgs, ... }:
+{ secrets, ... }:
 {
   fileSystems."/home/will/popos-projects" = {
     device = "will@pop-os:/projects";

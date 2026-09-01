@@ -43,8 +43,16 @@ in
       name = "Adwaita";
       size = 24;
     };
-
   };
+
+  # stylix.fonts.packages is read-only (serif/sans/mono/emoji only).
+  fonts.packages = with pkgs; [
+    material-symbols
+    noto-fonts-cjk-sans
+    nerd-fonts.symbols-only
+    nerd-fonts.departure-mono
+    departure-mono
+  ];
 
   home-manager.sharedModules = [
     {
