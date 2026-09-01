@@ -32,7 +32,10 @@ in
       sort_by_usage = true;
       provider_prefix = "/";
       providers = {
-        calculator = { prefix = "calc"; global = true; };
+        calculator = {
+          prefix = "calc";
+          global = true;
+        };
         emoji.prefix = "emo";
         session.prefix = "session";
         wallpaper.prefix = "wall";
@@ -51,7 +54,15 @@ in
     wallpaper_scheme = "m3-content";
     templates = {
       enable_builtin_templates = true;
-      builtin_ids = [ "alacritty" "btop" "gtk3" "gtk4" "hyprland" "kcolorscheme" "kitty" ];
+      builtin_ids = [
+        "alacritty"
+        "btop"
+        "gtk3"
+        "gtk4"
+        "hyprland"
+        "kcolorscheme"
+        "kitty"
+      ];
       enable_community_templates = false;
     };
   };
@@ -60,7 +71,11 @@ in
     enabled = true;
     directory = wallpapers;
     fill_mode = "crop";
-    transition = [ "fade" "wipe" "zoom" ];
+    transition = [
+      "fade"
+      "wipe"
+      "zoom"
+    ];
     transition_duration = 1200;
     transition_on_startup = false;
     default.path = "${wallpapers}/wallpaper2.png";
@@ -106,8 +121,16 @@ in
   idle = {
     pre_action_fade_seconds = 2.0;
     behavior = {
-      lock = { timeout = 300; action = "lock"; enabled = true; };
-      "screen-off" = { timeout = 600; action = "screen_off"; enabled = true; };
+      lock = {
+        timeout = 300;
+        action = "lock";
+        enabled = true;
+      };
+      "screen-off" = {
+        timeout = 600;
+        action = "screen_off";
+        enabled = true;
+      };
       suspend = {
         timeout = 1800;
         action = "command";
@@ -139,9 +162,27 @@ in
     capsule = true;
     capsule_opacity = 0.72;
     capsule_border = "outline";
-    start = [ "launcher" "workspaces" ];
-    center = [ "clock" "media" ];
-    end = [ "tray" "notifications" "clipboard" "oldirtty/color_picker:widget" "network" "bluetooth" "volume" "brightness" "battery" "control-center" "session" ];
+    start = [
+      "launcher"
+      "workspaces"
+    ];
+    center = [
+      "clock"
+      "media"
+    ];
+    end = [
+      "tray"
+      "notifications"
+      "clipboard"
+      "oldirtty/color_picker:widget"
+      "network"
+      "bluetooth"
+      "volume"
+      "brightness"
+      "battery"
+      "control-center"
+      "session"
+    ];
   };
 
   control_center = {
@@ -150,7 +191,10 @@ in
     width = 760;
     show_shortcut_labels = true;
     show_session_button = true;
-    hidden_tabs = [ "weather" "calendar" ];
+    hidden_tabs = [
+      "weather"
+      "calendar"
+    ];
     shortcuts = [
       { type = "wifi"; }
       { type = "bluetooth"; }
