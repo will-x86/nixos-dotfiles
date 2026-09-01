@@ -60,8 +60,18 @@ rustPlatform.buildRustPackage {
   postFixup = ''
     for bin in neutronsync neutronsync-gui; do
       wrapProgram "$out/bin/$bin" \
-        --prefix PATH : ${lib.makeBinPath [glib xdotool]} \
-        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [vulkan-loader libsecret]}
+        --prefix PATH : ${
+          lib.makeBinPath [
+            glib
+            xdotool
+          ]
+        } \
+        --prefix LD_LIBRARY_PATH : ${
+          lib.makeLibraryPath [
+            vulkan-loader
+            libsecret
+          ]
+        }
     done
   '';
 

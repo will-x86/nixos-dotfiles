@@ -1,28 +1,40 @@
 {
   lib,
-  stdenv,
+  buildFHSEnv,
   fetchurl,
+  runCommand,
+  writeShellScript,
+  libsecret,
+  glib,
+  dbus,
 }:
 
-stdenv.mkDerivation rec {
-  pname = "proton-drive-cli";
+let
   version = "0.8.0";
 
-  src = fetchurl {
+  proton-drive-binary = fetchurl {
     url = "https://proton.me/download/drive/cli/${version}/linux-x64/proton-drive";
     sha256 = "0dbpaz77srvpgjkg6a9kb59prbcrrlpg1rhpvf82g2cwf5qxfhwl";
   };
 
-  dontUnpack = true;
-  dontFixup = true;
-
-  installPhase = ''
-    runHook preInstall
-    mkdir -p $out/bin
-    cp $src $out/bin/proton-drive
-    chmod +x $out/bin/proton-drive
-    runHook postInstall
+  bin = runCommand "proton-drive-bin" { } ''
+    install -Dm755 ${proton-drive-binary} $out/bin/proton-drive
   '';
+
+  runScript = writeShellScript "proton-drive-run" ''
+    exec ${bin}/bin/proton-drive "$@"
+  '';
+in
+buildFHSEnv {
+  inherit version;
+  name = "proton-drive-cli";
+  targetPkgs =
+    pkgs: with pkgs; [
+      libsecret
+      glib
+      dbus
+    ];
+  inherit runScript;
 
   meta = with lib; {
     description = "Proton Drive CLI — manage your Proton Drive from the terminal";
