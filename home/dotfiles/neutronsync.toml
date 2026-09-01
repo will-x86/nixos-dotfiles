@@ -58,5 +58,5 @@ debounce = 2
 [[pair]]
 name = "SyncDoc"
 local = "~/SyncDoc"
-remote = "/"        # -> /my-files/Documents
+remote = "/my-files/"        # -> /my-files/Documents
 # exclude = ["APPS"]          # sub-paths to skip; the Proton copy is never touched
