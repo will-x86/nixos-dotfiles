@@ -70,6 +70,8 @@ rustPlatform.buildRustPackage {
   '';
   postInstall = ''
     install -Dm644 packaging/neutronsync-gui.desktop $out/share/applications/neutronsync-gui.desktop
+    substituteInPlace $out/share/applications/neutronsync-gui.desktop \
+      --replace-fail '.neutronsync-gui-wrapped' 'neutronsync-gui'
   '';
 
   meta = with lib; {
