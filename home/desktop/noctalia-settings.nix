@@ -8,6 +8,7 @@ in
     time_format = "{:%I:%M %p}";
     date_format = "%A, %d %B";
     polkit_agent = true;
+    launch_apps_as_systemd_services = true;
     settings_show_advanced = true;
     clipboard_enabled = true;
     clipboard_history_max_entries = 100;

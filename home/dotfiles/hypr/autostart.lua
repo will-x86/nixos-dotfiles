@@ -1,7 +1,6 @@
 -- autostart.lua
 
 hl.on("hyprland.start", function()
-  hl.exec_cmd("noctalia")
   hl.exec_cmd("udiskie")
 
   -- Workspace-pinned launches (previously exec-once=[workspace N silent] ...)

@@ -108,7 +108,7 @@ in
   ];
   programs.noctalia = {
     enable = true;
-    systemd.enable = false;
+    systemd.enable = true;
     checkConfig = true;
     settings = import ./noctalia-settings.nix { };
   };
