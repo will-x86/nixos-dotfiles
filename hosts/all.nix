@@ -20,9 +20,14 @@
 
   system.autoUpgrade.allowReboot = false;
   system.autoUpgrade.dates = "weekly";
-  nix.gc.automatic = true;
-  nix.gc.dates = "daily";
-  nix.gc.options = "--delete-older-than 10d";
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      dates = "daily";
+      extraArgs = "--keep-since 10d --keep 5";
+    };
+  };
   nix.settings.auto-optimise-store = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   networking.networkmanager = {
