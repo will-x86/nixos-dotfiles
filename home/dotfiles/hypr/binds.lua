@@ -1,15 +1,14 @@
 local mod = "SUPER"
 local shift = "SUPER + SHIFT"
-local s = SCRIPTS
 
 local locked = { locked = true }
 local locked_r = { locked = true, repeating = true }
 
 -- Apps
 -- Tmux sessioniser by default
-hl.bind(mod .. " + Return", hl.dsp.exec_cmd(s.kitty .. " -T"))
+hl.bind(mod .. " + Return", hl.dsp.exec_cmd("kitty" .. " -e" .. "~/tmux-sessioniser"))
 -- Normal kitty
-hl.bind(mod .. " + T", hl.dsp.exec_cmd(s.kitty))
+hl.bind(mod .. " + T", hl.dsp.exec_cmd("kitty"))
 hl.bind(mod .. " + X", hl.dsp.exec_cmd("noctalia msg panel-toggle session"))
 hl.bind(mod .. " + A", hl.dsp.exec_cmd("noctalia msg screenshot-region"))
 hl.bind(mod .. " + P", hl.dsp.exec_cmd("noctalia msg plugin oldirtty/color_picker:service all pick"))

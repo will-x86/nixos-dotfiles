@@ -153,6 +153,7 @@ in
     position = "top";
     thickness = 34;
     background_opacity = 0.0;
+    capsule_opacity = 0.45;
     radius = 20;
     margin_ends = 10;
     margin_edge = 5;
@@ -162,10 +163,15 @@ in
     reserve_space = true;
     capsule = true;
     capsule_opacity = 0.45;
-    start = [ ];
+    start = [
+      "cpu"
+      "network_rx"
+      "network_tx"
+    ];
     center = [
       "clock"
       "clipboard"
+      "battery"
       "control-center"
       "tray"
     ];

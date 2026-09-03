@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-if [ "$1" == "-T" ]; then
-    kitty -e ~/tmux-sessioniser
-else
-    kitty
-fi
