@@ -21,7 +21,6 @@
       spotify
       chromium
       anydesk
-      davinci-resolve
       signal-desktop
       kdePackages.okular # pdf
 
