@@ -174,7 +174,7 @@ in
       "control-center"
       "tray"
     ];
-    end = [ ];
+    end = [ "nix-monitor" ];
   };
 
   control_center = {
@@ -198,6 +198,7 @@ in
   };
 
   widget = {
+    "nix-monitor".type = "avivbintangaringga/nix-monitor:nix-monitor";
     media.hide_when_no_media = true;
     network.show_label = false;
     bluetooth.show_label = false;
@@ -214,5 +215,18 @@ in
   hooks = {
     started = "noctalia msg plugins enable oldirtty/color_picker";
     colors_changed = "hyprctl reload";
+  };
+
+  plugins = {
+    enabled = [ "avivbintangaringga/nix-monitor" ];
+    auto_update = "all";
+    source = [
+      {
+        name = "community";
+        kind = "git";
+        location = "https://github.com/noctalia-dev/community-plugins";
+        enabled = true;
+      }
+    ];
   };
 }
