@@ -1,6 +1,7 @@
 require("monitors")
 require("autostart")
 require("env")
+require("colors")
 
 require("general")
 require("decoration")
@@ -14,8 +15,3 @@ require("xwayland")
 
 require("binds")
 require("rules")
-
-local theme_ok, noctalia_theme = pcall(require, "noctalia")
-if theme_ok then
-	noctalia_theme.apply_theme()
-end
