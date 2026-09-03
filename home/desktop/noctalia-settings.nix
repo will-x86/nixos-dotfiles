@@ -219,13 +219,5 @@ in
       "oldirtty/color_picker"
     ];
     auto_update = "all";
-    source = [
-      {
-        name = "community";
-        kind = "git";
-        location = "https://github.com/noctalia-dev/community-plugins";
-        enabled = true;
-      }
-    ];
   };
 }
