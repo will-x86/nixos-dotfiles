@@ -211,13 +211,13 @@ in
     };
   };
 
-  hooks = {
-    started = "noctalia msg plugins enable oldirtty/color_picker";
-    colors_changed = "hyprctl reload";
-  };
+  hooks.colors_changed = "hyprctl reload";
 
   plugins = {
-    enabled = [ "avivbintangaringga/nix-monitor" ];
+    enabled = [
+      "avivbintangaringga/nix-monitor"
+      "oldirtty/color_picker"
+    ];
     auto_update = "all";
     source = [
       {

@@ -6,7 +6,7 @@ local locked_r = { locked = true, repeating = true }
 
 -- Apps
 -- Tmux sessioniser by default
-hl.bind(mod .. " + Return", hl.dsp.exec_cmd("kitty" .. " -e" .. "~/tmux-sessioniser"))
+hl.bind(mod .. " + Return", hl.dsp.exec_cmd("kitty -e " .. os.getenv("HOME") .. "/tmux-sessioniser"))
 -- Normal kitty
 hl.bind(mod .. " + T", hl.dsp.exec_cmd("kitty"))
 hl.bind(mod .. " + X", hl.dsp.exec_cmd("noctalia msg panel-toggle session"))
