@@ -162,7 +162,6 @@ in
     shadow = false;
     reserve_space = true;
     capsule = true;
-    capsule_opacity = 0.45;
     start = [
       "cpu"
       "network_rx"
