@@ -164,7 +164,6 @@ in
     start = [
       "network_rx"
       "network_tx"
-      "cpu"
     ];
     center = [
       "clock"
