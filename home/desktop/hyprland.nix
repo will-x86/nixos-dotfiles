@@ -4,7 +4,7 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd.enable = false;
+    systemd.enable = true;
     extraConfig = "# Managed via lua";
   };
 }

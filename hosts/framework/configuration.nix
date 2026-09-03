@@ -131,6 +131,7 @@
   programs.noctalia-greeter = {
     enable = true;
     settings = {
+      session.default = "Hyprland";
       user.default = "will";
       appearance = {
         scheme = "Synced";
@@ -162,7 +163,7 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-    withUWSM = true;
+    withUWSM = false;
   };
   hardware.graphics = {
     enable = true;
