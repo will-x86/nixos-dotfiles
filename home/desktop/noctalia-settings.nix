@@ -162,7 +162,6 @@ in
     reserve_space = true;
     capsule = true;
     start = [
-      "cpu"
       "network_rx"
       "network_tx"
     ];
@@ -194,21 +193,6 @@ in
       { type = "nightlight"; }
       { type = "session"; }
     ];
-  };
-
-  widget = {
-    "nix-monitor".type = "avivbintangaringga/nix-monitor:nix-monitor";
-    media.hide_when_no_media = true;
-    network.show_label = false;
-    bluetooth.show_label = false;
-    volume.show_label = false;
-    brightness.show_label = false;
-    notifications.hide_when_no_unread = false;
-    clock = {
-      format = "{:%I:%M %p}";
-      tooltip_format = "{:%A, %d %B %Y}";
-      font_weight = 700;
-    };
   };
 
   hooks.colors_changed = "hyprctl reload";
