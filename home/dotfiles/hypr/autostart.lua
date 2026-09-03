@@ -2,7 +2,7 @@
 
 hl.on("hyprland.start", function()
   hl.exec_cmd(
-    "dbus-update-activation-environment --systemd --all && systemctl --user start noctalia.service"
+    "dbus-update-activation-environment --systemd --all && systemctl --user start noctalia.service && sleep 2 && noctalia msg config-reload"
   )
 
   hl.exec_cmd("udiskie")

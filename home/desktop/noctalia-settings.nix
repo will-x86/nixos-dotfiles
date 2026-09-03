@@ -12,7 +12,7 @@ in
     settings_show_advanced = true;
     clipboard_enabled = true;
     clipboard_history_max_entries = 100;
-    greeter_sync.auto_sync = true;
+    greeter_sync.auto_sync = false;
     panel = {
       transparency_mode = "glass";
       borders = true;
@@ -175,6 +175,8 @@ in
     ];
     end = [ "nix-monitor" ];
   };
+
+  widget."nix-monitor".type = "avivbintangaringga/nix-monitor:nix-monitor";
 
   control_center = {
     sidebar = "compact";
