@@ -162,6 +162,7 @@ in
     reserve_space = true;
     capsule = true;
     start = [
+      "cpu"
       "network_rx"
       "network_tx"
     ];
