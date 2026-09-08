@@ -174,10 +174,8 @@ in
       "control-center"
       "tray"
     ];
-    end = [ "nix-monitor" ];
+    end = [ ];
   };
-
-  widget."nix-monitor".type = "avivbintangaringga/nix-monitor:nix-monitor";
 
   control_center = {
     sidebar = "compact";
@@ -203,7 +201,6 @@ in
 
   plugins = {
     enabled = [
-      "avivbintangaringga/nix-monitor"
       "oldirtty/color_picker"
     ];
     auto_update = "all";
