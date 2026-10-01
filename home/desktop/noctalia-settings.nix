@@ -1,6 +1,7 @@
-{ ... }:
+{ config, ... }:
 let
-  wallpapers = toString ../dotfiles/hypr/wallpapers;
+  # Keep paths persisted by Noctalia independent of Nix store generations.
+  wallpapers = "${config.xdg.configHome}/hypr/wallpapers";
 in
 {
   shell = {

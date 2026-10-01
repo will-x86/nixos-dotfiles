@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   inputs,
   # system ? pkgs.system,
@@ -110,8 +111,22 @@ in
     enable = true;
     systemd.enable = true;
     checkConfig = true;
-    settings = import ./noctalia-settings.nix { };
+    settings = import ./noctalia-settings.nix { inherit config; };
   };
+
+  # Noctalia persists the selected wallpaper in its mutable settings. Older
+  # configurations exposed the repository's Nix store path here, so garbage
+  # collection could leave the persisted default/last/monitor paths dangling.
+  # Migrate those saved paths to the stable Home Manager link.
+  home.activation.migrateNoctaliaWallpaperPaths = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    settings_file="${config.xdg.stateHome}/noctalia/settings.toml"
+
+    if [[ -f "$settings_file" ]]; then
+      ${pkgs.gnused}/bin/sed -i -E \
+        's#path = "/nix/store/[^\"]*/wallpapers/([^\"]+)"#path = "${config.xdg.configHome}/hypr/wallpapers/\1"#g' \
+        "$settings_file"
+    fi
+  '';
 
   gtk = {
     enable = true;
