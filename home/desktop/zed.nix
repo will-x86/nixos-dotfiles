@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   ...
 }:
 {
@@ -37,7 +36,6 @@
       isort
       rustfmt
       go # gofmt
-      nodejs
     ];
 
     userSettings = {
@@ -70,6 +68,15 @@
       };
 
       load_direnv = "shell_hook";
+
+      # Let Zed manage the Node runtime used by its downloaded language servers.
+      # Explicit nulls also clear paths left behind by Home Manager's mutable
+      # settings merge, avoiding stale /nix/store references after upgrades.
+      node = {
+        path = null;
+        npm_path = null;
+        ignore_system_version = true;
+      };
 
       terminal = {
         shell = "system";
