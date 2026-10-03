@@ -9,8 +9,9 @@ hl.config({
 		numlock_by_default = false,
 		repeat_rate = 25,
 		repeat_delay = 600,
-		sensitivity = 1,
-		accel_profile = "flat",
+		-- Use libinput's normal pointer speed and device-specific acceleration.
+		sensitivity = 0,
+		accel_profile = "",
 		force_no_accel = false,
 		left_handed = false,
 		scroll_method = "2fg",
@@ -23,7 +24,7 @@ hl.config({
 
 		touchpad = {
 			disable_while_typing = true,
-			natural_scroll = false,
+			natural_scroll = true,
 			scroll_factor = 0.8,
 			middle_button_emulation = false,
 			tap_button_map = "",
