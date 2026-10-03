@@ -159,7 +159,7 @@ in
     margin_ends = 5;
     margin_edge = 2;
     padding = 7;
-    scale = 0.8;
+    scale = 0.5;
     font_scale = 0.5;
     widget_spacing = 3;
     shadow = false;
