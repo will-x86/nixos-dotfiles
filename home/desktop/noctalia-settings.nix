@@ -160,7 +160,7 @@ in
     margin_edge = 2;
     padding = 7;
     scale = 0.5;
-    font_scale = 0.5;
+    font_scale = 0.9;
     widget_spacing = 3;
     shadow = false;
     reserve_space = true;
