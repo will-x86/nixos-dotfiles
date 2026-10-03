@@ -80,7 +80,7 @@
       lsp = {
         nixd.settings.nixd.formatting.command = [ "nixfmt" ];
         rust-analyzer.initialization_options.cargo.allFeatures = true;
-        astro-language-server.initialization_options.typescript.tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
+        #astro-language-server.initialization_options.typescript.tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
       };
 
       languages = {
