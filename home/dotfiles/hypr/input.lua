@@ -9,7 +9,7 @@ hl.config({
 		numlock_by_default = false,
 		repeat_rate = 25,
 		repeat_delay = 600,
-		sensitivity = 1.5,
+		sensitivity = 1,
 		accel_profile = "flat",
 		force_no_accel = false,
 		left_handed = false,
