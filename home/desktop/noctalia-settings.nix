@@ -152,14 +152,14 @@ in
 
   bar.main = {
     position = "top";
-    thickness = 34;
+    thickness = 17;
     background_opacity = 0.0;
     capsule_opacity = 0.45;
-    radius = 20;
-    margin_ends = 10;
-    margin_edge = 5;
-    padding = 14;
-    widget_spacing = 6;
+    radius = 10;
+    margin_ends = 5;
+    margin_edge = 2;
+    padding = 7;
+    widget_spacing = 3;
     shadow = false;
     reserve_space = true;
     capsule = true;
@@ -181,7 +181,7 @@ in
   control_center = {
     sidebar = "compact";
     sidebar_section = "compact";
-    width = 760;
+    width = 380;
     show_shortcut_labels = true;
     show_session_button = true;
     hidden_tabs = [
