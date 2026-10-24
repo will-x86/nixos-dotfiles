@@ -7,6 +7,9 @@
     black
     isort
     gopls
+    goimports
+    gofumpt
+    golines
     rustfmt
     eslint_d
   ];
@@ -69,7 +72,11 @@
           "isort"
           "black"
         ];
-        go = [ "gofmt" ];
+        go = [
+          "goimports"
+          "gofumpt"
+          "golines"
+        ];
         rust = [ "rustfmt" ];
         ruby = [ "ruby" ];
       };
