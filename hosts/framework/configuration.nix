@@ -90,6 +90,14 @@
               "fone"
             ];
           };
+          "BooxBooks" = {
+            id = "x2w61-muute";
+            path = "/home/will/BooxBooks";
+            devices = [
+              "frac"
+              "fone"
+            ];
+          };
           "SyncDoc" = {
             id = "xq7l5-sdtka";
             path = "/home/will/Documents/SyncDoc";
