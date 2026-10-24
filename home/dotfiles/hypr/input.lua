@@ -7,8 +7,8 @@ hl.config({
 		kb_file = "",
 
 		numlock_by_default = false,
-		repeat_rate = 25,
-		repeat_delay = 600,
+		--repeat_rate = 25,
+		--repeat_delay = 600,
 		-- Use libinput's normal pointer speed and device-specific acceleration.
 		sensitivity = 0,
 		accel_profile = "",
