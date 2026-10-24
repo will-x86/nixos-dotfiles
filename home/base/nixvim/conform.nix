@@ -7,7 +7,7 @@
     black
     isort
     gopls
-    goimports
+    gotools # provides goimports
     gofumpt
     golines
     rustfmt
