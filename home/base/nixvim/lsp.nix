@@ -115,7 +115,11 @@
     svelte.enable = true;
     vue_ls.enable = true;
     dartls.enable = true;
-    ocamllsp.enable = true;
+    ocamllsp = {
+      enable = true;
+      # Prefer the compiler-matched LSP supplied by each project's dev shell.
+      packageFallback = true;
+    };
     rust_analyzer = {
       enable = true;
       package = pkgs.rust-analyzer;
