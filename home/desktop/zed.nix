@@ -23,6 +23,7 @@
       "ruby"
       "html"
       "nord"
+      "ocaml"
     ];
 
     # LSP servers are downloaded by Zed itself and made to work via nix-ld.
