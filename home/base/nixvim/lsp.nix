@@ -115,7 +115,7 @@
     svelte.enable = true;
     vue_ls.enable = true;
     dartls.enable = true;
-
+    ocamllsp.enable = true;
     rust_analyzer = {
       enable = true;
       package = pkgs.rust-analyzer;
