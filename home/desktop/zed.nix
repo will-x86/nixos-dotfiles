@@ -54,7 +54,7 @@
 
       theme = {
         mode = "dark";
-        dark = "Nord";
+        dark = "Nord Dark";
         light = "Nord Light";
       };
 
@@ -165,6 +165,11 @@
           "space y" = "editor::Copy"; # <leader>y system clipboard
           "space q" = "diagnostics::Deploy"; # <leader>q diagnostics list
         };
+      }
+      {
+        # Match nvim-cmp: accept the currently selected completion with <C-Space>.
+        context = "Editor && showing_completions";
+        bindings."ctrl-space" = "editor::ConfirmCompletion";
       }
       {
         # Move selected lines up/down (visual J/K)
