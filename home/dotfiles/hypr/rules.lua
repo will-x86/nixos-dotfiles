@@ -23,3 +23,10 @@ hl.window_rule({
 	float = true,
 	size = { 1080, 920 },
 })
+
+hl.window_rule({
+	name = "codex-no-focus-stealing",
+	match = { class = "^codex-desktop$" },
+	focus_on_activate = false,
+	suppress_event = "activate activatefocus",
+})
